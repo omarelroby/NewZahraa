@@ -8,31 +8,31 @@
     <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     <title>Dashboard eCommerce - Robust - Responsive Bootstrap 4 Admin Dashboard Template for Web Application</title>
-    <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="{{asset('../../../app-assets/images/ico/apple-icon-120.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('../../../app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/vendors.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/morris.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/unslider.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/weather-icons/climacons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/vendors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/vendors/css/charts/morris.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/vendors/css/extensions/unslider.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/vendors/css/weather-icons/climacons.min.css')}}">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/app.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/custom-rtl.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/custom-rtl.css')}}">
     <!-- END ROBUST CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/plugins/calendars/clndr.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/fonts/meteocons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/css-rtl/plugins/calendars/clndr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../app-assets/fonts/meteocons/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
 
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('../../../assets/css/style-rtl.css')}}">
     <!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -43,7 +43,7 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-                <li class="nav-item"><a class="navbar-brand" href="../../../html/rtl/vertical-menu-template/index.html"><img class="brand-logo" alt="robust admin logo" src="../../../app-assets/images/logo/logo-light-sm.png">
+                <li class="nav-item"><a class="navbar-brand" href="{{asset('../../../html/rtl/vertical-menu-template/index.html')}}"><img class="brand-logo" alt="robust admin logo" src="../../../app-assets/images/logo/logo-light-sm.png">
                         <h3 class="brand-text">Robust Admin</h3></a></li>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
             </ul>
@@ -57,7 +57,7 @@
                             <li class="col-md-2">
                                 <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="fa fa-newspaper-o"></i> News</h6>
                                 <div id="mega-menu-carousel-example">
-                                    <div><img class="rounded img-fluid mb-1" src="../../../app-assets/images/slider/slider-2.png" alt="First slide"><a class="news-title mb-0" href="#">Poster Frame PSD</a>
+                                    <div><img class="rounded img-fluid mb-1" src="{{asset('../../../app-assets/images/slider/slider-2.png')}}" alt="First slide"><a class="news-title mb-0" href="#">Poster Frame PSD</a>
                                         <p class="news-content"><span class="font-small-2">January 26, 2018</span></p>
                                     </div>
                                 </div>
@@ -303,30 +303,30 @@
 </footer>
 
 <!-- BEGIN VENDOR JS-->
-<script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+<script src="{{asset('../../../app-assets/vendors/js/vendors.min.js')}}"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
-<script src="../../../app-assets/vendors/js/charts/raphael-min.js"></script>
-<script src="../../../app-assets/vendors/js/charts/morris.min.js"></script>
-<script src="../../../app-assets/vendors/js/charts/chart.min.js"></script>
-<script src="../../../app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js"></script>
-<script src="../../../app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js"></script>
-<script src="../../../app-assets/vendors/js/extensions/moment.min.js"></script>
-<script src="../../../app-assets/vendors/js/extensions/underscore-min.js"></script>
-<script src="../../../app-assets/vendors/js/extensions/clndr.min.js"></script>
-<script src="../../../app-assets/vendors/js/charts/echarts/echarts.js"></script>
-<script src="../../../app-assets/vendors/js/extensions/unslider-min.js"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/raphael-min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/morris.min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/chart.min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/extensions/moment.min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/extensions/underscore-min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/extensions/clndr.min.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/charts/echarts/echarts.js')}}"></script>
+<script src="{{asset('../../../app-assets/vendors/js/extensions/unslider-min.js')}}"></script>
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN ROBUST JS-->
-<script src="../../../app-assets/js/core/app-menu.js"></script>
-<script src="../../../app-assets/js/core/app.js"></script>
+<script src="{{asset('../../../app-assets/js/core/app-menu.js')}}"></script>
+<script src="{{asset('../../../app-assets/js/core/app.js')}}"></script>
 <!-- END ROBUST JS-->
 <!-- BEGIN PAGE LEVEL JS-->
-<script src="../../../app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('../../../app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
 <!-- END PAGE LEVEL JS-->
 @yield('script')
