@@ -43,6 +43,11 @@ Route::group(
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/Dashboard','App\Http\Controllers\dashboard\HomeController@index');
+Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index');
 Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
 Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
+Route::resource('category',\App\Http\Controllers\dashboard\CategoryController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
