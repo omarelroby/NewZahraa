@@ -24,10 +24,14 @@ class CategoriesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('name', function($q) {
-                $q->translate('ar')->name;
+            ->editColumn('name(ar)', function($q) {
+                return $q->translate('ar')->name;
             })
-             ->rawColumns(['name']);
+            ->editColumn('name(en)', function($q) {
+                return $q->translate('en')->name;
+            })
+            ->addColumn('action', 'dashboard.category.actions')
+            ->rawColumns(['action']);
     }
 
     /**
@@ -52,7 +56,7 @@ class CategoriesDataTable extends DataTable
                     ->setTableId('categories-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                     ->orderBy(1)
+                     ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -74,8 +78,13 @@ class CategoriesDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-
+            Column::make('name(ar)'),
+            Column::make('name(en)'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

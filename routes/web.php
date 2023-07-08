@@ -46,7 +46,8 @@ Route::get('/', function () {
 Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index');
 Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
 Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
-Route::resource('category',\App\Http\Controllers\dashboard\CategoryController::class);
+Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController::class)
+->names(['edit'=>'category.edit']);
 
 Auth::routes();
 

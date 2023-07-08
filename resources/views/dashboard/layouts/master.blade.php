@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
-    <!-- BEGIN VENDOR CSS-->
+     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/vendors.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/charts/morris.css')}}">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/plugins/calendars/clndr.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/fonts/meteocons/style.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
@@ -276,10 +276,14 @@
             <li class=" nav-item">
                 <a href="index.html"><i class="ft-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Category</span> </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="{{route('category.index')}}" data-i18n="nav.dash.ecommerce">Show Category</a>
+
+                    <li class="active">
+                        <a class="menu-item" href="{{route('categories.index')}}" data-i18n="nav.dash.ecommerce">Categories</a>
                     </li>
-                    <li><a class="menu-item" href="{{route('category.create')}}" data-i18n="nav.dash.project">Add Category</a>
+                    <li>
+                        <a class="menu-item" href="{{route('categories.create')}}" data-i18n="nav.dash.project">Add Category</a>
                     </li>
+
 
                 </ul>
             </li>
@@ -304,31 +308,19 @@
 
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
-<script src="{{asset('app-assets/vendors/js/charts/raphael-min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/charts/morris.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/charts/chart.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/moment.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/underscore-min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/clndr.min.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/charts/echarts/echarts.js')}}"></script>
-<script src="{{asset('app-assets/vendors/js/extensions/unslider-min.js')}}"></script>
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN ROBUST JS-->
+
 <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
-<script src="{{asset('app-assets/js/core/app.js')}}"></script>
+<script src="{{asset('../../../app-assets/js/core/app.js')}}"></script>
+
 <!-- END ROBUST JS-->
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://www.efb.eg/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-<!-- END PAGE LEVEL JS-->
+  <!-- END PAGE LEVEL JS-->
 @yield('script')
 </body>
 </html>

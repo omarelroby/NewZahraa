@@ -79,7 +79,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $category=Category::find($id);
+        return  view('dashboard.category.edit',compact('category'));
     }
 
     /**
@@ -89,9 +91,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category=Category::find($id);
+        $category->update($request->validated());
+        $category->save();
+        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        return back() ;
     }
 
     /**
@@ -102,6 +108,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+        return back();
     }
 }
