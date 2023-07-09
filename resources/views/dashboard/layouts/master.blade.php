@@ -274,17 +274,26 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item">
-                <a href="index.html"><i class="ft-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Category</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">Category</span> </a>
                 <ul class="menu-content">
-
-                    <li class="active">
+                    <li >
                         <a class="menu-item" href="{{route('categories.index')}}" data-i18n="nav.dash.ecommerce">Categories</a>
                     </li>
                     <li>
                         <a class="menu-item" href="{{route('categories.create')}}" data-i18n="nav.dash.project">Add Category</a>
                     </li>
+                </ul>
+            </li>
 
-
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa fa-flag-checkered"></i><span class="menu-title" data-i18n="nav.dash.main">Country</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('country.index')}}" data-i18n="nav.dash.ecommerce">Countries</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('country.create')}}" data-i18n="nav.dash.project">Add Country</a>
+                    </li>
                 </ul>
             </li>
 
