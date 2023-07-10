@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
-class DatabaseSeeder extends Seeder
+class SettingSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -25,18 +25,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        Setting::factory(1)
+            ->create();
 
 
-        DB::table('languages')->insert(array(
-            array(
-                'name' => "العربية",
-                'locale' => "ar",
-             )));
-        DB::table('languages')->insert(array(
-            array(
-                 'name' => "English",
-                 'locale' => "en",
-            )));
 
     }
 }
