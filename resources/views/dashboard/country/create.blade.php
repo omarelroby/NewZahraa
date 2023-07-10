@@ -63,8 +63,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">Image </label>
-                                                        <input type="file" required id="projectinput1" class="form-control"   name="image">
+                                                        <label for="inputGroupFile01" class="custom-file-label">Image </label>
+                                                        <input type="file" required class="custom-file-input" id="inputGroupFile01"   name="image">
                                                     </div>
                                                 </div>
                                             <div class="form-actions">

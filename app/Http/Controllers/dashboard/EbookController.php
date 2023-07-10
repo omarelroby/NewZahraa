@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\DataTables\CountriesDataTable;
+use App\DataTables\EbookDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CountryRequest;
+use App\Http\Requests\EbookRequest;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Ebook;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
@@ -16,7 +19,7 @@ use App\DataTables\CategoriesDataTable;
 
 
 
-class CountryController extends Controller
+class EbookController extends Controller
 {
 
     /**
@@ -24,9 +27,9 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CountriesDataTable $dataTable)
+    public function index(EbookDataTable $dataTable)
     {
-         return $dataTable->render('dashboard.country.index');
+         return $dataTable->render('dashboard.ebook.index');
     }
 
     /**
@@ -37,7 +40,7 @@ class CountryController extends Controller
     public function create()
     {
         $Languages=Languages::all();
-        return  view('dashboard.country.create',compact('Languages'));
+        return  view('dashboard.ebook.create',compact('Languages'));
     }
 
     /**
@@ -46,15 +49,25 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryRequest $request)
+    public function store(EbookRequest $request)
     {
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('countries',$file);
+            $data['image']=$request->file('image')->move('ebooks',$file);
 
         }
-          Country::create($data) ;
+        if ($request->has('sample_file')){
+            $file=$request->file('sample_file')->getClientOriginalName();
+            $data['sample_file']=$request->file('sample_file')->move('ebooks',$file);
+
+        }
+        if ($request->has('complete_file')){
+            $file=$request->file('complete_file')->getClientOriginalName();
+            $data['complete_file']=$request->file('complete_file')->move('ebooks',$file);
+
+        }
+          Ebook::create($data) ;
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 
@@ -83,8 +96,8 @@ class CountryController extends Controller
     public function edit($id)
     {
 
-        $country=Country::find($id);
-        return  view('dashboard.country.edit',compact('country'));
+        $ebook=Ebook::find($id);
+        return  view('dashboard.ebook.edit',compact('ebook'));
     }
 
     /**
@@ -94,17 +107,27 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CountryRequest $request, $id)
+    public function update(EbookRequest $request, $id)
     {
-        $country=Country::find($id);
+        $ebook=Ebook::find($id);
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('countries',$file);
+            $data['image']=$request->file('image')->move('ebooks',$file);
 
         }
-        $country->update($data);
-        $country->save();
+        if ($request->has('sample_file')){
+            $file=$request->file('sample_file')->getClientOriginalName();
+            $data['sample_file']=$request->file('sample_file')->move('ebooks',$file);
+
+        }
+        if ($request->has('complete_file')){
+            $file=$request->file('complete_file')->getClientOriginalName();
+            $data['complete_file']=$request->file('complete_file')->move('ebooks',$file);
+
+        }
+        $ebook->update($data);
+        $ebook->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
         return back() ;
     }
@@ -117,8 +140,9 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        Country::find($id)->delete();
+        Ebook::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
+
         return back();
     }
 }

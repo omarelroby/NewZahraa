@@ -109,6 +109,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
+        Alert::error('Deleted','تم حذف البيانات بنجاح');
+
         return back();
     }
 }

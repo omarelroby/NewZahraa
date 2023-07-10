@@ -296,6 +296,17 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">Ebook</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('ebook.index')}}" data-i18n="nav.dash.ecommerce">E-Books</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('ebook.create')}}" data-i18n="nav.dash.project">Add E-Book</a>
+                    </li>
+                </ul>
+            </li>
 
 
 
@@ -329,7 +340,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-  <!-- END PAGE LEVEL JS-->
+<script src="https://cdn.ckeditor.com/4.20.1/full-all/ckeditor.js"></script>
+
 @yield('script')
 </body>
 </html>

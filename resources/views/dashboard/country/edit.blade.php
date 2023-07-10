@@ -47,7 +47,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{url("country/{$country->id}")}}">
+                                        <form class="form" method="post" action="{{url("country/{$country->id}")}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
                                             <div class="form-body">
@@ -61,6 +61,12 @@
                                                         </div>
                                                     </div>
                                                  @endforeach
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="inputGroupFile01" class="custom-file-label">Image </label>
+                                                                <input type="file"   class="custom-file-input" id="inputGroupFile01"   name="image">
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">

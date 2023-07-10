@@ -25,7 +25,7 @@ class CountryRequest extends FormRequest
     {
         $rules=[
             'en.name'=>'required',
-            'image'=>'required'];
+            'image'=>'nullable'];
         foreach(config('translatable.locales') as $locale) {
             $rules[$locale.'.name']='string';
         }

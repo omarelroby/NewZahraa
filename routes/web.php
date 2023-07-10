@@ -49,6 +49,7 @@ Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
 Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController::class)
 ->names(['edit'=>'category.edit']);
 Route::resource('country',\App\Http\Controllers\dashboard\CountryController::class);
+Route::resource('ebook',\App\Http\Controllers\dashboard\EbookController::class);
 
 Auth::routes();
 
