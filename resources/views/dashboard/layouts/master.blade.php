@@ -318,6 +318,17 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">FREE VIDEOS</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('freeVideos.index')}}" data-i18n="nav.dash.ecommerce">free videos</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('freeVideos.create')}}" data-i18n="nav.dash.project">Add free videos</a>
+                    </li>
+                </ul>
+            </li>
 
 
 
