@@ -307,6 +307,17 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">Pages</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('pages.index')}}" data-i18n="nav.dash.ecommerce">Pages</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('pages.create')}}" data-i18n="nav.dash.project">Add Pages</a>
+                    </li>
+                </ul>
+            </li>
 
 
 

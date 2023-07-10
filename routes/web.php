@@ -50,6 +50,7 @@ Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController:
 ->names(['edit'=>'category.edit']);
 Route::resource('country',\App\Http\Controllers\dashboard\CountryController::class);
 Route::resource('ebook',\App\Http\Controllers\dashboard\EbookController::class);
+Route::resource('pages',\App\Http\Controllers\dashboard\PagesController::class);
 
 Auth::routes();
 

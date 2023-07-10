@@ -5638,7 +5638,7 @@
 				.replace(/\{TR}/g, this.totalRows);
 		},
 		/**
-		 * Pages to the first page.
+		 * Page to the first page.
 		 * @instance
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Paging#"before.ft.paging"
@@ -5648,7 +5648,7 @@
 			return this._set(1);
 		},
 		/**
-		 * Pages to the previous page.
+		 * Page to the previous page.
 		 * @instance
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Paging#"before.ft.paging"
@@ -5658,7 +5658,7 @@
 			return this._set(this.current - 1 > 0 ? this.current - 1 : 1);
 		},
 		/**
-		 * Pages to the next page.
+		 * Page to the next page.
 		 * @instance
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Paging#"before.ft.paging"
@@ -5668,7 +5668,7 @@
 			return this._set(this.current + 1 < this.total ? this.current + 1 : this.total);
 		},
 		/**
-		 * Pages to the last page.
+		 * Page to the last page.
 		 * @instance
 		 * @returns {jQuery.Promise}
 		 * @fires FooTable.Paging#"before.ft.paging"
@@ -5678,7 +5678,7 @@
 			return this._set(this.total);
 		},
 		/**
-		 * Pages to the specified page.
+		 * Page to the specified page.
 		 * @instance
 		 * @param {number} page - The page number to go to.
 		 * @returns {jQuery.Promise}
@@ -6115,7 +6115,7 @@
 			 * @type {string}
 			 */
 			this.deleteText = table.o.editing.deleteText;
-			
+
 			/**
 			 * The text that appears in the view button. This can contain HTML.
 			 * @type {string}
@@ -6810,7 +6810,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.update = function(indexOrRow, data, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];
@@ -6827,7 +6827,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.delete = function(indexOrRow, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];

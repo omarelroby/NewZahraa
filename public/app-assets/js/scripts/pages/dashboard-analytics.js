@@ -329,7 +329,7 @@
         }],
         xkey: 'year',
         ykeys: ['AvgSessionDuration', 'PagesSession'],
-        labels: ['Avg. Session Duration', 'Pages/Session'],
+        labels: ['Avg. Session Duration', 'Page/Session'],
         behaveLikeLine: true,
         ymax: 300,
         resize: true,
