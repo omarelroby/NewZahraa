@@ -54,7 +54,9 @@ Route::resource('pages',\App\Http\Controllers\dashboard\PagesController::class);
 Route::resource('freeVideos',\App\Http\Controllers\dashboard\FreeVideosController::class);
 Route::resource('setting',\App\Http\Controllers\dashboard\SettingController::class);
 Route::resource('instructors',\App\Http\Controllers\dashboard\InstructorController::class);
+Route::get('instructors-attachs/{id}',[\App\Http\Controllers\dashboard\InstructorController::class,'attachs']);
 Route::resource('customers',\App\Http\Controllers\dashboard\CustomersController::class);
+Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
 
 Auth::routes();
 

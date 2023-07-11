@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\DataTables\AttachmentsDataTable;
 use App\DataTables\CountriesDataTable;
 use App\DataTables\EbookDataTable;
 use App\DataTables\InstructorsDataTable;
@@ -84,14 +85,17 @@ class InstructorController extends Controller
             $img=$image->move($path,$imageName);
             InstructorAttachs::create(['file'=>$img,'instructor_id'=>$instructor->id]);
         }
-
         Alert::success('Success','تم إضافة البيانات بنجاح');
-
-        return back() ;
+        return redirect()->route('instructors.index');
 
 
     }
+        public function attachs($id){
+        $attachs=InstructorAttachs::where('instructor_id',$id)->get();
+         return view('dashboard.instructor.attachments',compact('attachs'));
 
+
+        }
     /**
      * Display the specified resource.
      *
@@ -127,7 +131,6 @@ class InstructorController extends Controller
      */
     public function update(InstructorsRequest $request, $id)
     {
-        dd('m');
         $instructor=Instructor::find($id);
         if($request->has('password')){
             $data=[
@@ -136,7 +139,6 @@ class InstructorController extends Controller
                 'phone'=>$request->phone,
                 'password'=>bcrypt($request->password),
                 'brief'=>$request->brief,
-                'image'=>$request->file('image'),
                 'category_id'=>$request->category_id,
                 'country_id'=>$request->category_id,
             ];
@@ -165,24 +167,9 @@ class InstructorController extends Controller
 
         }
 
-        if($request->has('attachs')) {
-            $attachs = InstructorAttachs::where('instructor_id', $instructor->id)->get();
-            foreach($attachs as $old)
-            {
-                $old->delete();
-
-            }
-            foreach($request->attachs as $image)
-        {
-            $path = 'instructorAttachs';
-            $imageName = md5(rand(1000, 9999) . time()) . '.' . $image->getClientOriginalExtension();
-            $img = $image->move($path, $imageName);
-            InstructorAttachs::create(['file' => $img, 'instructor_id' => $instructor->id]);
-        }
-        }
 
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('instructors.index');
 
     }
 
@@ -197,6 +184,6 @@ class InstructorController extends Controller
         Page::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
 
-        return back();
+        return redirect()->route('instructors.index');
     }
 }

@@ -23,16 +23,34 @@ class CustomersRequest extends FormRequest
      */
     public function rules()
     {
-
-        $rules=[
-             'name' => 'required',
-             'phone' => 'required',
-             'email' => 'required',
-             'country_id' => 'required',
-
-            ];
-    
-           return $rules;
+        return request()->isMethod('put') || request()->isMethod('patch') ? $this->onUpdate() : $this->onStore();
     }
+    public function onStore()
+    {
+
+        return [
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'country_id' => 'required',
+
+    ];
+    }
+    public function onUpdate()
+    {
+
+        return [
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'country_id' => 'required',
+
+    ];
+    }
+
+
+
+
+
 
 }

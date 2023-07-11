@@ -47,7 +47,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{route('instructors.store')}}" enctype='multipart/form-data'>
+                                        <form class="form" autocomplete="off" method="post" action="{{route('instructors.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> INSTRUCTORS</h4>
@@ -121,7 +121,7 @@
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <i class="ft-x"></i> Cancel
+                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

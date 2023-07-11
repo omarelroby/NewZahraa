@@ -70,7 +70,8 @@ class CustomersController extends Controller
         ];
         Customers::create($data) ;
         Alert::success('Success','تم إضافة البيانات بنجاح');
-        return back() ;
+        return redirect()->route('customers.index');
+
 
 
     }
@@ -106,7 +107,7 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InstructorsRequest $request, $id)
+    public function update(CustomersRequest $request, $id)
     {
         $customer=Customers::find($id);
         if($request->has('password')){
@@ -133,12 +134,8 @@ class CustomersController extends Controller
             $customer->update($data);
 
         }
-
-
-
-
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('customers.index');
 
     }
 
@@ -152,7 +149,6 @@ class CustomersController extends Controller
     {
         Customers::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
-
-        return back();
+        return redirect()->route('customers.index');
     }
 }

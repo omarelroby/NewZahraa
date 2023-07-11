@@ -57,8 +57,7 @@ class CountryController extends Controller
           Country::create($data) ;
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
-
-        return back() ;
+        return redirect()->route('country.index');
 
 
     }
@@ -106,7 +105,7 @@ class CountryController extends Controller
         $country->update($data);
         $country->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('country.index');
     }
 
     /**
@@ -119,6 +118,6 @@ class CountryController extends Controller
     {
         Country::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
-        return back();
+        return redirect()->route('country.index');
     }
 }

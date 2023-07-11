@@ -100,7 +100,7 @@
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <i class="ft-x"></i> Cancel
+                                                    <a href="{{route('pages.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

@@ -107,7 +107,7 @@ class SettingController extends Controller
         $setting->update($data);
         $setting->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('setting.index');
     }
 
     /**

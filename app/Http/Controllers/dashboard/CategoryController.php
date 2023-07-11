@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 
-        return back() ;
+        return redirect()->route('categories.index');
 
 
     }
@@ -97,7 +97,7 @@ class CategoryController extends Controller
         $category->update($request->validated());
         $category->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -110,7 +110,6 @@ class CategoryController extends Controller
     {
         Category::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
-
-        return back();
+        return redirect()->route('categories.index');
     }
 }

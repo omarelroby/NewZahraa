@@ -70,7 +70,7 @@ class PagesController extends Controller
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 
-        return back() ;
+        return redirect()->route('pages.index');
 
 
     }
@@ -124,7 +124,7 @@ class PagesController extends Controller
         $pages->update($data);
         $pages->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return back() ;
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -138,6 +138,6 @@ class PagesController extends Controller
         Page::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
 
-        return back();
+        return redirect()->route('pages.index');
     }
 }

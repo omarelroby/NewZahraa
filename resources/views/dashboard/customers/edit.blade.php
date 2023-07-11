@@ -47,7 +47,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{url("customers/{$customer->id}")}}" enctype='multipart/form-data'>
+                                        <form class="form" autocomplete="off" method="post" action="{{url("customers/{$customer->id}")}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
                                             <div class="form-body">
@@ -80,13 +80,17 @@
                                                         <div class="form-group">
                                                             <label for="projectinput4">Country</label>
                                                             <select  required id="projectinput4" class="form-control"   name="country_id">
-                                                                <option value="">select country</option> @foreach($countries as $country) <option @if($country->id==$customer->country_id) selected @endif value="{{$country->id}}">{{$country->translate('ar')->name}}</option> @endforeach </select>
+                                                                <option value="">select country</option>
+                                                                @foreach($countries as $country)
+                                                                    <option @if($country->id==$customer->country_id) selected @endif value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <i class="ft-x"></i> Cancel
+                                                    <a href="{{route('customers.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

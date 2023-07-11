@@ -47,9 +47,10 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{route("instructors.update", $instructor->id )}}" enctype='multipart/form-data'>
+                                        <form class="form" autocomplete="off" method="post" action="{{route("instructors.update", $instructor->id )}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
+
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i>INSTRUCTORS</h4>
 
@@ -81,7 +82,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">password </label>
-                                                                            <input type="password"   id="projectinput1" class="form-control"   name="password">
+                                                                            <input type="password" autocomplete="off"  id="projectinput1" class="form-control"   name="password">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -113,19 +114,14 @@
                                                                             <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="image">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label class="custom-file-label" for="inputGroupFile01">Instructors Attachments </label>
-                                                                            <input type="file" multiple    class="custom-file-input" id="inputGroupFile01"  name="attachs[]">
-                                                                        </div>
-                                                                    </div>
+
                                                                 </div>
 
 
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <i class="ft-x"></i> Cancel
+                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

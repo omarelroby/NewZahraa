@@ -23,19 +23,33 @@ class InstructorsRequest extends FormRequest
      */
     public function rules()
     {
+        return request()->isMethod('put') || request()->isMethod('patch') ? $this->onUpdate() : $this->onStore();
+}
+public function onStore()
+{
+    return [
+        'name' => 'required',
+        'email'=> 'required',
+        'phone'=> 'required',
+        'brief'=> 'required',
+        'image'=> 'required',
+        'category_id'=> 'required',
+        'country_id'=> 'required',
 
-        $rules=[
-            'name' => 'required',
-            'email'=> 'required',
-            'phone'=> 'required',
-            'brief'=> 'required',
-            'image'=> 'required',
-            'category_id'=> 'required',
-            'country_id'=> 'required',
+    ];
+}
 
-            ];
 
-           return $rules;
-    }
+public function onUpdate()
+{
+    return [
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'brief' => 'required',
+        'category_id' => 'required',
+        'country_id' => 'required',
+    ];
+}
 
 }
