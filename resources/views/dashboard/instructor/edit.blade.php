@@ -47,7 +47,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{url("instructors.update", $instructor->id )}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{route("instructors.update", $instructor->id )}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
                                             <div class="form-body">
@@ -106,6 +106,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label class="custom-file-label" for="inputGroupFile01">Image </label>
@@ -143,6 +144,4 @@
         </div>
     </div>
 @endsection
-@section('script')
 
-@endsection
