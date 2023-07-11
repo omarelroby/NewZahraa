@@ -350,6 +350,18 @@
 
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">CUSTOMERS</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('customers.index')}}" data-i18n="nav.dash.ecommerce">  customers</a>
+                    </li>
+                    <li >
+                        <a class="menu-item" href="{{route('customers.create')}}" data-i18n="nav.dash.ecommerce"> Add customers</a>
+                    </li>
+
+                </ul>
+            </li>
 
 
 

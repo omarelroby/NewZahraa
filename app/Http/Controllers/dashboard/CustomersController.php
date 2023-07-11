@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\DataTables\CountriesDataTable;
+use App\DataTables\CustomersDataTable;
 use App\DataTables\EbookDataTable;
 use App\DataTables\InstructorsDataTable;
 use App\DataTables\PagesDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CountryRequest;
+use App\Http\Requests\CustomersRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\InstructorsRequest;
 use App\Http\Requests\PagesRequest;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
@@ -26,7 +29,7 @@ use App\DataTables\CategoriesDataTable;
 
 
 
-class InstructorController extends Controller
+class CustomersController extends Controller
 {
 
     /**
@@ -34,9 +37,9 @@ class InstructorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(InstructorsDataTable $dataTable)
+    public function index(CustomersDataTable $dataTable)
     {
-         return $dataTable->render('dashboard.instructor.index');
+         return $dataTable->render('dashboard.customers.index');
     }
 
     /**
@@ -47,8 +50,7 @@ class InstructorController extends Controller
     public function create()
     {
         $countries=Country::with('translations')->get();
-        $categories=Category::with('translations')->get();
-        return  view('dashboard.instructor.create',compact('countries','categories'));
+        return  view('dashboard.customers.create',compact('countries'));
     }
 
     /**
@@ -57,36 +59,17 @@ class InstructorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InstructorsRequest $request)
+    public function store(CustomersRequest $request)
     {
          $data=[
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
             'phone'=>$request->phone,
-            'brief'=>$request->brief,
-            'image'=>$request->file('image'),
-            'category_id'=>$request->category_id,
-            'country_id'=>$request->category_id,
+            'country_id'=>$request->country_id,
         ];
-        if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('pages',$file);
-
-        }
-        $instructor=Instructor::create($data) ;
-
-
-        foreach ($request->attachs as $image)
-        {
-            $path='instructorAttachs';
-            $imageName = md5(rand(1000,9999).time()). '.'.$image->getClientOriginalExtension();
-            $img=$image->move($path,$imageName);
-            InstructorAttachs::create(['file'=>$img,'instructor_id'=>$instructor->id]);
-        }
-
+        Customers::create($data) ;
         Alert::success('Success','تم إضافة البيانات بنجاح');
-
         return back() ;
 
 
@@ -111,11 +94,9 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-
-        $instructor=Instructor::find($id);
+        $customer=Customers::find($id);
         $countries=Country::with('translations')->get();
-        $categories=Category::with('translations')->get();
-        return  view('dashboard.instructor.edit',compact('instructor','countries','categories'));
+        return  view('dashboard.customers.edit',compact('customer','countries'));
     }
 
     /**
@@ -127,24 +108,16 @@ class InstructorController extends Controller
      */
     public function update(InstructorsRequest $request, $id)
     {
-        dd('m');
-        $instructor=Instructor::find($id);
+        $customer=Customers::find($id);
         if($request->has('password')){
             $data=[
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
                 'password'=>bcrypt($request->password),
-                'brief'=>$request->brief,
-                'image'=>$request->file('image'),
-                'category_id'=>$request->category_id,
-                'country_id'=>$request->category_id,
+                'country_id'=>$request->country_id,
             ];
-            if ($request->has('image')){
-                $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('pages',$file);
-            }
-            $instructor->update($data);
+            $customer->update($data);
 
         }
         else{
@@ -156,30 +129,13 @@ class InstructorController extends Controller
                 'category_id'=>$request->category_id,
                 'country_id'=>$request->category_id,
             ];
-            if ($request->has('image')){
-                $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('pages',$file);
 
-            }
-            $instructor->update($data);
+            $customer->update($data);
 
         }
 
-        if($request->has('attachs')) {
-            $attachs = InstructorAttachs::where('instructor_id', $instructor->id)->get();
-            foreach($attachs as $old)
-            {
-                $old->delete();
 
-            }
-            foreach($request->attachs as $image)
-        {
-            $path = 'instructorAttachs';
-            $imageName = md5(rand(1000, 9999) . time()) . '.' . $image->getClientOriginalExtension();
-            $img = $image->move($path, $imageName);
-            InstructorAttachs::create(['file' => $img, 'instructor_id' => $instructor->id]);
-        }
-        }
+
 
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
         return back() ;
@@ -194,7 +150,7 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        Page::find($id)->delete();
+        Customers::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
 
         return back();
