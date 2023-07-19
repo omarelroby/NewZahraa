@@ -25,7 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::get('/', function()
     {
-        return View::make('hello');
+        return View('/home');
     });
 
 
@@ -39,25 +39,29 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ //...
 });
+Route::namespace('App\Http\Controllers\dashboard')->group(function () {
+    Route::get('/login','LoginController@get')->name('login');
+    Route::post('login/post','LoginController@post')->name('login.post');
+    Route::get('/logout','LoginController@logout')->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
 });
-Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index');
-Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
-Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
-Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController::class)
-->names(['edit'=>'category.edit']);
-Route::resource('country',\App\Http\Controllers\dashboard\CountryController::class);
-Route::resource('ebook',\App\Http\Controllers\dashboard\EbookController::class);
-Route::resource('pages',\App\Http\Controllers\dashboard\PagesController::class);
-Route::resource('freeVideos',\App\Http\Controllers\dashboard\FreeVideosController::class);
-Route::resource('setting',\App\Http\Controllers\dashboard\SettingController::class);
-Route::resource('instructors',\App\Http\Controllers\dashboard\InstructorController::class);
-Route::get('instructors-attachs/{id}',[\App\Http\Controllers\dashboard\InstructorController::class,'attachs']);
-Route::resource('customers',\App\Http\Controllers\dashboard\CustomersController::class);
-Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
 
-Auth::routes();
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index');
+    Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
+    Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
+    Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController::class)
+        ->names(['edit'=>'category.edit']);
+    Route::resource('country',\App\Http\Controllers\dashboard\CountryController::class);
+    Route::resource('ebook',\App\Http\Controllers\dashboard\EbookController::class);
+    Route::resource('pages',\App\Http\Controllers\dashboard\PagesController::class);
+    Route::resource('freeVideos',\App\Http\Controllers\dashboard\FreeVideosController::class);
+    Route::resource('setting',\App\Http\Controllers\dashboard\SettingController::class);
+    Route::resource('instructors',\App\Http\Controllers\dashboard\InstructorController::class);
+    Route::get('instructors-attachs/{id}',[\App\Http\Controllers\dashboard\InstructorController::class,'attachs']);
+    Route::resource('customers',\App\Http\Controllers\dashboard\CustomersController::class);
+    Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+});
+
