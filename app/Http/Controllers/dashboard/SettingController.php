@@ -116,11 +116,11 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-//    public function destroy($id)
-//    {
-//        Page::find($id)->delete();
-//        Alert::error('Deleted','تم حذف البيانات بنجاح');
-//
-//        return back();
-//    }
+    public function destroy($id)
+    {
+        Setting::find($id)->delete();
+        Alert::error('Deleted','تم حذف البيانات بنجاح');
+
+        return back();
+    }
 }

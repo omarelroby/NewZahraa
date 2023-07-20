@@ -24,19 +24,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        DB::table('admins')->insert([
+            'name' =>'admin',
+            'email' => 'admin@admin.com',
+            'password' => '$2y$10$WPVVx1sULFmoNLyAiew4DuR2T1eViTHqKrnlVeUQmlCoY1F8Pb8UC',
+        ]);
 
 
-
-        DB::table('languages')->insert(array(
-            array(
-                'name' => "العربية",
-                'locale' => "ar",
-             )));
-        DB::table('languages')->insert(array(
-            array(
-                 'name' => "English",
-                 'locale' => "en",
-            )));
+        $this->call([
+            SettingSeeder::class
+            ]);
 
     }
 }

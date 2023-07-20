@@ -311,10 +311,10 @@
                 <a href="{{url('/dashboard')}}"><i class="fa fa-file"></i><span class="menu-title" data-i18n="nav.dash.main">PAGES</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('pages.index')}}" data-i18n="nav.dash.ecommerce">Pages</a>
+                        <a class="menu-item" href="{{route('page.index')}}" data-i18n="nav.dash.ecommerce">Pages</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('pages.create')}}" data-i18n="nav.dash.project">Add Pages</a>
+                        <a class="menu-item" href="{{route('page.create')}}" data-i18n="nav.dash.project">Add Pages</a>
                     </li>
                 </ul>
             </li>

@@ -39,7 +39,7 @@ class FreeVideosDataTable extends DataTable
             })
 
 
-            ->addColumn('action', 'dashboard.pages.actions')
+            ->addColumn('action', 'dashboard.free_videos.actions')
             ->rawColumns(['action']);
     }
 

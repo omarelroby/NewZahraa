@@ -54,7 +54,7 @@ Route::middleware('auth:admin')->group(function () {
         ->names(['edit'=>'category.edit']);
     Route::resource('country',\App\Http\Controllers\dashboard\CountryController::class);
     Route::resource('ebook',\App\Http\Controllers\dashboard\EbookController::class);
-    Route::resource('pages',\App\Http\Controllers\dashboard\PagesController::class);
+    Route::resource('page',\App\Http\Controllers\dashboard\PagesController::class);
     Route::resource('freeVideos',\App\Http\Controllers\dashboard\FreeVideosController::class);
     Route::resource('setting',\App\Http\Controllers\dashboard\SettingController::class);
     Route::resource('instructors',\App\Http\Controllers\dashboard\InstructorController::class);

@@ -7,7 +7,7 @@
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
                    <i class="fa fa-cart-plus mr-1"></i> delete</a>
 {{--                <div class="dropdown-divider"></div>--}}
-                    <a class="dropdown-item" href="{{ url("/pages/{$id}/edit") }}">
+                    <a class="dropdown-item" href="{{ url("/freeVideos/{$id}/edit") }}">
                     <i class="fa fa-cog mr-1"></i> edit</a>
             </div>
 </div>
@@ -26,7 +26,7 @@
                 <div class="modal-body">
                     <p>?Do you sure Delete this Page </p>
                 </div>
-                <form action="{{ url("/pages/{$id}") }}" method="POST">
+                <form action="{{ url("/freeVideos/{$id}") }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">close</button>

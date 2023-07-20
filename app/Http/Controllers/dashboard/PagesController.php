@@ -70,7 +70,7 @@ class PagesController extends Controller
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 
-        return redirect()->route('pages.index');
+        return redirect()->route('page.index');
 
 
     }
@@ -124,7 +124,7 @@ class PagesController extends Controller
         $pages->update($data);
         $pages->save();
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return redirect()->route('pages.index');
+        return redirect()->route('page.index');
     }
 
     /**

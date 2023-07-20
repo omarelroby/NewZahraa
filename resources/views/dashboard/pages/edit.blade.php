@@ -18,14 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-header-right col-md-4 col-12">
-                    <div class="btn-group float-md-right">
-                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Action</button>
-                        <div class="dropdown-menu arrow"><a class="dropdown-item" href="#"><i class="fa fa-calendar mr-1"></i> Calender</a><a class="dropdown-item" href="#"><i class="fa fa-cart-plus mr-1"></i> Cart</a><a class="dropdown-item" href="#"><i class="fa fa-life-ring mr-1"></i> Support</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="content-body"><!-- Basic form layout section start -->
                 <section id="basic-form-layouts">
@@ -47,7 +40,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{url("pages/{$pages->id}")}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{url("page/{$pages->id}")}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
                                             <div class="form-body">
@@ -100,7 +93,7 @@
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('pages.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('page.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

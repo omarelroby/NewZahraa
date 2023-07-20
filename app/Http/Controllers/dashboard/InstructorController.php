@@ -181,7 +181,7 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        Page::find($id)->delete();
+        Instructor::find($id)->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
 
         return redirect()->route('instructors.index');

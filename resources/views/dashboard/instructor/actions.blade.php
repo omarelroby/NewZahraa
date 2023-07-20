@@ -24,7 +24,7 @@
                     <h4 class="modal-title">Delete</h4>
                 </div>
                 <div class="modal-body">
-                    <p>?Do you sure Delete this Free Videos </p>
+                    <p>?Do you sure Delete this  </p>
                 </div>
                 <form action="{{ url("/instructors/{$id}") }}" method="POST">
                     @method('delete') @csrf
