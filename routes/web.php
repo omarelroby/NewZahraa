@@ -61,6 +61,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('instructors-attachs/{id}',[\App\Http\Controllers\dashboard\InstructorController::class,'attachs']);
     Route::resource('customers',\App\Http\Controllers\dashboard\CustomersController::class);
     Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
+    Route::resource('courses',\App\Http\Controllers\dashboard\CoursesController::class);
 
 
 });
