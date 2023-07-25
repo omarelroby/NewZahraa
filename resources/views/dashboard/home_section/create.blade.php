@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">COURSES</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">HOME SECTION</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#"> COURSES</a>
+                                <li class="breadcrumb-item"><a href="#">COURSES</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit COURSES
+                                <li class="breadcrumb-item active">Home Section
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Edit COURSES</h4>
+                                    <h4 class="card-title" id="basic-layout-form">Create home section</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -40,9 +40,8 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
 
-                                        <form class="form" method="post" action="{{url("courses/{$courses->id}")}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{route('home-section.store')}}" enctype='multipart/form-data'>
                                             @csrf
-                                            {{ method_field('put') }}
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -52,63 +51,64 @@
                                                     </ul>
                                                 </div>
                                             @endif
-                                            <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i>Free Videos</h4>
-                                                             <div class="row">
-                                                                @foreach(config('translatable.locales') as $locale)
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="projectinput1">title ({{$locale}})</label>
-                                                                            <input type="text"  value="{{$courses->translate($locale)->title}}" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
-                                                                        </div>
-                                                                    </div>
-                                                                @endforeach
 
-                                                            </div>
+                                            <div class="form-body">
+                                                <h4 class="form-section"><i class="ft-align-right"></i> Courses</h4>
+                                                <div class="row">
+                                                    @foreach(config('translatable.locales') as $locale)
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">title ({{$locale}})</label>
+                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                                </div>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">Description ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
-                                                              {{$courses->translate($locale)->description}}
                                                                 </textarea>
                                                             </div>
                                                         </div>
                                                     @endforeach
+                                                        @foreach(config('translatable.locales') as $locale)
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput1">Button ({{$locale}})</label>
+                                                                <input required id="projectinput1" class="form-control"   name="{{$locale}}[button]">
 
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">Preview Video </label>
-                                                            <input type="file"   class="form-control" id="inputGroupFile20"  name="preview_video">
+                                                            </div>
                                                         </div>
+                                                    @endforeach
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">URL </label>
+                                                        <input type="text"    class="form-control" id="inputGroupFile20"  name="url">
+
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">Price </label>
-                                                            <input type="text" value="{{$courses->price}}"  required class="form-control" id="inputGroupFile20"  name="price">
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">IMAGE </label>
+                                                        <input type="file"  required class="form-control" id="inputGroupFile20"  name="image">
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">Instructors </label>
-                                                            <select  required class="form-control" id="inputGroupFile20"  name="instructor_id">
-                                                                <option value="">select instructor</option>
-                                                                @foreach($instructors as $instructor)
-                                                                    <option @if($instructor->id==$courses->instructor_id)selected @endif value="{{$instructor->id}}">{{$instructor->name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                </div>
 
 
-                                                    <div class="form-actions">
+                                                </div>
+                                            <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('freeVideos.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save
                                                 </button>
+                                            </div>
                                             </div>
                                         </form>
                                     </div>
@@ -139,6 +139,8 @@
         CKEDITOR.replace('ar[description]' );
         CKEDITOR.replace('en[description]' );
     </script>
+
+
 
 
 

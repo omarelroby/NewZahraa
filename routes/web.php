@@ -62,6 +62,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('customers',\App\Http\Controllers\dashboard\CustomersController::class);
     Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
     Route::resource('courses',\App\Http\Controllers\dashboard\CoursesController::class);
+    Route::resource('home-section',\App\Http\Controllers\dashboard\HomeSectionController::class);
 
 
 });

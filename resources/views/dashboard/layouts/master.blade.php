@@ -186,6 +186,19 @@
 
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-home"></i><span class="menu-title" data-i18n="nav.dash.main">HOME SECTION</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('home-section.index')}}" data-i18n="nav.dash.ecommerce">  Home section</a>
+                    </li>
+                    <li >
+                        <a class="menu-item" href="{{route('home-section.create')}}" data-i18n="nav.dash.ecommerce">  add section for home</a>
+                    </li>
+
+
+                </ul>
+            </li>
 
 
 
