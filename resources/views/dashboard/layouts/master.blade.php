@@ -43,8 +43,9 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-                <li class="nav-item"><a class="navbar-brand" href="{{asset('html/rtl/vertical-menu-template/index.html')}}"><img class="brand-logo" alt="robust admin logo" src="../../../app-assets/images/logo/logo-light-sm.png">
-                        <h3 class="brand-text">Robust Admin</h3></a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{{asset('html/rtl/vertical-menu-template/index.html')}}">
+                        <img class="brand-logo" alt="robust admin logo" style="width: 100px;margin-left: 50%;margin-right: 50%;" src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}">
+{{--                        <h3 class="brand-text">Robust Admin</h3></a></li>--}}
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
             </ul>
         </div>
@@ -256,7 +257,7 @@
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
+                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name">{{auth()->user()->name}}</span></a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="email-application.html"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="chat-application.html"><i class="ft-message-square"></i> Chats</a>
                             <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i class="ft-power"></i> Logout</a>
                         </div>

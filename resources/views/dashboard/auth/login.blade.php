@@ -41,9 +41,9 @@
                         <div class="card border-grey border-lighten-3 m-0">
                             <div class="card-header border-0">
                                 <div class="card-title text-center">
-                                    <div class="p-1"><img src="../../../app-assets/images/logo/logo-dark.png" alt="branding logo"></div>
+                                    <div class="p-1"><img style="width: 250px;" src="{{asset('app-assets/images/logo/Logo Zahraa with background.png')}}" alt="branding logo"></div>
                                 </div>
-                                <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login with Robust</span></h6>
+                                <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login</span></h6>
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
