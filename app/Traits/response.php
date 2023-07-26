@@ -24,12 +24,11 @@ trait response
     /**
      * Returns the error response with custom data and status
      *
-     * @param string $message
      * @param array $data
      * @param integer $status
      * @return JsonResponse
      */
-    public function error(string $message = '', array $data = [], int $status = 500): JsonResponse
+    public function error($message = '', array $data = [], int $status = 500): JsonResponse
     {
         $data = ($data) ? $data : (object) [];
         return response()->json([
