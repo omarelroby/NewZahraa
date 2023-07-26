@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CountryResource;
+use App\Models\Country;
 use App\Models\InstructorRequests;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -39,7 +41,14 @@ class HomeController extends Controller
             $data['cv'] = $request->file('cv')->move($path, $file);
         }
         InstructorRequests::create($data);
-        return $this->successMessage('تم إرسال الطلب بنجاح');
+        return $this->successMessage(__('message.success'));
+
+    }
+    public function countries()
+    {
+
+        $countries=Country::all();
+        return $this->success(CountryResource::collection($countries));
 
     }
 

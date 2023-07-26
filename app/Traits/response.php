@@ -9,11 +9,10 @@ trait response
     /**
      * Returns the success response with custom data and status
      *
-     * @param array $data
      * @param int $status
      * @return \Illuminate\Http\JsonResponse
      */
-    public function success(array $data = [], int $status = 200): JsonResponse
+    public function success( $data,  int $status = 200): JsonResponse
     {
         return response()->json([
             'success' => true,
