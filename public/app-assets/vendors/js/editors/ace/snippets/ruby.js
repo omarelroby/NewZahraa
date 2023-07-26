@@ -575,7 +575,7 @@ snippet asnd\n\
 		${3}\n\
 	end\n\
 snippet asre\n\
-	assert_response :${1:success}, @response.body${2}\n\
+	assert_response :${1:success}, @response.php.body${2}\n\
 snippet asrj\n\
 	assert_rjs :${1:replace}, \"${2:dom id}\"\n\
 snippet ass assert_select(..)\n\

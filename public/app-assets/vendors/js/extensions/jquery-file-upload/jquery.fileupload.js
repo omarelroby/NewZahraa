@@ -717,7 +717,7 @@
             };
         },
 
-        // Parses the Range header from the server response
+        // Parses the Range header from the server response.php
         // and returns the uploaded bytes:
         _getUploadedBytes: function (jqXHR) {
             var range = jqXHR.getResponseHeader('Range'),
@@ -849,7 +849,7 @@
                 this._progress.loaded = this._progress.total = 0;
                 this._progress.bitrate = 0;
             }
-            // Make sure the container objects for the .response() and
+            // Make sure the container objects for the .response.php() and
             // .progress() methods on the data object are available
             // and reset to their initial state:
             this._initResponseObject(data);

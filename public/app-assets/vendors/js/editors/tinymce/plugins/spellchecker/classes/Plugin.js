@@ -181,7 +181,7 @@ define("tinymce/spellcheckerplugin/Plugin", [
 					result = JSON.parse(result);
 
 					if (!result) {
-						var message = editor.translate("Server response wasn't proper JSON.");
+						var message = editor.translate("Server response.php wasn't proper JSON.");
 						errorCallback(message);
 					} else if (result.error) {
 						errorCallback(result.error);

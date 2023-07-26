@@ -1,9 +1,9 @@
 /*!
  * (The MIT License)
- * 
+ *
  * Copyright (c) 2012-2014 Marcin Warpechowski
  * Copyright (c) 2015 Handsoncode sp. z o.o. <hello@handsoncode.net>
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * 'Software'), to deal in the Software without restriction, including
@@ -11,10 +11,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -22,7 +22,7 @@
  * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * Version: 6.1.1
  * Release date: 23/10/2018 (built at 22/10/2018 12:07:26)
  */
@@ -33358,8 +33358,8 @@ DefaultSettings.prototype = {
    * columns: [{
    *   type: 'autocomplete',
    *   source: function(query, callback) {
-   *     fetch('https://example.com/query?q=' + query, function(response) {
-   *       callback(response.items);
+   *     fetch('https://example.com/query?q=' + query, function(response.php) {
+   *       callback(response.php.items);
    *     })
    *   }
    * }],
@@ -40023,7 +40023,7 @@ exports.default = DateEditor;
             if (typeof this._o.onDraw === 'function') {
                 this._o.onDraw(this);
             }
-            
+
             if (opts.bound) {
                 // let the screen reader user know to use arrow keys
                 opts.field.setAttribute('aria-label', 'Use the arrow keys to pick a date');

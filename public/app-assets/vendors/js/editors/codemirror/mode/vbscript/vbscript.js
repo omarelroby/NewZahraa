@@ -69,12 +69,12 @@ CodeMirror.defineMode("vbscript", function(conf, parserConf) {
     var knownMethods = ['clear', 'execute', 'raise', 'replace', 'test', 'write', 'writeline', 'close', 'open', 'state', 'eof', 'update', 'addnew', 'end', 'createobject', 'quit'];
 
     var aspBuiltinObjsWords = ['server', 'response', 'request', 'session', 'application'];
-    var aspKnownProperties = ['buffer', 'cachecontrol', 'charset', 'contenttype', 'expires', 'expiresabsolute', 'isclientconnected', 'pics', 'status', //response
+    var aspKnownProperties = ['buffer', 'cachecontrol', 'charset', 'contenttype', 'expires', 'expiresabsolute', 'isclientconnected', 'pics', 'status', //response.php
                               'clientcertificate', 'cookies', 'form', 'querystring', 'servervariables', 'totalbytes', //request
                               'contents', 'staticobjects', //application
                               'codepage', 'lcid', 'sessionid', 'timeout', //session
                               'scripttimeout']; //server
-    var aspKnownMethods = ['addheader', 'appendtolog', 'binarywrite', 'end', 'flush', 'redirect', //response
+    var aspKnownMethods = ['addheader', 'appendtolog', 'binarywrite', 'end', 'flush', 'redirect', //response.php
                            'binaryread', //request
                            'remove', 'removeall', 'lock', 'unlock', //application
                            'abandon', //session

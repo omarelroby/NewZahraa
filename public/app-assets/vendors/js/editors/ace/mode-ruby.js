@@ -81,7 +81,7 @@ var RubyHighlightRules = function() {
 
     var builtinVariables = (
         "\$DEBUG|\$defout|\$FILENAME|\$LOAD_PATH|\$SAFE|\$stdin|\$stdout|\$stderr|\$VERBOSE|" +
-        "$!|root_url|flash|session|cookies|params|request|response|logger|self"
+        "$!|root_url|flash|session|cookies|params|request|response.php|logger|self"
     );
 
     var keywordMapper = this.$keywords = this.createKeywordMapper({
@@ -561,15 +561,15 @@ var CstyleBehaviour = function() {
                 var line = session.doc.getLine(cursor.row);
                 var leftChar = line.substring(cursor.column-1, cursor.column);
                 var rightChar = line.substring(cursor.column, cursor.column + 1);
-                
+
                 var token = session.getTokenAt(cursor.row, cursor.column);
                 var rightToken = session.getTokenAt(cursor.row, cursor.column + 1);
                 if (leftChar == "\\" && token && /escape/.test(token.type))
                     return null;
-                
+
                 var stringBefore = token && /string|escape/.test(token.type);
                 var stringAfter = !rightToken || /string|escape/.test(rightToken.type);
-                
+
                 var pair;
                 if (rightChar == quote) {
                     pair = stringBefore !== stringAfter;
@@ -612,7 +612,7 @@ var CstyleBehaviour = function() {
 
 };
 
-    
+
 CstyleBehaviour.isSaneInsertion = function(editor, session) {
     var cursor = editor.getCursorPosition();
     var iterator = new TokenIterator(session, cursor.row, cursor.column);

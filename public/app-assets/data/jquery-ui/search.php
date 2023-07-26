@@ -1,7 +1,7 @@
 <?php
 
 sleep( 3 );
-// no term passed - just exit early with no response
+// no term passed - just exit early with no response.php
 if (empty($_GET['term'])) exit ;
 $q = strtolower($_GET["term"]);
 // remove slashes if they were magically added

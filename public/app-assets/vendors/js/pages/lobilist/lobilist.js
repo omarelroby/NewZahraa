@@ -193,14 +193,14 @@ $(function () {
 
         /**
          * Add item. If <code>action.insert</code> url is provided request is sent to the server.
-         * Server response example: <code>{"success": Boolean}</code>.
-         * If <code>response.success</code> is true item is added.
+         * Server response.php example: <code>{"success": Boolean}</code>.
+         * If <code>response.php.success</code> is true item is added.
          * Otherwise <code>errorCallback</code> callback is called if it was provided.
          *
          * @method addItem
          * @param {Object} item - The item <code>Object</code>
-         * @param {Function} errorCallback - The callback which is called when server returned response but
-         * <code>response.success=false</code>
+         * @param {Function} errorCallback - The callback which is called when server returned response.php but
+         * <code>response.php.success=false</code>
          * @returns {List}
          */
         addItem: function (item, errorCallback) {
@@ -235,14 +235,14 @@ $(function () {
 
         /**
          * Update item. If <code>action.update</code> url is provided request is sent to the server.
-         * Server response example: <code>{"success": Boolean}</code>.
-         * If <code>response.success</code> is true item is updated.
+         * Server response.php example: <code>{"success": Boolean}</code>.
+         * If <code>response.php.success</code> is true item is updated.
          * Otherwise <code>errorCallback</code> callback is called if it was provided.
          *
          * @method updateItem
          * @param {Object} item  - The item <code>Object</code> to update
-         * @param {Function} errorCallback - The callback which is called when server returned response but
-         * <code>response.success=false</code>
+         * @param {Function} errorCallback - The callback which is called when server returned response.php but
+         * <code>response.php.success=false</code>
          * @returns {List}
          */
         updateItem: function (item, errorCallback) {
@@ -273,14 +273,14 @@ $(function () {
 
         /**
          * Delete item from the list. If <code>action.delete</code> url is provided request is sent to the server.
-         * Server response example: <code>{"success": Boolean}</code>
-         * If <code>response.success=true</code> item is deleted from the list and <code>afterItemDelete</code> event
+         * Server response.php example: <code>{"success": Boolean}</code>
+         * If <code>response.php.success=true</code> item is deleted from the list and <code>afterItemDelete</code> event
          * if triggered. Otherwise <code>errorCallback</code> callback is called if it was provided.
          *
          * @method deleteItem
          * @param {Object} item - The item <code>Object</code> to delete
-         * @param {Function} errorCallback - The callback which is called when server returned response but
-         * <code>response.success=false</code>
+         * @param {Function} errorCallback - The callback which is called when server returned response.php but
+         * <code>response.php.success=false</code>
          * @returns {List}
          */
         deleteItem: function (item, errorCallback) {
@@ -315,8 +315,8 @@ $(function () {
          *
          * @method saveOrUpdateItem
          * @param {Object} item  - The item <code>Object</code>
-         * @param {Function} errorCallback - The callback which is called when server returned response but
-         * <code>response.success=false</code>
+         * @param {Function} errorCallback - The callback which is called when server returned response.php but
+         * <code>response.php.success=false</code>
          * @returns {List}
          */
         saveOrUpdateItem: function (item, errorCallback) {

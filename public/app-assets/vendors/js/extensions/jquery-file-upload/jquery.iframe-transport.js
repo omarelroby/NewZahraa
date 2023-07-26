@@ -86,7 +86,7 @@
                                     response = iframe.contents();
                                     // Google Chrome and Firefox do not throw an
                                     // exception when calling iframe.contents() on
-                                    // cross-domain requests, so we unify the response:
+                                    // cross-domain requests, so we unify the response.php:
                                     if (!response.length || !response[0].firstChild) {
                                         throw new Error();
                                     }
@@ -94,7 +94,7 @@
                                     response = undefined;
                                 }
                                 // The complete callback returns the
-                                // iframe content document as response object:
+                                // iframe content document as response.php object:
                                 completeCallback(
                                     200,
                                     'success',
@@ -107,7 +107,7 @@
                                 window.setTimeout(function () {
                                     // Removing the form in a setTimeout call
                                     // allows Chrome's developer tools to display
-                                    // the response result
+                                    // the response.php result
                                     form.remove();
                                 }, 0);
                             });
@@ -181,14 +181,14 @@
         }
     });
 
-    // The iframe transport returns the iframe content document as response.
+    // The iframe transport returns the iframe content document as response.php.
     // The following adds converters from iframe to text, json, html, xml
     // and script.
     // Please note that the Content-Type for JSON responses has to be text/plain
     // or text/html, if the browser doesn't include application/json in the
     // Accept header, else IE will show a download dialog.
     // The Content-Type for XML responses on the other hand has to be always
-    // application/xml or text/xml, so IE properly parses the XML response.
+    // application/xml or text/xml, so IE properly parses the XML response.php.
     // See also
     // https://github.com/blueimp/jQuery-File-Upload/wiki/Setup#content-type-negotiation
     $.ajaxSetup({

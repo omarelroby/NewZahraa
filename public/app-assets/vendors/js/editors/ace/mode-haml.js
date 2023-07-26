@@ -153,7 +153,7 @@ var DocCommentHighlightRules = function() {
         "start" : [ {
             token : "comment.doc.tag",
             regex : "@[\\w\\d_]+" // TODO: fix email addresses
-        }, 
+        },
         DocCommentHighlightRules.getTagRule(),
         {
             defaultToken : "comment.doc",
@@ -486,8 +486,8 @@ var JavaScriptHighlightRules = function(options) {
             }
         ]
     };
-    
-    
+
+
     if (!options || !options.noES6) {
         this.$rules.no_regex.unshift({
             regex: "[{}]", onMatch: function(val, state, stack) {
@@ -522,14 +522,14 @@ var JavaScriptHighlightRules = function(options) {
                 defaultToken: "string.quasi"
             }]
         });
-        
+
         if (!options || !options.noJSX)
             JSX.call(this);
     }
-    
+
     this.embedRules(DocCommentHighlightRules, "doc-",
         [ DocCommentHighlightRules.getEndRule("no_regex") ]);
-    
+
     this.normalizeRules();
 };
 
@@ -580,8 +580,8 @@ function JSX() {
         {defaultToken: "string"}
     ];
     this.$rules.jsxAttributes = [{
-        token : "meta.tag.punctuation.tag-close.xml", 
-        regex : "/?>", 
+        token : "meta.tag.punctuation.tag-close.xml",
+        regex : "/?>",
         onMatch : function(value, currentState, stack) {
             if (currentState == stack[0])
                 stack.shift();
@@ -596,7 +596,7 @@ function JSX() {
             return [{type: this.token, value: value}];
         },
         nextState: "jsx"
-    }, 
+    },
     jsxJsRule,
     comments("jsxAttributes"),
     {
@@ -1036,7 +1036,7 @@ var RubyHighlightRules = function() {
 
     var builtinVariables = (
         "\$DEBUG|\$defout|\$FILENAME|\$LOAD_PATH|\$SAFE|\$stdin|\$stdout|\$stderr|\$VERBOSE|" +
-        "$!|root_url|flash|session|cookies|params|request|response|logger|self"
+        "$!|root_url|flash|session|cookies|params|request|response.php|logger|self"
     );
 
     var keywordMapper = this.$keywords = this.createKeywordMapper({
@@ -1279,7 +1279,7 @@ var HamlHighlightRules = function() {
         },
         RubyExports.constantNumericHex,
         RubyExports.constantNumericFloat,
-        
+
         RubyExports.constantOtherSymbol,
         {
             token: "text",
@@ -1305,9 +1305,9 @@ var HamlHighlightRules = function() {
             regex: "\\{",
             next: "section"
         },
-        
+
         RubyExports.constantOtherSymbol,
-        
+
         {
             token: "text",
             regex: /\s/,
@@ -1321,27 +1321,27 @@ var HamlHighlightRules = function() {
     ];
     this.$rules.section = [
         RubyExports.constantOtherSymbol,
-        
+
         RubyExports.qString,
         RubyExports.qqString,
         RubyExports.tString,
-        
+
         RubyExports.constantNumericHex,
         RubyExports.constantNumericFloat,
         {
             token: "punctuation.section",
             regex: "\\}",
             next: "start"
-        } 
+        }
     ];
-    
-    this.$rules.embedded_ruby = [ 
+
+    this.$rules.embedded_ruby = [
         RubyExports.constantNumericHex,
         RubyExports.constantNumericFloat,
         {
                 token : "support.class", // class name
                 regex : "[A-Z][a-zA-Z_\\d]+"
-        },    
+        },
         {
             token : new RubyHighlightRules().getKeywords(),
             regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
@@ -1350,12 +1350,12 @@ var HamlHighlightRules = function() {
             token : ["keyword", "text", "text"],
             regex : "(?:do|\\{)(?: \\|[^|]+\\|)?$",
             next  : "start"
-        }, 
+        },
         {
             token : ["text"],
             regex : "^$",
             next  : "start"
-        }, 
+        },
         {
             token : ["text"],
             regex : "^(?!.*\\|\\s*$)",
@@ -1474,7 +1474,7 @@ oop.inherits(Mode, TextMode);
 
 (function() {
     this.lineCommentStart = "//";
-    
+
     this.$id = "ace/mode/haml";
 }).call(Mode.prototype);
 

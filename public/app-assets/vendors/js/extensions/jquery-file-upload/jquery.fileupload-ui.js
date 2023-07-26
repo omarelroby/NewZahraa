@@ -69,7 +69,7 @@
             // By default, files are appended to the files container.
             // Set the following option to true, to prepend files instead:
             prependFiles: false,
-            // The expected data type of the upload response, sets the dataType
+            // The expected data type of the upload response.php, sets the dataType
             // option of the $.ajax upload requests:
             dataType: 'json',
 
@@ -85,7 +85,7 @@
                     .not('.processing').length;
             },
 
-            // Callback to retrieve the list of files from the server response:
+            // Callback to retrieve the list of files from the server response.php:
             getFilesFromResponse: function (data) {
                 if (data.result && $.isArray(data.result.files)) {
                     return data.result.files;

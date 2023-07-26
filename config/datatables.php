@@ -36,7 +36,7 @@ return [
     ],
 
     /*
-     * DataTables internal index id response column name.
+     * DataTables internal index id response.php column name.
      */
     'index_column'   => 'DT_RowIndex',
 
@@ -72,7 +72,7 @@ return [
     /*
      * User friendly message to be displayed on user if error occurs.
      * Possible values:
-     * null             - The exception message will be used on error response.
+     * null             - The exception message will be used on error response.php.
      * 'throw'          - Throws a \Yajra\DataTables\Exceptions\Exception. Use your custom error handler if needed.
      * 'custom message' - Any friendly message to be displayed to the user. You can also use translation key.
      */
@@ -83,7 +83,7 @@ return [
      */
     'columns'        => [
         /*
-         * List of columns hidden/removed on json response.
+         * List of columns hidden/removed on json response.php.
          */
         'excess'    => ['rn', 'row_num'],
 
