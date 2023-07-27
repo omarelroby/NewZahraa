@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\InstructorRequests;
 use App\Traits\response;
@@ -49,6 +51,13 @@ class HomeController extends Controller
 
         $countries=Country::all();
         return $this->success(CountryResource::collection($countries));
+
+    }
+    public function categories()
+    {
+
+        $countries=Category::all();
+        return $this->success(CategoryResource::collection($countries));
 
     }
 
