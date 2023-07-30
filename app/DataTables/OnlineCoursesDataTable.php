@@ -34,7 +34,7 @@ class OnlineCoursesDataTable extends DataTable
                 return $q->title;
             })
             ->editColumn('description', function($q) {
-                return ' '.$q->description.' ';
+                return strip_tags($q->description );
             })
 
             ->addColumn('action', 'dashboard.online_courses.actions')

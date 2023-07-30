@@ -213,6 +213,19 @@
 
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-question-circle"></i><span class="menu-title" data-i18n="nav.dash.main">QUESTIONS  </span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('question.index')}}" data-i18n="nav.dash.ecommerce">  questions and answers</a>
+                    </li>
+                    <li >
+                        <a class="menu-item" href="{{route('question.create')}}" data-i18n="nav.dash.ecommerce">  add Qeustion and answer</a>
+                    </li>
+
+
+                </ul>
+            </li>
 
 
 

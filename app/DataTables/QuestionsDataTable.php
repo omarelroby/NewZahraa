@@ -7,7 +7,9 @@ use App\Models\Country;
 use App\Models\Course;
 use App\Models\Ebook;
 use App\Models\Instructor;
+use App\Models\OnlineCourse;
 use App\Models\Page;
+use App\Models\Questions;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -17,7 +19,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CoursesDataTable extends DataTable
+class QuestionsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -29,14 +31,14 @@ class CoursesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('title', function($q) {
-                return $q->title;
+            ->editColumn('question', function($q) {
+                return $q->question;
             })
-            ->editColumn('description', function($q) {
-                return strip_tags($q->description) ;
+            ->editColumn('answer', function($q) {
+                return   strip_tags($q->answer ) ;
             })
 
-            ->addColumn('action', 'dashboard.courses.actions')
+            ->addColumn('action', 'dashboard.questions.actions')
             ->rawColumns(['action','description']);
     }
 
@@ -46,7 +48,7 @@ class CoursesDataTable extends DataTable
      * @param \App\Models\Category $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Course $model): QueryBuilder
+    public function query(Questions $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -84,9 +86,8 @@ class CoursesDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title'),
-            Column::make('description'),
-            Column::make('price'),
+            Column::make('question'),
+            Column::make('answer'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -102,6 +103,6 @@ class CoursesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Courses_' . date('YmdHis');
+        return 'Questions_' . date('YmdHis');
     }
 }

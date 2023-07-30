@@ -34,10 +34,10 @@ class HomeSectionDataTable extends DataTable
                 return $q->title;
             })
             ->editColumn('description', function($q) {
-                return ' '.$q->description.' ';
+                return strip_tags($q->description);
             })
             ->editColumn('button', function($q) {
-                return ' '.$q->button.' ';
+                return strip_tags($q->button) ;
             })
             ->addColumn('image', function ($q) {
                 $url= asset($q->image);
