@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/calendars/clndr.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/fonts/meteocons/style.min.css')}}">
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.xyz/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
@@ -199,6 +200,19 @@
 
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">ONLINE COURSES</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('online-courses.index')}}" data-i18n="nav.dash.ecommerce">  Online courses</a>
+                    </li>
+                    <li >
+                        <a class="menu-item" href="{{route('online-courses.create')}}" data-i18n="nav.dash.ecommerce">  add online courses</a>
+                    </li>
+
+
+                </ul>
+            </li>
 
 
 
@@ -228,6 +242,7 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
  <script src="https://www.efb.eg/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.xyz/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -63,6 +63,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('attachments',\App\Http\Controllers\dashboard\AttachmentsController::class);
     Route::resource('courses',\App\Http\Controllers\dashboard\CoursesController::class);
     Route::resource('home-section',\App\Http\Controllers\dashboard\HomeSectionController::class);
+    Route::resource('online-courses',\App\Http\Controllers\dashboard\OnlineCoursesController::class);
 
 
 });
