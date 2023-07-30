@@ -27,13 +27,9 @@ class HomeController extends Controller
             'country_id' => 'required',
             'category_id' => 'required',
         ];
-
         $validator = Validator::make($request->all(), $oValidatorRules);
-
         if ($validator->fails()) {
             return $this->error($validator->messages());
-
-
         }
         $data = $request->all();
 

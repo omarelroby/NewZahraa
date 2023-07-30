@@ -42,7 +42,7 @@
                                         <form class="form" method="post" action="{{route('customers.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> E-books</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i>Customers</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">

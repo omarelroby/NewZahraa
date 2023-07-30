@@ -21,4 +21,5 @@ Route::middleware("localization")->group(function () {
     Route::get('countries', [\App\Http\Controllers\api\HomeController::class, 'countries']);
     Route::get('categories', [\App\Http\Controllers\api\HomeController::class, 'categories']);
     Route::post('lecturer', [\App\Http\Controllers\api\HomeController::class, 'lecturer']);
+    Route::post('customer/register', [\App\Http\Controllers\api\CustomerController::class, 'customer_register']);
 });
