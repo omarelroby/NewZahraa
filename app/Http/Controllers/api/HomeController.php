@@ -5,8 +5,10 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
+use App\Http\Resources\EbookResource;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Ebook;
 use App\Models\InstructorRequests;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -54,6 +56,11 @@ class HomeController extends Controller
 
         $countries=Category::all();
         return $this->success(CategoryResource::collection($countries));
+
+    }
+    public function eBook(){
+        $ebooks=Ebook::all();
+        return $this->success(EbookResource::collection($ebooks));
 
     }
 
