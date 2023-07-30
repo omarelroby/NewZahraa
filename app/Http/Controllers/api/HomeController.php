@@ -9,6 +9,7 @@ use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\HomeSectionResource;
+use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\SettingResource;
 use App\Models\Category;
 use App\Models\Country;
@@ -17,6 +18,8 @@ use App\Models\Ebook;
 use App\Models\FreeVideo;
 use App\Models\HomeSection;
 use App\Models\InstructorRequests;
+use App\Models\OnlineCourse;
+use App\Models\Questions;
 use App\Models\Setting;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -86,6 +89,14 @@ class HomeController extends Controller
     public function setting(){
         $setting=Setting::first();
         return $this->success(new SettingResource($setting));
+    }
+    public function online_courses(){
+        $courses=OnlineCourse::all();
+        return $this->success(OnlineCourses::collection($courses));
+    }
+    public function questions(){
+        $questions=Questions::all();
+        return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
 
 

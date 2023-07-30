@@ -27,4 +27,6 @@ Route::middleware("localization")->group(function () {
     Route::get('free-videos', [\App\Http\Controllers\api\HomeController::class, 'free_videos']);
     Route::get('home-section', [\App\Http\Controllers\api\HomeController::class, 'home_section']);
     Route::get('setting', [\App\Http\Controllers\api\HomeController::class, 'setting']);
+    Route::get('online-courses', [\App\Http\Controllers\api\HomeController::class, 'online_courses']);
+    Route::get('questions', [\App\Http\Controllers\api\HomeController::class, 'questions']);
 });
