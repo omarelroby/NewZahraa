@@ -23,4 +23,6 @@ Route::middleware("localization")->group(function () {
     Route::post('lecturer', [\App\Http\Controllers\api\HomeController::class, 'lecturer']);
     Route::post('customer/register', [\App\Http\Controllers\api\CustomerController::class, 'customer_register']);
     Route::get('ebooks', [\App\Http\Controllers\api\HomeController::class, 'eBook']);
+    Route::get('courses', [\App\Http\Controllers\api\HomeController::class, 'courses']);
+    Route::get('free-videos', [\App\Http\Controllers\api\HomeController::class, 'free_videos']);
 });

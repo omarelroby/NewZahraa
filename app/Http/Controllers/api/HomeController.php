@@ -5,10 +5,14 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
+use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
+use App\Http\Resources\FreeVideosResource;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Course;
 use App\Models\Ebook;
+use App\Models\FreeVideo;
 use App\Models\InstructorRequests;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -62,6 +66,14 @@ class HomeController extends Controller
         $ebooks=Ebook::all();
         return $this->success(EbookResource::collection($ebooks));
 
+    }
+    public function courses(){
+        $courses=Course::all();
+        return $this->success(CoursesResource::collection($courses));
+    }
+    public function free_videos(){
+        $free_videos=FreeVideo::all();
+        return $this->success(FreeVideosResource::collection($free_videos));
     }
 
 
