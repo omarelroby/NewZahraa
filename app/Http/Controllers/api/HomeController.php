@@ -8,12 +8,16 @@ use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\HomeSectionResource;
+use App\Http\Resources\SettingResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
 use App\Models\Ebook;
 use App\Models\FreeVideo;
+use App\Models\HomeSection;
 use App\Models\InstructorRequests;
+use App\Models\Setting;
 use App\Traits\response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -74,6 +78,14 @@ class HomeController extends Controller
     public function free_videos(){
         $free_videos=FreeVideo::all();
         return $this->success(FreeVideosResource::collection($free_videos));
+    }
+    public function home_section(){
+        $home=HomeSection::first();
+        return $this->success(new HomeSectionResource($home));
+    }
+    public function setting(){
+        $setting=Setting::first();
+        return $this->success(new SettingResource($setting));
     }
 
 

@@ -25,4 +25,6 @@ Route::middleware("localization")->group(function () {
     Route::get('ebooks', [\App\Http\Controllers\api\HomeController::class, 'eBook']);
     Route::get('courses', [\App\Http\Controllers\api\HomeController::class, 'courses']);
     Route::get('free-videos', [\App\Http\Controllers\api\HomeController::class, 'free_videos']);
+    Route::get('home-section', [\App\Http\Controllers\api\HomeController::class, 'home_section']);
+    Route::get('setting', [\App\Http\Controllers\api\HomeController::class, 'setting']);
 });
