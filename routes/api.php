@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group( function () {
 });
+Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
+
 Route::middleware("localization")->group(function () {
     Route::get('countries', [\App\Http\Controllers\api\HomeController::class, 'countries']);
     Route::get('categories', [\App\Http\Controllers\api\HomeController::class, 'categories']);
