@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ContactResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
@@ -89,6 +90,23 @@ class HomeController extends Controller
     public function setting(){
         $setting=Setting::first();
         return $this->success(new SettingResource($setting));
+    }
+    public function contact(Request $request){
+        $oValidatorRules = [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'country_id' => 'required|exists:countries,id',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        else{
+            return $this->successMessage(__('message.success'));
+
+        }
     }
     public function online_courses(){
         $courses=OnlineCourse::all();

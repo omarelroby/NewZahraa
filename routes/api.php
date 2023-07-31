@@ -29,4 +29,5 @@ Route::middleware("localization")->group(function () {
     Route::get('setting', [\App\Http\Controllers\api\HomeController::class, 'setting']);
     Route::get('online-courses', [\App\Http\Controllers\api\HomeController::class, 'online_courses']);
     Route::get('questions', [\App\Http\Controllers\api\HomeController::class, 'questions']);
+    Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
 });
