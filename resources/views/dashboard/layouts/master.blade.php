@@ -226,6 +226,22 @@
 
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">INSTS REQUESTS</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('instructor-requests.index')}}" data-i18n="nav.dash.ecommerce">instructors requests</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">CONTACTS</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('contacts.index')}}" data-i18n="nav.dash.ecommerce">contacts</a>
+                    </li>
+                </ul>
+            </li>
 
 
 

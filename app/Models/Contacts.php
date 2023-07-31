@@ -7,22 +7,20 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\HasApiTokens;
 
-class InstructorRequests extends Model
+class Contacts extends Model
 {
     use HasFactory;
-    protected $table='instructor_requests';
+
+
     protected $fillable=[
         'name',
         'email',
-        'phone',
-        'cv',
-        'category_id',
+         'phone',
         'country_id',
     ];
-    public function category(){
-        return $this->belongsTo(Category::class,'category_id');
-    }
+
     public function country(){
         return $this->belongsTo(Country::class,'country_id');
     }

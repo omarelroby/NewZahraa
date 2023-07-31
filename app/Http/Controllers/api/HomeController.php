@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ContactResource;
+use App\Http\Resources\ContactsResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
@@ -13,6 +14,7 @@ use App\Http\Resources\HomeSectionResource;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\SettingResource;
 use App\Models\Category;
+use App\Models\Contacts;
 use App\Models\Country;
 use App\Models\Course;
 use App\Models\Ebook;
@@ -104,7 +106,9 @@ class HomeController extends Controller
             return $this->error($validator->messages());
         }
         else{
-            return $this->successMessage(__('message.success'));
+            $contact=Contacts::create($request->all());
+            $c=$contact->toArray();
+            return $this->successMessage(__('message.success'),$c);
 
         }
     }
