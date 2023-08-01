@@ -14,6 +14,7 @@ class CreateCustomerTable extends Migration {
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->text('email');
             $table->text('phone');
+            $table->text('image')->nullable();
             $table->text('password');
             $table->timestamps();
 

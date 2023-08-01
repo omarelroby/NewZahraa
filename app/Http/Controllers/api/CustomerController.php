@@ -92,7 +92,16 @@ class CustomerController extends Controller
     }
     }
     public function update_profile(Request $request){
-          $customer=auth('api')->user();
+         $customer=auth('api')->user();
+        $oValidatorRules = [
+            'name' => 'required',
+            'email' => 'required|unique:customers,email',
+            'password' => 'nullable|min:8',
+         ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
         if ($customer)
          {
              $customer->update([
@@ -100,6 +109,10 @@ class CustomerController extends Controller
                  'email'=>$request->email,
                  'password'=>bcrypt($request->password),
              ]);
+             if ($request->has('image'))
+             {
+                 $customer->update(['image'=>$request->image]);
+             }
 
              return  $this->successMessage('your profile updated successfully');
          }
