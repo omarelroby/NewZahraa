@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group( function () {
     Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
+    Route::post('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'favourite_ebooks']);
+    Route::post('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_free_videos']);
+    Route::post('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'favourite_online_courses']);
 
 });
 Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
