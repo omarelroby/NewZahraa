@@ -144,6 +144,60 @@ class CustomerController extends Controller
 
         }
         }
+    public function delete_favourite_ebooks(Request $request){
+        $customer=auth('api')->user();
+        $valiation=DB::table('favourite_ebooks')
+            ->where('customer_id',$customer->id)
+            ->where('ebooks_id',$request->ebooks_id)
+            ->first();
+        $query=DB::table('favourite_ebooks')
+            ->where('customer_id',$customer->id)
+            ->where('ebooks_id',$request->ebooks_id);
+        $oValidatorRules = [
+            'ebooks_id' => 'required|exists:ebooks,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if (!$valiation){
+            return $this->successMessage('This Ebooks Not Found');
+        }
+        if ($customer)
+        {
+            $query->delete();
+            return  $this->successMessage('Your  ebooks Deleted successfully');
+
+        }
+    }
+    public function delete_favourite_free_videos(Request $request)
+    {
+        $customer=auth('api')->user();
+        $valiation=DB::table('favourite_free_videos')
+            ->where('customer_id',$customer->id)
+            ->where('free_videos_id',$request->free_videos_id)
+            ->first();
+        $query=DB::table('favourite_free_videos')
+            ->where('customer_id',$customer->id)
+            ->where('free_videos_id',$request->free_videos_id);
+        $oValidatorRules = [
+            'free_videos_id' => 'required|exists:free_videos,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if (!$valiation){
+            return $this->successMessage('This Video Not Found');
+        }
+        if ($customer)
+        {
+            $query->delete();
+            return  $this->successMessage('Your Video Deleted Successfully');
+
+        }
+    }
+
     public function favourite_free_videos(Request $request)
     {
         $customer=auth('api')->user();
@@ -197,6 +251,51 @@ class CustomerController extends Controller
             return  $this->successMessage('Your Course Video Added Successfully');
 
         }
+    }
+    public function delete_favourite_online_courses(Request $request)
+    {
+        $customer=auth('api')->user();
+        $valiation=DB::table('favourite_online_courses')
+            ->where('customer_id',$customer->id)
+            ->where('online_course_id',$request->online_course_id)
+            ->first();
+        $query=DB::table('favourite_online_courses')
+            ->where('customer_id',$customer->id)
+            ->where('online_course_id',$request->online_course_id);
+        $oValidatorRules = [
+            'online_course_id' => 'required|exists:online_courses,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if (!$valiation){
+            return $this->successMessage('This Course Not Found');
+        }
+        if ($customer)
+        {
+            $query->delete();
+            return  $this->successMessage('Your Course Deleted Successfully');
+
+        }
+    }
+    public function show_favourite_ebooks()
+    {
+        $customer=auth('api')->user();
+        return $this->success($customer->favourite_ebook);
+
+    }
+    public function show_favourite_free_videos()
+    {
+        $customer=auth('api')->user();
+        return $this->success($customer->favourite_free_videos);
+
+    }
+    public function show_favourite_online_courses()
+    {
+        $customer=auth('api')->user();
+        return $this->success($customer->favourite_online_courses);
+
     }
 
 

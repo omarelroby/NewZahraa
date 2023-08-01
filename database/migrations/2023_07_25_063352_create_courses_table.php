@@ -9,6 +9,7 @@ class CreateCoursesTable extends Migration {
 	{
 		Schema::create('courses', function(Blueprint $table) {
 			$table->increments('id');
+            $table->text('slug')->nullable();
             $table->string('price', 255);
             $table->string('preview_video', 255)->nullable();
             $table->integer('instructor_id')->unsigned();

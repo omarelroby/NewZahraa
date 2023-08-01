@@ -9,6 +9,7 @@ class CreateFreeVideoTable extends Migration {
 	{
 		Schema::create('free_videos', function(Blueprint $table) {
 			$table->increments('id');
+            $table->text('slug')->nullable();
             $table->string('youtube_url', 255)->nullable();
             $table->timestamps();
 

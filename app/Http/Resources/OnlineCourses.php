@@ -27,4 +27,5 @@ class OnlineCourses extends JsonResource
 
         ];
     }
+
 }

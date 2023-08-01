@@ -91,13 +91,13 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">Price </label>
                                                         <input type="text"  required class="form-control" id="inputGroupFile20"  name="price">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">Instructors </label>
                                                         <select  required class="form-control" id="inputGroupFile20"  name="instructor_id">

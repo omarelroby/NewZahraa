@@ -10,6 +10,7 @@ class CreateInstructorsTable extends Migration {
 		Schema::create('instructors', function(Blueprint $table) {
 			$table->increments('id');
             $table->string('name', 255);
+            $table->text('slug')->nullable();
             $table->string('phone', 255);
             $table->string('email', 255);
             $table->text('password');

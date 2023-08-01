@@ -9,7 +9,7 @@ class CreateFavouriteEbooksTable extends Migration {
 	{
 		Schema::create('favourite_ebooks', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('customer_id')->unsigned();
+            $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 			$table->integer('ebooks_id')->unsigned();
             $table->foreign('ebooks_id')->references('id')->on('ebooks')->onDelete('cascade');

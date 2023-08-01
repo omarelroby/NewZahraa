@@ -9,6 +9,7 @@ class CreateHomeSectionsTable extends Migration {
 	{
 		Schema::create('home_sections', function(Blueprint $table) {
 			$table->increments('id');
+            $table->text('slug')->nullable();
             $table->string('url', 255);
             $table->string('image', 255)->nullable();
             $table->timestamps();

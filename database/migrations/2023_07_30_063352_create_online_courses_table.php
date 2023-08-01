@@ -9,6 +9,7 @@ class CreateOnlineCoursesTable extends Migration {
 	{
 		Schema::create('online_courses', function(Blueprint $table) {
 			$table->increments('id');
+            $table->text('slug')->nullable();
             $table->string('price', 255)->nullable();
             $table->string('hours', 255)->nullable();
             $table->string('image', 255);

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Http\Resources\OnlineCourses;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,5 +29,14 @@ class Customers extends Authenticatable
 
     public function country(){
         return $this->belongsTo(Country::class,'country_id');
+    }
+    public function favourite_ebook(){
+        return $this->belongsToMany(Ebook::class,'favourite_ebooks','customer_id','ebooks_id');
+    }
+    public function favourite_free_videos(){
+        return $this->belongsToMany(FreeVideo::class,'favourite_free_videos','customer_id','free_videos_id');
+    }
+    public function favourite_online_courses(){
+        return $this->belongsToMany(OnlineCourse::class,'favourite_online_courses','customer_id','online_course_id');
     }
 }

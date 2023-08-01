@@ -10,6 +10,7 @@ class CreatePageTable extends Migration {
 		Schema::create('pages', function(Blueprint $table) {
 			$table->increments('id');
             $table->string('image', 255)->nullable();
+            $table->text('slug')->nullable();
             $table->string('video_url', 255)->nullable();
             $table->string('upload_video', 255)->nullable();
             $table->timestamps();

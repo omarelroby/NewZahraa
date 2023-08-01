@@ -9,6 +9,7 @@ class CreateApiLecturerTable extends Migration {
 	{
 		Schema::create('instructor_requests', function(Blueprint $table) {
 			$table->increments('id');
+            $table->text('slug')->nullable();
             $table->string('name', 255);
             $table->string('email', 255);
             $table->string('phone', 255);
