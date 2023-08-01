@@ -39,7 +39,15 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <form class="form" method="post" action="{{route('courses.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())

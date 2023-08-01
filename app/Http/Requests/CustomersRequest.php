@@ -31,7 +31,7 @@ class CustomersRequest extends FormRequest
         return [
         'name' => 'required',
         'phone' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:customers,email',
         'country_id' => 'required',
 
     ];
@@ -42,7 +42,7 @@ class CustomersRequest extends FormRequest
         return [
         'name' => 'required',
         'phone' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:customers,email',
         'country_id' => 'required',
 
     ];

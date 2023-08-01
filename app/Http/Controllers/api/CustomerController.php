@@ -28,7 +28,7 @@ class CustomerController extends Controller
      public function customer_register(Request $request){
              $oValidatorRules = [
                  'name' => 'required',
-                 'email' => 'required',
+                 'email' => 'required|unique:customers,email',
                  'phone' => 'required',
                  'password' => 'required',
                  'country_id' => 'required|exists:countries,id',
@@ -90,6 +90,19 @@ class CustomerController extends Controller
            }
 
     }
+    }
+    public function update_profile(Request $request){
+          $customer=auth('api')->user();
+        if ($customer)
+         {
+             $customer->update([
+                 'name'=>$request->name,
+                 'email'=>$request->email,
+                 'password'=>bcrypt($request->password),
+             ]);
+
+             return  $this->successMessage('your profile updated successfully');
+         }
     }
 
 

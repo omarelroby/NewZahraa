@@ -29,7 +29,7 @@ public function onStore()
 {
     return [
         'name' => 'required',
-        'email'=> 'required',
+        'email'=> 'required|unique:instructors,email',
         'phone'=> 'required',
         'brief'=> 'required',
         'image'=> 'required',
@@ -44,7 +44,7 @@ public function onUpdate()
 {
     return [
         'name' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:instructors,email',
         'phone' => 'required',
         'brief' => 'required',
         'category_id' => 'required',

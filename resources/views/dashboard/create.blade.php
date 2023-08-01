@@ -46,9 +46,15 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <div class="card-text">
-                                            <p>This is the most basic and default form having form sections. To add form section use <code>.form-section</code> class with any heading tags. This form has the buttons on the bottom left corner which is the default position.</p>
-                                        </div>
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <form class="form">
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4>
