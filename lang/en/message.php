@@ -14,6 +14,7 @@ return [
     */
 
     'success' => 'the request has sent successfully',
+    'error' => '404 NOT FOUND',
 
 
 ];

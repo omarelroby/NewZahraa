@@ -10,8 +10,12 @@ use App\Http\Resources\InstructorResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Customers;
+use App\Models\Ebook;
+use App\Models\FreeVideo;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
+use App\Models\OnlineCourse;
+use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -344,16 +348,71 @@ class CustomerController extends Controller
         return $this->success($customer->favourite_free_videos);
 
     }
+    public function get_favourite_free_videos(Request $request)
+    {
+        $free_videos=FreeVideo::where('slug',$request->slug)->first();
+        if($free_videos)
+        {
+            return $this->success($free_videos);
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
+
+    }
     public function show_favourite_online_courses()
     {
         $customer=auth('api')->user();
         return $this->success($customer->favourite_online_courses);
 
     }
+    public function get_favourite_online_courses(Request $request)
+    {
+        $course=OnlineCourse::where('slug',$request->slug)->first();
+        if($course)
+        {
+            return $this->success($course);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
+
+    }
+    public function get_favourite_ebooks(Request $request)
+    {
+        $ebook=Ebook::where('slug',$request->slug)->first();
+        if ($ebook)
+        {
+            return $this->success($ebook);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
+
+    }
     public function show_favourite_videos()
     {
         $customer=auth('api')->user();
         return $this->success($customer->favourite_videos);
+
+    }
+    public function get_favourite_videos(Request $request)
+    {
+        $video=Videos::where('slug',$request->slug)->first();
+        if ($video)
+        {
+            return $this->success($video);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
 
     }
 
