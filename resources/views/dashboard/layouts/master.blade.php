@@ -143,6 +143,17 @@
                 </ul>
             </li>
             <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main"> VIDEOS</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('videos.index')}}" data-i18n="nav.dash.ecommerce">videos</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('videos.create')}}" data-i18n="nav.dash.project">Add videos</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="fa f fa-cogs"></i><span class="menu-title" data-i18n="nav.dash.main">GENERAL SETTING</span> </a>
                 <ul class="menu-content">
                     <li >

@@ -67,6 +67,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('question',\App\Http\Controllers\dashboard\QuestionsController::class);
     Route::resource('instructor-requests',\App\Http\Controllers\dashboard\InstructorRequestsController::class);
     Route::resource('contacts',\App\Http\Controllers\dashboard\ContactsController::class);
+    Route::resource('videos',\App\Http\Controllers\dashboard\VideosController::class);
 
 
 });
