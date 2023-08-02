@@ -9,6 +9,7 @@ use App\Http\Resources\CustomerResource;
 use App\Http\Resources\InstructorResource;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Course;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\FreeVideo;
@@ -414,6 +415,32 @@ class CustomerController extends Controller
             return $this->error('NOT FOUND',[],404);
         }
 
+    }
+    public function get_instructor(Request $request)
+    {
+        $instructor=Instructor::where('slug',$request->slug)->first();
+        if ($instructor)
+        {
+            return $this->success($instructor);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
+    }
+    public function get_course(Request $request)
+    {
+        $course=Course::where('slug',$request->slug)->first();
+        if ($course)
+        {
+            return $this->success($course);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
     }
 
 
