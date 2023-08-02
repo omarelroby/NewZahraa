@@ -22,6 +22,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -68,13 +69,14 @@ class InstructorController extends Controller
             'brief'=>$request->brief,
             'image'=>$request->file('image'),
             'category_id'=>$request->category_id,
-            'country_id'=>$request->category_id,
+            'country_id'=>$request->country_id,
         ];
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
             $data['image']=$request->file('image')->move('pages',$file);
 
         }
+        $data['slug'] = Str::slug($data['name'],'-');
         $instructor=Instructor::create($data) ;
 
 

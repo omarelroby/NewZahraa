@@ -9,7 +9,6 @@ class CreateSettingTable extends Migration {
 	{
 		Schema::create('settings', function(Blueprint $table) {
 			$table->increments('id');
-            $table->text('slug')->nullable();
             $table->text('Keywords')->nullable();
             $table->string('phone', 255)->nullable();
             $table->string('whatsapp', 255)->nullable();

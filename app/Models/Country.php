@@ -12,5 +12,6 @@ class Country extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name'];
-    protected $fillable=['image'];
+    protected $fillable=['image','slug'];
+
 }

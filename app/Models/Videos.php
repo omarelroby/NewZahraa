@@ -14,11 +14,15 @@ class Videos extends Model implements TranslatableContract
     public $translatedAttributes = ['title','description'];
     protected $fillable=[
         'price',
+        'slug',
         'preview_video',
         'complete_video',
         'instructor_id',
     ];
     public function instructors(){
         return $this->belongsTo(Instructor::class,'instructor_id');
+    }
+    public function favourite_videos(){
+        return $this->belongsToMany(Customers::class,'favourite_videos','videos_id','customer_id');
     }
 }

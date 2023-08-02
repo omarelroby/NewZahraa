@@ -11,6 +11,7 @@ use App\Models\Country;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -54,7 +55,8 @@ class CountryController extends Controller
             $data['image']=$request->file('image')->move('countries',$file);
 
         }
-          Country::create($data) ;
+        $data['slug'] = Str::slug($data['en']['name'],'-');
+        Country::create($data) ;
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
         return redirect()->route('country.index');

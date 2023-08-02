@@ -8,7 +8,6 @@
         "php": "^8.0.2",
         "ext-mysql_xdevapi": "*",
         "astrotomic/laravel-translatable": "^11.12",
-        "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.8",

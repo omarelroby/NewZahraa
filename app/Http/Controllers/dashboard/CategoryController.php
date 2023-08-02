@@ -8,6 +8,7 @@ use App\Models\Category;
  use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -45,14 +46,14 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-//        $data =[];
+        $data =$request->validated();
 //        foreach(config('translatable.locales') as $locale) {
 //            $data+= $request->validate([
 //                $locale.'.name' => 'required'
 //            ]);
 //        }
-          Category::create($request->validated()) ;
-
+        $data['slug'] = Str::slug($data['en']['name'],'-');
+        Category::create($data) ;
         Alert::success('Success','تم إضافة البيانات بنجاح');
 
         return redirect()->route('categories.index');

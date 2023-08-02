@@ -39,4 +39,7 @@ class Customers extends Authenticatable
     public function favourite_online_courses(){
         return $this->belongsToMany(OnlineCourse::class,'favourite_online_courses','customer_id','online_course_id');
     }
+    public function favourite_videos(){
+        return $this->belongsToMany(Videos::class,'favourite_videos','customer_id','videos_id');
+    }
 }

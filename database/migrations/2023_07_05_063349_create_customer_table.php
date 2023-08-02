@@ -10,7 +10,6 @@ class CreateCustomerTable extends Migration {
 		Schema::create('customers', function(Blueprint $table) {
 			$table->increments('id');
             $table->text('name');
-            $table->text('slug')->nullable();
             $table->integer('country_id')->unsigned();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->text('email');

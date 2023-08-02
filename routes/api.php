@@ -14,22 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->group( function () {
-    Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
-    Route::post('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'favourite_ebooks']);
-    Route::post('delete-favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_ebooks']);
-    Route::post('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_free_videos']);
-    Route::post('delete-favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_free_videos']);
-    Route::post('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'favourite_online_courses']);
-    Route::post('delete-favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_online_courses']);
-    Route::get('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_ebooks']);
-    Route::get('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_free_videos']);
-    Route::get('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_online_courses']);
 
-});
 Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
 
 Route::middleware("localization")->group(function () {
+    Route::middleware('auth:api')->group( function () {
+        Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
+        Route::post('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'favourite_ebooks']);
+        Route::post('favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_videos']);
+        Route::post('delete-favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_ebooks']);
+        Route::post('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_free_videos']);
+        Route::post('delete-favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_free_videos']);
+        Route::post('delete-favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_videos']);
+        Route::post('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'favourite_online_courses']);
+        Route::post('delete-favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_online_courses']);
+        Route::get('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_ebooks']);
+        Route::get('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_free_videos']);
+        Route::get('favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_videos']);
+        Route::get('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_online_courses']);
+
+    });
     Route::get('countries', [\App\Http\Controllers\api\HomeController::class, 'countries']);
     Route::get('categories', [\App\Http\Controllers\api\HomeController::class, 'categories']);
     Route::post('lecturer', [\App\Http\Controllers\api\HomeController::class, 'lecturer']);

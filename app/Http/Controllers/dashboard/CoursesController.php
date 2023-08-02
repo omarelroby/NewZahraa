@@ -25,6 +25,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -97,6 +98,7 @@ class CoursesController extends Controller
             $file=$request->file('preview_video')->getClientOriginalName();
             $data['preview_video']=$request->file('preview_video')->move($path,$file);
         }
+        $data['slug'] = Str::slug($data['en']['title'],'-');
         Course::create($data);
         Alert::success('Success','تم إضافة البيانات بنجاح');
         return redirect()->route('courses.index');

@@ -32,6 +32,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -105,6 +106,7 @@ class OnlineCoursesController extends Controller
             $file=$request->file('image')->getClientOriginalName();
             $data['image']=$request->file('image')->move($path,$file);
         }
+        $data['slug'] = Str::slug($data['en']['title'],'-');
         $course=OnlineCourse::create($data);
         if ($request->has('instructor_id'))
         {

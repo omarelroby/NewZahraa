@@ -17,6 +17,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -66,7 +67,8 @@ class PagesController extends Controller
             $data['upload_video']=$request->file('upload_video')->move('pages',$file);
 
         }
-          Page::create($data) ;
+        $data['slug'] = Str::slug($data['en']['title'],'-');
+        Page::create($data) ;
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 

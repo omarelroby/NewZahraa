@@ -13,6 +13,7 @@ class Course extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title','description'];
     protected $fillable=[
+        'slug',
         'price',
         'preview_video',
         'instructor_id',

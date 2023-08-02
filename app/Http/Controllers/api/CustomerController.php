@@ -92,6 +92,33 @@ class CustomerController extends Controller
 
     }
     }
+    public function favourite_videos(Request $request)
+    {
+        $customer=auth('api')->user();
+        $valiation=DB::table('favourite_videos')
+            ->where('customer_id',$customer->id)
+            ->where('videos_id',$request->videos_id)
+            ->first();
+        $oValidatorRules = [
+            'videos_id' => 'required|exists:videos,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if ($valiation){
+            return $this->successMessage('this video already added as favourite');
+        }
+        if ($customer)
+        {
+            DB::table('favourite_videos')->insert([
+                'customer_id'=>$customer->id,
+                'videos_id'=>$request->videos_id,
+            ]);
+            return  $this->successMessage('your favourite video added successfully');
+
+        }
+    }
     public function update_profile(Request $request){
          $customer=auth('api')->user();
         $oValidatorRules = [
@@ -167,6 +194,32 @@ class CustomerController extends Controller
         {
             $query->delete();
             return  $this->successMessage('Your  ebooks Deleted successfully');
+
+        }
+    }
+    public function delete_favourite_videos(Request $request){
+        $customer=auth('api')->user();
+        $valiation=DB::table('favourite_videos')
+            ->where('customer_id',$customer->id)
+            ->where('videos_id',$request->videos_id)
+            ->first();
+        $query=DB::table('favourite_videos')
+            ->where('customer_id',$customer->id)
+            ->where('videos_id',$request->videos_id);
+        $oValidatorRules = [
+            'videos_id' => 'required|exists:videos,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if (!$valiation){
+            return $this->successMessage('This videos Not Found');
+        }
+        if ($customer)
+        {
+            $query->delete();
+            return  $this->successMessage('Your  videos Deleted successfully');
 
         }
     }
@@ -295,6 +348,12 @@ class CustomerController extends Controller
     {
         $customer=auth('api')->user();
         return $this->success($customer->favourite_online_courses);
+
+    }
+    public function show_favourite_videos()
+    {
+        $customer=auth('api')->user();
+        return $this->success($customer->favourite_videos);
 
     }
 

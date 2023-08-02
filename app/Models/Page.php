@@ -14,6 +14,7 @@ class Page extends Model implements TranslatableContract
     public $translatedAttributes = ['title','description'];
     protected $fillable=[
         'image',
+        'slug',
         'video_url',
         'upload_video',
 

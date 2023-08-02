@@ -14,9 +14,10 @@ use App\Models\Ebook;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
-
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 
 class EbookController extends Controller
@@ -67,7 +68,8 @@ class EbookController extends Controller
             $data['complete_file']=$request->file('complete_file')->move('ebooks',$file);
 
         }
-          Ebook::create($data) ;
+        $data['slug'] = Str::slug($data['en']['title'],'-');
+        Ebook::create($data) ;
 
         Alert::success('Success','تم إضافة البيانات بنجاح');
 

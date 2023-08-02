@@ -28,6 +28,7 @@ use App\Models\Videos;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -105,6 +106,7 @@ class VideosController extends Controller
             $file=$request->file('complete_video')->getClientOriginalName();
             $data['complete_video']=$request->file('complete_video')->move($path,$file);
         }
+        $data['slug'] = Str::slug($data['en']['title'],'-');
         Videos::create($data);
         Alert::success('Success','تم إضافة البيانات بنجاح');
         return redirect()->route('videos.index');
