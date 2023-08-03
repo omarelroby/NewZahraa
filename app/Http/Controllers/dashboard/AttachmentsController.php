@@ -88,7 +88,7 @@ class AttachmentsController extends Controller
         if($request->has('file')){
 
                 $file=$request->file('file')->getClientOriginalName();
-                $data['file']=$request->file('file')->move('pages',$file);
+                $data['file']=$request->file('file')->move('public/pages',$file);
                 $attach->update($data);
 
         }

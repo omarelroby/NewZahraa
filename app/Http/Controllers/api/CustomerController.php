@@ -22,6 +22,7 @@ use App\Models\FreeVideo;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
+use App\Models\Page;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -414,6 +415,20 @@ class CustomerController extends Controller
         if ($video)
         {
             return $this->success($video);
+
+        }
+        else
+        {
+            return $this->error('NOT FOUND',[],404);
+        }
+
+    }
+    public function get_pages($slug)
+    {
+        $page=Page::where('slug',$slug)->first();
+        if ($page)
+        {
+            return $this->success($page);
 
         }
         else

@@ -96,7 +96,7 @@ class CoursesController extends Controller
         if($request->has('preview_video')){
             $path='coursesVideos';
             $file=$request->file('preview_video')->getClientOriginalName();
-            $data['preview_video']=$request->file('preview_video')->move($path,$file);
+            $data['preview_video']=$request->file('public/preview_video')->move($path,$file);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Course::create($data);

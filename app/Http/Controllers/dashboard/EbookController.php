@@ -55,17 +55,17 @@ class EbookController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('ebooks',$file);
+            $data['image']=$request->file('image')->move('public/ebooks',$file);
 
         }
         if ($request->has('sample_file')){
             $file=$request->file('sample_file')->getClientOriginalName();
-            $data['sample_file']=$request->file('sample_file')->move('ebooks',$file);
+            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',$file);
 
         }
         if ($request->has('complete_file')){
             $file=$request->file('complete_file')->getClientOriginalName();
-            $data['complete_file']=$request->file('complete_file')->move('ebooks',$file);
+            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',$file);
 
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
@@ -115,17 +115,17 @@ class EbookController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('ebooks',$file);
+            $data['image']=$request->file('image')->move('public/ebooks',$file);
 
         }
         if ($request->has('sample_file')){
             $file=$request->file('sample_file')->getClientOriginalName();
-            $data['sample_file']=$request->file('sample_file')->move('ebooks',$file);
+            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',$file);
 
         }
         if ($request->has('complete_file')){
             $file=$request->file('complete_file')->getClientOriginalName();
-            $data['complete_file']=$request->file('complete_file')->move('ebooks',$file);
+            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',$file);
 
         }
         $ebook->update($data);

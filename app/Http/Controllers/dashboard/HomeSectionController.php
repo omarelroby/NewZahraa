@@ -96,7 +96,7 @@ class HomeSectionController extends Controller
         if($request->has('image')){
             $path='HomeSection';
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move($path,$file);
+            $data['image']=$request->file('public/image')->move($path,$file);
         }
         HomeSection::create($data);
         Alert::success('Success','تم إضافة البيانات بنجاح');

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CoursesResource extends JsonResource
+class PagesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +19,10 @@ class CoursesResource extends JsonResource
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
             'description' => $this->translate(app()->getLocale())->description,
-            'preview_video'=>asset($this->preview_video),
-            'price'=>$this->price,
-            'amazon_url'=>$this->amazon_url,
-            'instructor'=>new InstructorResource($this->instructors),
+            'image'=>asset($this->image),
+            'video_url'=>asset($this->video_url),
+            'upload_video'=>asset($this->upload_video),
+
 
 
         ];

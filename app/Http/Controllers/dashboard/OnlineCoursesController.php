@@ -102,7 +102,7 @@ class OnlineCoursesController extends Controller
     {
         $data=$request->all();
         if($request->has('image')){
-            $path='HomeSection';
+            $path='public/HomeSection';
             $file=$request->file('image')->getClientOriginalName();
             $data['image']=$request->file('image')->move($path,$file);
         }
@@ -127,7 +127,7 @@ class OnlineCoursesController extends Controller
         $course=OnlineCourse::findOrFAil($id);
         $data=$request->all();
         if($request->has('image')){
-            $path='HomeSection';
+            $path='public/HomeSection';
             $file=$request->file('image')->getClientOriginalName();
             $data['image']=$request->file('image')->move($path,$file);
         }

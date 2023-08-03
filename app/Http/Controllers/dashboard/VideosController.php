@@ -97,12 +97,12 @@ class VideosController extends Controller
     {
         $data=$request->all();
         if($request->has('preview_video')){
-            $path='coursesVideos';
+            $path='public/coursesVideos';
             $file=$request->file('preview_video')->getClientOriginalName();
             $data['preview_video']=$request->file('preview_video')->move($path,$file);
         }
         if($request->has('complete_video')){
-            $path='coursesVideos';
+            $path='public/coursesVideos';
             $file=$request->file('complete_video')->getClientOriginalName();
             $data['complete_video']=$request->file('complete_video')->move($path,$file);
         }

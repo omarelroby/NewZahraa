@@ -13,6 +13,7 @@ use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\HomeSectionResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourses;
+use App\Http\Resources\PagesResource;
 use App\Http\Resources\SettingResource;
 use App\Models\Category;
 use App\Models\Contacts;
@@ -24,6 +25,7 @@ use App\Models\HomeSection;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
+use App\Models\Page;
 use App\Models\Questions;
 use App\Models\Setting;
 use App\Traits\response;
@@ -52,7 +54,7 @@ class HomeController extends Controller
         $data = $request->all();
 
         if ($request->has('cv')) {
-            $path = 'instructorRequests';
+            $path = 'public/instructorRequests';
             $file = $request->file('cv')->getClientOriginalName();
             $data['cv'] = $request->file('cv')->move($path, $file);
         }
@@ -77,6 +79,12 @@ class HomeController extends Controller
     {
          $instructors=Instructor::all();
         return $this->success(InstructorResource::collection($instructors));
+
+    }
+    public function pages()
+    {
+        $pages=Page::all();
+        return $this->success(PagesResource::collection($pages));
 
     }
     public function eBook(){

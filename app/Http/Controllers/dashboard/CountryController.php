@@ -52,7 +52,7 @@ class CountryController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('countries',$file);
+            $data['image']=$request->file('image')->move('public/countries',$file);
 
         }
         $data['slug'] = Str::slug($data['en']['name'],'-');
@@ -101,7 +101,7 @@ class CountryController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('countries',$file);
+            $data['image']=$request->file('image')->move('public/countries',$file);
 
         }
         $country->update($data);

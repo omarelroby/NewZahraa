@@ -74,7 +74,7 @@ class InstructorRequestsController extends Controller
         ];
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('pages',$file);
+            $data['image']=$request->file('image')->move('public/pages',$file);
 
         }
         $instructor=Instructor::create($data) ;
@@ -82,7 +82,7 @@ class InstructorRequestsController extends Controller
 
         foreach ($request->attachs as $image)
         {
-            $path='instructorAttachs';
+            $path='public/instructorAttachs';
             $imageName = md5(rand(1000,9999).time()). '.'.$image->getClientOriginalExtension();
             $img=$image->move($path,$imageName);
             InstructorAttachs::create(['file'=>$img,'instructor_id'=>$instructor->id]);
@@ -146,7 +146,7 @@ class InstructorRequestsController extends Controller
             ];
             if ($request->has('image')){
                 $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('pages',$file);
+                $data['image']=$request->file('image')->move('public/pages',$file);
             }
             $instructor->update($data);
 
@@ -162,7 +162,7 @@ class InstructorRequestsController extends Controller
             ];
             if ($request->has('image')){
                 $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('pages',$file);
+                $data['image']=$request->file('image')->move('public/pages',$file);
 
             }
             $instructor->update($data);
