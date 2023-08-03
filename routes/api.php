@@ -34,12 +34,12 @@ Route::middleware("localization")->group(function () {
         Route::get('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_online_courses']);
 
     });
-    Route::post('get-favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_ebooks']);
-    Route::post('get-favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_free_videos']);
-    Route::post('get-favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_videos']);
-    Route::post('get-favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_online_courses']);
-    Route::post('get-instructor',[\App\Http\Controllers\api\CustomerController::class,'get_instructor']);
-    Route::post('get-course',[\App\Http\Controllers\api\CustomerController::class,'get_course']);
+    Route::get('get-favourite-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_ebooks']);
+    Route::get('get-favourite-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_free_videos']);
+    Route::get('get-favourite-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_videos']);
+    Route::get('get-favourite-online-courses/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_online_courses']);
+    Route::get('get-instructor/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_instructor']);
+    Route::get('get-course/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_course']);
 
     Route::get('countries', [\App\Http\Controllers\api\HomeController::class, 'countries']);
     Route::get('categories', [\App\Http\Controllers\api\HomeController::class, 'categories']);
@@ -52,5 +52,6 @@ Route::middleware("localization")->group(function () {
     Route::get('setting', [\App\Http\Controllers\api\HomeController::class, 'setting']);
     Route::get('online-courses', [\App\Http\Controllers\api\HomeController::class, 'online_courses']);
     Route::get('questions', [\App\Http\Controllers\api\HomeController::class, 'questions']);
+    Route::get('instructors', [\App\Http\Controllers\api\HomeController::class, 'instructors']);
     Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
 });

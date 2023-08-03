@@ -6,7 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CustomerResource;
+use App\Http\Resources\FavouriteEbooksResource;
+use App\Http\Resources\FavouriteFreeVideosResource;
+use App\Http\Resources\FavouriteOnlineCoursesResource;
+use App\Http\Resources\FavouriteVideosResource;
+use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\InstructorResource;
+use App\Http\Resources\OnlineCourses;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
@@ -112,7 +118,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($valiation){
-            return $this->successMessage('this video already added as favourite');
+            return $this->error('this video already added as favourite');
         }
         if ($customer)
         {
@@ -164,7 +170,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($valiation){
-            return $this->successMessage('this Ebooks already added as favourite');
+            return $this->error('this Ebooks already added as favourite');
         }
         if ($customer)
         {
@@ -193,7 +199,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if (!$valiation){
-            return $this->successMessage('This Ebooks Not Found');
+            return $this->error('This Ebooks Not Found');
         }
         if ($customer)
         {
@@ -219,7 +225,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if (!$valiation){
-            return $this->successMessage('This videos Not Found');
+            return $this->error('This videos Not Found');
         }
         if ($customer)
         {
@@ -246,7 +252,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if (!$valiation){
-            return $this->successMessage('This Video Not Found');
+            return $this->error('This Video Not Found');
         }
         if ($customer)
         {
@@ -271,7 +277,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($valiation){
-            return $this->successMessage('This Free Video Already Added As Favourite');
+            return $this->error('This Free Video Already Added As Favourite');
         }
         if ($customer)
         {
@@ -298,7 +304,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($valiation){
-            return $this->successMessage('This Course Already Added As Favourite');
+            return $this->error('This Course Already Added As Favourite');
         }
         if ($customer)
         {
@@ -328,7 +334,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if (!$valiation){
-            return $this->successMessage('This Course Not Found');
+            return $this->error('This Course Not Found');
         }
         if ($customer)
         {
@@ -340,18 +346,18 @@ class CustomerController extends Controller
     public function show_favourite_ebooks()
     {
         $customer=auth('api')->user();
-        return $this->success($customer->favourite_ebook);
+        return $this->success(new FavouriteEbooksResource($customer));
 
     }
     public function show_favourite_free_videos()
     {
         $customer=auth('api')->user();
-        return $this->success($customer->favourite_free_videos);
+        return $this->success(new FavouriteFreeVideosResource($customer));
 
     }
-    public function get_favourite_free_videos(Request $request)
+    public function get_favourite_free_videos($slug)
     {
-        $free_videos=FreeVideo::where('slug',$request->slug)->first();
+        $free_videos=FreeVideo::where('slug',$slug)->first();
         if($free_videos)
         {
             return $this->success($free_videos);
@@ -365,12 +371,12 @@ class CustomerController extends Controller
     public function show_favourite_online_courses()
     {
         $customer=auth('api')->user();
-        return $this->success($customer->favourite_online_courses);
+        return $this->success(new FavouriteOnlineCoursesResource($customer));
 
     }
-    public function get_favourite_online_courses(Request $request)
+    public function get_favourite_online_courses($slug)
     {
-        $course=OnlineCourse::where('slug',$request->slug)->first();
+        $course=OnlineCourse::where('slug',$slug)->first();
         if($course)
         {
             return $this->success($course);
@@ -382,9 +388,9 @@ class CustomerController extends Controller
         }
 
     }
-    public function get_favourite_ebooks(Request $request)
+    public function get_favourite_ebooks($slug)
     {
-        $ebook=Ebook::where('slug',$request->slug)->first();
+        $ebook=Ebook::where('slug',$slug)->first();
         if ($ebook)
         {
             return $this->success($ebook);
@@ -399,12 +405,12 @@ class CustomerController extends Controller
     public function show_favourite_videos()
     {
         $customer=auth('api')->user();
-        return $this->success($customer->favourite_videos);
+        return $this->success(new FavouriteVideosResource($customer));
 
     }
-    public function get_favourite_videos(Request $request)
+    public function get_favourite_videos($slug)
     {
-        $video=Videos::where('slug',$request->slug)->first();
+        $video=Videos::where('slug',$slug)->first();
         if ($video)
         {
             return $this->success($video);
@@ -429,9 +435,9 @@ class CustomerController extends Controller
             return $this->error('NOT FOUND',[],404);
         }
     }
-    public function get_course(Request $request)
+    public function get_course($slug)
     {
-        $course=Course::where('slug',$request->slug)->first();
+        $course=Course::where('slug',$slug)->first();
         if ($course)
         {
             return $this->success($course);

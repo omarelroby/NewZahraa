@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CountryTranslation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class InstructorResource extends JsonResource
@@ -16,13 +17,14 @@ class InstructorResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug'=>$this->slug,
             'name'=>$this->name,
             'email'=>$this->email,
             'phone'=>$this->phone,
             'brief'=>$this->brief,
             'image'=>$this->image,
-            'category_id'=>$this->country->name,
-            'country_id'=>$this->category->name,
+            'category'=>new CategoryResource($this->category),
+            'country'=>new CountryResource($this->country),
 
 
 

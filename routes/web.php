@@ -68,6 +68,9 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('instructor-requests',\App\Http\Controllers\dashboard\InstructorRequestsController::class);
     Route::resource('contacts',\App\Http\Controllers\dashboard\ContactsController::class);
     Route::resource('videos',\App\Http\Controllers\dashboard\VideosController::class);
+    Route::resource('index',\App\Http\Controllers\dashboard\IndexController::class);
+    Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexController::class,'create_index'])->name('indexes.create');
+    Route::delete('delete-index/{id}',[\App\Http\Controllers\dashboard\IndexController::class,'delete_index'])->name('delete.index');
 
 
 });

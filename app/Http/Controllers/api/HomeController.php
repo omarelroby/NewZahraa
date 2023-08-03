@@ -11,6 +11,7 @@ use App\Http\Resources\CoursesResource;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\HomeSectionResource;
+use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\SettingResource;
 use App\Models\Category;
@@ -20,6 +21,7 @@ use App\Models\Course;
 use App\Models\Ebook;
 use App\Models\FreeVideo;
 use App\Models\HomeSection;
+use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
 use App\Models\Questions;
@@ -67,9 +69,14 @@ class HomeController extends Controller
     }
     public function categories()
     {
-
-        $countries=Category::all();
+         $countries=Category::all();
         return $this->success(CategoryResource::collection($countries));
+
+    }
+    public function instructors()
+    {
+         $instructors=Instructor::all();
+        return $this->success(InstructorResource::collection($instructors));
 
     }
     public function eBook(){

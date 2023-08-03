@@ -16,6 +16,7 @@ class CoursesResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
             'description' => $this->translate(app()->getLocale())->description,
             'preview_video'=>asset($this->preview_video),
