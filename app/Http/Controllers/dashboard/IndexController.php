@@ -41,23 +41,6 @@ use App\DataTables\CategoriesDataTable;
 class IndexController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(IndexDataTable $dataTable)
-    {
-        return $dataTable->render('dashboard.index.index');
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 
     /**
      * Store a newly created resource in storage.

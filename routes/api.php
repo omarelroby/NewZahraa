@@ -34,10 +34,10 @@ Route::middleware("localization")->group(function () {
         Route::get('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_online_courses']);
 
     });
-    Route::get('get-favourite-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_ebooks']);
-    Route::get('get-favourite-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_free_videos']);
-    Route::get('get-favourite-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_videos']);
-    Route::get('get-favourite-online-courses/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_favourite_online_courses']);
+    Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);
+    Route::get('get-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos']);
+    Route::get('get-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_videos']);
+    Route::get('get-online-courses/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_online_courses']);
     Route::get('get-instructor/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_instructor']);
     Route::get('get-course/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_course']);
 

@@ -355,7 +355,7 @@ class CustomerController extends Controller
         return $this->success(new FavouriteFreeVideosResource($customer));
 
     }
-    public function get_favourite_free_videos($slug)
+    public function get_free_videos($slug)
     {
         $free_videos=FreeVideo::where('slug',$slug)->first();
         if($free_videos)
@@ -374,7 +374,7 @@ class CustomerController extends Controller
         return $this->success(new FavouriteOnlineCoursesResource($customer));
 
     }
-    public function get_favourite_online_courses($slug)
+    public function get_online_courses($slug)
     {
         $course=OnlineCourse::where('slug',$slug)->first();
         if($course)
@@ -388,7 +388,7 @@ class CustomerController extends Controller
         }
 
     }
-    public function get_favourite_ebooks($slug)
+    public function get_ebooks($slug)
     {
         $ebook=Ebook::where('slug',$slug)->first();
         if ($ebook)
@@ -408,7 +408,7 @@ class CustomerController extends Controller
         return $this->success(new FavouriteVideosResource($customer));
 
     }
-    public function get_favourite_videos($slug)
+    public function get_videos($slug)
     {
         $video=Videos::where('slug',$slug)->first();
         if ($video)
