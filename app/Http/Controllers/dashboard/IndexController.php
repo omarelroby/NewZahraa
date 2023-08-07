@@ -50,11 +50,10 @@ class IndexController extends Controller
      */
 
 
-    public function show($id)
+    public function show($course_id)
     {
-        $dataTable=  new IndexDataTable ;
-         Session::put('course_id',$id);
-        return $dataTable->render('dashboard.index.index',compact('id'));
+        $dataTable=  new IndexDataTable($course_id) ;
+         return $dataTable->render('dashboard.index.index',compact('course_id'));
 
     }
     public function create_index($id)
@@ -118,7 +117,6 @@ class IndexController extends Controller
     public function destroy($id)
     {
         CourseIndexes::find($id)->delete();
-        $id=Session::get('course_id');
         Alert::error('Deleted','تم حذف البيانات بنجاح');
         return redirect()->route('index.show',$id);
     }

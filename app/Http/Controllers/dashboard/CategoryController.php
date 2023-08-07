@@ -17,11 +17,7 @@ use App\DataTables\CategoriesDataTable;
 class CategoryController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(CategoriesDataTable $dataTable)
     {
          return $dataTable->render('dashboard.category.index');

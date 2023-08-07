@@ -26,6 +26,8 @@ class IndexDataTable extends DataTable
      * @param QueryBuilder $query Results from query() method.
      * @return \Yajra\DataTables\EloquentDataTable
      */
+
+
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return datatables()
@@ -47,9 +49,9 @@ class IndexDataTable extends DataTable
      * @param \App\Models\Category $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(CourseIndexes $model): QueryBuilder
+    public function query(): QueryBuilder
     {
-        return $model->newQuery();
+         return CourseIndexes::where('course_Id', $this->course_id)gi;
     }
 
     /**
@@ -60,7 +62,7 @@ class IndexDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('instructors-table')
+                    ->setTableId('course-indexes-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                      ->orderBy(0)

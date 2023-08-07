@@ -21,4 +21,8 @@ class Course extends Model implements TranslatableContract
     public function instructors(){
         return $this->belongsTo(Instructor::class,'instructor_id');
     }
+    public function indexes()
+    {
+        return $this->hasMany(CourseIndexes::class,'course_id','id');
+    }
 }

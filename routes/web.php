@@ -68,9 +68,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('instructor-requests',\App\Http\Controllers\dashboard\InstructorRequestsController::class);
     Route::resource('contacts',\App\Http\Controllers\dashboard\ContactsController::class);
     Route::resource('videos',\App\Http\Controllers\dashboard\VideosController::class);
-    Route::resource('index',\App\Http\Controllers\dashboard\IndexController::class);
-    Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexController::class,'create_index'])->name('indexes.create');
-
+    Route::resource('index',\App\Http\Controllers\dashboard\IndexesController::class);
+//    Route::get('index/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index'])->name('index.index');
+    Route::get('index/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'create_index'])->name('indexes.create');
+    Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);
 
 });
 

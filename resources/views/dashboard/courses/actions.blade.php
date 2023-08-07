@@ -9,7 +9,7 @@
 {{--                <div class="dropdown-divider"></div>--}}
                     <a class="dropdown-item" href="{{ url("/courses/{$id}/edit") }}">
                     <i class="fa fa-cog mr-1"></i> edit</a>
-                <a class="dropdown-item" href="{{ route("index.show",$id) }}">
+                <a class="dropdown-item" href="{{ url("/indexes/{$id}") }}">
                     <i class="fa fa-bookmark mr-1"></i> indexes</a>
             </div>
 </div>
