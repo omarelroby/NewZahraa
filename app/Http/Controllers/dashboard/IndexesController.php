@@ -11,6 +11,8 @@ use App\DataTables\PagesDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CountryRequest;
+use App\Http\Requests\CoursesIndexRequest;
+use App\Http\Requests\CoursesIndexVideosRequest;
 use App\Http\Requests\CustomersRequest;
 use App\Http\Requests\EbookRequest;
 use App\Http\Requests\InstructorsRequest;
@@ -18,6 +20,7 @@ use App\Http\Requests\PagesRequest;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\CourseIndexes;
+use App\Models\CourseIndexesVideos;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\Instructor;
@@ -28,7 +31,7 @@ use App\Models\Languages;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
-
+use function PHPUnit\Framework\countOf;
 
 
 class IndexesController extends Controller
@@ -45,10 +48,10 @@ class IndexesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_index($id)
     {
-        $countries=Country::with('translations')->get();
-        return  view('dashboard.customers.create',compact('countries'));
+
+         return  view('dashboard.index.create',compact('id'));
     }
 
     /**
@@ -57,18 +60,38 @@ class IndexesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomersRequest $request)
+    public function store(CoursesIndexRequest $request)
     {
-         $data=[
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'phone'=>$request->phone,
-            'country_id'=>$request->country_id,
-        ];
-        Customers::create($data) ;
+//        dd($request->course_id);
+        $index=CourseIndexes::create($request->all());
+        dd($request->repeater);
+
+        foreach ($request->inputs as $key=>$input) {
+                $file = 'courseVideosIndex';
+                $file2 = $request->file('video')[1]->getClientOriginalName();
+                $name[] = $request->file('video')[1]->move($file, $file2);
+                if ($request->is_free == 1) {
+                    CourseIndexesVideos::create([
+                        'course_indexes_id' => $index->id,
+                        'is_free' => 1,
+                        'video' => $name,
+                        'title.en' => $request->en['title'][1],
+                        'title.ar' => $request->ar['title'][1]
+                    ]);
+                } else {
+                    CourseIndexesVideos::create([
+                        'course_indexes_id' => $index->id,
+                        'is_free' => 0,
+                        'video' => $name,
+                        'inputs[]en[title]' => $request->en['title'][1],
+                        'inputs[]ar[title]' => $request->ar['title'][1]
+                    ]);
+
+                }
+            }
+
         Alert::success('Success','تم إضافة البيانات بنجاح');
-        return redirect()->route('customers.index');
+        return redirect()->route('index.index',$request->course_id);
 
 
 

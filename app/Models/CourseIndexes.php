@@ -18,4 +18,8 @@ public function courses()
 {
     return $this->belongsTo(Course::class,'course_id');
 }
+public function videos()
+{
+    return $this->hasMany(CourseIndexesVideos::class,'course_indexes_id');
+}
 }

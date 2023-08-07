@@ -48,7 +48,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form class="form" method="post" action="{{route('index.store')}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{route('indexes.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
@@ -63,7 +63,7 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> INDEXES</h4>
                                                 <div class="row">
-                                                    <input type="text" name="course_id" hidden value="{{$course->id}}">
+                                                    <input type="text" name="course_id" hidden value="{{$id}}">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -72,12 +72,17 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-
                                                 </div>
+                                                    <div class="form-group row">
+                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">إضافة فيديو </button>
+                                                    </div>
+
+                                                    <div  id="relatedPrograms"></div>
+
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('index.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('index.index',$id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save
@@ -112,6 +117,56 @@
     <script>
         CKEDITOR.replace('ar[description]' );
         CKEDITOR.replace('en[description]' );
+    </script>
+    <script>
+
+
+        var y = 0;
+        $(document).on('click', '#addRelatedProgram', function() {
+            $('#relatedPrograms').append(`
+                 <div class="well row" id="programTag${y}">
+                    <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
+                    <br/>
+                    <div class="form-group col-md-3">
+                        <label for="inputRelatedProgram"> <span class="required">Video</span></label>
+                        <input type="file" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[][${y}]video" >
+
+                        </div>
+                         @foreach(config('translatable.locales') as $locale)
+
+            <div class="form-group col-4">
+                <label for="inputRelatedProgram"> name({{$locale}})</label>
+                <input type="text" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[][${y}]{{$locale}}[title]" >
+                        </div>
+                        @endforeach
+
+                    <div class="form-group col-4">
+                        <label for="flexCheckDisabled"> IS FREE</label>
+                        <input type="checkbox" id="flexCheckDisabled" class="form-check-input  " count="${y}"  name="repeater[][${y}]is_free" >
+                        </div>
+</div>
+
+
+
+
+
+            `);
+
+            y++;
+        })
+        $(document).on('click', '.close', function() {
+            var count = $(this).attr('count');
+
+            $(`#programItem${count}`).remove();
+        })
+
+        $(document).on('click', '.closeTag', function() {
+            var count = $(this).attr('count');
+
+            $(`#programTag${count}`).remove();
+        })
+
+
     </script>
 
 

@@ -51,7 +51,7 @@ class IndexDataTable extends DataTable
      */
     public function query(): QueryBuilder
     {
-         return CourseIndexes::where('course_Id', $this->course_id)gi;
+         return CourseIndexes::where('course_Id', $this->course_id);
     }
 
     /**
