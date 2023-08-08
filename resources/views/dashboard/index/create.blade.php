@@ -74,7 +74,7 @@
                                                 @endforeach
                                                 </div>
                                                     <div class="form-group row">
-                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">إضافة فيديو </button>
+                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">Add Video </button>
                                                     </div>
 
                                                     <div  id="relatedPrograms"></div>
@@ -126,23 +126,23 @@
             $('#relatedPrograms').append(`
                  <div class="well row" id="programTag${y}">
                     <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
-                    <br/>
+
                     <div class="form-group col-md-3">
                         <label for="inputRelatedProgram"> <span class="required">Video</span></label>
-                        <input type="file" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[][${y}]video" >
+                        <input type="file" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[${y}][video]" >
 
                         </div>
                          @foreach(config('translatable.locales') as $locale)
 
-            <div class="form-group col-4">
+            <div class="form-group col-3">
                 <label for="inputRelatedProgram"> name({{$locale}})</label>
-                <input type="text" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[][${y}]{{$locale}}[title]" >
+                <input type="text" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
                         </div>
                         @endforeach
 
-                    <div class="form-group col-4">
+                    <div class="form-group col-1" style="margin-top: 26px;">
                         <label for="flexCheckDisabled"> IS FREE</label>
-                        <input type="checkbox" id="flexCheckDisabled" class="form-check-input  " count="${y}"  name="repeater[][${y}]is_free" >
+                        <input type="checkbox" id="flexCheckDisabled" value="1" count="${y}"  name="repeater[${y}][is_free]" >
                         </div>
 </div>
 
