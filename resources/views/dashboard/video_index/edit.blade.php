@@ -63,7 +63,8 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i>Free Videos</h4>
                                                              <div class="row">
-                                                                @foreach(config('translatable.locales') as $locale)
+
+                                                             @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">title ({{$locale}})</label>
@@ -88,7 +89,7 @@
 
                                                 <div class="form-actions">
                                                     <button type="button" class="btn btn-warning mr-1">
-                                                        <a href="{{route('video-index.index',$index->video_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                        <a href="{{route('video-index.index',$index->videos_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                     </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

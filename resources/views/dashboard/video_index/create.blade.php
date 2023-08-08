@@ -50,7 +50,7 @@
                                         @endif
                                         <form class="form" method="post" action="{{route('video-indexes.store')}}" enctype='multipart/form-data'>
                                             @csrf
-                                            @if ($errors->any())
+                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
                                                         @foreach ($errors->all() as $error)
@@ -63,7 +63,7 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> INDEXES</h4>
                                                 <div class="row">
-                                                    <input type="text" name="video_id" hidden value="{{$id}}">
+                                                    <input type="text" name="videos_id" hidden value="{{$id}}">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">

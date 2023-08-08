@@ -52,7 +52,7 @@ class VideoIndexDataTable extends DataTable
      */
     public function query(): QueryBuilder
     {
-         return VideosIndexes::where('video_Id', $this->video_id);
+         return VideosIndexes::where('videos_Id', $this->video_id);
     }
 
     /**

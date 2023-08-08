@@ -12,11 +12,11 @@ class VideosIndexes extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['title'];
-    protected $fillable=['id','video_id','time_from','time_to'];
+    protected $fillable=['id','videos_id','time_from','time_to'];
 
 public function videos()
 {
-    return $this->belongsTo(Videos::class,'video_id');
+    return $this->belongsTo(Videos::class,'videos_id');
 }
 
 }

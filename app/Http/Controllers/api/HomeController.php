@@ -15,6 +15,7 @@ use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\SettingResource;
+use App\Http\Resources\VideosResource;
 use App\Models\Category;
 use App\Models\Contacts;
 use App\Models\Country;
@@ -28,6 +29,7 @@ use App\Models\OnlineCourse;
 use App\Models\Page;
 use App\Models\Questions;
 use App\Models\Setting;
+use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -95,6 +97,11 @@ class HomeController extends Controller
     public function courses(){
         $courses=Course::all();
         return $this->success(CoursesResource::collection($courses));
+    }
+    public function videos()
+    {
+        $videos=Videos::all();
+        return $this->success(VideosResource::collection($videos));
     }
     public function free_videos(){
         $free_videos=FreeVideo::all();

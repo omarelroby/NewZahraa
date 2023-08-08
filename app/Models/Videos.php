@@ -13,6 +13,7 @@ class Videos extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title','description'];
     protected $fillable=[
+        'id',
         'price',
         'slug',
         'preview_video',
@@ -24,5 +25,9 @@ class Videos extends Model implements TranslatableContract
     }
     public function favourite_videos(){
         return $this->belongsToMany(Customers::class,'favourite_videos','videos_id','customer_id');
+    }
+    public function indexes()
+    {
+        return $this->hasMany(VideosIndexes::class);
     }
 }

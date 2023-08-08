@@ -11,8 +11,8 @@ class CreateVideosIndexesTable extends Migration {
 			$table->increments('id');
             $table->text('time_from')->nullable();
             $table->text('time_to')->nullable();
-            $table->integer('video_id')->unsigned();
-            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
+            $table->integer('videos_id')->unsigned();
+            $table->foreign('videos_id')->references('id')->on('videos')->onDelete('cascade');
             $table->timestamps();
 
         });
