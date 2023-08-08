@@ -11,6 +11,8 @@ class CourseIndexesVideosTranslation extends Model
 {
     protected $table='course_index_videos_translations';
     protected $fillable=['title'];
+    public $timestamps = false;
+
 
 
 }

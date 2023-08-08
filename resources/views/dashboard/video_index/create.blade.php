@@ -75,13 +75,13 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput2">DATE FROM</label>
+                                                        <label for="projectinput2">minute from</label>
                                                         <input type="number" step=".01" required id="projectinput2" class="form-control"   name="time_from">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput3">DATE TO</label>
+                                                        <label for="projectinput3">minute to</label>
                                                         <input type="number" step=".01" required id="projectinput3" class="form-control"   name="time_to">
                                                     </div>
                                                 </div>

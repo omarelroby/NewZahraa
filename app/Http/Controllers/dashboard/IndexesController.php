@@ -76,8 +76,6 @@ class IndexesController extends Controller
 
             CourseIndexesVideos::create($input);
         }
-
-
         Alert::success('Success', 'تم إضافة البيانات بنجاح');
         return redirect()->route('index.index', $request->course_id);
 
@@ -102,13 +100,8 @@ class IndexesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function edit($id)
-    {
-        $customer = Customers::find($id);
-        $countries = Country::with('translations')->get();
-        return view('dashboard.customers.edit', compact('customer', 'countries'));
-    }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -117,49 +110,11 @@ class IndexesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function update(CustomersRequest $request, $id)
+    public function destroy($id)
     {
-        $customer = Customers::find($id);
-        if ($request->has('password')) {
-            $data = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'password' => bcrypt($request->password),
-                'country_id' => $request->country_id,
-            ];
-            $customer->update($data);
-
-        } else {
-            $data = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'brief' => $request->brief,
-                'category_id' => $request->category_id,
-                'country_id' => $request->category_id,
-            ];
-
-            $customer->update($data);
-
-        }
-        Alert::success('UPDATED', 'تم تعديل البيانات بنجاح');
-        return redirect()->route('customers.index');
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function destroy($id)
-    {
-        Customers::find($id)->delete();
+        $course=CourseIndexes::find($id);
+        $course->delete();
         Alert::error('Deleted', 'تم حذف البيانات بنجاح');
-        return redirect()->route('customers.index');
+        return redirect()->route('index.index', $course->course_id);
     }
 }

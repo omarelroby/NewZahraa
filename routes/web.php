@@ -78,6 +78,7 @@ Route::middleware('auth:admin')->group(function () {
      Route::post('video-index-store',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'store'])->name('video-indexes.store');
      Route::put('video-index-update/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'update'])->name('update-video-index');
      Route::delete('video-index-delete/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'destroy'])->name('delete-video-index');
+     Route::delete('index-delete/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'destroy'])->name('delete-index');
     Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);
 
 });

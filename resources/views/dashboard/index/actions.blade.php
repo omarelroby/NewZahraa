@@ -27,7 +27,7 @@
                 <div class="modal-body">
                     <p>?Do you sure Delete this  </p>
                 </div>
-                <form action="{{ url("/index/{$id}") }}" method="POST">
+                <form action="{{ url("/index-delete/{$id}") }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">close</button>
