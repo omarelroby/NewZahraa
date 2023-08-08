@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">COURSES</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">ONLINE COURSES INDEXES</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">HOME</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">COURSES</a>
+                                <li class="breadcrumb-item"><a href="#">ONLINE COURSES INDEXES</a>
                                 </li>
-                                <li class="breadcrumb-item active">Create COURSES
+                                <li class="breadcrumb-item active">Create ONLINE COURSES INDEXES
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Create INDEX</h4>
+                                    <h4 class="card-title" id="basic-layout-form">CREATE ONLINE COURSES INDEXES</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -48,7 +48,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form class="form" method="post" action="{{route('indexes.store')}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{route('online-course-indexes.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
@@ -63,18 +63,18 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> INDEXES</h4>
                                                 <div class="row">
-                                                    <input type="text" name="course_id" hidden value="{{$id}}">
+                                                    <input type="text" name="online_course_id" hidden value="{{$id}}">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">name ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[name]">
+                                                            <label for="projectinput1">title ({{$locale}})</label>
+                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
                                                 @endforeach
                                                 </div>
                                                     <div class="form-group row">
-                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">Add Video </button>
+                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">ADD ITEMS </button>
                                                     </div>
 
                                                     <div  id="relatedPrograms"></div>
@@ -82,7 +82,7 @@
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('index.index',$id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('onlineCourse.index',$id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save
@@ -126,31 +126,14 @@
             $('#relatedPrograms').append(`
                  <div class="well row" id="programTag${y}">
                     <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
-
-                    <div class="form-group col-md-3">
-                        <label for="inputRelatedProgram"> <span class="required">Video</span></label>
-                        <input type="file" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[${y}][video]" >
-
-                        </div>
-                         @foreach(config('translatable.locales') as $locale)
-
-                <div class="form-group col-3">
+                         <h5><b>item </b> </h5></br>
+                          @foreach(config('translatable.locales') as $locale)
+                <div class="form-group col-5">
                 <label for="inputRelatedProgram"> name({{$locale}})</label>
                 <input type="text" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
                         </div>
                         @endforeach
-
-                    <div class="form-group col-1" style="margin-top: 26px;">
-                        <label for="flexCheckDisabled"> IS FREE</label>
-                        <input type="checkbox" id="flexCheckDisabled" value="1" count="${y}"  name="repeater[${y}][is_free]" >
-                        </div>
-</div>
-
-
-
-
-
-            `);
+ `);
 
             y++;
         })

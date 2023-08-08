@@ -7,10 +7,9 @@
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
                    <i class="fa fa-cart-plus mr-1"></i> delete</a>
 {{--                <div class="dropdown-divider"></div>--}}
-                    <a class="dropdown-item" href="{{ url("/online-courses/{$id}/edit") }}">
-                    <i class="fa fa-cog mr-1"></i> edit</a>
-                <a class="dropdown-item" href="{{ url("/online-course-indexes/{$id}") }}">
-                    <i class="fa fa-bookmark mr-1"></i> indexes</a>
+
+{{--                <a class="dropdown-item" href="{{ url("/index/{$id}/edit") }}">--}}
+{{--                    <i class="fa fa-bookmark mr-1"></i> indexes</a>--}}
             </div>
 </div>
 
@@ -28,7 +27,7 @@
                 <div class="modal-body">
                     <p>?Do you sure Delete this  </p>
                 </div>
-                <form action="{{ url("/online-courses/{$id}") }}" method="POST">
+                <form action="{{ url("/online-course-index-delete/{$id}") }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">close</button>
