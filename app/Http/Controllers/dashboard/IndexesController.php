@@ -38,9 +38,9 @@ class IndexesController extends Controller
 {
 
 
-    public function index(IndexDataTable $dataTable,$id)
+    public function index(IndexDataTable $dataTable, $id)
     {
-         return $dataTable->with('course_id',$id)->render('dashboard.index.index',compact('id'));
+        return $dataTable->with('course_id', $id)->render('dashboard.index.index', compact('id'));
     }
 
     /**
@@ -51,48 +51,35 @@ class IndexesController extends Controller
     public function create_index($id)
     {
 
-         return  view('dashboard.index.create',compact('id'));
+        return view('dashboard.index.create', compact('id'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CoursesIndexRequest $request)
     {
 //        dd($request->course_id);
-        $index=CourseIndexes::create($request->all());
-        dd($request->repeater);
+        $index = CourseIndexes::create($request->all());
+        foreach ($request->repeater as $key => $input) {
 
-        foreach ($request->inputs as $key=>$input) {
-                $file = 'courseVideosIndex';
-                $file2 = $request->file('video')[1]->getClientOriginalName();
-                $name[] = $request->file('video')[1]->move($file, $file2);
-                if ($request->is_free == 1) {
-                    CourseIndexesVideos::create([
-                        'course_indexes_id' => $index->id,
-                        'is_free' => 1,
-                        'video' => $name,
-                        'title.en' => $request->en['title'][1],
-                        'title.ar' => $request->ar['title'][1]
-                    ]);
-                } else {
-                    CourseIndexesVideos::create([
-                        'course_indexes_id' => $index->id,
-                        'is_free' => 0,
-                        'video' => $name,
-                        'inputs[]en[title]' => $request->en['title'][1],
-                        'inputs[]ar[title]' => $request->ar['title'][1]
-                    ]);
 
-                }
+            if (isset($input['video'])) {
+                $path = 'public/courseVideosIndex';
+                $input['video'] = $input['video']->move($path, time() . '_' . random_int(1, 100000) . '.' . $input['video']->getClientOriginalExtension());
             }
+            $input['course_indexes_id'] = $index->id;
+            $input['is_free'] = $input['is_free'] ?? 0;
 
-        Alert::success('Success','تم إضافة البيانات بنجاح');
-        return redirect()->route('index.index',$request->course_id);
+            CourseIndexesVideos::create($input);
+        }
 
+
+        Alert::success('Success', 'تم إضافة البيانات بنجاح');
+        return redirect()->route('index.index', $request->course_id);
 
 
     }
@@ -100,10 +87,11 @@ class IndexesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public
+    function show($id)
     {
         //
     }
@@ -111,51 +99,52 @@ class IndexesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
-        $customer=Customers::find($id);
-        $countries=Country::with('translations')->get();
-        return  view('dashboard.customers.edit',compact('customer','countries'));
+        $customer = Customers::find($id);
+        $countries = Country::with('translations')->get();
+        return view('dashboard.customers.edit', compact('customer', 'countries'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomersRequest $request, $id)
+    public
+    function update(CustomersRequest $request, $id)
     {
-        $customer=Customers::find($id);
-        if($request->has('password')){
-            $data=[
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'password'=>bcrypt($request->password),
-                'country_id'=>$request->country_id,
+        $customer = Customers::find($id);
+        if ($request->has('password')) {
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => bcrypt($request->password),
+                'country_id' => $request->country_id,
             ];
             $customer->update($data);
 
-        }
-        else{
-            $data=[
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'brief'=>$request->brief,
-                'category_id'=>$request->category_id,
-                'country_id'=>$request->category_id,
+        } else {
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'brief' => $request->brief,
+                'category_id' => $request->category_id,
+                'country_id' => $request->category_id,
             ];
 
             $customer->update($data);
 
         }
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED', 'تم تعديل البيانات بنجاح');
         return redirect()->route('customers.index');
 
     }
@@ -163,13 +152,14 @@ class IndexesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         Customers::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted', 'تم حذف البيانات بنجاح');
         return redirect()->route('customers.index');
     }
 }

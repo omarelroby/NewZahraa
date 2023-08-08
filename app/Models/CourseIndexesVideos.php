@@ -11,7 +11,7 @@ class CourseIndexesVideos extends Model implements TranslatableContract
 {
     use Translatable;
     protected $table='course_index_videos';
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['title'];
     protected $fillable=['course_indexes_id','is_free','video'];
 
 public function indexes()
