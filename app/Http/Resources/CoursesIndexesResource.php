@@ -12,8 +12,7 @@ class CoursesIndexesResource extends JsonResource
         return [
             'id' => $this->id,
              'name' => $this->translate(app()->getLocale())->name,
-            'courses'=>new CoursesResource($this->courses),
-            'videos'=>new VideosResource($this->videos),
+            'video-index'=>CoursesIndexesVideosResource::collection($this->videos),
 
 
         ];

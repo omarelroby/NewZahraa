@@ -23,6 +23,6 @@ class Course extends Model implements TranslatableContract
     }
     public function indexes()
     {
-        return $this->hasMany(CourseIndexes::class,'course_id','id');
+        return $this->hasMany(CourseIndexes::class);
     }
 }

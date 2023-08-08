@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CourseIndexes;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CoursesResource extends JsonResource
@@ -23,6 +24,7 @@ class CoursesResource extends JsonResource
             'price'=>$this->price,
             'amazon_url'=>$this->amazon_url,
             'instructor'=>new InstructorResource($this->instructors),
+            'indexes'=> CoursesIndexesResource::collection($this->indexes),
 
 
         ];
