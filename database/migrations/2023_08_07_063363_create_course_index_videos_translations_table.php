@@ -10,7 +10,6 @@ class CreateCourseIndexVideosTranslationsTable extends Migration {
 		Schema::create('course_index_videos_translations', function(Blueprint $table) {
 			$table->increments('id');
             $table->text('title')->nullable();
-            $table->integer('is_free')->default(0);
             $table->string('locale')->index();
             $table->integer('course_indexes_video_id')->unsigned();
             $table->foreign('course_indexes_video_id')->references('id')->on('course_index_videos')->onDelete('cascade');

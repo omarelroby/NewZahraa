@@ -93,9 +93,8 @@ class VideoIndexesController extends Controller
      */
     public function edit($id)
     {
-        $customer=Customers::find($id);
-        $countries=Country::with('translations')->get();
-        return  view('dashboard.customers.edit',compact('customer','countries'));
+        $index=VideosIndexes::find($id);
+         return  view('dashboard.video_index.edit',compact('index'));
     }
 
     /**
@@ -105,35 +104,12 @@ class VideoIndexesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomersRequest $request, $id)
+    public function update(VideoIndexesRequest $request, $id)
     {
-        $customer=Customers::find($id);
-        if($request->has('password')){
-            $data=[
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'password'=>bcrypt($request->password),
-                'country_id'=>$request->country_id,
-            ];
-            $customer->update($data);
-
-        }
-        else{
-            $data=[
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                'brief'=>$request->brief,
-                'category_id'=>$request->category_id,
-                'country_id'=>$request->category_id,
-            ];
-
-            $customer->update($data);
-
-        }
+        $index=VideosIndexes::find($id);
+        $index->update($request->all());
         Alert::success('UPDATED','تم تعديل البيانات بنجاح');
-        return redirect()->route('customers.index');
+        return redirect()->route('video-index.index',$index->video_id);
 
     }
 
@@ -145,8 +121,9 @@ class VideoIndexesController extends Controller
      */
     public function destroy($id)
     {
-        Customers::find($id)->delete();
+        $index=VideosIndexes::find($id);
+        $index->delete();
         Alert::error('Deleted','تم حذف البيانات بنجاح');
-        return redirect()->route('customers.index');
+        return redirect()->route('video-index.index',$index->video_id);
     }
 }

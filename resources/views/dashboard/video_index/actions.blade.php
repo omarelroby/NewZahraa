@@ -8,8 +8,8 @@
                    <i class="fa fa-cart-plus mr-1"></i> delete</a>
 {{--                <div class="dropdown-divider"></div>--}}
 
-                <a class="dropdown-item" href="{{ url("/index/{$id}/edit") }}">
-                    <i class="fa fa-bookmark mr-1"></i> indexes</a>
+                <a class="dropdown-item" href="{{ route("video-indexes.edit",$id) }}">
+                    <i class="fa fa-bookmark mr-1"></i> edit</a>
             </div>
 </div>
 
@@ -27,7 +27,7 @@
                 <div class="modal-body">
                     <p>?Do you sure Delete this  </p>
                 </div>
-                <form action="{{ url("/index/{$id}") }}" method="POST">
+                <form action="{{ route("delete-video-index",$id) }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">close</button>
