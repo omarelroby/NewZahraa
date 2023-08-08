@@ -70,8 +70,11 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('videos',\App\Http\Controllers\dashboard\VideosController::class);
 //    Route::resource('index',\App\Http\Controllers\dashboard\IndexesController::class);
      Route::get('index/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index'])->name('index.index');
+     Route::get('videos-indexes/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'index'])->name('video-index.index');
      Route::get('index-create/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'create_index'])->name('indexes.create');
+     Route::get('video-index-create/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'create_video_index'])->name('video-indexes.create');
      Route::post('index-store',[\App\Http\Controllers\dashboard\IndexesController::class,'store'])->name('indexes.store');
+     Route::post('video-index-store',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'store'])->name('video-indexes.store');
     Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);
 
 });
