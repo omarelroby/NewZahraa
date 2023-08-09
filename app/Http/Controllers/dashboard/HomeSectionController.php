@@ -43,7 +43,7 @@ class HomeSectionController extends Controller
      */
     public function index(HomeSectionDataTable $dataTable)
     {
-        return $dataTable->render('dashboard.courses.index');
+        return $dataTable->render('dashboard.home_section.index');
     }
 
 

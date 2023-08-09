@@ -17,7 +17,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="col-4" style="margin-right: auto;">
+                    <a class="btn btn-primary" style="width: 300px;color: #f0f0f0" href="{{route('online-courses.create')}}"  >ADD ONLINE-COURSE</a>
+                </div>
             </div>
             <div class="content-body">
                 <section id="configuration">

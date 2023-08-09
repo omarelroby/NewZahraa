@@ -51,7 +51,7 @@
                                         <form class="form" method="post" action="{{route('page.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> E-books</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i> PAGES</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">

@@ -10,7 +10,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">COURSES</a>
+                                <li class="breadcrumb-item"><a href="#">HOME SECTION</a>
                                 </li>
                                 <li class="breadcrumb-item active">Home Section
                                 </li>
@@ -61,7 +61,7 @@
                                             @endif
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> Courses</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i> HOME SECTION</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
