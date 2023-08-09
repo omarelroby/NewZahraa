@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">Category</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.category')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item"><a href="index.html">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">categories</a>
+                                <li class="breadcrumb-item"><a href="#">{{__('dashboard.category')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Create Category
+                                <li class="breadcrumb-item active">{{__('dashboard.add-category')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Create Category</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.add-category')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -51,12 +51,12 @@
                                         <form class="form" method="post" action="{{route('categories.store')}}">
                                             @csrf
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> Category</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.categories')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">Category ({{$locale}})</label>
+                                                            <label for="projectinput1">{{__('dashboard.category')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
@@ -64,10 +64,10 @@
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                               <a href="{{route('categories.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                               <a href="{{route('categories.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                         </form>

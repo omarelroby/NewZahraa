@@ -7,7 +7,7 @@
     <meta name="description" content="Robust admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template.">
     <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard eCommerce - Robust - Responsive Bootstrap 4 Admin Dashboard Template for Web Application</title>
+    <title> Zahraa Academy Dashboard</title>
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
@@ -71,7 +71,7 @@
                                  <img src="{{asset('app-assets/images/portrait/small/avatar-s-1.png')}}" alt="avatar">
                                 </span><span class="user-name">{{auth()->user()->name}}</span></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="{{route('logout')}}"><i class="ft-power"></i> Logout</a>
+                          <a class="dropdown-item" href="{{route('logout')}}"><i class="ft-power"></i> {{__('dashboard.logout')}}</a>
                         </div>
                     </li>
                 </ul>
@@ -87,169 +87,169 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">CATEGORY</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('categories.index')}}" data-i18n="nav.dash.ecommerce">Categories</a>
+                        <a class="menu-item" href="{{route('categories.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.categories')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('categories.create')}}" data-i18n="nav.dash.project">Add Category</a>
+                        <a class="menu-item" href="{{route('categories.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-category')}}</a>
                     </li>
                 </ul>
             </li>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-flag-checkered"></i><span class="menu-title" data-i18n="nav.dash.main">COUNTRY</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa fa-flag-checkered"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.countries')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('country.index')}}" data-i18n="nav.dash.ecommerce">Countries</a>
+                        <a class="menu-item" href="{{route('country.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.countries')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('country.create')}}" data-i18n="nav.dash.project">Add Country</a>
+                        <a class="menu-item" href="{{route('country.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-country')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">E-BOOKS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.e-books')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('ebook.index')}}" data-i18n="nav.dash.ecommerce">E-Books</a>
+                        <a class="menu-item" href="{{route('ebook.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.e-books')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('ebook.create')}}" data-i18n="nav.dash.project">Add E-Book</a>
+                        <a class="menu-item" href="{{route('ebook.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-e-books')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-file"></i><span class="menu-title" data-i18n="nav.dash.main">PAGES</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa fa-file"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.pages')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('page.index')}}" data-i18n="nav.dash.ecommerce">Pages</a>
+                        <a class="menu-item" href="{{route('page.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.pages')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('page.create')}}" data-i18n="nav.dash.project">Add Pages</a>
+                        <a class="menu-item" href="{{route('page.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-pages')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main">FREE VIDEOS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.free-videos')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('freeVideos.index')}}" data-i18n="nav.dash.ecommerce">free videos</a>
+                        <a class="menu-item" href="{{route('freeVideos.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.free-videos')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('freeVideos.create')}}" data-i18n="nav.dash.project">Add free videos</a>
+                        <a class="menu-item" href="{{route('freeVideos.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-free-videos')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main"> VIDEOS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main"> {{__('dashboard.videos')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('videos.index')}}" data-i18n="nav.dash.ecommerce">videos</a>
+                        <a class="menu-item" href="{{route('videos.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.videos')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('videos.create')}}" data-i18n="nav.dash.project">Add videos</a>
+                        <a class="menu-item" href="{{route('videos.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-videos')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa f fa-cogs"></i><span class="menu-title" data-i18n="nav.dash.main">GENERAL SETTING</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-cogs"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.general-setting')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('setting.edit',1)}}" data-i18n="nav.dash.ecommerce">  SETTING</a>
+                        <a class="menu-item" href="{{route('setting.edit',1)}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.edit-setting')}}</a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">INSTRUCTORS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.instructors')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('instructors.index')}}" data-i18n="nav.dash.ecommerce">  instructors</a>
+                        <a class="menu-item" href="{{route('instructors.index')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.instructors')}}</a>
                     </li>
                     <li >
-                        <a class="menu-item" href="{{route('instructors.create')}}" data-i18n="nav.dash.ecommerce"> Add instructors</a>
+                        <a class="menu-item" href="{{route('instructors.create')}}" data-i18n="nav.dash.ecommerce"> {{__('dashboard.add-instructors')}}</a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">CUSTOMERS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main"> {{__('dashboard.customers')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('customers.index')}}" data-i18n="nav.dash.ecommerce">  customers</a>
+                        <a class="menu-item" href="{{route('customers.index')}}" data-i18n="nav.dash.ecommerce">   {{__('dashboard.customers')}}</a>
                     </li>
                     <li >
-                        <a class="menu-item" href="{{route('customers.create')}}" data-i18n="nav.dash.ecommerce"> Add customers</a>
+                        <a class="menu-item" href="{{route('customers.create')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-customers')}}</a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">COURSES</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.courses')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('courses.index')}}" data-i18n="nav.dash.ecommerce">  courses</a>
+                        <a class="menu-item" href="{{route('courses.index')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.courses')}}</a>
                     </li>
                     <li >
-                        <a class="menu-item" href="{{route('courses.create')}}" data-i18n="nav.dash.ecommerce"> Add courses</a>
+                        <a class="menu-item" href="{{route('courses.create')}}" data-i18n="nav.dash.ecommerce"> {{__('dashboard.add-courses')}}</a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-home"></i><span class="menu-title" data-i18n="nav.dash.main">HOME SECTION</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.home-section')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('home-section.index')}}" data-i18n="nav.dash.ecommerce">  Home section</a>
+                        <a class="menu-item" href="{{route('home-section.index')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.home-section')}}</a>
                     </li>
                     <li >
-                        <a class="menu-item" href="{{route('home-section.create')}}" data-i18n="nav.dash.ecommerce">  add section for home</a>
-                    </li>
-
-
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">ONLINE COURSES</span> </a>
-                <ul class="menu-content">
-                    <li >
-                        <a class="menu-item" href="{{route('online-courses.index')}}" data-i18n="nav.dash.ecommerce">  Online courses</a>
-                    </li>
-                    <li >
-                        <a class="menu-item" href="{{route('online-courses.create')}}" data-i18n="nav.dash.ecommerce">  add online courses</a>
+                        <a class="menu-item" href="{{route('home-section.create')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-section')}}</a>
                     </li>
 
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-question-circle"></i><span class="menu-title" data-i18n="nav.dash.main">QUESTIONS  </span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.online-courses')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('question.index')}}" data-i18n="nav.dash.ecommerce">  questions and answers</a>
+                        <a class="menu-item" href="{{route('online-courses.index')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.online-courses')}}</a>
                     </li>
                     <li >
-                        <a class="menu-item" href="{{route('question.create')}}" data-i18n="nav.dash.ecommerce">  add Qeustion and answer</a>
+                        <a class="menu-item" href="{{route('online-courses.create')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-online-courses')}}</a>
                     </li>
 
 
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">INSTS REQUESTS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-question-circle"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.questions')}}  </span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('instructor-requests.index')}}" data-i18n="nav.dash.ecommerce">instructors requests</a>
+                        <a class="menu-item" href="{{route('question.index')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.questions')}}</a>
+                    </li>
+                    <li >
+                        <a class="menu-item" href="{{route('question.create')}}" data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-questions')}}</a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.instructors-requests')}}</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('instructor-requests.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.instructors-requests')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">CONTACTS</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('contacts.index')}}" data-i18n="nav.dash.ecommerce">contacts</a>
+                        <a class="menu-item" href="{{route('contacts.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.contacts')}}</a>
                     </li>
                 </ul>
             </li>

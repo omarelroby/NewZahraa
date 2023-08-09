@@ -21,10 +21,8 @@
                 </div>
 
                 <div class="col-4" style="margin-right: auto;">
-                    <button   class="btn btn-primary" style="width: 300px;">
-                        <a href="{{route('video-indexes.create',$id)}}" style="color: #f0f0f0">ADD INDEX</a>
-                    </button>
-                </div>
+                         <a class="btn btn-primary" style="width: 300px;color: #f0f0f0;" href="{{route('video-indexes.create',$id)}}">ADD INDEX</a>
+                 </div>
 
             </div>
             <div class="content-body">

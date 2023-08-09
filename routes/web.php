@@ -38,7 +38,7 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ //...
-});
+
 Route::namespace('App\Http\Controllers\dashboard')->group(function () {
     Route::get('/login','LoginController@get')->name('login');
     Route::post('login/post','LoginController@post')->name('login.post');
@@ -87,3 +87,4 @@ Route::middleware('auth:admin')->group(function () {
 
 });
 
+});
