@@ -54,18 +54,18 @@ class EbookController extends Controller
     {
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/ebooks',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         if ($request->has('sample_file')){
-            $file=$request->file('sample_file')->getClientOriginalName();
-            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',$file);
+            $file=$request->file('sample_file')->getClientOriginalExtension();
+            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         if ($request->has('complete_file')){
-            $file=$request->file('complete_file')->getClientOriginalName();
-            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',$file);
+            $file=$request->file('complete_file')->getClientOriginalExtension();
+            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
@@ -114,18 +114,18 @@ class EbookController extends Controller
         $ebook=Ebook::find($id);
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/ebooks',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         if ($request->has('sample_file')){
-            $file=$request->file('sample_file')->getClientOriginalName();
-            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',$file);
+            $file=$request->file('sample_file')->getClientOriginalExtension();
+            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         if ($request->has('complete_file')){
-            $file=$request->file('complete_file')->getClientOriginalName();
-            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',$file);
+            $file=$request->file('complete_file')->getClientOriginalExtension();
+            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $ebook->update($data);

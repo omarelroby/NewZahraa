@@ -81,8 +81,8 @@ class CoursesController extends Controller
         $data=$request->all();
         if($request->has('preview_video')){
             $path='public/coursesVideos';
-            $file=$request->file('preview_video')->getClientOriginalName();
-            $data['preview_video']=$request->file('preview_video')->move($path,$file);
+            $file=$request->file('preview_video')->getClientOriginalExtension();
+            $data['preview_video']=$request->file('preview_video')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Course::create($data);

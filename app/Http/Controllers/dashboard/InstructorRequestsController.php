@@ -73,8 +73,8 @@ class InstructorRequestsController extends Controller
             'country_id'=>$request->category_id,
         ];
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/pages',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $instructor=Instructor::create($data) ;
@@ -145,8 +145,8 @@ class InstructorRequestsController extends Controller
                 'country_id'=>$request->category_id,
             ];
             if ($request->has('image')){
-                $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('public/pages',$file);
+                $file=$request->file('image')->getClientOriginalExtension();
+                $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
             }
             $instructor->update($data);
 
@@ -161,8 +161,8 @@ class InstructorRequestsController extends Controller
                 'country_id'=>$request->category_id,
             ];
             if ($request->has('image')){
-                $file=$request->file('image')->getClientOriginalName();
-                $data['image']=$request->file('image')->move('public/pages',$file);
+                $file=$request->file('image')->getClientOriginalExtension();
+                $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
             }
             $instructor->update($data);

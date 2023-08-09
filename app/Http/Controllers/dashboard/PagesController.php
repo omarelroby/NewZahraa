@@ -57,14 +57,14 @@ class PagesController extends Controller
     {
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/pages',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
 
         if ($request->has('upload_video')){
-            $file=$request->file('upload_video')->getClientOriginalName();
-            $data['upload_video']=$request->file('upload_video')->move('public/pages',$file);
+            $file=$request->file('upload_video')->getClientOriginalExtension();
+            $data['upload_video']=$request->file('upload_video')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
@@ -113,14 +113,14 @@ class PagesController extends Controller
         $pages=Page::find($id);
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/pages',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
 
         if ($request->has('upload_video')){
-            $file=$request->file('upload_video')->getClientOriginalName();
-            $data['upload_video']=$request->file('upload_video')->move('public/pages',$file);
+            $file=$request->file('upload_video')->getClientOriginalExtension();
+            $data['upload_video']=$request->file('upload_video')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $pages->update($data);

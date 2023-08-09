@@ -51,8 +51,8 @@ class CountryController extends Controller
     {
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/countries',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/countries',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $data['slug'] = Str::slug($data['en']['name'],'-');
@@ -100,8 +100,8 @@ class CountryController extends Controller
         $country=Country::find($id);
         $data=$request->all();
         if ($request->has('image')){
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move('public/countries',$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move('public/countries',time() . '_' . random_int(1, 100000) . '.' . $file);
 
         }
         $country->update($data);

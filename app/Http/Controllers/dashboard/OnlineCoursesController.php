@@ -103,8 +103,8 @@ class OnlineCoursesController extends Controller
         $data=$request->all();
         if($request->has('image')){
             $path='public/HomeSection';
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move($path,$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         $course=OnlineCourse::create($data);
@@ -128,8 +128,8 @@ class OnlineCoursesController extends Controller
         $data=$request->all();
         if($request->has('image')){
             $path='public/HomeSection';
-            $file=$request->file('image')->getClientOriginalName();
-            $data['image']=$request->file('image')->move($path,$file);
+            $file=$request->file('image')->getClientOriginalExtension();
+            $data['image']=$request->file('image')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
         }
         $course->update($data);
         if ($request->has('instructor_id'))
