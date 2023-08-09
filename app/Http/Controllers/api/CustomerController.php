@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CustomerResource;
+use App\Http\Resources\EbookResource;
 use App\Http\Resources\FavouriteEbooksResource;
 use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
@@ -13,6 +14,8 @@ use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourses;
+use App\Http\Resources\PagesResource;
+use App\Http\Resources\VideosResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
@@ -361,7 +364,7 @@ class CustomerController extends Controller
         $free_videos=FreeVideo::where('slug',$slug)->first();
         if($free_videos)
         {
-            return $this->success($free_videos);
+            return $this->success(new FreeVideosResource($free_videos));
         }
         else
         {
@@ -380,7 +383,7 @@ class CustomerController extends Controller
         $course=OnlineCourse::where('slug',$slug)->first();
         if($course)
         {
-            return $this->success($course);
+            return $this->success(new OnlineCourses($course));
 
         }
         else
@@ -394,7 +397,7 @@ class CustomerController extends Controller
         $ebook=Ebook::where('slug',$slug)->first();
         if ($ebook)
         {
-            return $this->success($ebook);
+            return $this->success(new EbookResource($ebook));
 
         }
         else
@@ -414,7 +417,7 @@ class CustomerController extends Controller
         $video=Videos::where('slug',$slug)->first();
         if ($video)
         {
-            return $this->success($video);
+            return $this->success(new VideosResource($video));
 
         }
         else
@@ -428,7 +431,7 @@ class CustomerController extends Controller
         $page=Page::where('slug',$slug)->first();
         if ($page)
         {
-            return $this->success($page);
+            return $this->success(new PagesResource($page));
 
         }
         else
@@ -442,7 +445,7 @@ class CustomerController extends Controller
         $instructor=Instructor::where('slug',$request->slug)->first();
         if ($instructor)
         {
-            return $this->success($instructor);
+            return $this->success(new InstructorResource($instructor));
 
         }
         else
@@ -455,7 +458,7 @@ class CustomerController extends Controller
         $course=Course::where('slug',$slug)->first();
         if ($course)
         {
-            return $this->success($course);
+            return $this->success(new CountryResource($course));
 
         }
         else

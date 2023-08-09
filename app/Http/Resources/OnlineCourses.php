@@ -16,6 +16,7 @@ class OnlineCourses extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
             'description' => $this->translate(app()->getLocale())->description,
             'image'=>asset($this->image),
