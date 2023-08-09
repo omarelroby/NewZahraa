@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +25,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::get('/', function()
     {
-        
-
         return View('/home');
     });
 
@@ -38,9 +37,7 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){
-
-        //...
+    ], function(){ //...
 });
 Route::namespace('App\Http\Controllers\dashboard')->group(function () {
     Route::get('/login','LoginController@get')->name('login');

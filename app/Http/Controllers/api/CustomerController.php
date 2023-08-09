@@ -423,7 +423,7 @@ class CustomerController extends Controller
                 $content .= "\n\n". str_replace('.',':',$index->time_from) ."--> ". str_replace('.',':',$index->time_to) ."\n". $index->translate(app()->getLocale())->title ;
             }
             $content .="\n";
-            $path='company_info/'.time() . '_' . random_int(1, 100000).'.webvtt';
+            $path='video_index/'.time() . '_' . random_int(1, 100000).'.webvtt';
             \Storage::disk('public')->put($path, $content);
             $data = [
                 'video' =>  new VideosResource($video),
