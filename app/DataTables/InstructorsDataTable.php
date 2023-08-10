@@ -90,11 +90,16 @@ class InstructorsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('phone'),
-            Column::make('Attachments'),
+            Column::make('name')
+                ->title(__('dashboard.name')),
+            Column::make('email')
+                ->title(__('dashboard.email')),
+            Column::make('phone')
+                ->title(__('dashboard.phone')),
+            Column::make('Attachments')
+                ->title(__('dashboard.attachments')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

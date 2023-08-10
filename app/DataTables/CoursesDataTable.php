@@ -84,10 +84,14 @@ class CoursesDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title'),
-            Column::make('description'),
-            Column::make('price'),
+            Column::make('title')
+                ->title(__('dashboard.title')),
+            Column::make('description')
+                ->title(__('dashboard.description')),
+            Column::make('price')
+                ->title(__('dashboard.price')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

@@ -6,6 +6,13 @@
       0 => 'Astrotomic\\Translatable\\TranslatableServiceProvider',
     ),
   ),
+  'cviebrock/eloquent-sluggable' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Cviebrock\\EloquentSluggable\\ServiceProvider',
+    ),
+  ),
   'laravel/passport' => 
   array (
     'providers' => 

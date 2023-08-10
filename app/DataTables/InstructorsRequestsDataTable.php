@@ -89,13 +89,20 @@ class InstructorsRequestsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('phone'),
-            Column::make('country'),
-            Column::make('category'),
-            Column::make('cv'),
+            Column::make('name')
+                ->title(__('dashboard.name')),
+            Column::make('email')
+                ->title(__('dashboard.email')),
+            Column::make('phone')
+                ->title(__('dashboard.phone')),
+            Column::make('country')
+                ->title(__('dashboard.country')),
+            Column::make('category')
+                ->title(__('dashboard.category')),
+            Column::make('cv')
+                ->title(__('dashboard.cv')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

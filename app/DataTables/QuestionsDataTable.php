@@ -86,9 +86,12 @@ class QuestionsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('question'),
-            Column::make('answer'),
+            Column::make('question')
+                ->title(__('dashboard.question')),
+            Column::make('answer')
+                ->title(__('dashboard.answer')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

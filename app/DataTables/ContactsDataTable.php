@@ -84,11 +84,16 @@ class ContactsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('phone'),
-            Column::make('country'),
+            Column::make('name')
+                ->title(__('dashboard.name')),
+            Column::make('email')
+                ->title(__('dashboard.email')),
+            Column::make('phone')
+                ->title(__('dashboard.phone')),
+            Column::make('country')
+                ->title(__('dashboard.country')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

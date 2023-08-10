@@ -89,11 +89,16 @@ class EbookDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title(ar)'),
-            Column::make('title(en)'),
-            Column::make('price'),
-            Column::make('image'),
+            Column::make('title(ar)')
+                ->title(__('dashboard.title(ar)')),
+            Column::make('title(en)')
+                ->title(__('dashboard.title(en)')),
+            Column::make('price')
+                ->title(__('dashboard.price')),
+            Column::make('image')
+                ->title(__('dashboard.image')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

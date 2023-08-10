@@ -88,9 +88,12 @@ class VideoIndexDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title(ar)'),
-            Column::make('title(en)'),
+            Column::make('title(ar)')
+                ->title(__('dashboard.title(ar)')),
+            Column::make('title(en)')
+                ->title(__('dashboard.title(en)')),
              Column::computed('action')
+                 ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

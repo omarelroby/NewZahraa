@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">VIDEO INDEXES</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.add-index-videos')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#"> VIDEO INDEXES</a>
+                                <li class="breadcrumb-item"><a href="#"> {{__('dashboard.add-index-videos')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit VIDEO INDEXES
+                                <li class="breadcrumb-item active">{{__('dashboard.edit-index-videos')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Edit VIDEO INDEXES</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.edit-index-videos')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -61,7 +61,7 @@
                                                 </div>
                                             @endif
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i>Free Videos</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.edit-index-videos')}}</h4>
                                                              <div class="row">
 
                                                              @foreach(config('translatable.locales') as $locale)
@@ -75,13 +75,13 @@
 
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput2">minute from</label>
+                                                                            <label for="projectinput2">{{__('dashboard.minute-from')}}</label>
                                                                             <input type="text" step=".01" value="{{$index->time_from}}" required id="projectinput2" class="form-control"   name="time_from">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput3">minute to</label>
+                                                                            <label for="projectinput3">{{__('dashboard.minute-to')}}</label>
                                                                             <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput3" class="form-control"   name="time_to">
                                                                         </div>
                                                                     </div>
@@ -89,10 +89,10 @@
 
                                                 <div class="form-actions">
                                                     <button type="button" class="btn btn-warning mr-1">
-                                                        <a href="{{route('video-index.index',$index->videos_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                        <a href="{{route('video-index.index',$index->videos_id)}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                     </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                         </form>

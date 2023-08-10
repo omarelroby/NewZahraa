@@ -86,10 +86,14 @@ class SettingDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title(ar)'),
-            Column::make('title(en)'),
-            Column::make('phone'),
+            Column::make('title(ar)')
+                ->title(__('dashboard.title(ar)')),
+            Column::make('title(en)')
+                ->title(__('dashboard.title(en)')),
+            Column::make('phone')
+                ->title(__('dashboard.phone')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

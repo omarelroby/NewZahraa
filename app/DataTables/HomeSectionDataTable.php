@@ -93,11 +93,16 @@ class HomeSectionDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('title'),
-            Column::make('description'),
-            Column::make('button'),
-            Column::make('image'),
+            Column::make('title')
+                ->title(__('dashboard.title')),
+            Column::make('description')
+                ->title(__('dashboard.description')),
+            Column::make('button')
+                ->title(__('dashboard.button')),
+            Column::make('image')
+                ->title(__('dashboard.image')),
             Column::computed('action')
+                ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
