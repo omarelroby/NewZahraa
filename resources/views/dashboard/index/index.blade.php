@@ -6,13 +6,13 @@
             <div class="content-header row">
 
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">INDEXES</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.indexes')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">INDEXES</a>
+                                <li class="breadcrumb-item"><a href="#">{{__('dashboard.indexes')}}</a>
                                 </li>
                             </ol>
                         </div>
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="col-4" style="margin-right: auto;">
-                        <a class="btn btn-primary" style="width: 300px;color: #f0f0f0" href="{{route('indexes.create',$id)}}"  >ADD INDEX</a>
+                        <a class="btn btn-primary" style="width: 300px;color: #f0f0f0" href="{{route('indexes.create',$id)}}"  >{{__('dashboard.add-indexes')}}</a>
                  </div>
 
             </div>

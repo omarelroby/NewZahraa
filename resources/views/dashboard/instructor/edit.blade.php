@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">INSTRUCTORS</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.instructors')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#"> instructors</a>
+                                <li class="breadcrumb-item"><a href="#"> {{__('dashboard.instructors')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit Instructor
+                                <li class="breadcrumb-item active">{{__('dashboard.edit-instructors')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Edit Pages</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.edit-instructors')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -53,44 +53,44 @@
                                             {{ method_field('put') }}
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i>INSTRUCTORS</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.instructors')}}</h4>
 
                                                             <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">name </label>
+                                                                            <label for="projectinput1">{{__('dashboard.name')}} </label>
                                                                             <input type="text" required id="projectinput1" class="form-control" value="{{$instructor->name}}"   name="name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput2">phone </label>
+                                                                            <label for="projectinput2">{{__('dashboard.phone')}} </label>
                                                                             <input type="text" required id="projectinput2"  value="{{$instructor->phone}}" class="form-control"   name="phone">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput2">brief </label>
+                                                                            <label for="projectinput2">{{__('dashboard.brief')}} </label>
                                                                             <input type="text" required id="projectinput2" value="{{$instructor->brief}}" class="form-control"   name="brief">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">email </label>
+                                                                            <label for="projectinput1">{{__('dashboard.email')}} </label>
                                                                             <input type="text" required id="projectinput1" class="form-control" value="{{$instructor->email}}"   name="email">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">password </label>
+                                                                            <label for="projectinput1">{{__('dashboard.password')}} </label>
                                                                             <input type="password" autocomplete="off"  id="projectinput1" class="form-control"   name="password">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">Categories </label>
+                                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
                                                                             <select type="text" required id="projectinput1" class="form-control"   name="category_id">
-                                                                                <option value="">select category</option>
+                                                                                <option value="">{{__('dashboard.select-category')}}</option>
                                                                                 @foreach($categories as $category)
                                                                                     <option @if($category->id==$instructor->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
                                                                                 @endforeach
@@ -99,9 +99,9 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">Countries </label>
+                                                                            <label for="projectinput1">{{__('dashboard.countries')}} </label>
                                                                             <select type="text" required id="projectinput1" class="form-control"   name="country_id">
-                                                                                <option value="">select country</option>
+                                                                                <option value="">{{__('dashboard.select-country')}}</option>
                                                                                 @foreach($countries as $country)
                                                                                     <option @if($country->id==$instructor->country_id)selected @endif value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
                                                                                 @endforeach
@@ -111,7 +111,7 @@
 
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="custom-file-label" for="inputGroupFile01">Image </label>
+                                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
                                                                             <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="image">
                                                                         </div>
                                                                     </div>
@@ -122,10 +122,10 @@
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                             </div>

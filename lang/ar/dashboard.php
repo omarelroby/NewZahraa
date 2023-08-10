@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'view'=>'عرض',
+    'file'=>'الملف',
+    'video'=>'الفيديو',
     'url'=>'الرابط',
     'password'=>'كلمة المرور',
     'login' => 'تسجيل دخول',
@@ -27,6 +30,7 @@ return [
     'delete'=>'حذف',
     'price'=>'السعر',
     'category' => 'الأقسام',
+    'select-category' => 'اختر الأقسام',
     'edit-category' => 'تعديل الأقسام',
     'categories' => 'الأقسام',
     'add-category' => 'إضافة قسم',
@@ -65,6 +69,9 @@ return [
     'preview-videos' => 'فيديو العرض',
     'complete-videos' => 'الفيديو الكامل',
     'instructors' => 'المدربين',
+    'instructors-requests' => 'طلبات المدربين',
+    'instructor-attachments' => 'ملحقات المدربين',
+    'edit-instructor-attachments' => 'تعديل ملحقات المدربين',
     'select-instructors' => 'إختيار مدربين',
     'general-setting' => 'الإعدادات العامة',
     'edit-setting' => 'تعديل الإعدادات',
@@ -95,6 +102,10 @@ return [
     'add-section' => 'إضافة بيانات الصفحة الرئيسية',
     'button' => 'زر الصفحة الرئيسية',
     'online-courses' => 'كورسات أون لاين',
+    'online-courses-indexes' => 'فهرس كورسات أون لاين',
+    'add-online-courses-indexes' => 'إضافة فهرس كورسات أون لاين',
+    'edit-online-courses-indexes' => 'تعديل فهرس كورسات أون لاين',
+    'add-items' => 'إضافة عناصر',
     'add-online-courses' => 'إضافة كورسات أون لاين',
     'edit-online-courses' => 'تعديل كورسات أون لاين',
     'hours' => 'الساعات',

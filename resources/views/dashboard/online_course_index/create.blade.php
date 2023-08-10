@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">ONLINE COURSES INDEXES</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.online-courses-indexes')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">HOME</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">ONLINE COURSES INDEXES</a>
+                                <li class="breadcrumb-item"><a href="#">{{__('dashboard.online-courses-indexes')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Create ONLINE COURSES INDEXES
+                                <li class="breadcrumb-item active">{{__('dashboard.add-online-courses-indexes')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">CREATE ONLINE COURSES INDEXES</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.add-online-courses-indexes')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -61,20 +61,20 @@
                                             @endif
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> INDEXES</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.online-courses-indexes')}}</h4>
                                                 <div class="row">
                                                     <input type="text" name="online_course_id" hidden value="{{$id}}">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">title ({{$locale}})</label>
+                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
                                                 @endforeach
                                                 </div>
                                                     <div class="form-group row">
-                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">ADD ITEMS </button>
+                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">{{__('dashboard.add-items')}} </button>
                                                     </div>
 
                                                     <div  id="relatedPrograms"></div>
@@ -82,10 +82,10 @@
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('onlineCourse.index',$id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('onlineCourse.index',$id)}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                             </div>

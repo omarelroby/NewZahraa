@@ -13,6 +13,9 @@ return [
     |
     */
 
+    'view'=>'VIEW',
+    'file'=>'FILE',
+    'video'=>'VIDEO',
     'url'=>'URL',
     'password'=>'PASSWORD',
     'logout'=>'Logout',
@@ -28,6 +31,7 @@ return [
     'price'=>'PRICE',
     'login' => 'LOGIN',
     'category' => 'CATEGORY',
+    'select-category' => 'SELECT CATEGORY',
     'edit-category' => 'EDIT CATEGORY',
     'categories' => 'CATEGORIES',
     'add-category' => 'ADD CATEGORY',
@@ -66,6 +70,9 @@ return [
     'preview-videos' => 'PREVIEW VIDEOS',
     'complete-videos' => 'COMPLETE VIDEOS',
      'instructors' => 'INSTRUCTORS',
+     'instructors-requests' => 'INSTRUCTORS REQUESTS',
+     'instructor-attachments' => 'INSTRUCTORS ATTACHMENTS',
+     'edit-instructor-attachments' => 'EDIT INSTRUCTORS ATTACHMENTS',
      'select-instructors' => 'SELECT INSTRUCTORS',
      'general-setting' => 'GENERAL SETTING',
      'edit-setting' => 'EDIT SETTING',
@@ -96,6 +103,10 @@ return [
      'add-section' => 'ADD HOME SECTION',
      'button' => 'BUTTON',
      'online-courses' => 'ONLINE COURSES',
+     'online-courses-indexes' => 'ONLINE COURSES INDEXES',
+     'add-online-courses-indexes' => 'ADD ONLINE COURSES INDEXES',
+     'edit-online-courses-indexes' => 'EDIT ONLINE COURSES INDEXES',
+     'add-items' => 'ADD ITEMS',
      'add-online-courses' => 'ADD ONLINE-COURSES',
      'edit-online-courses' => 'EDIT ONLINE-COURSES',
      'hours' => 'HOURS',

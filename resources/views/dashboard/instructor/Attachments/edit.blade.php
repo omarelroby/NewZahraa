@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">Attachments</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.instructor-attachments')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#"> Attachments</a>
+                                <li class="breadcrumb-item"><a href="#"> {{__('dashboard.instructor-attachments')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit Attachments
+                                <li class="breadcrumb-item active">{{__('dashboard.edit-instructor-attachments')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Edit Attachments</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.edit-instructor-attachments')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -53,13 +53,13 @@
                                             {{ method_field('put') }}
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i>Attachments</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.instructor-attachments')}}</h4>
 
                                                             <div class="row">
 
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="custom-file-label" for="inputGroupFile01">File </label>
+                                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.file')}} </label>
                                                                             <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="file">
                                                                         </div>
                                                                     </div>
@@ -70,10 +70,10 @@
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                             </div>

@@ -4,13 +4,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">Instructor Attachments</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.instructor-attachments')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Instructor Attachments</a>
+                                <li class="breadcrumb-item"><a href="#">{{__('dashboard.instructor-attachments')}}</a>
                                 </li>
 
                             </ol>
@@ -26,7 +26,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Instructor Attachments</h4>
+                                <h4 class="card-title">{{__('dashboard.instructor-attachments')}}</h4>
                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -43,26 +43,26 @@
                                         <thead class="bg-success white">
                                         <tr>
                                             <th>#id</th>
-                                            <th>File</th>
-                                            <th>Action</th>
+                                            <th>{{__('dashboard.file')}}</th>
+                                            <th>{{__('dashboard.action')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($attachs as $attach)
                                         <tr>
                                             <td>{{$attach->id}}</td>
-                                            <td><a href="{{asset($attach->file)}}">عرض</a></td>
+                                            <td><a href="{{asset($attach->file)}}">{{__('dashboard.view')}}</a></td>
                                             <td>
                                                 <div class="btn-group float-md-left">
                                                     <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="icon-settings mr-1"></i>Action</button>
+                                                        <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
                                                     <div class="dropdown-menu">
 
                                                         <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $attach->id }}">
                                                             <i class="fa fa-cart-plus mr-1"></i> delete</a>
                                                         {{--                <div class="dropdown-divider"></div>--}}
                                                         <a class="dropdown-item" href="{{ url("/attachments/{$attach->id}/edit") }}">
-                                                            <i class="fa fa-cog mr-1"></i> edit</a>
+                                                            <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -74,16 +74,16 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">Delete</h4>
+                                                        <h4 class="modal-title">{{__('dashboard.delete')}}</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>?Do you sure Delete this File </p>
+                                                        <p>{{__('dashboard.delete-message')}} </p>
                                                     </div>
                                                     <form action="{{ url("/attachments/{$attach->id}") }}" method="POST">
                                                         @method('delete') @csrf
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">close</button>
-                                                            <button type="submit" class="btn btn-danger btn-flat">delete</button>
+                                                            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">{{__('dashboard.close')}}</button>
+                                                            <button type="submit" class="btn btn-danger btn-flat">{{__('dashboard.delete')}}</button>
                                                         </div>
                                                     </form>
                                                 </div>
