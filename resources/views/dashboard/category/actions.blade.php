@@ -5,7 +5,7 @@
             <div class="dropdown-menu">
 
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
-                   <i class="fa fa-cart-plus mr-1"></i> delete</a>
+                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
 {{--                <div class="dropdown-divider"></div>--}}
                     <a class="dropdown-item" href="{{ url("/categories/{$id}/edit") }}">
                     <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
