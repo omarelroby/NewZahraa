@@ -414,10 +414,22 @@ class CustomerController extends Controller
     }
     public function get_videos($slug)
     {
-        $video=Videos::where('slug',$slug)->first();
+        $video=Videos::with('indexes')->where('slug',$slug)->first();
         if ($video)
         {
-            return $this->success(new VideosResource($video));
+            $content = "WEBVTT";
+            foreach ($video->indexes as $index)
+            {
+                $content .= "\n\n". str_replace('.',':',$index->time_from) ."--> ". str_replace('.',':',$index->time_to) ."\n". $index->translate(app()->getLocale())->title ;
+            }
+            $content .="\n";
+            $path='video_index/'.time() . '_' . random_int(1, 100000).'.webvtt';
+            \Storage::disk('public')->put($path, $content);
+            $data = [
+                'video' =>  new VideosResource($video),
+                'index_file' => asset('storage/'.$path),
+            ];
+            return $this->success($data);
 
         }
         else
