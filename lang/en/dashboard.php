@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'url'=>'URL',
     'password'=>'PASSWORD',
     'logout'=>'Logout',
     'action'=>'ACTION',
@@ -91,6 +92,7 @@ return [
      'indexes' => 'INDEXES',
      'add-indexes' => 'ADD INDEXES',
      'home-section' => 'HOME SECTION',
+     'edit-home-section' => 'EDIT HOME SECTION',
      'add-section' => 'ADD HOME SECTION',
      'button' => 'BUTTON',
      'online-courses' => 'ONLINE COURSES',

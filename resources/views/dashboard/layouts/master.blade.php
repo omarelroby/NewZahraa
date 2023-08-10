@@ -110,13 +110,13 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.e-books')}}</span> </a>
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span> </a>
                 <ul class="menu-content">
                     <li >
-                        <a class="menu-item" href="{{route('ebook.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.e-books')}}</a>
+                        <a class="menu-item" href="{{route('ebook.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.ebooks')}}</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="{{route('ebook.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-e-books')}}</a>
+                        <a class="menu-item" href="{{route('ebook.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-ebooks')}}</a>
                     </li>
                 </ul>
             </li>

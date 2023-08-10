@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'url'=>'الرابط',
     'password'=>'كلمة المرور',
     'login' => 'تسجيل دخول',
     'close' => 'إغلاق',
@@ -90,6 +91,7 @@ return [
     'indexes' => 'الفهرس',
     'add-indexes' => 'إضافة فهرس',
     'home-section' => 'قسم الصفحة الرئيسية',
+    'edit-home-section' => 'تعديل قسم الصفحة الرئيسية',
     'add-section' => 'إضافة بيانات الصفحة الرئيسية',
     'button' => 'زر الصفحة الرئيسية',
     'online-courses' => 'كورسات أون لاين',

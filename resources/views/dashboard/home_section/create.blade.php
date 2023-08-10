@@ -4,15 +4,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">HOME SECTION</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">{{__('dashboard.home-section')}}</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">HOME SECTION</a>
+                                <li class="breadcrumb-item"><a href="#">{{__('dashboard.home-section')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Home Section
+                                <li class="breadcrumb-item active">{{__('dashboard.home-section')}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">Create home section</h4>
+                                    <h4 class="card-title" id="basic-layout-form">{{__('dashboard.add-section')}}</h4>
                                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -61,7 +61,7 @@
                                             @endif
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i> HOME SECTION</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.home-section')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
@@ -77,7 +77,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">Description ({{$locale}})</label>
+                                                                <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                                 </textarea>
                                                             </div>
@@ -86,7 +86,7 @@
                                                         @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">Button ({{$locale}})</label>
+                                                                <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
                                                                 <input required id="projectinput1" class="form-control"   name="{{$locale}}[button]">
 
                                                             </div>
@@ -95,14 +95,14 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">URL </label>
+                                                        <label   for="inputGroupFile20">{{__('dashboard.url')}} </label>
                                                         <input type="text"    class="form-control" id="inputGroupFile20"  name="url">
 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">IMAGE </label>
+                                                        <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
                                                         <input type="file"  required class="form-control" id="inputGroupFile20"  name="image">
                                                     </div>
                                                 </div>
@@ -111,10 +111,10 @@
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> Save
+                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
                                             </div>
