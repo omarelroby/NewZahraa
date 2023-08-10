@@ -71,7 +71,7 @@ class EbookController extends Controller
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Ebook::create($data) ;
 
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
 
         return redirect()->route('ebook.index');
 
@@ -130,7 +130,7 @@ class EbookController extends Controller
         }
         $ebook->update($data);
         $ebook->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('ebook.index');
     }
 
@@ -143,7 +143,7 @@ class EbookController extends Controller
     public function destroy($id)
     {
         Ebook::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('ebook.index');
     }

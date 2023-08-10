@@ -69,7 +69,7 @@ class CustomersController extends Controller
             'country_id'=>$request->country_id,
         ];
         Customers::create($data) ;
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('customers.index');
 
 
@@ -134,7 +134,7 @@ class CustomersController extends Controller
             $customer->update($data);
 
         }
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('customers.index');
 
     }
@@ -148,7 +148,7 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         Customers::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('customers.index');
     }
 }

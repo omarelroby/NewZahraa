@@ -12,7 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'success'=>'DATA CREATED SUCCESSFULLY ',
+    'update'=>'DATA UPDATED SUCCESSFULLY ',
+    'deleted'=>'DATA DELETED SUCCESSFULLY ',
     'minute-from'=>'MINUTE FROM',
     'minute-to'=>'MINUTE TO',
     'view'=>'VIEW',

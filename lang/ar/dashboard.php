@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'success'=>'تم إضافة البيانات بنجاح ',
+    'update'=>'تم تحديث البيانات بنجاح ',
+    'deleted'=>'تم حذف البيانات بنجاح ',
     'minute-from'=>'دقيقة من ',
     'minute-to'=>'دقيقة إلى',
     'view'=>'عرض',

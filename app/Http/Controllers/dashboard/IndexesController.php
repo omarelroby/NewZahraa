@@ -76,7 +76,7 @@ class IndexesController extends Controller
 
             CourseIndexesVideos::create($input);
         }
-        Alert::success('Success', 'تم إضافة البيانات بنجاح');
+        Alert::success('Success', __('dashboard.success'));
         return redirect()->route('index.index', $request->course_id);
 
 
@@ -114,7 +114,7 @@ class IndexesController extends Controller
     {
         $course=CourseIndexes::find($id);
         $course->delete();
-        Alert::error('Deleted', 'تم حذف البيانات بنجاح');
+        Alert::error('Deleted', __('dashboard.deleted'));
         return redirect()->route('index.index', $course->course_id);
     }
 }

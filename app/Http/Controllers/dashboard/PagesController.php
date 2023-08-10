@@ -70,7 +70,7 @@ class PagesController extends Controller
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Page::create($data) ;
 
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
 
         return redirect()->route('page.index');
 
@@ -125,7 +125,7 @@ class PagesController extends Controller
         }
         $pages->update($data);
         $pages->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('page.index');
     }
 
@@ -138,7 +138,7 @@ class PagesController extends Controller
     public function destroy($id)
     {
         Page::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('pages.index');
     }

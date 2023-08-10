@@ -58,7 +58,7 @@ class CountryController extends Controller
         $data['slug'] = Str::slug($data['en']['name'],'-');
         Country::create($data) ;
 
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('country.index');
 
 
@@ -106,7 +106,7 @@ class CountryController extends Controller
         }
         $country->update($data);
         $country->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('country.index');
     }
 
@@ -119,7 +119,7 @@ class CountryController extends Controller
     public function destroy($id)
     {
         Country::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('country.index');
     }
 }

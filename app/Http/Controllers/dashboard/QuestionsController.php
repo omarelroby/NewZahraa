@@ -101,7 +101,7 @@ class QuestionsController extends Controller
     public function store(QuestionsRequest $request)
     {
         Questions::create($request->except(['_token']));
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('question.index');
 
 
@@ -110,7 +110,7 @@ class QuestionsController extends Controller
     {
         $q=Questions::find($id);
         $q->update($request->except(['_token','_method']));
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('question.index');
 
     }
@@ -124,7 +124,7 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         Questions::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('question.index');
     }
 }

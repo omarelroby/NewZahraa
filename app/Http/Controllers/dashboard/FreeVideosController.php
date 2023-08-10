@@ -61,7 +61,7 @@ class FreeVideosController extends Controller
         $data=$request->all();
         $data['slug'] = Str::slug($data['en']['title'],'-');
         FreeVideo::create($data) ;
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('freeVideos.index');
 
 
@@ -104,7 +104,7 @@ class FreeVideosController extends Controller
         $data=$request->all();
         $freeVideos->update($data);
         $freeVideos->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('freeVideos.index');
     }
 
@@ -117,7 +117,7 @@ class FreeVideosController extends Controller
     public function destroy($id)
     {
         FreeVideo::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('freeVideos.index');
     }
 }

@@ -93,7 +93,7 @@ class AttachmentsController extends Controller
 
         }
 
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('attachments.index');
 
     }
@@ -107,7 +107,7 @@ class AttachmentsController extends Controller
     public function destroy($id)
     {
         InstructorAttachs::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('attachments.index');
     }

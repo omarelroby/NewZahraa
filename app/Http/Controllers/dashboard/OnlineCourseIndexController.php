@@ -73,7 +73,7 @@ class OnlineCourseIndexController extends Controller
               OnlineCourseIndexesItems::create($input);
           }
 
-        Alert::success('Success', 'تم إضافة البيانات بنجاح');
+        Alert::success('Success', __('dashboard.success'));
         return redirect()->route('onlineCourse.index', $request->online_course_id);
 
 
@@ -111,7 +111,7 @@ class OnlineCourseIndexController extends Controller
     {
         $course=OnlineCourseIndexes::find($id);
         $course->delete();
-        Alert::error('Deleted', 'تم حذف البيانات بنجاح');
+        Alert::error('Deleted', __('dashboard.deleted'));
         return redirect()->route('onlineCourse.index', $course->online_course_id);
     }
 }

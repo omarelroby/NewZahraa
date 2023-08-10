@@ -50,7 +50,7 @@ class CategoryController extends Controller
 //        }
         $data['slug'] = Str::slug($data['en']['name'],'-');
         Category::create($data) ;
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
 
         return redirect()->route('categories.index');
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         $category=Category::find($id);
         $category->update($request->validated());
         $category->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',  __('dashboard.update'));
         return redirect()->route('categories.index');
     }
 
@@ -106,7 +106,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',  __('dashboard.deleted'));
         return redirect()->route('categories.index');
     }
 }

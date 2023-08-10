@@ -55,7 +55,7 @@ class ContactsController extends Controller
     public function destroy($id)
     {
         Contacts::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('contacts.index');
     }
 }

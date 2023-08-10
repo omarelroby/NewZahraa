@@ -108,7 +108,7 @@ class VideosController extends Controller
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Videos::create($data);
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('videos.index');
 
 
@@ -119,7 +119,7 @@ class VideosController extends Controller
         $data=$request->all();
         $videos->update($data);
 
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('videos.index');
 
     }
@@ -133,7 +133,7 @@ class VideosController extends Controller
     public function destroy($id)
     {
         Videos::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('videos.index');
     }

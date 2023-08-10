@@ -86,7 +86,7 @@ class CoursesController extends Controller
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Course::create($data);
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('courses.index');
 
 
@@ -97,7 +97,7 @@ class CoursesController extends Controller
         $data=$request->all();
         $courses->update($data);
 
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('courses.index');
 
     }
@@ -111,7 +111,7 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         Course::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('courses.index');
     }

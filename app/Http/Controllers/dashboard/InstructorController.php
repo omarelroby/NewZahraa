@@ -87,7 +87,7 @@ class InstructorController extends Controller
             $img=$image->move($path,$imageName);
             InstructorAttachs::create(['file'=>$img,'instructor_id'=>$instructor->id]);
         }
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('instructors.index');
 
 
@@ -170,7 +170,7 @@ class InstructorController extends Controller
         }
 
 
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('instructors.index');
 
     }
@@ -184,7 +184,7 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         Instructor::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
 
         return redirect()->route('instructors.index');
     }

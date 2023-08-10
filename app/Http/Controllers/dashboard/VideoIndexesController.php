@@ -67,7 +67,7 @@ class VideoIndexesController extends Controller
     {
 //        dd($request->course_id);
          VideosIndexes::create($request->all());
-        Alert::success('Success','تم إضافة البيانات بنجاح');
+        Alert::success('Success',__('dashboard.success'));
         return redirect()->route('video-index.index',$request->videos_id);
 
 
@@ -108,7 +108,7 @@ class VideoIndexesController extends Controller
     {
         $index=VideosIndexes::find($id);
         $index->update($request->all());
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('video-index.index',$index->videos_id);
 
     }
@@ -123,7 +123,7 @@ class VideoIndexesController extends Controller
     {
         $index=VideosIndexes::find($id);
         $index->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
+        Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('video-index.index',$index->videos_id);
     }
 }

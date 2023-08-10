@@ -106,7 +106,7 @@ class SettingController extends Controller
 
         $setting->update($data);
         $setting->save();
-        Alert::success('UPDATED','تم تعديل البيانات بنجاح');
+        Alert::success('UPDATED',__('dashboard.update'));
         return redirect()->route('setting.index');
     }
 
@@ -119,8 +119,7 @@ class SettingController extends Controller
     public function destroy($id)
     {
         Setting::find($id)->delete();
-        Alert::error('Deleted','تم حذف البيانات بنجاح');
-
+        Alert::error('Deleted',__('dashboard.deleted'));
         return back();
     }
 }
