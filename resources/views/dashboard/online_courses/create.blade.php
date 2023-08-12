@@ -97,6 +97,16 @@
                                                         <input type="text"   class="form-control" id="inputGroupFile20"  name="hours">
                                                     </div>
                                                 </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
+                                                                <select type="text"   class="form-control" id="inputGroupFile20"  name="type">
+                                                                    <option value="">{{__('dashboard.select-type')}}</option>
+                                                                    <option value="single">{{__('dashboard.single')}}</option>
+                                                                    <option value="group">{{__('dashboard.group')}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>

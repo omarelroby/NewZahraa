@@ -45,6 +45,10 @@ return [
             'driver' => 'passport',
             'provider' => 'customers',
         ],
+        'instructor-api' => [
+            'driver' => 'passport',
+            'provider' => 'instructors',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -76,6 +80,10 @@ return [
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Customers::class,
+        ],
+        'instructors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Instructor::class,
         ],
         'admins' => [
             'driver' => 'eloquent',

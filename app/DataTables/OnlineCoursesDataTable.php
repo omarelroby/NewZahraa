@@ -95,6 +95,8 @@ class OnlineCoursesDataTable extends DataTable
                 ->title(__('dashboard.hours')),
             Column::make('date')
                 ->title(__('dashboard.date')),
+            Column::make('type')
+                ->title(__('dashboard.type')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)

@@ -17,6 +17,7 @@ class OnlineCourse extends Model implements TranslatableContract
         'price',
         'slug',
         'hours',
+        'type',
         'image',
         'date',
         'lessons_number',

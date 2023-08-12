@@ -98,6 +98,16 @@
                                                             <input type="text"   class="form-control" value="{{$course->hours}}" id="inputGroupFile20"  name="hours">
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
+                                                                <select type="text"   class="form-control" id="inputGroupFile20"  name="type">
+                                                                    <option value="">{{__('dashboard.select-type')}}</option>
+                                                                    <option @if($course->type=='single')selected @endif value="single">single</option>
+                                                                    <option @if($course->type=='group')selected @endif value="group">group</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>

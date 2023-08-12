@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'single'=>'فردي',
+    'group'=>'مجموعة',
     'success'=>'تم إضافة البيانات بنجاح ',
     'update'=>'تم تحديث البيانات بنجاح ',
     'deleted'=>'تم حذف البيانات بنجاح ',

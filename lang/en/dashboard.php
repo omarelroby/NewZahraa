@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'single'=>'single',
+    'group'=>'group',
     'success'=>'DATA CREATED SUCCESSFULLY ',
     'update'=>'DATA UPDATED SUCCESSFULLY ',
     'deleted'=>'DATA DELETED SUCCESSFULLY ',
