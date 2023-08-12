@@ -59,14 +59,12 @@ class CoursesController extends Controller
      */
     public function edit($id)
     {
-        $instructors=Instructor::all();
-        $courses=Course::find($id);
-        return  view('dashboard.courses.edit',compact('courses','instructors'));
+         $courses=Course::find($id);
+        return  view('dashboard.courses.edit',compact('courses' ));
     }
     public function create()
     {
-        $instructors=Instructor::all();
-        return  view('dashboard.courses.create',compact('instructors'));
+         return  view('dashboard.courses.create');
     }
 
     /**

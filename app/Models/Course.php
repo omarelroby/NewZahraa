@@ -16,11 +16,8 @@ class Course extends Model implements TranslatableContract
         'slug',
         'price',
         'preview_video',
-        'instructor_id',
-    ];
-    public function instructors(){
-        return $this->belongsTo(Instructor::class,'instructor_id');
-    }
+     ];
+
     public function indexes()
     {
         return $this->hasMany(CourseIndexes::class);

@@ -97,17 +97,7 @@
                                                             <input type="text" value="{{$courses->price}}"  required class="form-control" id="inputGroupFile20"  name="price">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.instructors')}} </label>
-                                                            <select  required class="form-control" id="inputGroupFile20"  name="instructor_id">
-                                                                <option value="">{{__('dashboard.select-instructors')}}</option>
-                                                                @foreach($instructors as $instructor)
-                                                                    <option @if($instructor->id==$courses->instructor_id)selected @endif value="{{$instructor->id}}">{{$instructor->name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
+
 
 
                                                     <div class="form-actions">

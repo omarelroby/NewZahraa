@@ -142,17 +142,17 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main"> {{__('dashboard.videos')}}</span> </a>
-                <ul class="menu-content">
-                    <li >
-                        <a class="menu-item" href="{{route('videos.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.videos')}}</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="{{route('videos.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-videos')}}</a>
-                    </li>
-                </ul>
-            </li>
+{{--            <li class=" nav-item">--}}
+{{--                <a href="{{url('/dashboard')}}"><i class="fa fa-youtube-play"></i><span class="menu-title" data-i18n="nav.dash.main"> {{__('dashboard.videos')}}</span> </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li >--}}
+{{--                        <a class="menu-item" href="{{route('videos.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.videos')}}</a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a class="menu-item" href="{{route('videos.create')}}" data-i18n="nav.dash.project">{{__('dashboard.add-videos')}}</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="fa f fa-cogs"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.general-setting')}}</span> </a>
                 <ul class="menu-content">
