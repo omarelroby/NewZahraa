@@ -47,7 +47,7 @@ Route::namespace('App\Http\Controllers\dashboard')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index');
+    Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index')->name('dashboard');
     Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
     Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');
     Route::resource('categories',\App\Http\Controllers\dashboard\CategoryController::class)
