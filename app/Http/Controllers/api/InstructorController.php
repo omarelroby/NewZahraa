@@ -26,6 +26,7 @@ use App\Models\FreeVideo;
 use App\Models\Groups;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
+use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\Page;
 use App\Models\Videos;
@@ -93,6 +94,46 @@ class InstructorController extends Controller
         else
         {
             return $this->error('Instructor Not Found');
+        }
+
+
+    }
+    public function materials(Request $request)
+    {
+        $instructor = auth('instructor-api')->user();
+        $oValidatorRules = [
+            'file_name' => 'required',
+            'file' => 'required',
+            'online_course_id' => 'required|exists:online_courses,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+        {
+            return $this->error($validator->messages());
+        }
+        else
+        {
+            if ($instructor)
+            {
+                if ($request->has('file'))
+                {
+                    $file=$request->file('file')->getClientOriginalExtension();
+                    $oValidatorRules['file']=$request->file('file')->move('public/Materials',time() . '_' . random_int(1, 100000) . '.' . $file);
+                }
+
+                Materials::create([
+                    'file_name'=>$request->file_name,
+                    'file'=>$oValidatorRules['file'],
+                    'online_course_id'=>intval($request->online_course_id),
+                    'instructor_id'=>$instructor->id,
+                ]);
+                return $this->successMessage('Materials Added Successfully');
+
+            }
+            else
+            {
+                return $this->error('Instructor Not Found');
+            }
         }
 
 
