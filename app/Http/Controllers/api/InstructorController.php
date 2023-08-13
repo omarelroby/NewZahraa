@@ -30,8 +30,10 @@ use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\Page;
+use App\Models\QuestionsOptions;
 use App\Models\Quiz;
 use App\Models\QuizGroups;
+use App\Models\QuizQuestions;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -275,6 +277,119 @@ class InstructorController extends Controller
 
         }
 
+    }
+    public function quiz_questions(Request $request)
+    {
+        $oValidatorRules = [
+            'quiz_id' => 'required|exists:quiz,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+        {
+            return $this->error($validator->messages());
+        }
+        if ($request->type=='question_options')
+        {
+            if ($request->is_discount==1)
+            {
+                $oValidatorRules = [
+                    'discount_score' => 'required',
+                    'discount' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $oValidatorRules);
+                if ($validator->fails())
+                {
+                    return $this->error($validator->messages());
+                }
+                $question=QuizQuestions::create([
+                    'name'=>$request->name,
+                    'type'=>$request->type,
+                    'discount'=>$request->discount,
+                    'discount_score'=>$request->discount_score,
+                    'degree'=>$request->degree,
+                    'correct_answer'=>$request->correct_answer,
+                    'quiz_id'=>$request->quiz_id,
+                ]);
+                foreach ($request->answer as $key=>$answer) {
+                    QuestionsOptions::create
+                    ([
+                        'answer'=>$answer,
+                        'answer_number'=>++$key,
+                        'quiz_question_id' => $question->id,
+                    ]);
+                }
+                return $this->successMessage('Quize Question Added Successfully');
+
+            }
+            else
+            {
+                $oValidatorRules = [
+                    'discount_score' => 'required',
+                    'discount' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $oValidatorRules);
+                if ($validator->fails())
+                {
+                    return $this->error($validator->messages());
+                }
+                $question=QuizQuestions::create([
+                    'name'=>$request->name,
+                    'type'=>$request->type,
+                    'degree'=>$request->degree,
+                    'correct_answer'=>$request->correct_answer,
+                    'quiz_id'=>$request->quiz_id,
+                ]);
+                foreach ($request->answer as $key=>$answer) {
+                    QuestionsOptions::create
+                    ([
+                        'answer'=>$answer,
+                        'answer_number'=>++$key,
+                        'quiz_question_id' => $question->id,
+                    ]);
+                }
+                return $this->successMessage('Quize Question Added Successfully');
+            }
+        }
+
+        else
+        {
+            if ($request->is_discount==1)
+            {
+                $oValidatorRules = [
+                    'discount_score' => 'required',
+                    'discount' => 'required',
+                ];
+                $validator = Validator::make($request->all(), $oValidatorRules);
+                if ($validator->fails())
+                {
+                    return $this->error($validator->messages());
+                }
+                QuizQuestions::create([
+                    'name'=>$request->name,
+                    'type'=>$request->type,
+                    'degree'=>$request->degree,
+                    'discount'=>$request->discount,
+                    'discount_score'=>$request->discount_score,
+                    'correct_answer'=>$request->correct_answer,
+                    'quiz_id'=>$request->quiz_id,
+                ]);
+                return $this->error('Data Saved Successfully');
+
+            }
+            else
+            {
+                QuizQuestions::create([
+                    'name'=>$request->name,
+                    'type'=>$request->type,
+                    'degree'=>$request->degree,
+                    'correct_answer'=>$request->correct_answer,
+                    'quiz_id'=>$request->quiz_id,
+                ]);
+                return $this->error('Data Saved Successfully');
+
+            }
+
+        }
     }
 
 
