@@ -138,6 +138,24 @@ class InstructorController extends Controller
 
 
     }
+    public function delete_materials(Request $request)
+    {
+        $instructor = auth('instructor-api')->user();
+        $material=Materials::find($request->material_id);
+        if ($material)
+        {
+            if ($material->instructor_id == $instructor->id)
+            {
+                $material->delete();
+                return $this->error('Material Deleted Successfully');
+            }
+        }
+        else
+        {
+            return $this->error('No material Found');
+        }
+
+    }
 
 
 }
