@@ -30,6 +30,8 @@ use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\Page;
+use App\Models\Quiz;
+use App\Models\QuizGroups;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -141,7 +143,7 @@ class InstructorController extends Controller
                     $groups=Groups::where('instructor_id',$instructor->id)->pluck('id')->toArray();
                      foreach ($request->group_id as $group)
                     {
-                        if(array_key_exists($group, $groups)){
+                        if(in_array($group, $groups)){
                                 MaterialGroups::create([
                                 'material_id'=>$material->id,
                                 'group_id'=>$group,
@@ -151,6 +153,61 @@ class InstructorController extends Controller
 
                 }
                 return $this->successMessage('Materials Added Successfully');
+
+            }
+            else
+            {
+                return $this->error('Instructor Not Found');
+            }
+        }
+    }
+        public function quizes(Request $request)
+    {
+        $instructor = auth('instructor-api')->user();
+        $oValidatorRules = [
+            'quiz_name' => 'required',
+            'degree' => 'required',
+            'online_course_id' => 'required|exists:online_courses,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+        {
+            return $this->error($validator->messages());
+        }
+        else
+        {
+            if ($instructor)
+            {
+                $quiz=Quiz::create([
+                    'quiz_name'=>$request->quiz_name,
+                    'degree'=>$request->degree,
+                     'online_course_id'=>intval($request->online_course_id),
+                    'instructor_id'=>$instructor->id,
+                ]);
+                if ($request->has('group_id'))
+                {
+                    $oValidatorRules = [
+                          'group_id' => 'required|exists:groups,id',
+                    ];
+                    $validator = Validator::make($request->all(), $oValidatorRules);
+                    if ($validator->fails())
+                    {
+                        return $this->error($validator->messages());
+                    }
+                    $groups=Groups::where('instructor_id',$instructor->id)->pluck('id')->toArray();
+                     foreach ($request->group_id as $group)
+                    {
+                        if(in_array($group, $groups))
+                        {
+                                 QuizGroups::create([
+                                'quiz_id'=>$quiz->id,
+                                'group_id'=>$group,
+                            ]);
+                        }
+                    }
+
+                }
+                return $this->successMessage('Quiz Added Successfully');
 
             }
             else
