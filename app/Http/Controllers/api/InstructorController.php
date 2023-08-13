@@ -236,6 +236,24 @@ class InstructorController extends Controller
         }
 
     }
+    public function delete_quiz($id)
+    {
+        $instructor = auth('instructor-api')->user();
+        $quiz=Quiz::find($id);
+        if ($quiz)
+        {
+            if ($quiz->instructor_id == $instructor->id)
+            {
+                $quiz->delete();
+                return $this->error('Quiz Deleted Successfully');
+            }
+        }
+        else
+        {
+            return $this->error('No Quiz Found');
+        }
+
+    }
  public function online_courses_groups($id)
     {
         $instructor = auth('instructor-api')->user();
