@@ -26,6 +26,7 @@ use App\Models\FreeVideo;
 use App\Models\Groups;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
+use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\Page;
@@ -121,12 +122,34 @@ class InstructorController extends Controller
                     $oValidatorRules['file']=$request->file('file')->move('public/Materials',time() . '_' . random_int(1, 100000) . '.' . $file);
                 }
 
-                Materials::create([
+                $material=Materials::create([
                     'file_name'=>$request->file_name,
                     'file'=>$oValidatorRules['file'],
                     'online_course_id'=>intval($request->online_course_id),
                     'instructor_id'=>$instructor->id,
                 ]);
+                if ($request->has('group_id'))
+                {
+                    $oValidatorRules = [
+                          'group_id' => 'required|exists:groups,id',
+                    ];
+                    $validator = Validator::make($request->all(), $oValidatorRules);
+                    if ($validator->fails())
+                    {
+                        return $this->error($validator->messages());
+                    }
+                    $groups=Groups::where('instructor_id',$instructor->id)->pluck('id')->toArray();
+                     foreach ($request->group_id as $group)
+                    {
+                        if(array_key_exists($group, $groups)){
+                                MaterialGroups::create([
+                                'material_id'=>$material->id,
+                                'group_id'=>$group,
+                            ]);
+                        }
+                    }
+
+                }
                 return $this->successMessage('Materials Added Successfully');
 
             }
@@ -138,10 +161,10 @@ class InstructorController extends Controller
 
 
     }
-    public function delete_materials(Request $request)
+    public function delete_materials($id)
     {
         $instructor = auth('instructor-api')->user();
-        $material=Materials::find($request->material_id);
+        $material=Materials::find($id);
         if ($material)
         {
             if ($material->instructor_id == $instructor->id)
@@ -153,6 +176,28 @@ class InstructorController extends Controller
         else
         {
             return $this->error('No material Found');
+        }
+
+    }
+ public function online_courses_groups($id)
+    {
+        $instructor = auth('instructor-api')->user();
+        $groups=OnlineCourse::find($id);
+        if ($instructor)
+        {
+            if ($groups)
+            {
+                return $this->success($groups->groups);
+            }
+            else
+            {
+                return $this->error('This Online Course Not Found');
+            }
+        }
+        else
+        {
+            return $this->error('Instructor Not Found');
+
         }
 
     }

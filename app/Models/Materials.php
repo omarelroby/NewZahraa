@@ -12,6 +12,7 @@ class Materials extends Model
 {
      protected $table='materials';
      protected $fillable=[
+        'id',
         'file_name',
         'file',
         'online_course_id',

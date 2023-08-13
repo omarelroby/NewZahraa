@@ -28,4 +28,8 @@ class OnlineCourse extends Model implements TranslatableContract
     public function favourite_online_courses(){
         return $this->belongsToMany(Customers::class,'favourite_online_courses','online_course_id','customer_id');
     }
+    public function groups()
+    {
+        return $this->hasMany(Groups::class);
+    }
 }
