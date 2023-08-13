@@ -49,7 +49,7 @@ return [
     'select-country' => 'اختر البلد',
     'countries' => 'البلد',
     'edit-country' => 'تعديل البلد',
-    'add-country' => 'تعديل البلد',
+    'add-country' => 'إضافة البلد',
     'ebooks' => 'الكتاب الإلكتروني',
     'edit-ebooks' => 'تعديل الكتاب الإلكتروني',
     'add-ebooks' => 'إضافة كتاب الكتروني',
