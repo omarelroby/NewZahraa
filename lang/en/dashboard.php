@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'instructor'=>'Instructor',
+    'start-date'=>'Start Date',
+    'end-date'=>'End Date',
+    'groups'=>'Groups',
     'single'=>'single',
     'group'=>'group',
     'success'=>'DATA CREATED SUCCESSFULLY ',

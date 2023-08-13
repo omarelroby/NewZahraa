@@ -11,6 +11,8 @@
                     <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
                 <a class="dropdown-item" href="{{ url("/online-course-indexes/{$id}") }}">
                     <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>
+                <a class="dropdown-item" href="{{ url("/online-course-groups/{$id}") }}">
+                    <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.groups')}}</a>
             </div>
 </div>
 

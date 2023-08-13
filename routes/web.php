@@ -71,6 +71,7 @@ Route::middleware('auth:admin')->group(function () {
 //    Route::resource('index',\App\Http\Controllers\dashboard\IndexesController::class);
      Route::get('index/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index'])->name('index.index');
      Route::get('online-course-indexes/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'index'])->name('onlineCourse.index');
+     Route::get('online-course-groups/{id}',[\App\Http\Controllers\dashboard\OnlineCourseGroupsController::class,'index'])->name('onlineCourse.groups');
      Route::get('videos-indexes/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'index'])->name('video-index.index');
      Route::get('index-create/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'create_index'])->name('indexes.create');
      Route::get('online-course-index-create/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'create_index'])->name('online-indexes.create');

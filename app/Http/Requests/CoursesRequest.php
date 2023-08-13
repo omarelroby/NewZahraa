@@ -31,7 +31,7 @@ class CoursesRequest extends FormRequest
             'description.*' => 'required',
             'preview_video'=>'nullable|mimes:mp4',
             'price'=>'required',
-            'instructor_id'=>'required',
+            'instructor_id'=>'nullable',
 
             ];
         foreach(config('translatable.locales') as $locale) {

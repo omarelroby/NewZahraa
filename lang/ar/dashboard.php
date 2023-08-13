@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'instructor'=>'المدرب',
+    'start-date'=>'تاريخ البداية',
+    'end-date'=>'تاريخ الانتهاء',
+    'groups'=>'المجموعات',
     'single'=>'فردي',
     'group'=>'مجموعة',
     'success'=>'تم إضافة البيانات بنجاح ',
