@@ -25,6 +25,8 @@ class EbookResource extends JsonResource
             'type'=>$this->type,
             'amazon_url'=>$this->amazon_url,
             'price'=>$this->price,
+            'category'=>new CategoryResource($this->category),
+
 
 
         ];

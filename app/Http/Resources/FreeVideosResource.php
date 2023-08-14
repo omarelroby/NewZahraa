@@ -20,6 +20,8 @@ class FreeVideosResource extends JsonResource
             'title' => $this->translate(app()->getLocale())->title,
             'description' => $this->translate(app()->getLocale())->description,
              'youtube_url'=>$this->youtube_url,
+            'category'=>new CategoryResource($this->category),
+
 
 
 

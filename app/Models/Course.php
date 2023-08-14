@@ -16,10 +16,14 @@ class Course extends Model implements TranslatableContract
         'slug',
         'price',
         'preview_video',
+        'category_id',
      ];
 
     public function indexes()
     {
         return $this->hasMany(CourseIndexes::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id');
     }
 }

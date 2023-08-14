@@ -41,7 +41,8 @@ class EbookController extends Controller
     public function create()
     {
         $Languages=Languages::all();
-        return  view('dashboard.ebook.create',compact('Languages'));
+        $categories=Category::with('translations')->get();
+        return  view('dashboard.ebook.create',compact('Languages','categories'));
     }
 
     /**
@@ -99,7 +100,8 @@ class EbookController extends Controller
     {
 
         $ebook=Ebook::find($id);
-        return  view('dashboard.ebook.edit',compact('ebook'));
+        $categories=Category::with('translations')->get();
+        return  view('dashboard.ebook.edit',compact('ebook','categories'));
     }
 
     /**

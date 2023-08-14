@@ -79,7 +79,17 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                            <select type="text" required id="projectinput1" class="form-control"   name="category_id">
+                                                                <option value="">{{__('dashboard.select-category')}}</option>
+                                                                @foreach($categories as $category)
+                                                                    <option value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">

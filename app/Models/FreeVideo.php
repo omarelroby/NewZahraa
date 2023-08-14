@@ -15,8 +15,12 @@ class FreeVideo extends Model implements TranslatableContract
     protected $fillable=[
         'youtube_url',
         'slug',
+        'category_id',
     ];
     public function favourite_free_videos(){
         return $this->belongsToMany(Customers::class,'favourite_free_videos', 'free_videos_id','customer_id');
+    }
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id');
     }
 }

@@ -21,13 +21,16 @@ class Ebook extends Model implements TranslatableContract
         'complete_file',
         'writer',
         'type',
+        'category_id',
         'amazon_url',
         'price'];
     public function favourite_ebook()
     {
         return $this->belongsToMany(Customers::class,'favourite_ebooks','ebooks_id','customer_id');
     }
-
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id');
+    }
 
 
 
