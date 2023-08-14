@@ -32,6 +32,7 @@ Route::middleware("localization")->group(function () {
         Route::get('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_free_videos']);
         Route::get('favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_videos']);
         Route::get('favourite-online-courses',[\App\Http\Controllers\api\CustomerController::class,'show_favourite_online_courses']);
+        Route::get('customer-logout',[\App\Http\Controllers\api\CustomerController::class,'logout']);
 
     });
     Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);
@@ -65,4 +66,6 @@ Route::middleware("localization")->group(function () {
     Route::delete('delete-quiz/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_quiz']);
     Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
     Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
+    Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
+
 });

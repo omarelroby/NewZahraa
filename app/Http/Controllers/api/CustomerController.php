@@ -107,6 +107,14 @@ class CustomerController extends Controller
 
     }
     }
+    public function logout()
+    {
+        $user = auth('api')->user();
+        $user->token()->revoke();
+        return $this->successMessage('Logout Done');
+
+
+    }
     public function favourite_videos(Request $request)
     {
         $customer=auth('api')->user();

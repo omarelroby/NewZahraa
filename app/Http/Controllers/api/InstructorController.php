@@ -63,6 +63,12 @@ class InstructorController extends Controller
 
 
     }
+    public function logout()
+    {
+        $user = auth('instructor-api')->user();
+        $user->token()->revoke();
+        return $this->successMessage('Logout Done');
+    }
     public function groups(Request $request)
     {
         $instructor = auth('instructor-api')->user();
