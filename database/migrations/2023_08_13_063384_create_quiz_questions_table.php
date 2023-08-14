@@ -10,11 +10,7 @@ class CreateQuizQuestionsTable extends Migration {
 		Schema::create('quiz_questions', function(Blueprint $table) {
 			$table->increments('id');
 			$table->text('name');
-			$table->tinyInteger('is_discount')->default(0);
 			$table->text('type');
-			$table->decimal('discount')->nullable();
-			$table->decimal('discount_score')->nullable();
-			$table->decimal('pass_score')->nullable();
 			$table->decimal('degree');
 			$table->text('correct_answer');
             $table->integer('quiz_id')->unsigned();

@@ -12,6 +12,13 @@ class RemoveInstructorFromCoursesTable extends Migration {
             $table->dropColumn(['instructor_id']);
         });
 	}
+    public function down()
+	{
+        Schema::table('courses', function($table) {
+            $table->dropForeign(['instructor_id']);
+            $table->dropColumn(['instructor_id']);
+        });
+	}
 
 
 

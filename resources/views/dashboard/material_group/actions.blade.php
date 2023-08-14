@@ -8,6 +8,8 @@
 
                 <a class="dropdown-item" href="{{ url("/attachments/{$id}") }}">
                     <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.attachments')}}</a>
+                <a class="dropdown-item" href="{{ url("/quizes/{$id}") }}">
+                    <i class="fa fa-book mr-1"></i> {{__('dashboard.quizes')}}</a
             </div>
 </div>
 

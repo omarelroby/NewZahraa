@@ -85,7 +85,8 @@ Route::middleware('auth:admin')->group(function () {
      Route::delete('index-delete/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'destroy'])->name('delete-index');
      Route::delete('online-course-index-delete/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'destroy'])->name('online-course-delete-index');
      Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);
-     Route::get('attachments/{id}',[\App\Http\Controllers\dashboard\MaterialGroupController::class,'index']);
+     Route::get('group-attachments/{id}',[\App\Http\Controllers\dashboard\MaterialGroupController::class,'index']);
+     Route::get('quizes/{id}',[\App\Http\Controllers\dashboard\ShowQuizController::class,'index']);
 
 });
 

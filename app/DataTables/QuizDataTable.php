@@ -22,7 +22,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class MaterialsDataTable extends DataTable
+class QuizDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -37,10 +37,7 @@ class MaterialsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 
-            ->addColumn('file', function ($q) {
-                $url= asset($q->file);
-                return '<a href="'.$url.'" align="center">'.'عرض'.'</a>';
-            })
+
             ->addColumn('action', 'dashboard.attachments.actions')
             ->rawColumns([ 'file']);
     }
@@ -105,6 +102,6 @@ class MaterialsDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'MaterialsGroups_' . date('YmdHis');
+        return 'QuizGroups_' . date('YmdHis');
     }
 }

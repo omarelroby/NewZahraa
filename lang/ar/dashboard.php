@@ -12,6 +12,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'quiz_name'=>'اسم الاختبار القصير',
+    'degree'=>'الدرجة',
+    'discount'=>'الخصم',
+    'discount_score'=>'نقاط الخصم',
+    'quizes'=>'الاختبارات',
     'file_name'=>'اسم الملف',
     'file'=>' الملف',
     'attachments'=>'الملحقات',

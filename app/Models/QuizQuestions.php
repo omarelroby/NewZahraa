@@ -18,8 +18,7 @@ class QuizQuestions extends Model
         'correct_answer',
         'degree',
         'quiz_id',
-        'discount_score',
-        'discount',
+
     ];
     public function instructors(){
         return $this->belongsTo(Instructor::class,'instructor_id');

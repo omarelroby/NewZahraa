@@ -12,6 +12,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'quiz_name'=>'Quiz Name',
+    'degree'=>'Degree',
+    'discount'=>'Discount',
+    'discount_score'=>'Discount Score',
+    'quizes'=>'Quizes',
     'file_name'=>'File Name',
     'file'=>' File',
     'attachments'=>'Attachments',

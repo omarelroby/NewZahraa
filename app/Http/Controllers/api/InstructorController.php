@@ -84,6 +84,7 @@ class InstructorController extends Controller
                 'name'=>$request->name,
                 'start_date'=>$request->start_date,
                 'end_date'=>$request->end_date,
+                'zoom_link'=>$request->zoom_link,
                  'online_course_id'=>$request->online_course_id,
             ]);
             foreach ($request->days as $day)
@@ -180,9 +181,23 @@ class InstructorController extends Controller
         {
             if ($instructor)
             {
+                if ($request->is_discount==1)
+                {
+                    $oValidatorRules = [
+                        'discount_score' => 'required',
+                        'discount' => 'required',
+                    ];
+                    $validator = Validator::make($request->all(), $oValidatorRules);
+                    if ($validator->fails())
+                    {
+                        return $this->error($validator->messages());
+                    }
                 $quiz=Quiz::create([
                     'quiz_name'=>$request->quiz_name,
                     'degree'=>$request->degree,
+                    'is_discount'=>$request->is_discount,
+                    'discount'=>$request->discount,
+                    'discount_score'=>$request->discount_score,
                      'online_course_id'=>intval($request->online_course_id),
                     'instructor_id'=>$instructor->id,
                 ]);
@@ -211,6 +226,42 @@ class InstructorController extends Controller
                 }
                 return $this->successMessage('Quiz Added Successfully');
 
+            }
+                else
+                {
+
+                    $quiz=Quiz::create([
+                        'quiz_name'=>$request->quiz_name,
+                        'degree'=>$request->degree,
+                         'online_course_id'=>intval($request->online_course_id),
+                        'instructor_id'=>$instructor->id,
+                    ]);
+                    if ($request->has('group_id'))
+                    {
+                        $oValidatorRules = [
+                            'group_id' => 'required|exists:groups,id',
+                        ];
+                        $validator = Validator::make($request->all(), $oValidatorRules);
+                        if ($validator->fails())
+                        {
+                            return $this->error($validator->messages());
+                        }
+                        $groups=Groups::where('instructor_id',$instructor->id)->pluck('id')->toArray();
+                        foreach ($request->group_id as $group)
+                        {
+                            if(in_array($group, $groups))
+                            {
+                                QuizGroups::create([
+                                    'quiz_id'=>$quiz->id,
+                                    'group_id'=>$group,
+                                ]);
+                            }
+                        }
+
+                    }
+                    return $this->successMessage('Quiz Added Successfully');
+
+                }
             }
             else
             {
@@ -284,100 +335,32 @@ class InstructorController extends Controller
             'quiz_id' => 'required|exists:quiz,id',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        if ($request->type=='question_options')
+        if ($request->type == 'question_options')
         {
-            if ($request->is_discount==1)
-            {
-                $oValidatorRules = [
-                    'discount_score' => 'required',
-                    'discount' => 'required',
-                ];
-                $validator = Validator::make($request->all(), $oValidatorRules);
-                if ($validator->fails())
-                {
-                    return $this->error($validator->messages());
-                }
-                $question=QuizQuestions::create([
-                    'name'=>$request->name,
-                    'type'=>$request->type,
-                    'discount'=>$request->discount,
-                    'discount_score'=>$request->discount_score,
-                    'degree'=>$request->degree,
-                    'correct_answer'=>$request->correct_answer,
-                    'quiz_id'=>$request->quiz_id,
+            $question = QuizQuestions::create([
+                'name' => $request->name,
+                'type' => $request->type,
+                'degree' => $request->degree,
+                'correct_answer' => $request->correct_answer,
+                'quiz_id' => $request->quiz_id,
+            ]);
+            foreach ($request->answer as $key => $answer) {
+                QuestionsOptions::create
+                ([
+                    'answer' => $answer,
+                    'answer_number' => ++$key,
+                    'quiz_question_id' => $question->id,
                 ]);
-                foreach ($request->answer as $key=>$answer) {
-                    QuestionsOptions::create
-                    ([
-                        'answer'=>$answer,
-                        'answer_number'=>++$key,
-                        'quiz_question_id' => $question->id,
-                    ]);
-                }
-                return $this->successMessage('Quize Question Added Successfully');
+            }
+            return $this->successMessage('Quize Question Added Successfully');
 
-            }
-            else
-            {
-                $oValidatorRules = [
-                    'discount_score' => 'required',
-                    'discount' => 'required',
-                ];
-                $validator = Validator::make($request->all(), $oValidatorRules);
-                if ($validator->fails())
-                {
-                    return $this->error($validator->messages());
-                }
-                $question=QuizQuestions::create([
-                    'name'=>$request->name,
-                    'type'=>$request->type,
-                    'degree'=>$request->degree,
-                    'correct_answer'=>$request->correct_answer,
-                    'quiz_id'=>$request->quiz_id,
-                ]);
-                foreach ($request->answer as $key=>$answer) {
-                    QuestionsOptions::create
-                    ([
-                        'answer'=>$answer,
-                        'answer_number'=>++$key,
-                        'quiz_question_id' => $question->id,
-                    ]);
-                }
-                return $this->successMessage('Quize Question Added Successfully');
-            }
         }
-
         else
         {
-            if ($request->is_discount==1)
-            {
-                $oValidatorRules = [
-                    'discount_score' => 'required',
-                    'discount' => 'required',
-                ];
-                $validator = Validator::make($request->all(), $oValidatorRules);
-                if ($validator->fails())
-                {
-                    return $this->error($validator->messages());
-                }
-                QuizQuestions::create([
-                    'name'=>$request->name,
-                    'type'=>$request->type,
-                    'degree'=>$request->degree,
-                    'discount'=>$request->discount,
-                    'discount_score'=>$request->discount_score,
-                    'correct_answer'=>$request->correct_answer,
-                    'quiz_id'=>$request->quiz_id,
-                ]);
-                return $this->error('Data Saved Successfully');
 
-            }
-            else
-            {
                 QuizQuestions::create([
                     'name'=>$request->name,
                     'type'=>$request->type,
@@ -387,10 +370,10 @@ class InstructorController extends Controller
                 ]);
                 return $this->error('Data Saved Successfully');
 
-            }
 
         }
-    }
 
 
+
+}
 }

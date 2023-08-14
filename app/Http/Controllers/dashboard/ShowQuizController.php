@@ -11,6 +11,7 @@ use App\DataTables\MaterialsDataTable;
 use App\DataTables\OnlineCourseGroupsDataTable;
 use App\DataTables\OnlineCourseIndexDataTable;
 use App\DataTables\PagesDataTable;
+use App\DataTables\QuizesDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CountryRequest;
@@ -42,14 +43,14 @@ use App\DataTables\CategoriesDataTable;
 use function PHPUnit\Framework\countOf;
 
 
-class MaterialGroupController extends Controller
+class ShowQuizController extends Controller
 {
 
 
-    public function index(MaterialsDataTable $dataTable, $id)
+    public function index(QuizesDataTable $dataTable, $id)
     {
 
-        return $dataTable->with('group_id', $id)->render('dashboard.material_group.index', compact('id'));
+        return $dataTable->with('group_id', $id)->render('dashboard.quiz_group.index', compact('id'));
     }
 
 

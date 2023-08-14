@@ -13,6 +13,8 @@ use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourseIndexes;
 use App\Models\Page;
+use App\Models\Quiz;
+use App\Models\QuizGroups;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -22,7 +24,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class MaterialsDataTable extends DataTable
+class QuizesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -37,12 +39,9 @@ class MaterialsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 
-            ->addColumn('file', function ($q) {
-                $url= asset($q->file);
-                return '<a href="'.$url.'" align="center">'.'عرض'.'</a>';
-            })
-            ->addColumn('action', 'dashboard.attachments.actions')
-            ->rawColumns([ 'file']);
+
+            ->addColumn('action', 'dashboard.quiz_group.actions')
+            ->rawColumns( ['action']);
     }
 
     /**
@@ -53,8 +52,8 @@ class MaterialsDataTable extends DataTable
      */
     public function query(): QueryBuilder
     {
-        $group=MaterialGroups::where('group_id',$this->group_id)->first();
-        return Materials::where('id', $group->material_id);
+        $quiz=QuizGroups::where('group_id',$this->group_id)->first();
+         return Quiz::where('id', $quiz->quiz_id);
     }
 
     /**
@@ -65,7 +64,7 @@ class MaterialsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('material-group-table')
+                    ->setTableId('quizes-group-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                      ->orderBy(0)
@@ -90,10 +89,14 @@ class MaterialsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('file_name')
-                ->title(__('dashboard.file_name')),
-            Column::make('file')
-                ->title(__('dashboard.file')),
+            Column::make('quiz_name')
+                ->title(__('dashboard.quiz_name')),
+            Column::make('degree')
+                ->title(__('dashboard.degree')),
+            Column::make('discount')
+                ->title(__('dashboard.discount')),
+            Column::make('discount_score')
+                ->title(__('dashboard.discount_score')),
 
         ];
     }
@@ -105,6 +108,6 @@ class MaterialsDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'MaterialsGroups_' . date('YmdHis');
+        return 'QuizGroups_' . date('YmdHis');
     }
 }

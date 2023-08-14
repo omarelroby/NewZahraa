@@ -11,6 +11,10 @@ class CreateQuizesTable extends Migration {
 			$table->increments('id');
             $table->text('quiz_name')->nullable();
             $table->text('degree')->nullable();
+            $table->tinyInteger('is_discount')->default(0);
+            $table->decimal('discount')->nullable();
+            $table->decimal('discount_score')->nullable();
+            $table->decimal('pass_score')->nullable();
             $table->integer('instructor_id')->unsigned();
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->integer('online_course_id')->unsigned();
