@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'file_name'=>'اسم الملف',
+    'file'=>' الملف',
+    'attachments'=>'الملحقات',
     'instructor'=>'المدرب',
     'start-date'=>'تاريخ البداية',
     'end-date'=>'تاريخ الانتهاء',

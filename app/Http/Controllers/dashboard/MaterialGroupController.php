@@ -7,6 +7,7 @@ use App\DataTables\CustomersDataTable;
 use App\DataTables\EbookDataTable;
 use App\DataTables\IndexDataTable;
 use App\DataTables\InstructorsDataTable;
+use App\DataTables\MaterialsDataTable;
 use App\DataTables\OnlineCourseGroupsDataTable;
 use App\DataTables\OnlineCourseIndexDataTable;
 use App\DataTables\PagesDataTable;
@@ -40,31 +41,23 @@ use App\DataTables\CategoriesDataTable;
 use function PHPUnit\Framework\countOf;
 
 
-class OnlineCourseGroupsController extends Controller
+class MaterialGroupController extends Controller
 {
 
 
-    public function index(OnlineCourseGroupsDataTable $dataTable, $id)
+    public function index(MaterialsDataTable $dataTable, $id)
     {
-        return $dataTable->with('online_course_id', $id)->render('dashboard.online_course_groups.index', compact('id'));
+        dd('m');
+        return $dataTable->with('group_id', $id)->render('dashboard.material_group.index', compact('id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create_index($id)
     {
         return view('dashboard.online_course_index.create', compact('id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(OnlineCoursesIndexRequest $request)
     {
 //        dd($request->course_id);
@@ -81,17 +74,8 @@ class OnlineCourseGroupsController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function show($id)
-    {
-        //
-    }
+
+
 
     /**
      * Show the form for editing the specified resource.
