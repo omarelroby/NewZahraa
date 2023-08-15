@@ -88,6 +88,9 @@ Route::middleware('auth:admin')->group(function () {
      Route::get('group-attachments/{id}',[\App\Http\Controllers\dashboard\MaterialGroupController::class,'index']);
      Route::get('quizes/{id}',[\App\Http\Controllers\dashboard\ShowQuizController::class,'index']);
      Route::get('index-videos/{id}',[\App\Http\Controllers\dashboard\IndexVideosController::class,'index']);
+     Route::get('indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'index'])->name('indexes-videos');
+     Route::get('create-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'create']);
+     Route::post('store-indexes-videos',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'store']);
 
 });
 
