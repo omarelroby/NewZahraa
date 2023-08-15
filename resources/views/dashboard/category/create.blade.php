@@ -61,6 +61,18 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput2">{{__('dashboard.type')}} ({{$locale}})</label>
+                                                                <select   required id="projectinput2" class="form-control"   name="type">
+                                                                    <option value="">{{__('dashboard.select-type')}}</option>
+                                                                    <option value="Ebook">Ebook</option>
+                                                                    <option value="Free-video">Free-video</option>
+                                                                    <option value="Online-course">Online-course</option>
+                                                                    <option value="Course">Course</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">

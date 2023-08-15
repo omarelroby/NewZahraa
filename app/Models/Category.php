@@ -13,7 +13,7 @@ class Category extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name'];
 
-    protected $fillable= ['slug'];
+    protected $fillable= ['slug','type'];
 
 
 }

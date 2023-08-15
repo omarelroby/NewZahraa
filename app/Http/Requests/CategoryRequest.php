@@ -23,7 +23,10 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $rules=['en.name'=>'required'];
+        $rules=[
+            'en.name'=>'required',
+            'type'=>'required',
+        ];
         foreach(config('translatable.locales') as $locale) {
             $rules[$locale.'.name']='string';
         }

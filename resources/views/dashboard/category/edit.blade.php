@@ -62,6 +62,18 @@
                                                         </div>
                                                     </div>
                                                  @endforeach
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput2">{{__('dashboard.type')}} ({{$locale}})</label>
+                                                                <select   required id="projectinput2" class="form-control"   name="type">
+                                                                    <option value="">{{__('dashboard.select-type')}}</option>
+                                                                    <option @if($category->type=='Ebook') selected @endif value="Ebook">Ebook</option>
+                                                                    <option @if($category->type=='Free-video') selected @endif value="Free-video">Free-video</option>
+                                                                    <option @if($category->type=='Online-course') selected @endif value="Online-course">Online-course</option>
+                                                                    <option @if($category->type=='Course') selected @endif value="Course">Course</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">

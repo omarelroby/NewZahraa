@@ -142,6 +142,26 @@ class HomeController extends Controller
         $questions=Questions::all();
         return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
+    public function course_category()
+    {
+        $category=Category::where('type','Course')->get();
+        return $this->success(CategoryResource::collection($category));
+    }
+    public function free_video_category()
+    {
+        $category=Category::where('type','Free-video')->get();
+        return $this->success(CategoryResource::collection($category));
+    }
+    public function online_course_category()
+    {
+        $category=Category::where('type','Online-course')->get();
+        return $this->success(CategoryResource::collection($category));
+    }
+    public function Ebooks()
+    {
+        $category=Category::where('type','Ebook')->get();
+        return $this->success(CategoryResource::collection($category));
+    }
 
 
 }

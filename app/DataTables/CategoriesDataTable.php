@@ -82,6 +82,8 @@ class CategoriesDataTable extends DataTable
                 ->title(__('dashboard.name(ar)')),
             Column::make('name(en)')
                 ->title(__('dashboard.name(en)')),
+            Column::make('type')
+                ->title(__('dashboard.type')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)
