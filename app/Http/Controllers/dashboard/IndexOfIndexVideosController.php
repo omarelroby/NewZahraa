@@ -30,6 +30,7 @@ use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
 use App\Models\Page;
+use App\Models\VideosIndexes;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
@@ -53,6 +54,12 @@ class IndexOfIndexVideosController extends Controller
         $indexes_video_id=$id;
         return view('dashboard.index_of_videos.create', compact('indexes_video_id'));
     }
+    public function edit($id)
+    {
+        $index=IndexesVideo::find($id);
+
+        return view('dashboard.index_of_videos.edit',compact('index'));
+    }
 
 
     public function store(IndexOfVideosRequest $request)
@@ -64,18 +71,21 @@ class IndexOfIndexVideosController extends Controller
 
     }
 
-    public
-    function show($id)
+    public function update(IndexOfVideosRequest $request,$id)
     {
-        //
+       $index=IndexesVideo::find($id);
+       $index->update($request->all());
+        Alert::success('Updated', __('dashboard.update'));
+        return redirect()->route('indexes-videos', $request->indexes_video_id);
+
     }
 
 
     public function destroy($id)
     {
-        $course=CourseIndexes::find($id);
-        $course->delete();
+        $index=IndexesVideo::find($id);
+        $index->delete();
         Alert::error('Deleted', __('dashboard.deleted'));
-        return redirect()->route('index.index', $course->course_id);
+        return redirect()->route('indexes-videos', $index->indexes_video_id);
     }
 }

@@ -124,6 +124,7 @@ return [
      'edit-courses' => 'EDIT COURSES',
      'indexes' => 'INDEXES',
      'add-indexes' => 'ADD INDEXES',
+     'edit-indexes' => 'EDIT INDEXES',
      'home-section' => 'HOME SECTION',
      'edit-home-section' => 'EDIT HOME SECTION',
      'add-section' => 'ADD HOME SECTION',

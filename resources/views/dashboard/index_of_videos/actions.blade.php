@@ -1,9 +1,9 @@
 
+<d
 <div class="btn-group float-md-right">
-            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
-            <div class="dropdown-menu">
-
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
+    <div class="dropdown-menu">
 
 
                 <a class="dropdown-item" href="{{ url("/indexes-videos/{$id}") }}">

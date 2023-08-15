@@ -83,14 +83,17 @@ Route::middleware('auth:admin')->group(function () {
      Route::put('video-index-update/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'update'])->name('update-video-index');
      Route::delete('video-index-delete/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'destroy'])->name('delete-video-index');
      Route::delete('index-delete/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'destroy'])->name('delete-index');
+     Route::delete('/index-video-delete/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'destroy'])->name('delete-video-index');
      Route::delete('online-course-index-delete/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'destroy'])->name('online-course-delete-index');
      Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);
      Route::get('group-attachments/{id}',[\App\Http\Controllers\dashboard\MaterialGroupController::class,'index']);
      Route::get('quizes/{id}',[\App\Http\Controllers\dashboard\ShowQuizController::class,'index']);
      Route::get('index-videos/{id}',[\App\Http\Controllers\dashboard\IndexVideosController::class,'index']);
      Route::get('indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'index'])->name('indexes-videos');
+     Route::resource('indexes-videos',\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class);
      Route::get('create-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'create']);
      Route::post('store-indexes-videos',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'store']);
+     Route::put('update-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'update']);
 
 });
 

@@ -3,6 +3,11 @@
             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
             <div class="dropdown-menu">
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
+                    <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
+                {{--                <div class="dropdown-divider"></div>--}}
+                <a class="dropdown-item" href="{{ url("/indexes-videos/{$id}/edit") }}">
+                    <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
 
 
 
@@ -25,7 +30,7 @@
                 <div class="modal-body">
                     <p>{{__('dashboard.delete-message')}}  </p>
                 </div>
-                <form action="{{ url("/index-delete/{$id}") }}" method="POST">
+                <form action="{{ url("/index-video-delete/{$id}") }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">{{__('dashboard.close')}}</button>

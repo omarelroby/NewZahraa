@@ -121,6 +121,7 @@ return [
     'edit-courses' => 'تعديل كورسات',
     'indexes' => 'الفهرس',
     'add-indexes' => 'إضافة فهرس',
+    'edit-indexes' => 'تعديل فهرس',
     'home-section' => 'قسم الصفحة الرئيسية',
     'edit-home-section' => 'تعديل قسم الصفحة الرئيسية',
     'add-section' => 'إضافة بيانات الصفحة الرئيسية',
