@@ -89,23 +89,52 @@ class HomeController extends Controller
         return $this->success(PagesResource::collection($pages));
 
     }
-    public function eBook(){
-        $ebooks=Ebook::all();
-        return $this->success(EbookResource::collection($ebooks));
+    public function eBook(Request $request)
+    {
+        if($request->category_ids!=null)
+            {
+              $ebooks=Ebook::whereIn('id',$request->category_ids)->get();
+             return $this->success(EbookResource::collection($ebooks));
+            }
+        else
+        {
+            $ebooks=Ebook::all();
+            return $this->success(EbookResource::collection($ebooks));
+
+        }
 
     }
-    public function courses(){
-        $courses=Course::all();
-        return $this->success(CoursesResource::collection($courses));
+    public function courses(Request $request){
+        if($request->category_ids!=null)
+        {
+            $courses = Course::whereIn('id',$request->category_ids)->get();
+            return $this->success(CoursesResource::collection($courses));
+        }
+        else
+        {
+            $courses=Course::all();
+            return $this->success(CoursesResource::collection($courses));
+
+        }
     }
     public function videos()
     {
         $videos=Videos::all();
         return $this->success(VideosResource::collection($videos));
     }
-    public function free_videos(){
-        $free_videos=FreeVideo::all();
-        return $this->success(FreeVideosResource::collection($free_videos));
+    public function free_videos(Request $request)
+    {
+        if($request->category_ids!=null)
+        {
+            $free_videos = FreeVideo::whereIn('id',$request->category_ids)->get();
+            return $this->success(FreeVideosResource::collection($free_videos));
+        }
+        else
+        {
+            $free_videos=FreeVideo::all();
+            return $this->success(FreeVideosResource::collection($free_videos));
+
+        }
     }
     public function home_section(){
         $home=HomeSection::first();
@@ -134,9 +163,18 @@ class HomeController extends Controller
 
         }
     }
-    public function online_courses(){
-        $courses=OnlineCourse::all();
-        return $this->success(OnlineCourses::collection($courses));
+    public function online_courses(Request $request){
+        if($request->category_ids!=null)
+        {
+            $courses = OnlineCourse::whereIn('id', $request->category_ids)->get();
+            return $this->success(OnlineCourses::collection($courses));
+        }
+        else
+        {
+            $courses=OnlineCourse::all();
+            return $this->success(OnlineCourses::collection($courses));
+
+        }
     }
     public function questions(){
         $questions=Questions::all();
