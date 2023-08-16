@@ -35,6 +35,8 @@ Route::middleware("localization")->group(function () {
         Route::get('customer-logout',[\App\Http\Controllers\api\CustomerController::class,'logout']);
         Route::post('buy-ebook',[\App\Http\Controllers\api\CustomerController::class,'buy_ebook']);
         Route::post('buy-course',[\App\Http\Controllers\api\CustomerController::class,'buy_course']);
+        Route::get('customer-ebook-orders',[\App\Http\Controllers\api\CustomerController::class,'customer_ebook_orders']);
+        Route::get('customer-course-orders',[\App\Http\Controllers\api\CustomerController::class,'customer_course_orders']);
 
     });
     Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);

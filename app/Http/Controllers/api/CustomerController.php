@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
+use App\Http\Resources\CourseOrderResource;
 use App\Http\Resources\CustomerResource;
+use App\Http\Resources\EbookOrderResource;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\FavouriteEbooksResource;
 use App\Http\Resources\FavouriteFreeVideosResource;
@@ -532,6 +534,36 @@ class CustomerController extends Controller
             ]);
             return  $this->successMessage('You have been booked this course');
         }
+    }
+    public function customer_ebook_orders()
+    {
+        $customer=auth('api')->user();
+        $ebooks=EbookOrders::where('customer_id',$customer->id)->get();
+        if ($customer)
+        {
+            return $this->success(EbookOrderResource::collection($ebooks));
+        }
+        else
+        {
+            return $this->error('Not Found this Customer');
+        }
+
+
+    }
+    public function customer_course_orders()
+    {
+        $customer=auth('api')->user();
+        $courses=CourseOrders::where('customer_id',$customer->id)->get();
+        if ($customer)
+        {
+            return $this->success(CourseOrderResource::collection($courses));
+        }
+        else
+        {
+            return $this->error('Not Found this Customer');
+        }
+
+
     }
 
 
