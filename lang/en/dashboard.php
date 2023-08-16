@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'payment_method'=>'Payment Method',
+    'status'=>'Status',
+    'total'=>'Total',
+    'ebook-orders'=>'Ebook Orders',
     'quiz_name'=>'Quiz Name',
     'degree'=>'Degree',
     'discount'=>'Discount',

@@ -253,6 +253,14 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span> </a>
+                <ul class="menu-content">
+                    <li >
+                        <a class="menu-item" href="{{route('ebook-orders.index')}}" data-i18n="nav.dash.ecommerce">{{__('dashboard.ebook-orders')}}</a>
+                    </li>
+                </ul>
+            </li>
 
 
 

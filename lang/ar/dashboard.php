@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'payment_method'=>'وسيلة الدفع',
+    'status'=>'الحالة',
+    'total'=>'الإجمالي',
+    'ebook-orders'=>'طلبات الكتب الإلكترونية',
     'quiz_name'=>'اسم الاختبار القصير',
     'degree'=>'الدرجة',
     'discount'=>'الخصم',
