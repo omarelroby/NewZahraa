@@ -19,7 +19,7 @@ class Authenticate extends Middleware
     {
         if(request()->hasHeader('Authorization') || $request->is('api/*')){
 
-            $this->error('Unauthenticated',[],401);
+            abort($this->error('Unauthenticated',[],401));
     }
         if (! $request->expectsJson()) {
             return route('login');
