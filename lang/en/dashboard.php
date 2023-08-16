@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'course-orders'=>'Courses Orders',
     'payment_method'=>'Payment Method',
     'status'=>'Status',
     'total'=>'Total',

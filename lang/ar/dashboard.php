@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'course-orders'=>'طلبات الكورسات',
     'payment_method'=>'وسيلة الدفع',
     'status'=>'الحالة',
     'total'=>'الإجمالي',

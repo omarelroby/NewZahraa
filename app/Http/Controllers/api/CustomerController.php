@@ -19,6 +19,7 @@ use App\Http\Resources\VideosResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
+use App\Models\CourseOrders;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\EbookOrders;
@@ -499,10 +500,39 @@ class CustomerController extends Controller
                 'price'=>$price,
                 'total'=>$price,
             ]);
-            return  $this->successMessage('You have been booked your E-book');
+            return  $this->successMessage('You have been booked this E-book');
         }
     }
 
+    public function buy_course(Request $request)
+    {
+        $customer_id=auth('api')->user()->id;
+        $check=CourseOrders::where('id',$customer_id)->first();
+        $price=Course::find($request->course_id)->price;
+        $oValidatorRules =
+            [
+                'course_id' => 'required|exists:courses,id',
+            ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+        {
+            return $this->error($validator->messages());
+        }
+        if ($check)
+        {
+            return $this->successMessage(' You have Already Book this Course');
+        }
+        else
+        {
+            CourseOrders::create([
+                'customer_id'=>$customer_id,
+                'course_id'=>$request->course_id,
+                'price'=>$price,
+                'total'=>$price,
+            ]);
+            return  $this->successMessage('You have been booked this course');
+        }
+    }
 
 
 
