@@ -27,7 +27,7 @@ trait response
      * @param integer $status
      * @return JsonResponse
      */
-    public function error($message = '', array $data = [], int $status = 500): JsonResponse
+    public function error($message = '', array $data = [], int $status = 200): JsonResponse
     {
         $data = ($data) ? $data : (object) [];
         return response()->json([
