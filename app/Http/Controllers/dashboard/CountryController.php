@@ -55,8 +55,6 @@ class CountryController extends Controller
             $file=$request->file('image')->getClientOriginalExtension();
             $path = Storage::disk('s3')->put('countries/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
-            //$data['image']=$request->file('image')->move('public/countries',time() . '_' . random_int(1, 100000) . '.' . $file);
-            dd($data['image']);
 
         }
         $data['slug'] = Str::slug($data['en']['name'],'-');
