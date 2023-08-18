@@ -26,9 +26,11 @@ use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\EbookOrders;
 use App\Models\FreeVideo;
+use App\Models\Groups;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
+use App\Models\OnlineCourseOrders;
 use App\Models\Page;
 use App\Models\Videos;
 use App\Traits\response;
@@ -533,6 +535,41 @@ class CustomerController extends Controller
                 'total'=>$price,
             ]);
             return  $this->successMessage('You have been booked this course');
+        }
+    }
+    public function online_course_orders(Request $request)
+    {
+        $customer_id=auth('api')->user()->id;
+        $check=OnlineCourseOrders::where('customer_id',$customer_id)->first();
+        $course=OnlineCourse::find($request->online_course_id);
+        $price=$course->price;
+        $instructor_id=Groups::find($request->group_id)->instructor_id;
+        $oValidatorRules =
+            [
+                'online_course_id' => 'required|exists:online_courses,id',
+                'group_id' => 'required|exists:groups,id',
+            ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+        {
+            return $this->error($validator->messages());
+        }
+         if ($check&&$course->type=='single')
+        {
+            return $this->error(' You have Already Book this Online Course');
+        }
+
+        else
+        {
+            OnlineCourseOrders::create([
+                'customer_id'=>$customer_id,
+                'group_id'=>$request->group_id,
+                'instructor_id'=>$instructor_id,
+                'online_course_id'=>$request->online_course_id,
+                'price'=>$price,
+                'total'=>$price,
+            ]);
+            return  $this->successMessage('You have been booked this online course');
         }
     }
     public function customer_ebook_orders()
