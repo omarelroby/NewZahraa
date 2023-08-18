@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -52,7 +53,8 @@ class CountryController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/countries',time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('countries/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
 
         }
         $data['slug'] = Str::slug($data['en']['name'],'-');
