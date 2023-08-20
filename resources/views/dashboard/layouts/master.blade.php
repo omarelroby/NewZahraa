@@ -117,7 +117,7 @@
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 
                                 <a class="dropdown-item"
-                                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"><i
+                                   href="{{ url(LaravelLocalization::getLocalizedURL($localeCode, null, [], true)) }}"><i
                                         class="flag-icon flag-icon-{{$properties['regional']}}"></i> {{ $properties['native'] }}
                                 </a>
 
