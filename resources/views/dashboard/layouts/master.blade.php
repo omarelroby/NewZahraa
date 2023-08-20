@@ -70,6 +70,13 @@
         </style>
 
     @endif
+    <style>
+        .dataTables_wrapper
+        {
+            overflow-x: scroll;
+
+        }
+    </style>
 
     <!-- END Custom CSS-->
 </head>
