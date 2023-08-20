@@ -36,4 +36,7 @@ class Instructor extends Authenticatable
     public function OnlineCourses(){
         return $this->belongsToMany(OnlineCourse::class,'online_courses_and_instructors','online_course_id','instructor_id');
     }
+    public function attachments(){
+        return $this->hasMany(InstructorAttachs::class);
+    }
 }
