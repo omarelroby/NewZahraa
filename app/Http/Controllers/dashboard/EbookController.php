@@ -14,6 +14,7 @@ use App\Models\Ebook;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
@@ -56,7 +57,8 @@ class EbookController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('ebooks/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
 
         }
         if ($request->has('sample_file')){
@@ -117,8 +119,8 @@ class EbookController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('ebooks/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         if ($request->has('sample_file')){
             $file=$request->file('sample_file')->getClientOriginalExtension();

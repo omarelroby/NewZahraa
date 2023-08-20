@@ -51,7 +51,7 @@ class CountryController extends Controller
     public function store(CountryRequest $request)
     {
         $data=$request->all();
-        if ($request->has('image')){
+         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
             $path = Storage::disk('s3')->put('countries/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);

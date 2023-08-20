@@ -28,6 +28,7 @@ use App\Models\Videos;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
@@ -96,15 +97,17 @@ class VideosController extends Controller
     public function store(VideosRequest $request)
     {
         $data=$request->all();
-        if($request->has('preview_video')){
-            $path='public/coursesVideos';
+        if($request->has('preview_video'))
+        {
             $file=$request->file('preview_video')->getClientOriginalExtension();
-            $data['preview_video']=$request->file('preview_video')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('Videos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->preview_video, 'public');
+            $data['preview_video'] = Storage::disk('s3')->url($path);
         }
-        if($request->has('complete_video')){
-            $path='public/coursesVideos';
+        if($request->has('complete_video'))
+        {
             $file=$request->file('complete_video')->getClientOriginalExtension();
-            $data['complete_video']=$request->file('complete_video')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('Videos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_video, 'public');
+            $data['complete_video'] = Storage::disk('s3')->url($path);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Videos::create($data);

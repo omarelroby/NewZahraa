@@ -17,6 +17,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
@@ -56,16 +57,17 @@ class PagesController extends Controller
     public function store(PagesRequest $request)
     {
         $data=$request->all();
-        if ($request->has('image')){
+        if ($request->has('image'))
+        {
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('Pages/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
 
         if ($request->has('upload_video')){
             $file=$request->file('upload_video')->getClientOriginalExtension();
-            $data['upload_video']=$request->file('upload_video')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('Pages/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->upload_video, 'public');
+            $data['upload_video'] = Storage::disk('s3')->url($path);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Page::create($data) ;
@@ -114,14 +116,16 @@ class PagesController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('Pages/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
 
         }
 
-        if ($request->has('upload_video')){
+        if ($request->has('upload_video'))
+        {
             $file=$request->file('upload_video')->getClientOriginalExtension();
-            $data['upload_video']=$request->file('upload_video')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('Pages/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->upload_video, 'public');
+            $data['upload_video'] = Storage::disk('s3')->url($path);
         }
         $pages->update($data);
         $pages->save();

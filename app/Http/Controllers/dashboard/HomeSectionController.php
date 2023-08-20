@@ -28,6 +28,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -94,9 +95,9 @@ class HomeSectionController extends Controller
     {
         $data=$request->all();
         if($request->has('image')){
-            $path='HomeSection';
-            $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('public/image')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
+             $file=$request->file('image')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('homeSection/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         HomeSection::create($data);
         Alert::success('Success',__('dashboard.success'));

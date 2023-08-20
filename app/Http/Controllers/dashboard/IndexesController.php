@@ -29,6 +29,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 use function PHPUnit\Framework\countOf;
@@ -68,8 +69,9 @@ class IndexesController extends Controller
 
 
             if (isset($input['video'])) {
-                $path = 'public/courseVideosIndex';
-                $input['video'] = $input['video']->move($path, time() . '_' . random_int(1, 100000) . '.' . $input['video']->getClientOriginalExtension());
+                 $file=$request->file('video')->getClientOriginalExtension();
+                $path = Storage::disk('s3')->put('courseVideosIndex/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->video, 'public');
+                $data['video'] = Storage::disk('s3')->url($path);
             }
             $input['course_indexes_id'] = $index->id;
             $input['is_free'] = $input['is_free'] ?? 0;

@@ -24,6 +24,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -72,19 +73,20 @@ class InstructorRequestsController extends Controller
             'category_id'=>$request->category_id,
             'country_id'=>$request->category_id,
         ];
-        if ($request->has('image')){
+        if ($request->has('image'))
+        {
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('InstructorsRequests/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         $instructor=Instructor::create($data) ;
 
 
         foreach ($request->attachs as $image)
         {
-            $path='public/instructorAttachs';
-            $imageName = md5(rand(1000,9999).time()). '.'.$image->getClientOriginalExtension();
-            $img=$image->move($path,$imageName);
+            $file=$image->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('InstructorsRequests/'.time() . '_' . random_int(1, 100000) . '.' . $file, $image, 'public');
+            $img = Storage::disk('s3')->url($path);
             InstructorAttachs::create(['file'=>$img,'instructor_id'=>$instructor->id]);
         }
         Alert::success('Success',__('dashboard.success'));
@@ -144,9 +146,11 @@ class InstructorRequestsController extends Controller
                 'category_id'=>$request->category_id,
                 'country_id'=>$request->category_id,
             ];
-            if ($request->has('image')){
+            if ($request->has('image'))
+            {
                 $file=$request->file('image')->getClientOriginalExtension();
-                $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
+                $path = Storage::disk('s3')->put('InstructorsRequests/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+                $data['image'] = Storage::disk('s3')->url($path);
             }
             $instructor->update($data);
 
@@ -162,8 +166,8 @@ class InstructorRequestsController extends Controller
             ];
             if ($request->has('image')){
                 $file=$request->file('image')->getClientOriginalExtension();
-                $data['image']=$request->file('image')->move('public/pages',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+                $path = Storage::disk('s3')->put('InstructorsRequests/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+                $data['image'] = Storage::disk('s3')->url($path);
             }
             $instructor->update($data);
 

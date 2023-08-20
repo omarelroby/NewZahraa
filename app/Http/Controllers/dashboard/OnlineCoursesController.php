@@ -32,6 +32,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
@@ -103,10 +104,11 @@ class OnlineCoursesController extends Controller
     public function store(OnlineCoursesRequest $request)
     {
         $data=$request->all();
-        if($request->has('image')){
-            $path='public/HomeSection';
+        if($request->has('image'))
+        {
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('OnlineCourses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         $course=OnlineCourse::create($data);
@@ -128,10 +130,11 @@ class OnlineCoursesController extends Controller
     {
         $course=OnlineCourse::findOrFAil($id);
         $data=$request->all();
-        if($request->has('image')){
-            $path='public/HomeSection';
+        if($request->has('image'))
+        {
             $file=$request->file('image')->getClientOriginalExtension();
-            $data['image']=$request->file('image')->move($path,time() . '_' . random_int(1, 100000) . '.' . $file);
+            $path = Storage::disk('s3')->put('OnlineCourses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         $course->update($data);
         if ($request->has('instructor_id'))
