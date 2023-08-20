@@ -28,7 +28,7 @@ class CategoryRequest extends FormRequest
             'type'=>'required',
         ];
         foreach(config('translatable.locales') as $locale) {
-            $rules[$locale.'.name']='string';
+            $rules["{$locale}.name"]='required';
         }
 
         return $rules;

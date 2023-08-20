@@ -31,6 +31,11 @@ class QuestionsRequest extends FormRequest
             'answer.*' => 'required',
 
             ];
+        foreach(config('translatable.locales') as $locale) {
+            $rules["{$locale}.question"]='required';
+            $rules["{$locale}.answer"]='required';
+
+        }
 
            return $rules;
     }

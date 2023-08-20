@@ -41,7 +41,8 @@ class OnlineCoursesRequest extends FormRequest
 
             ];
         foreach(config('translatable.locales') as $locale) {
-            $rules["title.{$locale}"]='string';
+            $rules["{$locale}.title"]='required';
+            $rules["{$locale}.description"]='required';
 
         }
            return $rules;

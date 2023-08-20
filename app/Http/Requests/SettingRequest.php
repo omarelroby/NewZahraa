@@ -42,7 +42,7 @@ class SettingRequest extends FormRequest
 
             ];
         foreach(config('translatable.locales') as $locale) {
-            $rules["title.{$locale}"]='string';
+            $rules["title.{$locale}"]='required';
 
         }
            return $rules;
