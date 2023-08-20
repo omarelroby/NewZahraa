@@ -18,7 +18,7 @@ class EbookResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
-            'summary' => $this->translate(app()->getLocale())->summary,
+            'summary' => strip_tags($this->translate(app()->getLocale())->summary),
             'image'=>asset($this->image),
             'sample_file'=>asset($this->sample_file),
             'complete_file'=>asset($this->complete_file),

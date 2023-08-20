@@ -17,7 +17,7 @@ class HomeSectionResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->translate(app()->getLocale())->title,
-            'description' => $this->translate(app()->getLocale())->description,
+            'description' => strip_tags($this->translate(app()->getLocale())->description),
             'button' => $this->translate(app()->getLocale())->button,
             'url'=>$this->url,
             'image'=>asset($this->image),
