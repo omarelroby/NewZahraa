@@ -27,10 +27,10 @@ class EbookDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('title(ar)', function($q) {
-                return $q->translate('ar')->title;
+                return $q->translate('ar')->title ?? ' ' ;
             })
             ->editColumn('title(en)', function($q) {
-                return $q->translate('en')->title;
+                return $q->translate('en')->title ?? ' ';
             })
             ->editColumn('price', function($q) {
                 return $q->price;
