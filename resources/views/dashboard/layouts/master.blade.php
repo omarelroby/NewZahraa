@@ -86,10 +86,9 @@
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item"><a class="navbar-brand"
                                         href="{{asset('html/rtl/vertical-menu-template/index.html')}}">
-                        <img class="brand-logo" alt="robust admin logo"
-                             style="width: 100px;margin-left: 50%;margin-right: 50%;"
-                             src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}">
-                {{--                        <h3 class="brand-text">Robust Admin</h3></a></li>--}}
+                        <img class="brand-logo" alt="robust admin logo" style="width: 100px;margin-left: 50%;margin-right: 50%;"
+                             src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}"/>
+                    </a>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                                                   data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
             </ul>
@@ -388,6 +387,18 @@
                     <li>
                         <a class="menu-item" href="{{route('course-orders.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.course-orders')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" href="{{route('online-course-orders.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.online-course-orders')}}</a>
                     </li>
                 </ul>
             </li>

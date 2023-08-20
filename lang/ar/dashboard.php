@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'online-course'=>'الكورس الأونلاين',
+    'online-course-orders'=>'طلبات الكورسات الأونلاين',
     'course-orders'=>'طلبات الكورسات',
     'payment_method'=>'وسيلة الدفع',
     'status'=>'الحالة',

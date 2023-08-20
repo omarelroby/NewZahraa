@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'online-course'=>'Online Course ',
+    'online-course-orders'=>'Online Course Orders',
     'course-orders'=>'Courses Orders',
     'payment_method'=>'Payment Method',
     'status'=>'Status',
