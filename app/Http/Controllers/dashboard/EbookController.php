@@ -55,27 +55,25 @@ class EbookController extends Controller
     public function store(EbookRequest $request)
     {
         $data=$request->all();
+
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
             $path = Storage::disk('s3')->put('ebooks/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
-
         }
         if ($request->has('sample_file')){
             $file=$request->file('sample_file')->getClientOriginalExtension();
-            $data['sample_file']=$request->file('sample_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('ebooks/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->sample_file, 'public');
+            $data['sample_file'] = Storage::disk('s3')->url($path);
         }
         if ($request->has('complete_file')){
             $file=$request->file('complete_file')->getClientOriginalExtension();
-            $data['complete_file']=$request->file('complete_file')->move('public/ebooks',time() . '_' . random_int(1, 100000) . '.' . $file);
-
+            $path = Storage::disk('s3')->put('ebooks/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_file, 'public');
+            $data['complete_file'] = Storage::disk('s3')->url($path);
         }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Ebook::create($data) ;
-
         Alert::success('Success',__('dashboard.success'));
-
         return redirect()->route('ebook.index');
 
 

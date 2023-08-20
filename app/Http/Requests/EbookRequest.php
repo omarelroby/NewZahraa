@@ -37,7 +37,8 @@ class EbookRequest extends FormRequest
             'writer'=>'nullable',
             ];
         foreach(config('translatable.locales') as $locale) {
-            $rules["title.{$locale}"]='string';
+            $rules["{$locale}.title"]='required';
+            $rules["{$locale}.summary"]='required';
 
         }
            return $rules;

@@ -126,7 +126,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                  <label for="projectinput1">{{__('dashboard.summary')}} ({{$locale}})</label>
-                                                                <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[summary]">
+                                                                <textarea  required id="projectinput1" class="form-control"   name="{{$locale}}[summary]">
                                                                 </textarea>
                                                             </div>
                                                         </div>
