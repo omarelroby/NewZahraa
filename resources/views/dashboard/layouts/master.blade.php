@@ -392,6 +392,18 @@
                 </ul>
             </li>
 
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" href="{{route('online-course-orders.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.online-course-orders')}}</a>
+                    </li>
+                </ul>
+            </li>
+
 
         </ul>
         </li>

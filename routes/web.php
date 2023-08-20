@@ -93,6 +93,7 @@ Route::middleware('auth:admin')->group(function () {
      Route::resource('indexes-videos',\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class);
      Route::resource('ebook-orders',\App\Http\Controllers\dashboard\EbookOrdersController::class);
      Route::resource('course-orders',\App\Http\Controllers\dashboard\CourseOrdersController::class);
+     Route::resource('online-course-orders',\App\Http\Controllers\dashboard\OnlineCourseOrdersController::class);
      Route::get('create-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'create']);
      Route::post('store-indexes-videos',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'store']);
      Route::put('update-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'update']);

@@ -481,8 +481,9 @@ class CustomerController extends Controller
     public function buy_ebook(Request $request)
     {
         $customer_id=auth('api')->user()->id;
-        $check=EbookOrders::where('id',$customer_id)->first();
-        $price=Ebook::find($request->ebook_id)->price;
+        $check=EbookOrders::where('customer_id',$customer_id)->first();
+        $ebook=Ebook::find($request->ebook_id);
+        $price=$ebook->price;
         $oValidatorRules =
         [
             'ebook_id' => 'required|exists:ebooks,id',
@@ -492,9 +493,9 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
-        if ($check)
+        if ($check->customer_id==$customer_id&&$check->ebook_id==$ebook->id)
         {
-            return $this->successMessage(' You have Already Book this E-book');
+            return $this->error(' You have Already Book this E-book');
         }
         else
         {
@@ -511,8 +512,9 @@ class CustomerController extends Controller
     public function buy_course(Request $request)
     {
         $customer_id=auth('api')->user()->id;
-        $check=CourseOrders::where('id',$customer_id)->first();
-        $price=Course::find($request->course_id)->price;
+        $check=CourseOrders::where('customer_id',$customer_id)->first();
+        $course=Course::find($request->course_id);
+        $price=$course->price;
         $oValidatorRules =
             [
                 'course_id' => 'required|exists:courses,id',
@@ -522,9 +524,9 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
-        if ($check)
+        if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
         {
-            return $this->successMessage(' You have Already Book this Course');
+            return $this->error(' You have Already Book this Course');
         }
         else
         {
