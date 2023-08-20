@@ -38,7 +38,7 @@ class InstructorsDataTable extends DataTable
                 return $q->phone;
             })
             ->editColumn('Attachments', function($q) {
-                return '<h6><a href="/instructors-attachs/'.  $q->id .'">'. "المرفقات" .'</a></h6>';            })
+                return '<h6><a href="public/instructorAttachs/'.  $q->id .'">'. "المرفقات" .'</a></h6>';            })
 
 
 
