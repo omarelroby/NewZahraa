@@ -78,6 +78,8 @@ class InstructorController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'zoom_link' => 'nullable',
+            'days' => 'array|required',
+            'days.*' => 'date_format:Y-m-d H:i:s|before_or_equal:'.$request->end_date.'|after_or_equal:'.$request->start_date,
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails()) {
