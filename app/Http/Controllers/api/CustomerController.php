@@ -15,6 +15,7 @@ use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\InstructorResource;
+use App\Http\Resources\OnlineCourseOrderResource;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\VideosResource;
@@ -581,6 +582,21 @@ class CustomerController extends Controller
         if ($customer)
         {
             return $this->success(EbookOrderResource::collection($ebooks));
+        }
+        else
+        {
+            return $this->error('Not Found this Customer');
+        }
+
+
+    }
+    public function customer_online_courses_orders()
+    {
+        $customer=auth('api')->user();
+        $courses=OnlineCourseOrders::where('customer_id',$customer->id)->get();
+        if ($customer)
+        {
+            return $this->success(OnlineCourseOrderResource::collection($courses));
         }
         else
         {
