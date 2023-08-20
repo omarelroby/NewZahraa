@@ -47,7 +47,7 @@ class FreeVideosController extends Controller
     public function create()
     {
         $Languages=Languages::all();
-        $categories=Category::with('translations')->get();
+        $categories=Category::where('type','=','Free-video')->with('translations')->get();
         return  view('dashboard.free_videos.create',compact('Languages','categories'));
     }
 
@@ -89,7 +89,7 @@ class FreeVideosController extends Controller
     {
 
         $freeVideos=FreeVideo::find($id);
-        $categories=Category::with('translations')->get();
+        $categories=Category::where('type','=','Free-video')->with('translations')->get();
         return  view('dashboard.free_videos.edit',compact('freeVideos','categories'));
     }
 

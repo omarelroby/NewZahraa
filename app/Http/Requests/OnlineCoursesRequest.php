@@ -36,6 +36,7 @@ class OnlineCoursesRequest extends FormRequest
             'lessons_number'=>'nullable',
             'instructor_id'=>'array',
             'instructor_id.*'=>'required',
+            'category_id'=>'required',
 
             ];
         foreach(config('translatable.locales') as $locale) {
