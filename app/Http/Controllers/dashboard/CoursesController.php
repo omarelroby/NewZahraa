@@ -61,12 +61,12 @@ class CoursesController extends Controller
     public function edit($id)
     {
          $courses=Course::find($id);
-        $categories=Category::with('translations')->get();
+        $categories=Category::where('type','=','Course')->with('translations')->get();
         return  view('dashboard.courses.edit',compact('courses','categories' ));
     }
     public function create()
     {
-        $categories=Category::with('translations')->get();
+        $categories=Category::where('type','=','Course')->with('translations')->get();
         return  view('dashboard.courses.create',compact('categories'));
     }
 

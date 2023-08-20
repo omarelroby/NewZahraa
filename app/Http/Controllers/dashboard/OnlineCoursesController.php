@@ -82,13 +82,15 @@ class OnlineCoursesController extends Controller
     {
         $course=OnlineCourse::find($id);
         $allInstructors=Instructor::all();
+        $categories=Category::where('type','=','Online-course')->with('translations')->get();
         $instructors=OnlineCourseAndInstructors::where('online_course_id',$course->id)->pluck('instructor_id')->toArray();
-        return  view('dashboard.online_courses.edit',compact('allInstructors','course','instructors'));
+        return  view('dashboard.online_courses.edit',compact('categories','allInstructors','course','instructors'));
     }
     public function create()
     {
         $instructors=Instructor::all();
-        return  view('dashboard.online_courses.create',compact('instructors'));
+        $categories=Category::where('type','=','Online-course')->with('translations')->get();
+        return  view('dashboard.online_courses.create',compact('categories','instructors'));
     }
 
     /**

@@ -32,6 +32,7 @@ class CoursesRequest extends FormRequest
             'preview_video'=>'nullable|mimes:mp4',
             'price'=>'required',
             'instructor_id'=>'nullable',
+            'category_id'=>'nullable',
 
             ];
         foreach(config('translatable.locales') as $locale) {

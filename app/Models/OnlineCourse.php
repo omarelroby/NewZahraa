@@ -21,7 +21,12 @@ class OnlineCourse extends Model implements TranslatableContract
         'image',
         'date',
         'lessons_number',
+        'category_id',
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
     public function Instructors(){
         return $this->belongsToMany(Instructor::class,'online_courses_and_instructors','instructor_id', 'online_course_id');
     }
