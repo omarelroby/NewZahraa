@@ -1,2 +1,1 @@
-<h2>{{$data['subject']}}</h2>
-<p>{{$data['message']}}</p>
+ <p>{{strip_tags($data['message'])}}</p>

@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-warning mr-1">
-                                    <a href="{{url('/dashboard')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
+                                    <a href="{{route('dashboard')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                 </button>
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
