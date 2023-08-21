@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'country_code'=>'Country Code',
     'subject'=>'Subject',
     'message'=>'Message',
     'send-emails'=>'SEND EMAILS',

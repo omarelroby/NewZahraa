@@ -64,6 +64,12 @@
                                                  @endforeach
                                                         <div class="col-md-6">
                                                             <div class="form-group">
+                                                                <label for="inputGroupFile04"  >{{__('dashboard.country_code')}} </label>
+                                                                <input type="text" required   id="inputGroupFile04" class="form-control" value="{{$country->country_code}}"  name="country_code">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
                                                                 <label for="inputGroupFile01" class="custom-file-label">{{__('dashboard.image')}} </label>
                                                                 <input type="file"   class="custom-file-input" id="inputGroupFile01"   name="image">
                                                             </div>

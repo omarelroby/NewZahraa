@@ -84,7 +84,7 @@
                                                         </div>
                                                     @endforeach
 
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.preview-videos')}} </label>
                                                         <input type="file"  required class="form-control" id="inputGroupFile20"  name="preview_video">
@@ -92,6 +92,12 @@
                                                     </div>
 
                                                 </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
+                                                                <input type="file"  required class="form-control" id="inputGroupFile20"  name="image">
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">{{__('dashboard.categories')}} </label>

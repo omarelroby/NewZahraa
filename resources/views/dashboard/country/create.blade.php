@@ -61,12 +61,19 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                                </div>
-                                                <div class="col-md-6">
+
+                                                <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="inputGroupFile01" class="custom-file-label">{{__('dashboard.image')}} </label>
                                                         <input type="file" required class="custom-file-input" id="inputGroupFile01"   name="image">
                                                     </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="inputGroupFile04"  >{{__('dashboard.country_code')}} </label>
+                                                        <input type="text" required  class="form-control" id="inputGroupFile04"   name="country_code">
+                                                    </div>
+                                                </div>
                                                 </div>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">

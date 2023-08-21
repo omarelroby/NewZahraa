@@ -86,6 +86,12 @@ class CoursesController extends Controller
             $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->preview_video, 'public');
             $data['preview_video'] = Storage::disk('s3')->url($path);
          }
+        if($request->has('image'))
+        {
+            $file=$request->file('image')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
+        }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Course::create($data);
         Alert::success('Success',__('dashboard.success'));

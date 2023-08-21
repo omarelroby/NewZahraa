@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'country_code'=>'كود الدولة',
     'subject'=>'العنوان',
     'message'=>'الرسالة',
     'send-emails'=>'إرسال إيميلات',
