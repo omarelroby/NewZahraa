@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'subject'=>'Subject',
+    'message'=>'Message',
+    'send-emails'=>'SEND EMAILS',
     'online-course'=>'Online Course ',
     'online-course-orders'=>'Online Course Orders',
     'course-orders'=>'Courses Orders',

@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'subject'=>'العنوان',
+    'message'=>'الرسالة',
+    'send-emails'=>'إرسال إيميلات',
     'online-course'=>'الكورس الأونلاين',
     'online-course-orders'=>'طلبات الكورسات الأونلاين',
     'course-orders'=>'طلبات الكورسات',
