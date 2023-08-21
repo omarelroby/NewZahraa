@@ -6,6 +6,7 @@ use App\DataTables\CountriesDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CountryRequest;
+use App\Mail\CustomersMail;
 use App\Mail\CustomersMailMail;
 use App\Models\Category;
 use App\Models\Country;
@@ -46,7 +47,7 @@ class SendEmailsController extends Controller
         ];
         foreach ($emails as $email)
         {
-            Mail::to($email)->send(new CustomersMailMail($data));
+            Mail::to($email)->send(new CustomersMail($data));
 
         }
 
