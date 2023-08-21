@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 
 class CustomersMail extends Mailable
@@ -18,15 +19,13 @@ class CustomersMail extends Mailable
         $this->data = $data;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return view('mails.customer', [
-                'data' => $this->data
-            ]);
-    }
+  public function content(): Content
+{
+    return new Content(
+        view: 'mails.customer',
+        with: [
+            'data' => $this->data,
+         ],
+    );
+}
 }
