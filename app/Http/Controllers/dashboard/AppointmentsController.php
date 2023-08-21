@@ -68,8 +68,8 @@ class AppointmentsController extends Controller
      */
     public function edit($id)
     {
-         $coupon=Coupon::find($id);
-         return  view('dashboard.coupon.edit',compact('coupon' ));
+         $appointment=SessionAppointments::find($id);
+         return  view('dashboard.appointments.edit',compact('appointment' ));
     }
     public function create()
     {
@@ -98,18 +98,17 @@ class AppointmentsController extends Controller
                         'date'=>$request->month.'-'.date("d", strtotime($first_day)).' '.$input['time'],
                     ]);
                 }
-             }
-
+            }
         }
         Alert::success('Success',__('dashboard.success'));
         return redirect()->route('appointments.index');
     }
     public function update(Request $request, $id)
     {
-        $coupon=Coupon::find($id);
-        $coupon->update($request->all());
+        $appointment=SessionAppointments::find($id);
+        $appointment->update(['date'=>$request->date]);
         Alert::success('UPDATED',__('dashboard.update'));
-        return redirect()->route('coupon.index');
+        return redirect()->route('appointments.index');
 
     }
 

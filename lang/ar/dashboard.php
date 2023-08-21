@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-appointments'=>'تعديل مواعيد',
     'add-day'=>'إضافة يوم',
     'month'=>'الشهر',
     'add-appointments'=>'إضافة موعد',

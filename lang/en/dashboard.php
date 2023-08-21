@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-appointments'=>'Edit Appointments',
     'add-day'=>'Add Day',
     'month'=>'Month',
     'add-appointments'=>'ADD APPOINTMENT',
