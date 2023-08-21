@@ -50,6 +50,7 @@ class SendEmailsController extends Controller
             Mail::to($email)->send(new CustomersMail($data));
 
         }
+        return redirect()->route('send-emails.index');
 
     }
 
