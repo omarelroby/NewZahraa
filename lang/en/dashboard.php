@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'code'=>'Code',
+    'number_of_use'=>'Number of use',
+    'coupon'=>'Coupon',
+    'add-coupon'=>'ADD COUPON',
     'country_code'=>'Country Code',
     'subject'=>'Subject',
     'message'=>'Message',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\OnlineCourseOrders;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OnlineCourses extends JsonResource
@@ -25,6 +26,8 @@ class OnlineCourses extends JsonResource
             'date'=>$this->date,
             'lessons_number'=>$this->lessons_number,
             'category'=>new CategoryResource($this->category),
+            'number_of_students'=>$this->orders->count(),
+
 
 
         ];

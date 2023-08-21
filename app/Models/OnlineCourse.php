@@ -37,4 +37,8 @@ class OnlineCourse extends Model implements TranslatableContract
     {
         return $this->hasMany(Groups::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(OnlineCourseOrders::class);
+    }
 }

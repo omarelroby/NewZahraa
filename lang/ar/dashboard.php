@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'code'=>'الكود',
+    'number_of_use'=>'عدد مرات الإستخدام',
+    'coupon'=>'الكوبون',
+    'add-coupon'=>'إضافة كوبون',
     'country_code'=>'كود الدولة',
     'subject'=>'العنوان',
     'message'=>'الرسالة',
