@@ -25,8 +25,7 @@ class CustomersMail extends Mailable
      */
     public function build()
     {
-        return subject('Zahraa Academy')
-            ->view('mails.customer', [
+        return view('mails.customer', [
                 'data' => $this->data
             ]);
     }
