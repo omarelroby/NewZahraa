@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'add-day'=>'إضافة يوم',
+    'month'=>'الشهر',
+    'add-appointments'=>'إضافة موعد',
+    'appointments'=>'المواعيد',
     'code'=>'الكود',
     'number_of_use'=>'عدد مرات الإستخدام',
     'coupon'=>'الكوبون',

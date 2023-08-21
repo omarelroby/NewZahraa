@@ -432,6 +432,17 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.appointments')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" href="{{route('appointments.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.appointments')}}</a>
+                    </li>
+                </ul>
+            </li>
 
 
 

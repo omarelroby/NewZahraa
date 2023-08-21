@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'add-day'=>'Add Day',
+    'month'=>'Month',
+    'add-appointments'=>'ADD APPOINTMENT',
+    'appointments'=>'Appointments',
     'code'=>'Code',
     'number_of_use'=>'Number of use',
     'coupon'=>'Coupon',
