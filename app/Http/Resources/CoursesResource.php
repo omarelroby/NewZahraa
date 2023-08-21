@@ -22,6 +22,7 @@ class CoursesResource extends JsonResource
             'description' => strip_tags($this->translate(app()->getLocale())->description),
             'preview_video'=>asset($this->preview_video),
             'price'=>$this->price,
+            'image'=>asset($this->image),
             'amazon_url'=>$this->amazon_url,
             'indexes'=> CoursesIndexesResource::collection($this->indexes),
             'category'=>new CategoryResource($this->category),
