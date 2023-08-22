@@ -25,6 +25,7 @@ class Setting extends Model implements TranslatableContract
         'twitter_url',
         'youtube_url',
         'tiktok_url',
+        'session_price',
 
     ];
 

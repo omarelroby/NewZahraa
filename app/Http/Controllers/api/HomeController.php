@@ -14,11 +14,14 @@ use App\Http\Resources\HomeSectionResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\PagesResource;
+use App\Http\Resources\SessionAppointmentsResource;
 use App\Http\Resources\SettingResource;
 use App\Http\Resources\VideosResource;
+use App\Models\BookingAppointments;
 use App\Models\Category;
 use App\Models\Contacts;
 use App\Models\Country;
+use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Ebook;
 use App\Models\FreeVideo;
@@ -28,6 +31,7 @@ use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
 use App\Models\Page;
 use App\Models\Questions;
+use App\Models\SessionAppointments;
 use App\Models\Setting;
 use App\Models\Videos;
 use App\Traits\response;
@@ -199,6 +203,74 @@ class HomeController extends Controller
     {
         $category=Category::where('type','Ebook')->get();
         return $this->success(CategoryResource::collection($category));
+    }
+    public function appointments($id)
+    {
+//        dd('m');
+        $session=SessionAppointments::where('month',$id)->get();
+        if (count($session)>0)
+        {
+            return  $this->success(SessionAppointmentsResource::collection($session));
+        }
+        else
+        {
+            return $this->error('This months deosn\'t has any Dates');
+        }
+    }
+    public function booking_appointments(Request $request)
+    {
+        $sessionPrice=Setting::first()->session_price;
+          $oValidatorRules = [
+              'name' => 'required',
+              'email' => 'required',
+              'phone' => 'required',
+              'payment_method' => 'nullable',
+              'session_price' => 'nullable',
+              'total_price' => 'nullable',
+              'zoom_link' => 'nullable',
+              'appointment_id' => 'required|exists:session_appointments,id',
+              'country_id' => 'required',
+          ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        };
+        if ($request->coupon_id!=null)
+        {
+            $coupon=Coupon::find($request->coupon_id);
+            $discount=$coupon->discount;
+            $booking=BookingAppointments::create([
+                'name'=>$request->name,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'session_price'=>$sessionPrice,
+                'total_price'=>$sessionPrice-($sessionPrice*$discount/100),
+                'zoom_link'=>$request->zoom_link,
+                'country_id'=>$request->country_id,
+                'appointment_id'=>$request->appointment_id,
+                'coupon_id'=>$request->coupon_id ,
+                'discount'=>1
+            ]);
+             $coupon->update(['coupon_id'=>$coupon->number_of_use++]);
+            return $this->success('Your Data Added Successfully');
+        }
+        else
+        {
+            BookingAppointments::create([
+                'name'=>$request->name,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'session_price'=>$sessionPrice,
+                'total_price'=>$sessionPrice,
+                'zoom_link'=>$request->zoom_link,
+                'country_id'=>$request->country_id,
+                'appointment_id'=>$request->appointment_id,
+
+            ]);
+            return $this->success('Your Data Added Successfully');
+
+        }
+
     }
 
 

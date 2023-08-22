@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'session_price'=>'Session Price ',
+    'total_price'=>'Total Price ',
+    'zoom_link'=>'Zoom Link ',
+    'booking-appointments'=>'Booking Appointments ',
     'edit-appointments'=>'Edit Appointments',
     'add-day'=>'Add Day',
     'month'=>'Month',

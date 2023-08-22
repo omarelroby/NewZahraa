@@ -77,5 +77,7 @@ Route::middleware("localization")->group(function () {
     Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
     Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
     Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
+    Route::get('appointments-month/{id}',[\App\Http\Controllers\api\HomeController::class,'appointments']);
+    Route::post('booking-appointments',[\App\Http\Controllers\api\HomeController::class,'booking_appointments']);
 
 });

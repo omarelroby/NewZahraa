@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'session_price'=>'سعر السشن ',
+    'total_price'=>'إجمالي السعر',
+    'zoom_link'=>'لينك الزووم ',
+    'booking-appointments'=>'حجز المواعيد',
     'edit-appointments'=>'تعديل مواعيد',
     'add-day'=>'إضافة يوم',
     'month'=>'الشهر',
