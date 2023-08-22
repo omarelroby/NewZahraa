@@ -405,7 +405,7 @@ class CustomerController extends Controller
 
     public function get_ebooks($slug)
     {
-        $ebook = Ebook::where('slug', $slug)->first();
+         $ebook = Ebook::where('slug', $slug)->first();
         if ($ebook) {
             return $this->success(new EbookResource($ebook));
 
@@ -617,8 +617,6 @@ class CustomerController extends Controller
         {
             return $this->error('Not Found this Customer');
         }
-
-
     }
 
 

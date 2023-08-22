@@ -20,7 +20,7 @@ class HomeSectionResource extends JsonResource
             'description' => strip_tags($this->translate(app()->getLocale())->description),
             'button' => $this->translate(app()->getLocale())->button,
             'url'=>$this->url,
-            'image'=>asset($this->image),
+            'image'=>$this->image,
 
 
 

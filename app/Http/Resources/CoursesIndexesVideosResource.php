@@ -12,7 +12,7 @@ class CoursesIndexesVideosResource extends JsonResource
         return [
             'id' => $this->id,
              'title' => $this->translate(app()->getLocale())->title,
-             'video'=>asset($this->video),
+             'video'=>$this->video,
             'is_free'=>$this->is_free,
 
 

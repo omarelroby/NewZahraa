@@ -20,7 +20,7 @@ class OnlineCourses extends JsonResource
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
             'description' => strip_tags($this->translate(app()->getLocale())->description),
-            'image'=>asset($this->image),
+            'image'=>$this->image,
             'price'=>$this->price,
             'hours'=>$this->hours,
             'date'=>$this->date,
