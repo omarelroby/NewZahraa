@@ -101,10 +101,8 @@ class HomeController extends Controller
     public function eBook(Request $request)
     {
         $oValidatorRules = [
-
             'category_ids' => 'nullable|array',
             'category_ids.*' => 'required|exists:categories,id',
-
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails())
@@ -114,24 +112,26 @@ class HomeController extends Controller
             $ebooks = $ebooks->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $ebooks = $ebooks->whereTranslationLike('title', '%'.$request->search.'%');
-
         $ebooks = $ebooks->get();
-
         return $this->success(EbookResource::collection($ebooks));
-
-
     }
 
     public function courses(Request $request)
     {
-        if ($request->category_ids != null) {
-            $courses = Course::whereIn('id', $request->category_ids)->get();
-            return $this->success(CoursesResource::collection($courses));
-        } else {
-            $courses = Course::all();
-            return $this->success(CoursesResource::collection($courses));
-
-        }
+        $oValidatorRules = [
+            'category_ids' => 'nullable|array',
+            'category_ids.*' => 'required|exists:categories,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+            return $this->error($validator->messages(),[],422);
+        $courses = Course::query();
+        if (is_array($request->category_ids) && count($request->category_ids) > 0)
+            $courses = $courses->whereIn('category_id', $request->category_ids);
+        if ($request->search && $request->search != '')
+            $courses = $courses->whereTranslationLike('title', '%'.$request->search.'%');
+        $courses = $courses->get();
+        return $this->success(CoursesResource::collection($courses));
     }
 
     public function videos()
@@ -142,14 +142,20 @@ class HomeController extends Controller
 
     public function free_videos(Request $request)
     {
-        if ($request->category_ids != null) {
-            $free_videos = FreeVideo::whereIn('id', $request->category_ids)->get();
-            return $this->success(FreeVideosResource::collection($free_videos));
-        } else {
-            $free_videos = FreeVideo::all();
-            return $this->success(FreeVideosResource::collection($free_videos));
-
-        }
+        $oValidatorRules = [
+            'category_ids' => 'nullable|array',
+            'category_ids.*' => 'required|exists:categories,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+            return $this->error($validator->messages(),[],422);
+        $freeVideos = FreeVideo::query();
+        if (is_array($request->category_ids) && count($request->category_ids) > 0)
+            $freeVideos = $freeVideos->whereIn('category_id', $request->category_ids);
+        if ($request->search && $request->search != '')
+            $freeVideos = $freeVideos->whereTranslationLike('title', '%'.$request->search.'%');
+        $freeVideos = $freeVideos->get();
+        return $this->success(FreeVideosResource::collection($freeVideos));
     }
 
     public function home_section()
@@ -186,14 +192,21 @@ class HomeController extends Controller
 
     public function online_courses(Request $request)
     {
-        if ($request->category_ids != null) {
-            $courses = OnlineCourse::whereIn('id', $request->category_ids)->get();
-            return $this->success(OnlineCourses::collection($courses));
-        } else {
-            $courses = OnlineCourse::all();
-            return $this->success(OnlineCourses::collection($courses));
-
-        }
+        $oValidatorRules =
+            [
+            'category_ids' => 'nullable|array',
+            'category_ids.*' => 'required|exists:categories,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+            return $this->error($validator->messages(),[],422);
+        $onlineCourse = FreeVideo::query();
+        if (is_array($request->category_ids) && count($request->category_ids) > 0)
+            $onlineCourse = $onlineCourse->whereIn('category_id', $request->category_ids);
+        if ($request->search && $request->search != '')
+            $onlineCourse = $onlineCourse->whereTranslationLike('title', '%'.$request->search.'%');
+        $onlineCourse = $onlineCourse->get();
+        return $this->success(OnlineCourses::collection($onlineCourse));
     }
 
     public function questions()
