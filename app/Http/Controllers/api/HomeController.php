@@ -100,6 +100,15 @@ class HomeController extends Controller
 
     public function eBook(Request $request)
     {
+        $oValidatorRules = [
+
+            'category_ids' => 'nullable|array',
+            'category_ids.*' => 'required|exists:categories,id',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails())
+            return $this->error($validator->messages(),[],422);
         $ebooks = Ebook::query();
         if (is_array($request->category_ids) && count($request->category_ids) > 0)
             $ebooks = $ebooks->whereIn('category_id', $request->category_ids);
