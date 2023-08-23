@@ -102,9 +102,10 @@ class HomeController extends Controller
     {
         $ebooks = Ebook::query();
         if (is_array($request->category_ids) && count($request->category_ids) > 0)
-            $ebooks = $ebooks->whereIn('category_id', $request->category_ids)->get();
+            $ebooks = $ebooks->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $ebooks = $ebooks->whereTranslationLike('title', '%'.$request->search.'%');
+
         $ebooks = $ebooks->get();
 
         return $this->success(EbookResource::collection($ebooks));
