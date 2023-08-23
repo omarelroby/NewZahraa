@@ -14,6 +14,10 @@ class Category extends Model implements TranslatableContract
     public $translatedAttributes = ['name'];
 
     protected $fillable= ['slug','type'];
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 
 
 }
