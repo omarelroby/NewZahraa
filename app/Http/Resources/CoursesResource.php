@@ -24,7 +24,6 @@ class CoursesResource extends JsonResource
             'price'=>$this->price,
             'image'=>$this->image,
             'introduction_image'=>$this->introduction_image,
-            'amazon_url'=>$this->amazon_url,
             'indexes'=> CoursesIndexesResource::collection($this->indexes),
             'category'=>new CategoryResource($this->category),
 
