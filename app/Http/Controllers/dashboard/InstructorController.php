@@ -71,6 +71,7 @@ class InstructorController extends Controller
             'image'=>$request->file('image'),
             'category_id'=>$request->category_id,
             'country_id'=>$request->country_id,
+            'commission_instructor'=>$request->commission_instructor,
         ];
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
@@ -144,6 +145,7 @@ class InstructorController extends Controller
                 'brief'=>$request->brief,
                 'category_id'=>$request->category_id,
                 'country_id'=>$request->category_id,
+                'commission_instructor'=>$request->commission_instructor,
             ];
             if ($request->has('image')){
                 $file=$request->file('image')->getClientOriginalExtension();

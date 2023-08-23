@@ -35,6 +35,7 @@ public function onStore()
         'image'=> 'required',
         'category_id'=> 'required',
         'country_id'=> 'required',
+        'commission_instructor'=> 'nullable',
 
     ];
 }

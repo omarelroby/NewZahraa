@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'commission_instructor'=>'Commission Instructor',
     'session_price'=>'Session Price ',
     'total_price'=>'Total Price ',
     'zoom_link'=>'Zoom Link ',

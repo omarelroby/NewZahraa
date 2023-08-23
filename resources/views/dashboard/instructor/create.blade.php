@@ -85,6 +85,12 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
+                                                            <label for="projectinput11">{{__('dashboard.commission_instructor')}} </label>
+                                                            <input type="number" required id="projectinput11" class="form-control"   name="commission_instructor">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>
                                                             <select type="text" required id="projectinput1" class="form-control"   name="category_id">
                                                                 <option value="">{{__('dashboard.select-category')}}</option>

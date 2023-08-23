@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'commission_instructor'=>'مدرب اللجان ',
     'session_price'=>'سعر السشن ',
     'total_price'=>'إجمالي السعر',
     'zoom_link'=>'لينك الزووم ',

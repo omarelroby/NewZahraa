@@ -86,6 +86,12 @@
                                                                             <input type="password" autocomplete="off"  id="projectinput1" class="form-control"   name="password">
                                                                         </div>
                                                                     </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="projectinput11">{{__('dashboard.commission_instructor')}} </label>
+                                                                        <input type="number" required id="projectinput11" class="form-control" value="{{$instructor->commission_instructor}}"   name="commission_instructor">
+                                                                    </div>
+                                                                </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>

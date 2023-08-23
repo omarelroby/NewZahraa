@@ -26,6 +26,7 @@ class Instructor extends Authenticatable
         'image',
         'category_id',
         'country_id',
+        'commission_instructor',
     ];
     public function category(){
         return $this->belongsTo(Category::class,'category_id');
