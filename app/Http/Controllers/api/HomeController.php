@@ -200,7 +200,7 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails())
             return $this->error($validator->messages(),[],422);
-        $onlineCourse = FreeVideo::query();
+        $onlineCourse = OnlineCourse::query();
         if (is_array($request->category_ids) && count($request->category_ids) > 0)
             $onlineCourse = $onlineCourse->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
