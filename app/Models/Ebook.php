@@ -23,7 +23,9 @@ class Ebook extends Model implements TranslatableContract
         'type',
         'category_id',
         'amazon_url',
-        'price'];
+        'pages_number',
+        'price'
+    ];
     public function favourite_ebook()
     {
         return $this->belongsToMany(Customers::class,'favourite_ebooks','ebooks_id','customer_id');
