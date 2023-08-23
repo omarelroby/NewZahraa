@@ -35,6 +35,7 @@ class EbookRequest extends FormRequest
             'type'=>'required',
             'amazon_url'=>'nullable',
             'writer'=>'nullable',
+            'pages_number'=>'nullable',
             ];
         foreach(config('translatable.locales') as $locale) {
             $rules["{$locale}.title"]='required';

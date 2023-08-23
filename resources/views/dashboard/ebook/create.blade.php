@@ -93,12 +93,18 @@
                                                         <input type="file" required  class="custom-file-input" id="inputGroupFile01"  name="image">
                                                     </div>
                                                 </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label    for="projectinput1">{{__('dashboard.writer')}} </label>
                                                         <input type="text"   id="projectinput1" class="form-control"  name="writer">
                                                     </div>
                                                 </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
+                                                            <input type="number"   id="projectinput12" class="form-control"  name="pages_number">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label    for="projectinput1">{{__('dashboard.type')}} </label>

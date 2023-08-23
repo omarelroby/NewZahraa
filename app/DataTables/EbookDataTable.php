@@ -95,6 +95,10 @@ class EbookDataTable extends DataTable
                 ->title(__('dashboard.title(en)')),
             Column::make('price')
                 ->title(__('dashboard.price')),
+            Column::make('writer')
+                ->title(__('dashboard.writer')),
+            Column::make('pages_number')
+                ->title(__('dashboard.pages_number')),
             Column::make('image')
                 ->title(__('dashboard.image')),
             Column::computed('action')

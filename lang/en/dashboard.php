@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'pages_number'=>'Book Pages Number ',
     'commission_instructor'=>'Commission Instructor',
     'session_price'=>'Session Price ',
     'total_price'=>'Total Price ',

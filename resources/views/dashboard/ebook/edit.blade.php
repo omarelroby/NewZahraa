@@ -90,6 +90,12 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
+                                                            <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
+                                                            <input type="number" value="{{$ebook->pages_number ??''}}"  id="projectinput12" class="form-control"  name="pages_number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.type')}} </label>
                                                             <select  required   id="type" class="form-control"  name="type">
                                                                 <option value="">{{__('dashboard.select-type')}}</option>
