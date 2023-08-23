@@ -19,6 +19,8 @@ class CategoryResource extends JsonResource
             'slug' => $this->slug,
             'type' => $this->type,
             'name' => $this->translate(app()->getLocale())->name,
+            'courses'=>$this->courses->count()??'',
+
 
 
         ];

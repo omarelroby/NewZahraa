@@ -27,7 +27,6 @@ class EbookResource extends JsonResource
             'writer'=>$this->writer,
             'pages_number'=>$this->pages_number??'',
             'price'=>$this->price,
-            'courses'=>$this->courses->count()??'',
             'category'=>new CategoryResource($this->category),
 
 
