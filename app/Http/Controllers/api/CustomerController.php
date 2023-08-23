@@ -377,8 +377,13 @@ class CustomerController extends Controller
     public function get_free_videos($slug)
     {
         $free_videos = FreeVideo::where('slug', $slug)->first();
+        $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
+        $data=[
+            'free-videos'=>new FreeVideosResource($free_videos),
+            'related'=> FreeVideosResource::collection($related)
+        ];
         if ($free_videos) {
-            return $this->success(new FreeVideosResource($free_videos));
+            return $this->success($data);
         } else {
             return $this->error('NOT FOUND', [], 404);
         }
@@ -395,8 +400,13 @@ class CustomerController extends Controller
     public function get_online_courses($slug)
     {
         $course = OnlineCourse::where('slug', $slug)->first();
+        $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
+        $data=[
+            'course'=>new OnlineCourses($course),
+            'related'=> OnlineCourses::collection($related)
+              ];
         if ($course) {
-            return $this->success(new OnlineCourses($course));
+            return $this->success($data);
 
         } else {
             return $this->error('NOT FOUND', [], 404);
@@ -407,8 +417,13 @@ class CustomerController extends Controller
     public function get_ebooks($slug)
     {
          $ebook = Ebook::where('slug', $slug)->first();
+         $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
+        $data=[
+            'ebook'=>new EbookResource($ebook),
+                    'related'=> EbookResource::collection($related)
+              ];
         if ($ebook) {
-            return $this->success(new EbookResource($ebook));
+            return  $this->success($data);
 
         } else {
             return $this->error('NOT FOUND', [], 404);
@@ -449,7 +464,8 @@ class CustomerController extends Controller
     public function get_pages($slug)
     {
         $page = Page::where('slug', $slug)->first();
-        if ($page) {
+        if ($page)
+        {
             return $this->success(new PagesResource($page));
 
         } else {
@@ -472,8 +488,13 @@ class CustomerController extends Controller
     public function get_course($slug)
     {
         $course = Course::where('slug', $slug)->first();
+        $related=Course::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
+        $data=[
+            'course'=>new CoursesResource($course),
+            'related'=> CoursesResource::collection($related)
+              ];
         if ($course) {
-            return $this->success(new CoursesResource($course));
+            return $this->success($data);
 
         } else {
             return $this->error('NOT FOUND', [], 404);

@@ -18,7 +18,7 @@ class EbookResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title ?? ' ',
-            'summary' => strip_tags($this->translate(app()->getLocale())->summary) ?? ' ',
+            'summary' => strip_tags($this->translate(app()->getLocale())->summary) ?? '',
             'image'=>$this->image,
             'sample_file'=>$this->sample_file,
             'complete_file'=>$this->complete_file,
@@ -28,9 +28,6 @@ class EbookResource extends JsonResource
             'pages_number'=>$this->pages_number??'',
             'price'=>$this->price,
             'category'=>new CategoryResource($this->category),
-
-
-
         ];
     }
 }

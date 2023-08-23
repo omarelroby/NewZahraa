@@ -15,6 +15,7 @@ class Ebook extends Model implements TranslatableContract
     use Translatable;
      public $translatedAttributes = ['title','summary'];
     protected $fillable=[
+        'id',
         'image',
         'slug',
         'sample_file',
