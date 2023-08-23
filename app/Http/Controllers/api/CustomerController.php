@@ -377,14 +377,18 @@ class CustomerController extends Controller
     public function get_free_videos($slug)
     {
         $free_videos = FreeVideo::where('slug', $slug)->first();
-        $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
-        $data=[
-            'free-videos'=>new FreeVideosResource($free_videos),
-            'related'=> FreeVideosResource::collection($related)
-        ];
-        if ($free_videos) {
+
+        if ($free_videos)
+        {
+            $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
+            $data=[
+                'free-videos'=>new FreeVideosResource($free_videos),
+                'related'=> FreeVideosResource::collection($related)
+            ];
             return $this->success($data);
-        } else {
+        }
+        else
+        {
             return $this->error('NOT FOUND', [], 404);
         }
 
