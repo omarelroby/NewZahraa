@@ -377,7 +377,6 @@ class CustomerController extends Controller
     public function get_free_videos($slug)
     {
         $free_videos = FreeVideo::where('slug', $slug)->first();
-
         if ($free_videos)
         {
             $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
@@ -404,12 +403,12 @@ class CustomerController extends Controller
     public function get_online_courses($slug)
     {
         $course = OnlineCourse::where('slug', $slug)->first();
-        $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
-        $data=[
-            'course'=>new OnlineCourses($course),
-            'related'=> OnlineCourses::collection($related)
-              ];
         if ($course) {
+            $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
+            $data=[
+                'course'=>new OnlineCourses($course),
+                'related'=> OnlineCourses::collection($related)
+            ];
             return $this->success($data);
 
         } else {
@@ -421,12 +420,13 @@ class CustomerController extends Controller
     public function get_ebooks($slug)
     {
          $ebook = Ebook::where('slug', $slug)->first();
-         $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
-        $data=[
-            'ebook'=>new EbookResource($ebook),
-                    'related'=> EbookResource::collection($related)
-              ];
-        if ($ebook) {
+        if ($ebook)
+        {
+            $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
+            $data=[
+                'ebook'=>new EbookResource($ebook),
+                'related'=> EbookResource::collection($related)
+            ];
             return  $this->success($data);
 
         } else {
