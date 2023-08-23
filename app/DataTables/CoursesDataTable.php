@@ -35,7 +35,7 @@ class CoursesDataTable extends DataTable
             ->editColumn('description', function($q) {
                 return strip_tags($q->description) ;
             })
-            ->addColumn('introduction_image', function ($q) {
+            ->editColumn('introduction_image', function ($q) {
                 $url= asset($q->introduction_image);
                 return '<img src="'.$url.'" border="0" width="150" class="img-rounded" align="center"/>';
             })

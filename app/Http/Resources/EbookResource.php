@@ -24,6 +24,8 @@ class EbookResource extends JsonResource
             'complete_file'=>$this->complete_file,
             'type'=>$this->type,
             'amazon_url'=>$this->amazon_url,
+            'writer'=>$this->writer,
+            'pages_number'=>$this->pages_number??'',
             'price'=>$this->price,
             'category'=>new CategoryResource($this->category),
 
