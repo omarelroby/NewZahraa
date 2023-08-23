@@ -33,6 +33,7 @@ class CoursesRequest extends FormRequest
             'price'=>'required',
             'instructor_id'=>'nullable',
             'category_id'=>'nullable',
+            'introduction_image'=>'nullable',
 
             ];
         foreach(config('translatable.locales') as $locale) {

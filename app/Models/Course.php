@@ -18,6 +18,7 @@ class Course extends Model implements TranslatableContract
         'preview_video',
         'category_id',
         'image',
+        'introduction_image',
      ];
 
     public function indexes()

@@ -91,6 +91,7 @@
                                                             <input type="file"   class="form-control" id="inputGroupFile20"  name="preview_video">
                                                         </div>
                                                     </div>
+
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">{{__('dashboard.categories')}} </label>
