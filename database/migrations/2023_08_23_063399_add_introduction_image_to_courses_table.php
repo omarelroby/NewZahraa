@@ -9,7 +9,7 @@ class AddIntroductionImageToCoursesTable extends Migration {
 	{
         Schema::table('courses', function($table)
         {
-            $table->decimal('introduction_image')->nullable();
+            $table->text('introduction_image')->nullable();
 
         });
 	}

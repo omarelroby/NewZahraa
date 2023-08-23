@@ -90,6 +90,8 @@ class CoursesDataTable extends DataTable
                 ->title(__('dashboard.description')),
             Column::make('price')
                 ->title(__('dashboard.price')),
+            Column::make('introduction_image')
+                ->title(__('dashboard.introduction_image')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)
