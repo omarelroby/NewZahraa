@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CourseOrderResource;
+use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CustomerResource;
 use App\Http\Resources\EbookOrderResource;
 use App\Http\Resources\EbookResource;
@@ -472,7 +473,7 @@ class CustomerController extends Controller
     {
         $course = Course::where('slug', $slug)->first();
         if ($course) {
-            return $this->success(new CountryResource($course));
+            return $this->success(new CoursesResource($course));
 
         } else {
             return $this->error('NOT FOUND', [], 404);
