@@ -22,11 +22,7 @@ Route::group([
 });
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
-    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/', function()
-    {
-        return View('/home');
-    });
+
 
 
     Route::get('test',function(){
@@ -47,6 +43,7 @@ Route::namespace('App\Http\Controllers\dashboard')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
+    Route::get('/','App\Http\Controllers\dashboard\HomeController@index')->name('home');
     Route::get('/dashboard','App\Http\Controllers\dashboard\HomeController@index')->name('dashboard');
     Route::get('/create','App\Http\Controllers\dashboard\HomeController@create');
     Route::get('/index','App\Http\Controllers\dashboard\HomeController@show');

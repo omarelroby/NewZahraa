@@ -68,87 +68,94 @@ class HomeController extends Controller
         return $this->successMessage(__('message.success'));
 
     }
+
     public function countries()
     {
 
-        $countries=Country::all();
+        $countries = Country::all();
         return $this->success(CountryResource::collection($countries));
 
     }
+
     public function categories()
     {
-         $countries=Category::all();
+        $countries = Category::all();
         return $this->success(CategoryResource::collection($countries));
 
     }
+
     public function instructors()
     {
-         $instructors=Instructor::all();
+        $instructors = Instructor::all();
         return $this->success(InstructorResource::collection($instructors));
 
     }
+
     public function pages()
     {
-        $pages=Page::all();
+        $pages = Page::all();
         return $this->success(PagesResource::collection($pages));
 
     }
+
     public function eBook(Request $request)
     {
-        if($request->category_ids!=null)
-            {
-              $ebooks=Ebook::whereIn('id',$request->category_ids)->get();
-             return $this->success(EbookResource::collection($ebooks));
-            }
-        else
-        {
-            $ebooks=Ebook::all();
-            return $this->success(EbookResource::collection($ebooks));
+        $ebooks = Ebook::query();
+        if (is_array($request->category_ids) && count($request->category_ids) > 0)
+            $ebooks = $ebooks->whereIn('category_id', $request->category_ids)->get();
+        if ($request->search && $request->search != '')
+            $ebooks = $ebooks->whereTranslationLike('title', '%'.$request->search.'%');
+        $ebooks = $ebooks->get();
 
-        }
+        return $this->success(EbookResource::collection($ebooks));
+
 
     }
-    public function courses(Request $request){
-        if($request->category_ids!=null)
-        {
-            $courses = Course::whereIn('id',$request->category_ids)->get();
+
+    public function courses(Request $request)
+    {
+        if ($request->category_ids != null) {
+            $courses = Course::whereIn('id', $request->category_ids)->get();
             return $this->success(CoursesResource::collection($courses));
-        }
-        else
-        {
-            $courses=Course::all();
+        } else {
+            $courses = Course::all();
             return $this->success(CoursesResource::collection($courses));
 
         }
     }
+
     public function videos()
     {
-        $videos=Videos::all();
+        $videos = Videos::all();
         return $this->success(VideosResource::collection($videos));
     }
+
     public function free_videos(Request $request)
     {
-        if($request->category_ids!=null)
-        {
-            $free_videos = FreeVideo::whereIn('id',$request->category_ids)->get();
+        if ($request->category_ids != null) {
+            $free_videos = FreeVideo::whereIn('id', $request->category_ids)->get();
             return $this->success(FreeVideosResource::collection($free_videos));
-        }
-        else
-        {
-            $free_videos=FreeVideo::all();
+        } else {
+            $free_videos = FreeVideo::all();
             return $this->success(FreeVideosResource::collection($free_videos));
 
         }
     }
-    public function home_section(){
-        $home=HomeSection::first();
+
+    public function home_section()
+    {
+        $home = HomeSection::first();
         return $this->success(new HomeSectionResource($home));
     }
-    public function setting(){
-        $setting=Setting::first();
+
+    public function setting()
+    {
+        $setting = Setting::first();
         return $this->success(new SettingResource($setting));
     }
-    public function contact(Request $request){
+
+    public function contact(Request $request)
+    {
         $oValidatorRules = [
             'name' => 'required',
             'email' => 'required',
@@ -159,112 +166,112 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails()) {
             return $this->error($validator->messages());
-        }
-        else{
-            $contact=Contacts::create($request->all());
-            $c=$contact->toArray();
-            return $this->successMessage(__('message.success'),$c);
+        } else {
+            $contact = Contacts::create($request->all());
+            $c = $contact->toArray();
+            return $this->successMessage(__('message.success'), $c);
 
         }
     }
-    public function online_courses(Request $request){
-        if($request->category_ids!=null)
-        {
+
+    public function online_courses(Request $request)
+    {
+        if ($request->category_ids != null) {
             $courses = OnlineCourse::whereIn('id', $request->category_ids)->get();
             return $this->success(OnlineCourses::collection($courses));
-        }
-        else
-        {
-            $courses=OnlineCourse::all();
+        } else {
+            $courses = OnlineCourse::all();
             return $this->success(OnlineCourses::collection($courses));
 
         }
     }
-    public function questions(){
-        $questions=Questions::all();
+
+    public function questions()
+    {
+        $questions = Questions::all();
         return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
+
     public function course_category()
     {
-        $category=Category::where('type','Course')->get();
+        $category = Category::where('type', 'Course')->get();
         return $this->success(CategoryResource::collection($category));
     }
+
     public function free_video_category()
     {
-        $category=Category::where('type','Free-video')->get();
+        $category = Category::where('type', 'Free-video')->get();
         return $this->success(CategoryResource::collection($category));
     }
+
     public function online_course_category()
     {
-        $category=Category::where('type','Online-course')->get();
+        $category = Category::where('type', 'Online-course')->get();
         return $this->success(CategoryResource::collection($category));
     }
+
     public function Ebooks()
     {
-        $category=Category::where('type','Ebook')->get();
+        $category = Category::where('type', 'Ebook')->get();
         return $this->success(CategoryResource::collection($category));
     }
+
     public function appointments($id)
     {
 //        dd('m');
-        $session=SessionAppointments::where('month',$id)->get();
-        if (count($session)>0)
-        {
-            return  $this->success(SessionAppointmentsResource::collection($session));
-        }
-        else
-        {
+        $session = SessionAppointments::where('month', $id)->get();
+        if (count($session) > 0) {
+            return $this->success(SessionAppointmentsResource::collection($session));
+        } else {
             return $this->error('This months deosn\'t has any Dates');
         }
     }
+
     public function booking_appointments(Request $request)
     {
-        $sessionPrice=Setting::first()->session_price;
-          $oValidatorRules = [
-              'name' => 'required',
-              'email' => 'required',
-              'phone' => 'required',
-              'payment_method' => 'nullable',
-              'session_price' => 'nullable',
-              'total_price' => 'nullable',
-              'zoom_link' => 'nullable',
-              'appointment_id' => 'required|exists:session_appointments,id',
-              'country_id' => 'required',
-          ];
+        $sessionPrice = Setting::first()->session_price;
+        $oValidatorRules = [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'payment_method' => 'nullable',
+            'session_price' => 'nullable',
+            'total_price' => 'nullable',
+            'zoom_link' => 'nullable',
+            'appointment_id' => 'required|exists:session_appointments,id',
+            'country_id' => 'required',
+        ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails()) {
             return $this->error($validator->messages());
         };
-        if ($request->coupon_id!=null)
-        {
-            $coupon=Coupon::find($request->coupon_id);
-            $discount=$coupon->discount;
-            $booking=BookingAppointments::create([
-                'name'=>$request->name,
-                'phone'=>$request->phone,
-                'email'=>$request->email,
-                'session_price'=>$sessionPrice,
-                'total_price'=>$sessionPrice-($sessionPrice*$discount/100),
-                'zoom_link'=>$request->zoom_link,
-                'country_id'=>$request->country_id,
-                'appointment_id'=>$request->appointment_id,
-                'coupon_id'=>$request->coupon_id ,
-                'discount'=>1
+        if ($request->coupon_id != null) {
+            $coupon = Coupon::find($request->coupon_id);
+            $discount = $coupon->discount;
+            $booking = BookingAppointments::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'session_price' => $sessionPrice,
+                'total_price' => $sessionPrice - ($sessionPrice * $discount / 100),
+                'zoom_link' => $request->zoom_link,
+                'country_id' => $request->country_id,
+                'appointment_id' => $request->appointment_id,
+                'coupon_id' => $request->coupon_id,
+                'discount' => 1
             ]);
-             $coupon->update(['coupon_id'=>$coupon->number_of_use++]);
+            $coupon->update(['coupon_id' => $coupon->number_of_use++]);
             return $this->success('Your Data Added Successfully');
-        }
-        else
-        {
+        } else {
             BookingAppointments::create([
-                'name'=>$request->name,
-                'phone'=>$request->phone,
-                'email'=>$request->email,
-                'session_price'=>$sessionPrice,
-                'total_price'=>$sessionPrice,
-                'zoom_link'=>$request->zoom_link,
-                'country_id'=>$request->country_id,
-                'appointment_id'=>$request->appointment_id,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'session_price' => $sessionPrice,
+                'total_price' => $sessionPrice,
+                'zoom_link' => $request->zoom_link,
+                'country_id' => $request->country_id,
+                'appointment_id' => $request->appointment_id,
 
             ]);
             return $this->success('Your Data Added Successfully');
