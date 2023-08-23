@@ -26,7 +26,7 @@ class OnlineCourses extends JsonResource
             'date'=>$this->date,
             'lessons_number'=>$this->lessons_number,
             'indexes'=>$this->indexes,
-            'quizes'=>$this->quizes,
+            'quizes'=>$this->quizes->count(),
             'introduction_image'=>$this->introduction_image,
             'category'=>new CategoryResource($this->category),
             'number_of_students'=>$this->orders->count()??'',
