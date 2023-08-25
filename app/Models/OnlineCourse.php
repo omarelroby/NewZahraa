@@ -50,4 +50,5 @@ class OnlineCourse extends Model implements TranslatableContract
         return $this->hasMany(Quiz::class);
 
     }
+
 }

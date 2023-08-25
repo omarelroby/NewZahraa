@@ -14,6 +14,8 @@ class Groups extends Model
      protected $fillable=[
         'name',
         'zoom_link',
+        'start_url',
+        'meeting_id',
         'start_date',
         'end_date',
         'online_course_id',
@@ -24,7 +26,7 @@ class Groups extends Model
     }
     public function online_courses()
     {
-        return $this->belongsTo(OnlineCourses::class,'online_course_id');
+        return $this->belongsTo(OnlineCourse::class,'online_course_id');
     }
 
 }
