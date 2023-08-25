@@ -185,6 +185,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Jubaer\Zoom\ZoomServiceProvider::class,
+
 
 
         /*
@@ -217,6 +219,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Zoom' => Jubaer\Zoom\Facades\Zoom::class,
+
 
     ])->toArray(),
 

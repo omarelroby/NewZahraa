@@ -6,6 +6,17 @@
       0 => 'Astrotomic\\Translatable\\TranslatableServiceProvider',
     ),
   ),
+  'jubaer/zoom-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Jubaer\\Zoom\\ZoomServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Zoom' => 'Jubaer\\Zoom\\Facades\\Zoom',
+    ),
+  ),
   'laravel/passport' => 
   array (
     'providers' => 

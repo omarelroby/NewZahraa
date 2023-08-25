@@ -18,6 +18,8 @@ class BookingAppointments extends Model
         'session_price',
         'total_price',
         'zoom_link',
+        'meeting_id',
+        'start_url',
         'appointment_id',
         'country_id',
         'coupon_id',

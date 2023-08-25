@@ -9,6 +9,7 @@
         "astrotomic/laravel-translatable": "^11.12",
         "firebase/php-jwt": "^6.8",
         "guzzlehttp/guzzle": "^7.7",
+        "jubaer/zoom-laravel": "^1.2",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.0",

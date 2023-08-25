@@ -17,6 +17,7 @@ use App\Http\Resources\PagesResource;
 use App\Http\Resources\SessionAppointmentsResource;
 use App\Http\Resources\SettingResource;
 use App\Http\Resources\VideosResource;
+use App\Mail\ZoomLink;
 use App\Models\BookingAppointments;
 use App\Models\Category;
 use App\Models\Contacts;
@@ -36,7 +37,9 @@ use App\Models\Setting;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Jubaer\Zoom\Zoom;
 
 
 class HomeController extends Controller
@@ -283,10 +286,42 @@ class HomeController extends Controller
                 'coupon_id' => $request->coupon_id,
                 'discount' => 1
             ]);
+             $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
+                "agenda" => 'DR.Zahraa Meeting',
+                "topic" => 'DR.Zahraa With'.' '.$booking['name'],
+                "type" => 2, // 1 => instant, 2 => scheduled, 3 => recurring with no fixed time, 8 => recurring with fixed time
+                "duration" => 60, // in minutes
+                "timezone" => 'Asia/Kuwait', // set your timezone
+                 "start_time" => date("c", strtotime($booking->appointments->date)), // set your start time
+                "template_id" => 'set your template id', // set your template id  Ex: "Dv4YdINdTk+Z5RToadh5ug==" from https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetingtemplates
+                "pre_schedule" => false,  // set true if you want to create a pre-scheduled meeting
+                 "settings" => [
+                    'join_before_host' => false, // if you want to join before host set true otherwise set false
+                    'host_video' => false, // if you want to start video when host join set true otherwise set false
+                    'participant_video' => false, // if you want to start video when participants join set true otherwise set false
+                    'mute_upon_entry' => false, // if you want to mute participants when they join the meeting set true otherwise set false
+                    'waiting_room' => false, // if you want to use waiting room for participants set true otherwise set false
+                    'audio' => 'both', // values are 'both', 'telephony', 'voip'. default is both.
+                    'auto_recording' => 'none', // values are 'none', 'local', 'cloud'. default is none.
+                    'approval_type' => 0, // 0 => Automatically Approve, 1 => Manually Approve, 2 => No Registration Required
+                ],
+            ]);
+             $booking->update([
+                'zoom_link'=>$meetings['data']['join_url'],
+                'start_url'=>$meetings['data']['start_url'],
+                'meeting_id'=>$meetings['data']['id'],
+            ]);
+             $join=$meetings['data']['join_url'];
+             $name=$request->name;
+            Mail::to($booking->email)->send(new ZoomLink($join,$name));
+
             $coupon->update(['coupon_id' => $coupon->number_of_use++]);
             return $this->success('Your Data Added Successfully');
-        } else {
-            BookingAppointments::create([
+        }
+        else
+        {
+
+            $booking=BookingAppointments::create([
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'email' => $request->email,
@@ -297,6 +332,36 @@ class HomeController extends Controller
                 'appointment_id' => $request->appointment_id,
 
             ]);
+            $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
+                "agenda" => 'DR.Zahraa Meeting',
+                "topic" => 'DR.Zahraa With'.' '.$booking['name'],
+                "type" => 2, // 1 => instant, 2 => scheduled, 3 => recurring with no fixed time, 8 => recurring with fixed time
+                "duration" => 60, // in minutes
+                "timezone" => 'Asia/Kuwait', // set your timezone
+                "start_time" => $booking->appointments->date, // set your start time
+                "template_id" => 'set your template id', // set your template id  Ex: "Dv4YdINdTk+Z5RToadh5ug==" from https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetingtemplates
+                "pre_schedule" => false,  // set true if you want to create a pre-scheduled meeting
+                "settings" => [
+                    'join_before_host' => false, // if you want to join before host set true otherwise set false
+                    'host_video' => false, // if you want to start video when host join set true otherwise set false
+                    'participant_video' => false, // if you want to start video when participants join set true otherwise set false
+                    'mute_upon_entry' => false, // if you want to mute participants when they join the meeting set true otherwise set false
+                    'waiting_room' => false, // if you want to use waiting room for participants set true otherwise set false
+                    'audio' => 'both', // values are 'both', 'telephony', 'voip'. default is both.
+                    'auto_recording' => 'none', // values are 'none', 'local', 'cloud'. default is none.
+                    'approval_type' => 0, // 0 => Automatically Approve, 1 => Manually Approve, 2 => No Registration Required
+                ],
+
+            ]);
+            $booking->update([
+                'zoom_link'=>$meetings['data']['join_url'],
+                'start_url'=>$meetings['data']['start_url'],
+                'meeting_id'=>$meetings['data']['id'],
+            ]);
+            $join=$meetings['data']['join_url'];
+            $name=$request->name;
+            Mail::to($booking->email)->send(new ZoomLink($join,$name));
+
             return $this->success('Your Data Added Successfully');
 
         }
