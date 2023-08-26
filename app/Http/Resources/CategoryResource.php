@@ -19,10 +19,10 @@ class CategoryResource extends JsonResource
             'slug' => $this->slug,
             'type' => $this->type,
             'name' => $this->translate(app()->getLocale())->name,
-            'Courses-Number'=>$this->courses->count()??'',
-            'Online-Courses-Number'=>$this->onlineCourses->count()??'',
-            'Ebooks-Number'=>$this->Ebooks->count()??'',
-            'free-Videos-Number'=>$this->FreeVideos->count()??'',
+            'Courses_Number'=>$this->courses->count()??'',
+            'Online_Courses_Number'=>$this->onlineCourses->count()??'',
+            'Ebooks_Number'=>$this->Ebooks->count()??'',
+            'Free_Videos_Number'=>$this->FreeVideos->count()??'',
 
 
 
