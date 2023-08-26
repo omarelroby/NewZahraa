@@ -18,6 +18,23 @@ class Category extends Model implements TranslatableContract
     {
         return $this->hasMany(Course::class);
     }
+    public function onlineCourses()
+    {
+        return $this->hasMany(OnlineCourse::class);
+
+    }
+    public function Ebooks()
+    {
+        return $this->hasMany(Ebook::class);
+
+    }
+    public function FreeVideos()
+    {
+        return $this->hasMany(FreeVideo::class);
+
+    }
+
+
 
 
 }
