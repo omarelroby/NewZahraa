@@ -21,7 +21,7 @@ class Groups extends JsonResource
             'start_date'=>$this->start_date,
             'end_date'=>$this->end_date,
             'instructors'=>InstructorResource::collection($this->instructors),
-            'online-courses'=>OnlineCourses::collection($this->online_courses),
+            'online_courses'=>OnlineCourses::collection($this->online_courses),
 
 
         ];

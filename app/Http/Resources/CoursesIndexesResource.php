@@ -12,7 +12,7 @@ class CoursesIndexesResource extends JsonResource
         return [
             'id' => $this->id,
              'name' => $this->translate(app()->getLocale())->name,
-            'video-index'=>CoursesIndexesVideosResource::collection($this->videos),
+            'video_index'=>CoursesIndexesVideosResource::collection($this->videos),
 
 
         ];
