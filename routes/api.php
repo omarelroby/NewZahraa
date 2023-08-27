@@ -44,10 +44,13 @@ Route::middleware("localization")->group(function () {
     Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);
     Route::get('get-ebooks-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks_related']);
     Route::get('get-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos']);
+    Route::get('get-free-videos-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos_related']);
     Route::get('get-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_videos']);
     Route::get('get-online-courses/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_online_courses']);
+    Route::get('get-online-courses-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_online_courses_related']);
     Route::get('get-instructor/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_instructor']);
     Route::get('get-course/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_course']);
+    Route::get('get-course-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_course_related']);
     Route::get('get-page/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_pages']);
     Route::get('course-category',[\App\Http\Controllers\api\HomeController::class,'course_category']);
     Route::get('free-video-category',[\App\Http\Controllers\api\HomeController::class,'free_video_category']);

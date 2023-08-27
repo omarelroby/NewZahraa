@@ -379,10 +379,25 @@ class CustomerController extends Controller
         $free_videos = FreeVideo::where('slug', $slug)->first();
         if ($free_videos)
         {
+             $data=[
+                'free-videos'=>new FreeVideosResource($free_videos),
+             ];
+            return $this->success($data);
+        }
+        else
+        {
+            return $this->error('NOT FOUND', [], 404);
+        }
+
+    }
+    public function get_free_videos_related($slug)
+    {
+        $free_videos = FreeVideo::where('slug', $slug)->first();
+        if ($free_videos)
+        {
             $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
             $data=[
-                'free-videos'=>new FreeVideosResource($free_videos),
-                'related'=> FreeVideosResource::collection($related)
+                 'related'=> FreeVideosResource::collection($related)
             ];
             return $this->success($data);
         }
@@ -404,10 +419,23 @@ class CustomerController extends Controller
     {
         $course = OnlineCourse::where('slug', $slug)->first();
         if ($course) {
+             $data=[
+                'course'=>new OnlineCourses($course),
+             ];
+            return $this->success($data);
+
+        } else {
+            return $this->error('NOT FOUND', [], 404);
+        }
+
+    }
+    public function get_online_courses_related($slug)
+    {
+        $course = OnlineCourse::where('slug', $slug)->first();
+        if ($course) {
             $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
             $data=[
-                'course'=>new OnlineCourses($course),
-                'related'=> OnlineCourses::collection($related)
+                 'related'=> OnlineCourses::collection($related)
             ];
             return $this->success($data);
 
@@ -507,10 +535,22 @@ class CustomerController extends Controller
     public function get_course($slug)
     {
         $course = Course::where('slug', $slug)->first();
+         $data=[
+            'course'=>new CoursesResource($course),
+               ];
+        if ($course) {
+            return $this->success($data);
+
+        } else {
+            return $this->error('NOT FOUND', [], 404);
+        }
+    }
+    public function get_course_related($slug)
+    {
+        $course = Course::where('slug', $slug)->first();
         $related=Course::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
         $data=[
-            'course'=>new CoursesResource($course),
-            'related'=> CoursesResource::collection($related)
+             'related'=> CoursesResource::collection($related)
               ];
         if ($course) {
             return $this->success($data);
