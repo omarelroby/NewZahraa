@@ -10,9 +10,12 @@ use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CoursesResourceCollection;
 use App\Http\Resources\EbookResource;
+use App\Http\Resources\EbooksResourceCollection;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\FreeVideosResourceCollection;
 use App\Http\Resources\HomeSectionResource;
 use App\Http\Resources\InstructorResource;
+use App\Http\Resources\OnlineCourseResourceCollection;
 use App\Http\Resources\OnlineCourses;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\SessionAppointmentsResource;
@@ -117,7 +120,7 @@ class HomeController extends Controller
         if ($request->search && $request->search != '')
             $ebooks = $ebooks->whereTranslationLike('title', '%'.$request->search.'%');
          $ebooks= $ebooks->paginate($request->limit??5);
-        return $this->success(EbookResource::collection($ebooks));
+        return $this->success(new EbooksResourceCollection($ebooks));
     }
 
     public function courses(Request $request)
@@ -159,7 +162,7 @@ class HomeController extends Controller
         if ($request->search && $request->search != '')
             $freeVideos = $freeVideos->whereTranslationLike('title', '%'.$request->search.'%');
          $freeVideos = $freeVideos->paginate($request->limit??5);
-        return $this->success(FreeVideosResource::collection($freeVideos));
+        return $this->success(new FreeVideosResourceCollection($freeVideos));
     }
 
     public function home_section()
@@ -210,7 +213,7 @@ class HomeController extends Controller
         if ($request->search && $request->search != '')
             $onlineCourse = $onlineCourse->whereTranslationLike('title', '%'.$request->search.'%');
          $onlineCourse= $onlineCourse->paginate($request->limit??5);
-        return $this->success(OnlineCourses::collection($onlineCourse));
+        return $this->success(new OnlineCourseResourceCollection($onlineCourse));
     }
 
     public function questions()
