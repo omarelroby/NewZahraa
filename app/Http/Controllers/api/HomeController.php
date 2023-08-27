@@ -8,6 +8,7 @@ use App\Http\Resources\ContactResource;
 use App\Http\Resources\ContactsResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
+use App\Http\Resources\CoursesResourceCollection;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\HomeSectionResource;
@@ -133,8 +134,8 @@ class HomeController extends Controller
             $courses = $courses->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $courses = $courses->whereTranslationLike('title', '%'.$request->search.'%');
-        $courses = $courses->get();
-        return $this->success(CoursesResource::collection($courses));
+        $courses = $courses->paginate($request->limit??5);
+        return $this->success(new CoursesResourceCollection($courses));
     }
 
     public function videos()
