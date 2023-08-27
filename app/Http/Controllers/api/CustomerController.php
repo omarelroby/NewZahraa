@@ -549,6 +549,7 @@ class CustomerController extends Controller
     {
         $course = Course::where('slug', $slug)->first();
         $related=Course::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
+        dd($related);
         $data=[
              'related'=> CoursesResource::collection($related)
               ];
