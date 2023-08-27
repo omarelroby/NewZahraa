@@ -18,6 +18,10 @@ public function indexes()
 {
     return $this->belongsTo(CourseIndexes::class,'course_indexes_id');
 }
+public function IndexesVideos()
+{
+    return $this->hasMany(IndexesVideo::class);
+}
 
 
 }

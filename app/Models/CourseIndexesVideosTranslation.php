@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class CourseIndexesVideosTranslation extends Model
 {
     protected $table='course_index_videos_translations';
-    protected $fillable=['title'];
+    protected $fillable=['title','course_indexes_videos_id'];
+
     public $timestamps = false;
 
 

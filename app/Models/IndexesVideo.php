@@ -16,7 +16,7 @@ class IndexesVideo extends Model implements TranslatableContract
 
 public function indexes()
 {
-    return $this->belongsTo(VideosIndexes::class,'indexes_video_id');
+    return $this->belongsTo(CourseIndexesVideos::class,'indexes_video_id');
 }
 
 }

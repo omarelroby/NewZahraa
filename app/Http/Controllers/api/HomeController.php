@@ -116,7 +116,7 @@ class HomeController extends Controller
             $ebooks = $ebooks->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $ebooks = $ebooks->whereTranslationLike('title', '%'.$request->search.'%');
-        $ebooks = $ebooks->get();
+         $ebooks= $ebooks->paginate($request->limit??5);
         return $this->success(EbookResource::collection($ebooks));
     }
 
@@ -158,7 +158,7 @@ class HomeController extends Controller
             $freeVideos = $freeVideos->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $freeVideos = $freeVideos->whereTranslationLike('title', '%'.$request->search.'%');
-        $freeVideos = $freeVideos->get();
+         $freeVideos = $freeVideos->paginate($request->limit??5);
         return $this->success(FreeVideosResource::collection($freeVideos));
     }
 
@@ -209,7 +209,7 @@ class HomeController extends Controller
             $onlineCourse = $onlineCourse->whereIn('category_id', $request->category_ids);
         if ($request->search && $request->search != '')
             $onlineCourse = $onlineCourse->whereTranslationLike('title', '%'.$request->search.'%');
-        $onlineCourse = $onlineCourse->get();
+         $onlineCourse= $onlineCourse->paginate($request->limit??5);
         return $this->success(OnlineCourses::collection($onlineCourse));
     }
 

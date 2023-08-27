@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CourseOrderResource;
+use App\Http\Resources\CoursesIndexesOnlyVideosResource;
+use App\Http\Resources\CoursesIndexesResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CustomerResource;
 use App\Http\Resources\EbookOrderResource;
@@ -23,12 +25,14 @@ use App\Http\Resources\VideosResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
+use App\Models\CourseIndexes;
 use App\Models\CourseOrders;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\EbookOrders;
 use App\Models\FreeVideo;
 use App\Models\Groups;
+use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
@@ -699,8 +703,10 @@ class CustomerController extends Controller
             return $this->error('Not Found this Customer');
         }
     }
-
-
-
+    public function courses_videos($course_id)
+    {
+        $indexes=CourseIndexes::where('course_id',$course_id)->get();
+        return $this->success(CoursesIndexesOnlyVideosResource::collection($indexes));
+     }
 
 }

@@ -83,5 +83,5 @@ Route::middleware("localization")->group(function () {
     Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
     Route::get('appointments-month/{id}',[\App\Http\Controllers\api\HomeController::class,'appointments']);
     Route::post('booking-appointments',[\App\Http\Controllers\api\HomeController::class,'booking_appointments']);
-
+    Route::get('courses-videos/{course_id}',[\App\Http\Controllers\api\CustomerController::class,'courses_videos']);
 });
