@@ -20,7 +20,7 @@ public function indexes()
 }
 public function IndexesVideos()
 {
-    return $this->hasMany(IndexesVideo::class);
+    return $this->hasMany(IndexesVideo::class,'indexes_video_id');
 }
 
 
