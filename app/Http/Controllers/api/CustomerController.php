@@ -422,9 +422,23 @@ class CustomerController extends Controller
          $ebook = Ebook::where('slug', $slug)->first();
         if ($ebook)
         {
+             $data=[
+                'ebook'=>new EbookResource($ebook),
+             ];
+            return  $this->success($data);
+
+        } else {
+            return $this->error('NOT FOUND', [], 404);
+        }
+
+    }
+    public function get_ebooks_related($slug)
+    {
+        $ebook = Ebook::where('slug', $slug)->first();
+        if ($ebook)
+        {
             $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
             $data=[
-                'ebook'=>new EbookResource($ebook),
                 'related'=> EbookResource::collection($related)
             ];
             return  $this->success($data);
@@ -434,6 +448,7 @@ class CustomerController extends Controller
         }
 
     }
+
 
     public function show_favourite_videos()
     {
