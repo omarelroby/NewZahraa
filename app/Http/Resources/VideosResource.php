@@ -16,13 +16,9 @@ class VideosResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'slug' => $this->slug,
-            'title' => $this->translate(app()->getLocale())->title,
-            'description' => $this->translate(app()->getLocale())->description,
-            'preview_video'=>$this->preview_video,
-            'complete_video'=>$this->complete_video,
-            'price'=>$this->price,
-            'indexes'=> VideoIndexesResource::collection($this->indexes),
+            'is_free' => $this->is_free,
+            'video' => $this->video,
+            'Indexes_videos'=>$this->IndexesVideos,
 
         ];
     }

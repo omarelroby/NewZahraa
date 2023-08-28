@@ -45,7 +45,7 @@ Route::middleware("localization")->group(function () {
     Route::get('get-ebooks-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks_related']);
     Route::get('get-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos']);
     Route::get('get-free-videos-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos_related']);
-    Route::get('get-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_videos']);
+    Route::get('get-videos/{id}',[\App\Http\Controllers\api\CustomerController::class,'get_videos']);
     Route::get('get-online-courses/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_online_courses']);
     Route::get('get-online-courses-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_online_courses_related']);
     Route::get('get-instructor/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_instructor']);

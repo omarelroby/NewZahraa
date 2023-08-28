@@ -26,6 +26,7 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
 use App\Models\CourseIndexes;
+use App\Models\CourseIndexesVideos;
 use App\Models\CourseOrders;
 use App\Models\Customers;
 use App\Models\Ebook;
@@ -489,24 +490,17 @@ class CustomerController extends Controller
 
     }
 
-    public function get_videos($slug)
+    public function get_videos($id)
     {
-        $video = Videos::with('indexes')->where('slug', $slug)->first();
-        if ($video) {
-            $content = "WEBVTT";
-            foreach ($video->indexes as $index) {
-                $content .= "\n\n" . str_replace('.', ':', $index->time_from) . "--> " . str_replace('.', ':', $index->time_to) . "\n" . $index->translate(app()->getLocale())->title;
-            }
-            $content .= "\n";
-            $path = 'video_index/' . time() . '_' . random_int(1, 100000) . '.webvtt';
-            \Storage::disk('public')->put($path, $content);
+        $video = CourseIndexesVideos::find($id);
+        if ($video)
+        {
             $data = [
                 'video' => new VideosResource($video),
-                'index_file' => asset('storage/' . $path),
-            ];
+             ];
             return $this->success($data);
-
-        } else {
+        }
+         else {
             return $this->error('NOT FOUND', [], 404);
         }
 
