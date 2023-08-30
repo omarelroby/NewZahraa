@@ -49,7 +49,7 @@ class EmploymentController extends Controller
             $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
         }
-        Employment::create($data);
+        $data['slug'] = Str::slug($data['en']['title'],'-');        Employment::create($data);
         Alert::success('Success',__('dashboard.success'));
         return redirect()->route('employment.index');
     }
