@@ -100,6 +100,8 @@ Route::middleware('auth:admin')->group(function () {
      Route::put('update-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'update']);
      Route::get('send-emails',[\App\Http\Controllers\dashboard\SendEmailsController::class,'index'])->name('send-emails.index');
       Route::post('sending-emails',[\App\Http\Controllers\dashboard\SendEmailsController::class,'sending_emails'])->name('send.emails');
+    Route::get('applyJob', [\App\Http\Controllers\api\ApplyJobController::class,'index'])->name('applyJob');
+    Route::delete('applyJob/{id}', [\App\Http\Controllers\api\ApplyJobController::class,'destroy'])->name('deleteJob');
 
 });
 

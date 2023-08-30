@@ -460,6 +460,17 @@
             </li>
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" href="{{route('applyJob')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.apply-job')}}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}</span>
                 </a>
                 <ul class="menu-content">

@@ -61,6 +61,9 @@ Route::middleware("localization")->group(function ()
     Route::get('ebook-category',[\App\Http\Controllers\api\HomeController::class,'Ebooks']);
 
     Route::get('countries', [\App\Http\Controllers\api\HomeController::class, 'countries']);
+    Route::get('employments', [\App\Http\Controllers\api\HomeController::class, 'employments']);
+    Route::get('get-employment-application/{slug}', [\App\Http\Controllers\api\HomeController::class, 'get_employment_application']);
+    Route::post('apply-job', [\App\Http\Controllers\api\ApplyJobController::class, 'store']);
     Route::get('categories', [\App\Http\Controllers\api\HomeController::class, 'categories']);
     Route::post('lecturer', [\App\Http\Controllers\api\HomeController::class, 'lecturer']);
     Route::post('customer/register', [\App\Http\Controllers\api\CustomerController::class, 'customer_register']);

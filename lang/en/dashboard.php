@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'apply-job'=>' Apply Jobs',
     'salary'=>'Salary',
     'posted_date'=>'Posted Date',
     'expiration_date'=>'Expiration Date',

@@ -125,6 +125,12 @@
                                                                 <input type="date" required id="projectinput30" class="form-control"   name="posted_date">
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group form-check checkbox-lg">
+                                                                <label for="projectinput30">{{__('dashboard.status')}}  </label>
+                                                                <input type="checkbox" required id="projectinput30"    value="1"   name="status">
+                                                            </div>
+                                                        </div>
 
 
                                                 </div>

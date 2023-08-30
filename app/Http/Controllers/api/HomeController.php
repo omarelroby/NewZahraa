@@ -11,6 +11,7 @@ use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CoursesResourceCollection;
 use App\Http\Resources\EbookResource;
 use App\Http\Resources\EbooksResourceCollection;
+use App\Http\Resources\EmploymentResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\FreeVideosResourceCollection;
 use App\Http\Resources\HomeSectionResource;
@@ -29,6 +30,7 @@ use App\Models\Country;
 use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Ebook;
+use App\Models\Employment;
 use App\Models\FreeVideo;
 use App\Models\HomeSection;
 use App\Models\Instructor;
@@ -81,6 +83,30 @@ class HomeController extends Controller
 
         $countries = Country::all();
         return $this->success(CountryResource::collection($countries));
+
+    }
+    public function employments()
+    {
+
+        $employments= Employment::where('status',1)->get();
+        return $this->success(EmploymentResource::collection($employments));
+
+    }
+    public function get_employment_application($slug)
+    {
+        $employment = Employment::where('slug', $slug)->where('status',1)->first();
+        if ($employment)
+        {
+
+            $data=[
+                'employment-application'=>new EmploymentResource($employment),
+            ];
+            return $this->success($data);
+        }
+        else
+        {
+            return $this->error('NOT FOUND', [], 404);
+        }
 
     }
 

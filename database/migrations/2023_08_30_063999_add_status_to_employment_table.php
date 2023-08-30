@@ -3,20 +3,20 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddSlugToEmploymentTable extends Migration {
+class AddStatusToEmploymentTable extends Migration {
 
 	public function up()
 	{
         Schema::table('employments', function($table)
         {
-            $table->text('slug')->nullable();
+            $table->boolean('status')->default(0);
 
         });
 	}
     public function down()
 	{
         Schema::table('employments', function($table) {
-             $table->text(['slug']);
+             $table->boolean('boolean')->default(0);
         });
 	}
 

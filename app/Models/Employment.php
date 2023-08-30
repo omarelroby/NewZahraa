@@ -22,6 +22,7 @@ class Employment extends Model implements TranslatableContract
         'expiration_date',
         'posted_date',
         'slug',
+        'status',
      ];
 
 

@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'apply-job'=>' تقديمات التوظيف',
     'edit-employment-applications'=>'تعديل طلب التوظيف',
     'salary'=>'الراتب',
     'posted_date'=>'تاريخ النشر',
