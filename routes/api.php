@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
 
-Route::middleware("localization")->group(function () {
-    Route::middleware('auth:api')->group( function () {
+Route::middleware("localization")->group(function ()
+{
+    Route::middleware('auth:api')->group( function ()
+    {
         Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
         Route::post('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'favourite_ebooks']);
         Route::post('favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_videos']);
@@ -41,6 +43,7 @@ Route::middleware("localization")->group(function () {
         Route::post('online-course-orders',[\App\Http\Controllers\api\CustomerController::class,'online_course_orders']);
 
     });
+
     Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);
     Route::get('get-ebooks-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks_related']);
     Route::get('get-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos']);
@@ -76,6 +79,7 @@ Route::middleware("localization")->group(function () {
     Route::post('materials', [\App\Http\Controllers\api\InstructorController::class, 'materials']);
     Route::post('quizes', [\App\Http\Controllers\api\InstructorController::class, 'quizes']);
     Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
+    Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
     Route::delete('delete-materials/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_materials']);
     Route::delete('delete-quiz/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_quiz']);
     Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);

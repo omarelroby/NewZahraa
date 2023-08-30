@@ -34,6 +34,8 @@ use App\Models\QuestionsOptions;
 use App\Models\Quiz;
 use App\Models\QuizGroups;
 use App\Models\QuizQuestions;
+use App\Models\StudenQuiz;
+use App\Models\StudenQuizAnswer;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -406,8 +408,46 @@ class InstructorController extends Controller
 
 
         }
-
-
-
 }
+        public function quiz_answers(Request $request)
+        {
+
+//                 dd(auth('api')->user()->id);
+            $online_course=Quiz::find($request->quiz_id)->online_course_id;
+            $student_quiz=StudenQuiz::create([
+                'total_degree'=>0,
+                'users_id'=>auth('api')->user()->id,
+                'online_course_id'=>$online_course,
+                'quiz_id'=>$request->quiz_id,
+            ]);
+            foreach ($request->answers as $key=>$question)
+            {
+                $questions=QuizQuestions::find($question['question_id']);
+                $correct_answer=$questions->correct_answer;
+//                dd($question['answer']);
+                if ($correct_answer==$question['answer'])
+                {
+                    StudenQuizAnswer::create([
+                        'degree'=>$questions->degree,
+                        'answer'=>$question['answer'],
+                        'student_quiz_id'=>$student_quiz->id,
+                        'question_id'=>$questions->id,
+                    ]);
+                    $student_quiz->update(['total_degree'=>$questions->degree+$student_quiz->total_degree]);
+                }
+                else
+
+                {
+                    StudenQuizAnswer::create([
+                        'degree'=>0,
+                        'answer'=>$question['answer'],
+                        'student_quiz_id'=>$student_quiz->id,
+                        'question_id'=>$questions->id,
+                    ]);
+                }
+
+            }
+            return $this->success('Your Quiz Corrected Successfully');
+
+        }
 }
