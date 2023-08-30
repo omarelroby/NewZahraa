@@ -12,6 +12,16 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-employment-applications'=>'تعديل طلب التوظيف',
+    'salary'=>'الراتب',
+    'posted_date'=>'تاريخ النشر',
+    'expiration_date'=>'تاريخ الإنتهاء',
+    'job_type'=>'نوع الوظيفة',
+    'Gender'=>'النوع',
+    'experience'=>'الخبرات',
+    'qualifications'=>'المؤهلات',
+    'add-employment-applications'=>'إضافة طلبات التوظيف',
+    'employment-applications'=>'طلبات التوظيف',
     'introduction_image'=>'صورة المقدمة ',
     'pages_number'=>'عدد صفحات الكتاب ',
     'commission_instructor'=>'مدرب اللجان ',

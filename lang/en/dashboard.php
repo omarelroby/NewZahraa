@@ -12,6 +12,16 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'salary'=>'Salary',
+    'posted_date'=>'Posted Date',
+    'expiration_date'=>'Expiration Date',
+    'job_type'=>'Job Type',
+    'Gender'=>'Gender',
+    'experience'=>'Experience',
+    'qualifications'=>'Qualifications',
+    'add-employment-applications'=>'Add Employment Applications',
+    'edit-employment-applications'=>'Edit-Employment Applications',
+    'employment-applications'=>'Employment Applications',
     'introduction_image'=>'Introduction Image',
     'pages_number'=>'Book Pages Number ',
     'commission_instructor'=>'Commission Instructor',

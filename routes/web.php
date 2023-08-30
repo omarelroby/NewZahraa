@@ -94,6 +94,7 @@ Route::middleware('auth:admin')->group(function () {
      Route::resource('coupon',\App\Http\Controllers\dashboard\CouponController::class);
      Route::resource('appointments',\App\Http\Controllers\dashboard\AppointmentsController::class);
      Route::resource('booking-appointments',\App\Http\Controllers\dashboard\BookingAppointmentsController::class);
+     Route::resource('employment',\App\Http\Controllers\dashboard\EmploymentController::class);
      Route::get('create-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'create']);
      Route::post('store-indexes-videos',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'store']);
      Route::put('update-indexes-videos/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'update']);

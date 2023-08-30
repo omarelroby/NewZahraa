@@ -409,6 +409,21 @@
                     </li>
                 </ul>
             </li>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-tasks"></i><span class="menu-title"
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.employment-applications')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" href="{{route('employment.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.employment-applications')}}</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="{{route('employment.create')}}"
+                           data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-employment-applications')}}</a>
+                    </li>
+                </ul>
+            </li>
 
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="fa  fa-send"></i><span class="menu-title"
