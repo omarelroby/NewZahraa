@@ -8,7 +8,8 @@ class DeleteForeignUsersIdFromStudentQuizTable extends Migration {
 	public function up()
 	{
         Schema::table('student_quiz', function (Blueprint $table) {
-             $table->dropColumn(['users_id']);
+            $table->dropForeign(['users_id']);
+            $table->dropColumn(['users_id']);
         });
 	}
 
