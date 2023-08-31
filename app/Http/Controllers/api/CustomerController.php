@@ -385,7 +385,7 @@ class CustomerController extends Controller
         if ($free_videos)
         {
              $data=[
-                'free-videos'=>new FreeVideosResource($free_videos),
+                'free_videos'=>new FreeVideosResource($free_videos),
              ];
             return $this->success($data);
         }
