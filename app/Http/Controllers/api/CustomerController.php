@@ -116,8 +116,7 @@ class CustomerController extends Controller
 
     public function logout()
     {
-        dd('mm');
-        $user = auth('api')->user();
+         $user = auth('api')->user();
         $user->token()->revoke();
         return $this->successMessage('Logout Done');
 
