@@ -165,14 +165,14 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($valiation) {
-            return $this->error('this video already added as favourite');
+            return $this->error('this course already added as favourite');
         }
         if ($customer) {
             DB::table('favourite_courses')->insert([
                 'customer_id' => $customer->id,
                 'course_id' => $request->course_id,
             ]);
-            return $this->successMessage('your favourite video added successfully');
+            return $this->successMessage('your favourite course added successfully');
 
         }
     }
@@ -253,6 +253,32 @@ class CustomerController extends Controller
         if ($customer) {
             $query->delete();
             return $this->successMessage('Your  ebooks Deleted successfully');
+
+        }
+    }
+    public function delete_favourite_courses(Request $request)
+    {
+        $customer = auth('api')->user();
+        $valiation = DB::table('favourite_courses')
+            ->where('customer_id', $customer->id)
+            ->where('course_id', $request->course_id)
+            ->first();
+        $query = DB::table('favourite_courses')
+            ->where('customer_id', $customer->id)
+            ->where('course_id', $request->course_id);
+        $oValidatorRules = [
+            'course_id' => 'required|exists:courses,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if (!$valiation) {
+            return $this->error('This Course Not Found');
+        }
+        if ($customer) {
+            $query->delete();
+            return $this->successMessage('Your  Course Deleted successfully');
 
         }
     }
