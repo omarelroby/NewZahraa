@@ -12,6 +12,7 @@ use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CustomerResource;
 use App\Http\Resources\EbookOrderResource;
 use App\Http\Resources\EbooksResource;
+use App\Http\Resources\FavouriteCoursesResource;
 use App\Http\Resources\FavouriteEbooksResource;
 use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
@@ -395,6 +396,12 @@ class CustomerController extends Controller
     {
         $customer = auth('api')->user();
         return $this->success(new FavouriteEbooksResource($customer));
+
+    }
+    public function show_favourite_courses()
+    {
+        $customer = auth('api')->user();
+        return $this->success(new FavouriteCoursesResource($customer));
 
     }
 

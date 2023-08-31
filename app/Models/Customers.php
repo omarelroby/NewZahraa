@@ -34,6 +34,9 @@ class Customers extends Authenticatable
     public function favourite_ebook(){
         return $this->belongsToMany(Ebook::class,'favourite_ebooks','customer_id','ebooks_id');
     }
+    public function favourite_courses(){
+        return $this->belongsToMany(Course::class,'favourite_courses','customer_id','course_id');
+    }
     public function favourite_free_videos(){
         return $this->belongsToMany(FreeVideo::class,'favourite_free_videos','customer_id','free_videos_id');
     }

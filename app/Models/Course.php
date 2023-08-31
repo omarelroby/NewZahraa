@@ -25,6 +25,10 @@ class Course extends Model implements TranslatableContract
     {
         return $this->hasMany(CourseIndexes::class);
     }
+    public function favourite_courses()
+    {
+        return $this->belongsToMany(Customers::class,'favourite_courses','course_id','customer_id');
+    }
     public function category(){
         return $this->belongsTo(Category::class,'category_id');
     }
