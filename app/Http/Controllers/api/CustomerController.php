@@ -169,7 +169,7 @@ class CustomerController extends Controller
         if ($customer) {
             DB::table('favourite_courses')->insert([
                 'customer_id' => $customer->id,
-                'course_id' => $request->course,
+                'course_id' => $request->course_id,
             ]);
             return $this->successMessage('your favourite video added successfully');
 
