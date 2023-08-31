@@ -13,7 +13,7 @@ use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\InstructorResource;
-use App\Http\Resources\OnlineCourses;
+use App\Http\Resources\OnlineCoursesResource;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\VideosResource;
 use App\Models\Appointments;
@@ -56,7 +56,7 @@ class InstructorController extends Controller
          $instructor=Instructor::where('email',$user)->first();
         if ($instructor)
         {
-            return $this->success(OnlineCourses::collection($instructor->OnlineCourses));
+            return $this->success(OnlineCoursesResource::collection($instructor->OnlineCourses));
         }
         else
         {

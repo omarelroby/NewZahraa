@@ -19,7 +19,7 @@ use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseOrderResource;
-use App\Http\Resources\OnlineCourses;
+use App\Http\Resources\OnlineCoursesResource;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\VideosResource;
 use App\Models\Category;
@@ -425,7 +425,7 @@ class CustomerController extends Controller
         $course = OnlineCourse::where('slug', $slug)->first();
         if ($course) {
              $data=[
-                'course'=>new OnlineCourses($course),
+                'course'=>new OnlineCoursesResource($course),
              ];
             return $this->success($data);
 
@@ -440,7 +440,7 @@ class CustomerController extends Controller
         if ($course) {
             $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
             $data=[
-                 'related'=> OnlineCourses::collection($related)
+                 'related'=> OnlineCoursesResource::collection($related)
             ];
             return $this->success($data);
 

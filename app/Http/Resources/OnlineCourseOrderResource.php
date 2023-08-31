@@ -21,7 +21,7 @@ class OnlineCourseOrderResource extends JsonResource
             'price' => $this->price,
             'status' => $this->status,
             'total' => $this->total,
-            'online-course' => new OnlineCourses($this->course),
+            'online-course' => new OnlineCoursesResource($this->course),
 
         ];
     }

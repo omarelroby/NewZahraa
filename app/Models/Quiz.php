@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use App\Http\Resources\OnlineCourses;
+use App\Http\Resources\OnlineCoursesResource;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +26,7 @@ class Quiz extends Model
     }
     public function online_courses()
     {
-        return $this->belongsTo(OnlineCourses::class,'online_course_id');
+        return $this->belongsTo(OnlineCoursesResource::class,'online_course_id');
     }
 
 }
