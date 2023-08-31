@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Models\OnlineCourseOrders;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OnlineCoursesResource extends JsonResource
+class OnlineCourseResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

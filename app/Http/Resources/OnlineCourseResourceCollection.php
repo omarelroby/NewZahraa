@@ -19,7 +19,6 @@ class OnlineCourseResourceCollection extends ResourceCollection
         $response = [
             'data' => $this->collection,
         ];
-
         if($this->resource instanceof LengthAwarePaginator)
         {
             $response['pagination'] = [

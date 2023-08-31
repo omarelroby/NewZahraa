@@ -17,7 +17,7 @@ use App\Http\Resources\FreeVideosResourceCollection;
 use App\Http\Resources\HomeSectionResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseResourceCollection;
-use App\Http\Resources\OnlineCoursesResource;
+use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\SessionAppointmentsResource;
 use App\Http\Resources\SettingResource;
