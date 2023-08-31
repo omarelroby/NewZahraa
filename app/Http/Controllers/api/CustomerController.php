@@ -11,7 +11,7 @@ use App\Http\Resources\CoursesIndexesResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CustomerResource;
 use App\Http\Resources\EbookOrderResource;
-use App\Http\Resources\EbookResource;
+use App\Http\Resources\EbooksResource;
 use App\Http\Resources\FavouriteEbooksResource;
 use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
@@ -456,7 +456,7 @@ class CustomerController extends Controller
         if ($ebook)
         {
              $data=[
-                'ebook'=>new EbookResource($ebook),
+                'ebook'=>new EbooksResource($ebook),
              ];
             return  $this->success($data);
 
@@ -472,7 +472,7 @@ class CustomerController extends Controller
         {
             $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
             $data=[
-                'related'=> EbookResource::collection($related)
+                'related'=> EbooksResource::collection($related)
             ];
             return  $this->success($data);
 

@@ -21,7 +21,7 @@ class EbookOrderResource extends JsonResource
             'price' => $this->price,
             'status' => $this->status,
             'total' => $this->total,
-            'ebook' => new EbookResource($this->ebooks),
+            'ebook' => new EbooksResource($this->ebooks),
 
         ];
     }

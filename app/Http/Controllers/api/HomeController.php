@@ -9,7 +9,7 @@ use App\Http\Resources\ContactsResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CoursesResource;
 use App\Http\Resources\CoursesResourceCollection;
-use App\Http\Resources\EbookResource;
+use App\Http\Resources\EbooksResource;
 use App\Http\Resources\EbooksResourceCollection;
 use App\Http\Resources\EmploymentResource;
 use App\Http\Resources\FreeVideosResource;

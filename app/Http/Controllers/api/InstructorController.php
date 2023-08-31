@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CustomerResource;
-use App\Http\Resources\EbookResource;
+use App\Http\Resources\EbooksResource;
 use App\Http\Resources\FavouriteEbooksResource;
 use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
