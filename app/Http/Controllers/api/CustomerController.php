@@ -149,6 +149,32 @@ class CustomerController extends Controller
 
         }
     }
+    public function favourite_course(Request $request)
+    {
+        $customer = auth('api')->user();
+        $valiation = DB::table('favourite_courses')
+            ->where('customer_id', $customer->id)
+            ->where('course_id', $request->course_id)
+            ->first();
+        $oValidatorRules = [
+            'course_id' => 'required|exists:courses,id',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        if ($valiation) {
+            return $this->error('this video already added as favourite');
+        }
+        if ($customer) {
+            DB::table('favourite_courses')->insert([
+                'customer_id' => $customer->id,
+                'course_id' => $request->course,
+            ]);
+            return $this->successMessage('your favourite video added successfully');
+
+        }
+    }
 
     public function update_profile(Request $request)
     {

@@ -23,6 +23,7 @@ Route::middleware("localization")->group(function ()
     {
         Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
         Route::post('favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'favourite_ebooks']);
+        Route::post('favourite-course',[\App\Http\Controllers\api\CustomerController::class,'favourite_course']);
         Route::post('favourite-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_videos']);
         Route::post('delete-favourite-ebooks',[\App\Http\Controllers\api\CustomerController::class,'delete_favourite_ebooks']);
         Route::post('favourite-free-videos',[\App\Http\Controllers\api\CustomerController::class,'favourite_free_videos']);
