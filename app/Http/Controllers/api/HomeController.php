@@ -43,6 +43,7 @@ use App\Models\Setting;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Jubaer\Zoom\Zoom;
@@ -396,6 +397,11 @@ class HomeController extends Controller
 
         }
 
+    }
+    public function subscription(Request $request)
+    {
+        DB::table('subscriptions')->insert(['email'=>$request->email]);
+        return $this->success('Email Added Successfully');
     }
 
 

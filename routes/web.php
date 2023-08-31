@@ -102,6 +102,7 @@ Route::middleware('auth:admin')->group(function () {
       Route::post('sending-emails',[\App\Http\Controllers\dashboard\SendEmailsController::class,'sending_emails'])->name('send.emails');
     Route::get('applyJob', [\App\Http\Controllers\api\ApplyJobController::class,'index'])->name('applyJob');
     Route::delete('applyJob/{id}', [\App\Http\Controllers\api\ApplyJobController::class,'destroy'])->name('deleteJob');
+    Route::get('subscriptions', [\App\Http\Controllers\HomeController::class,'subscriptions'])->name('subscriptions');
 
 });
 

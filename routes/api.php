@@ -44,6 +44,23 @@ Route::middleware("localization")->group(function ()
 
     });
 
+    Route::middleware('auth:instructor-api')->group( function ()
+    {
+        Route::get('instructor-online-courses', [\App\Http\Controllers\api\InstructorController::class, 'instructor_onlineCourses']);
+        Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
+        Route::post('instructor-groups', [\App\Http\Controllers\api\InstructorController::class, 'groups']);
+        Route::post('materials', [\App\Http\Controllers\api\InstructorController::class, 'materials']);
+        Route::post('quizes', [\App\Http\Controllers\api\InstructorController::class, 'quizes']);
+        Route::delete('delete-materials/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_materials']);
+        Route::delete('delete-quiz/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_quiz']);
+        Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
+        Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
+        Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
+
+
+
+    });
+
     Route::get('get-ebooks/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks']);
     Route::get('get-ebooks-related/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_ebooks_related']);
     Route::get('get-free-videos/{slug}',[\App\Http\Controllers\api\CustomerController::class,'get_free_videos']);
@@ -77,18 +94,9 @@ Route::middleware("localization")->group(function ()
     Route::get('online-courses', [\App\Http\Controllers\api\HomeController::class, 'online_courses']);
     Route::get('questions', [\App\Http\Controllers\api\HomeController::class, 'questions']);
     Route::get('instructors', [\App\Http\Controllers\api\HomeController::class, 'instructors']);
-    Route::get('instructor-online-courses', [\App\Http\Controllers\api\InstructorController::class, 'instructor_onlineCourses']);
-    Route::post('instructor-groups', [\App\Http\Controllers\api\InstructorController::class, 'groups']);
-    Route::post('materials', [\App\Http\Controllers\api\InstructorController::class, 'materials']);
-    Route::post('quizes', [\App\Http\Controllers\api\InstructorController::class, 'quizes']);
-    Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
-    Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
-    Route::delete('delete-materials/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_materials']);
-    Route::delete('delete-quiz/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_quiz']);
-    Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
     Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
-    Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
     Route::get('appointments-month/{id}',[\App\Http\Controllers\api\HomeController::class,'appointments']);
     Route::post('booking-appointments',[\App\Http\Controllers\api\HomeController::class,'booking_appointments']);
     Route::get('courses-videos/{course_id}',[\App\Http\Controllers\api\CustomerController::class,'courses_videos']);
+    Route::post('subscription',[\App\Http\Controllers\api\HomeController::class,'subscription']);
 });

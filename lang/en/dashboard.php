@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'subscriptions'=>'Subscriptions Emails',
     'apply-job'=>' Apply Jobs',
     'salary'=>'Salary',
     'posted_date'=>'Posted Date',
