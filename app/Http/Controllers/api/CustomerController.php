@@ -658,9 +658,6 @@ class CustomerController extends Controller
     public function buy_course(Request $request)
     {
         $customer_id=auth('api')->user()->id;
-        $check=CourseOrders::where('customer_id',$customer_id)->first();
-        $course=Course::find($request->course_id);
-        $price=$course->price;
         $oValidatorRules =
             [
                 'course_id' => 'required|exists:courses,id',
@@ -670,6 +667,13 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
+        $check=CourseOrders::where('customer_id',$customer_id)->first();
+        $course=Course::find($request->course_id);
+        if (!$course){
+            return  $this->error('this course Not Found');
+        }
+        $price=$course->price??'';
+
         if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
         {
             return $this->error(' You have Already Book this Course');
