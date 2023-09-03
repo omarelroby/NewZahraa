@@ -103,6 +103,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('applyJob', [\App\Http\Controllers\api\ApplyJobController::class,'index'])->name('applyJob');
     Route::delete('applyJob/{id}', [\App\Http\Controllers\api\ApplyJobController::class,'destroy'])->name('deleteJob');
     Route::get('subscriptions', [\App\Http\Controllers\HomeController::class,'subscriptions'])->name('subscriptions');
+    Route::resource('payment-method', \App\Http\Controllers\dashboard\PaymentMethodsController::class);
 
 });
 

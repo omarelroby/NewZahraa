@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'add-payment-method'=>'إضافة طرق الدفع',
+    'edit-payment-method'=>'تعديل طرق الدفع',
+    'payment-method'=>'طرق الدفع',
     'subscriptions'=>'إميلات الإشتراكات',
     'apply-job'=>' تقديمات التوظيف',
     'edit-employment-applications'=>'تعديل طلب التوظيف',

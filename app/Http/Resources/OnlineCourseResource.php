@@ -29,6 +29,7 @@ class OnlineCourseResource extends JsonResource
             'quizes_number'=>$this->quizes->count(),
             'introduction_image'=>$this->introduction_image,
             'category'=>new CategoryResource($this->category),
+            'instructors'=>  InstructorResource::collection($this->Instructors),
             'number_of_students'=>$this->orders->count()??'',
 
 

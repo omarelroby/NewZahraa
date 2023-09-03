@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-payment-method'=>'Edit Payment Methods',
+    'add-payment-method'=>'Add Payment Methods',
+    'payment-method'=>'Payment Methods',
     'subscriptions'=>'Subscriptions Emails',
     'apply-job'=>' Apply Jobs',
     'salary'=>'Salary',

@@ -14,6 +14,7 @@ class OnlineCourse extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title','description'];
     protected $fillable=[
+        'id',
         'price',
         'slug',
         'hours',

@@ -17,6 +17,7 @@ class Instructor extends Authenticatable
 
 
     protected $fillable=[
+        'id',
         'name',
         'email',
         'slug',
