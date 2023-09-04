@@ -105,5 +105,5 @@ Route::middleware("localization")->group(function ()
     Route::get('payment-method',[\App\Http\Controllers\api\HomeController::class,'payment_methods']);
     Route::post('forget-password',[\App\Http\Controllers\api\CustomerController::class,'forget_password']);
     Route::post('reset-password',[\App\Http\Controllers\api\CustomerController::class,'reset_password']);
-    Route::post('dates-instructors',[\App\Http\Controllers\api\CustomerController::class,'instructor_dates']);
+    Route::get('dates-instructors',[\App\Http\Controllers\api\CustomerController::class,'instructor_dates']);
 });

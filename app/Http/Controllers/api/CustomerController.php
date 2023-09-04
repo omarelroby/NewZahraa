@@ -18,6 +18,7 @@ use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseOrderResource;
 use App\Http\Resources\OnlineCourseResource;
@@ -851,9 +852,17 @@ class CustomerController extends Controller
          }
 
          $instructor=Instructor::find($request->instructor_id);
-         $groups=Groups::where('online_course_id',$request->online_course_id)
-             ->where('instructor_id',$request->instructor_id)->get();
-         $data=['instructor'=>new InstructorResource($instructor),'group_dates'=>\App\Http\Resources\Groups::collection($groups)];
+         if ($instructor) {
+             $group = Groups::where('online_course_id', $request->online_course_id)
+                 ->where('instructor_id', $request->instructor_id)->get();
+             $data=['instructor'=>new InstructorResource($instructor),'group'=>GroupResource::collection($group)];
+
+         }
+         else
+         {
+             $data=['instructor'=>new InstructorResource($instructor),'group'=>null];
+
+         }
          return $this->success($data);
      }
 
