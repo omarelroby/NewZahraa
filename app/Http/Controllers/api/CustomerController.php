@@ -186,7 +186,8 @@ class CustomerController extends Controller
             'password' => 'nullable|min:8',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails()) {
+        if ($validator->fails())
+        {
             return $this->error($validator->messages());
         }
         if ($customer) {

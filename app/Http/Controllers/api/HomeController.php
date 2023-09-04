@@ -100,7 +100,7 @@ class HomeController extends Controller
         {
 
             $data=[
-                'employment-application'=>new EmploymentResource($employment),
+                'employment_application'=>new EmploymentResource($employment),
             ];
             return $this->success($data);
         }
