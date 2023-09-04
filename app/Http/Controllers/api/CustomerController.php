@@ -182,7 +182,7 @@ class CustomerController extends Controller
         $customer = auth('api')->user();
         $oValidatorRules = [
             'name' => 'required',
-            'email' => 'required|unique:customers,email',
+            'email' => 'required',
             'password' => 'nullable|min:8',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
@@ -191,7 +191,7 @@ class CustomerController extends Controller
             return $this->error($validator->messages());
         }
         if ($customer) {
-            $customer->update([
+             $customer->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
@@ -199,9 +199,9 @@ class CustomerController extends Controller
             if ($request->has('image')) {
                 $customer->update(['image' => $request->image]);
             }
-
             return $this->successMessage('your profile updated successfully');
         }
+
     }
 
     public function favourite_ebooks(Request $request)
