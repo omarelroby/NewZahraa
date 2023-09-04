@@ -102,4 +102,5 @@ Route::middleware("localization")->group(function ()
     Route::post('booking-appointments',[\App\Http\Controllers\api\HomeController::class,'booking_appointments']);
     Route::get('courses-videos/{course_id}',[\App\Http\Controllers\api\CustomerController::class,'courses_videos']);
     Route::post('subscription',[\App\Http\Controllers\api\HomeController::class,'subscription']);
+    Route::get('payment-method',[\App\Http\Controllers\api\HomeController::class,'payment_methods']);
 });

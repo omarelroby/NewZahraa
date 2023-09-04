@@ -37,6 +37,7 @@ use App\Models\Instructor;
 use App\Models\InstructorRequests;
 use App\Models\OnlineCourse;
 use App\Models\Page;
+use App\Models\PaymentMethod;
 use App\Models\Questions;
 use App\Models\SessionAppointments;
 use App\Models\Setting;
@@ -76,6 +77,11 @@ class HomeController extends Controller
         }
         InstructorRequests::create($data);
         return $this->successMessage(__('message.success'));
+
+    }
+    public function payment_methods()
+    {
+        $payment=PaymentMethod::all();
 
     }
 
