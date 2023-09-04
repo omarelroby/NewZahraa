@@ -19,6 +19,7 @@ use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseResourceCollection;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
+use App\Http\Resources\PaymentMethodsResource;
 use App\Http\Resources\SessionAppointmentsResource;
 use App\Http\Resources\SettingResource;
 use App\Http\Resources\VideosResource;
@@ -82,7 +83,7 @@ class HomeController extends Controller
     public function payment_methods()
     {
         $payment=PaymentMethod::all();
-
+        return $this->success(PaymentMethodsResource::collection($payment));
     }
 
     public function countries()
