@@ -673,11 +673,14 @@ class CustomerController extends Controller
         if (!$course){
             return  $this->error('this course Not Found');
         }
-
-        if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
+        if ($check)
         {
-            return $this->error(' You have Already Book this Course');
+            if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
+            {
+                return $this->error(' You have Already Book this Course');
+            }
         }
+
         else
         {
             $price=$course->price??'';
