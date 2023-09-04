@@ -252,7 +252,7 @@ class HomeController extends Controller
 
     public function questions($search)
     {
-        $questions = Questions::where('question','like','%'.$search.'%')->get();
+        $questions = Questions::whereTranslationLike('question','like','%'.$search.'%')->get();
         return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
 
