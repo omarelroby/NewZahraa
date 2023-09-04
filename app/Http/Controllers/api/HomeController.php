@@ -250,9 +250,9 @@ class HomeController extends Controller
         return $this->success(new OnlineCourseResourceCollection($onlineCourse));
     }
 
-    public function questions()
+    public function questions($search)
     {
-        $questions = Questions::all();
+        $questions = Questions::whereTranslationLike('question','like','%'.$search.'%')->get();
         return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
 
