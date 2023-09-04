@@ -17,7 +17,7 @@ class AppointmentsResource extends JsonResource
         return [
             'id' => $this->id,
             'appointment_date' => $this->appointment_date,
-            'groups'=>new Groups ($this->groups),
+            'groups'=>new GroupResource($this->groups),
 
 
         ];
