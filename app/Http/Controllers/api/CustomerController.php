@@ -142,6 +142,40 @@ class CustomerController extends Controller
         return $this->error('check your email, email not corrected');
     }
     }
+    public function reset_password(Request $request)
+    {
+        $customer = Customers::where('email', $request->email)
+            ->first();
+        $instructor = Instructor::where('email', $request->email)
+            ->first();
+
+        if ($customer) {
+            if ($customer->code==$request->code)
+            {
+                $customer->update(['password'=>bcrypt($request->password),'code'=>null]);
+                return $this->successMessage('Password Changed Successfully');
+            }
+            else
+            {
+                return  $this->error('Code Not Corrected');
+            }
+        }
+        elseif($instructor) {
+            if ($instructor->code==$request->code)
+            {
+                $instructor->update(['password'=>bcrypt($request->password),'code'=>null]);
+                return $this->successMessage('Password Changed Successfully');
+            }
+            else
+            {
+                return  $this->error('Code Not Corrected');
+            }
+
+        }
+         else {
+        return $this->error('check your email, email not corrected');
+    }
+    }
 
     public function logout()
     {
