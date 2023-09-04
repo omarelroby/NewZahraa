@@ -20,7 +20,7 @@ class Groups extends JsonResource
             'zoom_link'=>$this->zoom_link,
             'start_date'=>$this->start_date,
             'end_date'=>$this->end_date,
-            'Group_appointments'=>new AppointmentsResource ($this->appointments),
+            'Group_appointments'=>AppointmentsResource::collection($this->appointments),
             'instructors'=>new InstructorResource($this->instructors),
             'online_courses'=>new OnlineCourseResource($this->online_courses),
 
