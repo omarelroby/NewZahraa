@@ -839,5 +839,11 @@ class CustomerController extends Controller
         $indexes=CourseIndexes::where('course_id',$course_id)->get();
         return $this->success(CoursesIndexesOnlyVideosResource::collection($indexes));
      }
+     public function instructor_dates(Request $request)
+     {
+         $instructor=Instructor::find($request->instructor_id);
+         $data=['dates'=>$instructor->OnlineCourses->date,'instructor'=>$instructor];
+         return $this->success(new InstructorResource($data));
+     }
 
 }
