@@ -128,13 +128,15 @@ class CustomerController extends Controller
             $customer->update(['code'=>$code]);
             $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
             Mail::to($customer->email)->send(new \App\Mail\ForgetPasswordMail($data));
-
+            return  $this->successMessage("Check your Email to reset password");
         }
         elseif($instructor) {
             $code =rand ( 10000 , 99999 );
             $instructor->update(['code'=>$code]);
-            $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
+            $data=['name'=>$instructor->name,'code'=>$instructor->code,'email'=>$instructor->email];
             Mail::to($instructor->email)->send(new \App\Mail\ForgetPasswordMail($data));
+            return  $this->successMessage("Check your Email to reset password");
+
         }
          else {
         return $this->error('check your email, email not corrected');
