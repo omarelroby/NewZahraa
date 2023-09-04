@@ -658,7 +658,7 @@ class CustomerController extends Controller
     public function buy_course(Request $request)
     {
         $customer_id=auth('api')->user()->id;
-        dd($customer_id);
+//        dd($customer_id);
         $oValidatorRules =
             [
                 'course_id' => 'required|exists:courses,id',
