@@ -25,6 +25,7 @@ class Customers extends Authenticatable
         'image',
         'password',
         'phone',
+        'code',
         'country_id',
     ];
 

@@ -25,6 +25,7 @@ class Instructor extends Authenticatable
         'phone',
         'brief',
         'image',
+        'code',
         'category_id',
         'country_id',
         'commission_instructor',

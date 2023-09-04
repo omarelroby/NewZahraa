@@ -135,8 +135,6 @@ class CustomerController extends Controller
             $instructor->update(['code'=>$code]);
             $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
             Mail::to($instructor->email)->send(new \App\Mail\ForgetPasswordMail($data));
-
-
         }
          else {
         return $this->error('check your email, email not corrected');
