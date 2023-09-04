@@ -842,8 +842,10 @@ class CustomerController extends Controller
      public function instructor_dates(Request $request)
      {
          $instructor=Instructor::find($request->instructor_id);
-         $data=['dates'=>$instructor->OnlineCourses->date,'instructor'=>$instructor];
-         return $this->success(new InstructorResource($data));
+         $groups=Groups::where('online_course_id',$request->online_course_id)
+             ->where('instructor_id',$request->instructor_id)->get();
+         $data=['instructor'=>new InstructorResource($instructor),'group_dates'=>$groups];
+         return $this->success($data);
      }
 
 }
