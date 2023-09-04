@@ -22,7 +22,7 @@ class Groups extends JsonResource
             'end_date'=>$this->end_date,
             'Group_appointments'=>AppointmentsResource::collection($this->appointments),
             'instructors'=>new InstructorResource($this->instructors),
-            'online_courses'=>OnlineCourseResource::collection($this->online_courses),
+            'online_courses'=>new OnlineCourseResource($this->online_courses),
 
 
         ];
