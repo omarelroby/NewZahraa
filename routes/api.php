@@ -95,7 +95,7 @@ Route::middleware("localization")->group(function ()
     Route::get('home-section', [\App\Http\Controllers\api\HomeController::class, 'home_section']);
     Route::get('setting', [\App\Http\Controllers\api\HomeController::class, 'setting']);
     Route::get('online-courses', [\App\Http\Controllers\api\HomeController::class, 'online_courses']);
-    Route::get('questions/{search}', [\App\Http\Controllers\api\HomeController::class, 'questions']);
+    Route::get('questions', [\App\Http\Controllers\api\HomeController::class, 'questions']);
     Route::get('instructors', [\App\Http\Controllers\api\HomeController::class, 'instructors']);
     Route::post('contact', [\App\Http\Controllers\api\HomeController::class, 'contact']);
     Route::get('appointments-month/{id}',[\App\Http\Controllers\api\HomeController::class,'appointments']);
