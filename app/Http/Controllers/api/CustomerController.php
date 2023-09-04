@@ -673,7 +673,6 @@ class CustomerController extends Controller
         if (!$course){
             return  $this->error('this course Not Found');
         }
-        $price=$course->price??'';
 
         if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
         {
@@ -681,6 +680,7 @@ class CustomerController extends Controller
         }
         else
         {
+            $price=$course->price??'';
             CourseOrders::create([
                 'customer_id'=>$customer_id,
                 'course_id'=>$request->course_id,
