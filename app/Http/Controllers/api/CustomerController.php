@@ -46,6 +46,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Exception;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -113,6 +114,33 @@ class CustomerController extends Controller
             }
 
         }
+    }
+ public function forget_password(Request $request)
+    {
+        $customer = Customers::where('email', $request->email)
+            ->first();
+
+        $instructor = Instructor::where('email', $request->email)
+            ->first();
+
+        if ($customer) {
+            $code =rand ( 10000 , 99999 );
+            $customer->update(['code'=>$code]);
+            $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
+            Mail::to($customer->email)->send(new \App\Mail\ForgetPasswordMail($data));
+
+        }
+        elseif($instructor) {
+            $code =rand ( 10000 , 99999 );
+            $instructor->update(['code'=>$code]);
+            $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
+            Mail::to($instructor->email)->send(new \App\Mail\ForgetPasswordMail($data));
+
+
+        }
+         else {
+        return $this->error('check your email, email not corrected');
+    }
     }
 
     public function logout()
