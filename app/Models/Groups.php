@@ -28,5 +28,9 @@ class Groups extends Model
     {
         return $this->belongsTo(OnlineCourse::class,'online_course_id');
     }
+    public function appointments()
+    {
+        return $this->hasMany(Appointments::class,'group_id');
+    }
 
 }
