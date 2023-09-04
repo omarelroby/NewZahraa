@@ -841,10 +841,19 @@ class CustomerController extends Controller
      }
      public function instructor_dates(Request $request)
      {
+         $oValidatorRules = [
+             'online_course_id' => 'required',
+             'instructor_id' => 'required',
+         ];
+         $validator = Validator::make($request->all(), $oValidatorRules);
+         if ($validator->fails()) {
+             return $this->error($validator->messages());
+         }
+
          $instructor=Instructor::find($request->instructor_id);
          $groups=Groups::where('online_course_id',$request->online_course_id)
              ->where('instructor_id',$request->instructor_id)->get();
-         $data=['instructor'=>new InstructorResource($instructor),'group_dates'=>$groups];
+         $data=['instructor'=>new InstructorResource($instructor),'group_dates'=>\App\Http\Resources\Groups::collection($groups)];
          return $this->success($data);
      }
 
