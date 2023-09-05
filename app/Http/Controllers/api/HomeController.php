@@ -252,20 +252,20 @@ class HomeController extends Controller
         return $this->success(new OnlineCourseResourceCollection($onlineCourse));
     }
 
-//    public function questions(Request $request)
-//    {
-//
-//         if ($request->search && $request->search != '')
-//        {
-//            $questions = Questions::whereTranslationLike('question','like','%'.$request->search.'%')->get();
-//
-//        }
-//        else
-//        {
-//            $questions = Questions::all();
-//         }
-//        return $this->success(QuestionsResource::collection($questions));
-//    }
+    public function questions(Request $request)
+    {
+
+         if ($request->search && $request->search != '')
+        {
+            $questions = Questions::whereTranslationLike('question','like','%'.$request->search.'%')->get();
+
+        }
+        else
+        {
+            $questions = Questions::all();
+         }
+        return $this->success(QuestionsResource::collection($questions));
+    }
 
     public function course_category()
     {

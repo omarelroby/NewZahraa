@@ -16,8 +16,8 @@ class QuestionsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-//            'question' => $this->translate(app()->getLocale())->question,
-//            'answer' => strip_tags($this->translate(app()->getLocale())->answer),
+            'question' => $this->translate(app()->getLocale())->question,
+            'answer' => strip_tags($this->translate(app()->getLocale())->answer),
 
 
 
