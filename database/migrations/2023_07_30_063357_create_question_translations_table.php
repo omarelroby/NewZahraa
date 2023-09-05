@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateQuestionsTranslationsTable extends Migration {
+class CreateQuestionTranslationsTable extends Migration {
 
 	public function up()
 	{

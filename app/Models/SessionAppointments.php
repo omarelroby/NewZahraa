@@ -17,4 +17,9 @@ class SessionAppointments extends Model
         'date',
     ];
 
+    public function booking()
+    {
+        return $this->hasOne(BookingAppointments::class,'appointment_id');
+    }
+
 }

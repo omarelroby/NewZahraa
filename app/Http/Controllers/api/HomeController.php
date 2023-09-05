@@ -294,9 +294,12 @@ class HomeController extends Controller
     public function appointments($id)
     {
 //        dd('m');
-        $session = SessionAppointments::where('month', $id)->get();
+        $session = SessionAppointments::where('month', $id)->whereDate('date','>=',date('Y-m-d'))->pluck('date');
+        $session = $session->map(function ($order) {
+            return substr($order, 0, 10); // Return only the first ten characters.
+        });
         if (count($session) > 0) {
-            return $this->success(SessionAppointmentsResource::collection($session));
+            return $this->success($session->unique()->values());
         } else {
             return $this->error('This months deosn\'t has any Dates');
         }
