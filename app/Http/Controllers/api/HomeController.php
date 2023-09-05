@@ -261,7 +261,7 @@ class HomeController extends Controller
         else
         {
             $questions = Questions::all();
-
+            dd($questions);
         }
         return $this->success(\App\Http\Resources\Questions::collection($questions));
     }
