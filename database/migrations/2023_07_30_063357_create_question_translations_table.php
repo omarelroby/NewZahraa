@@ -7,7 +7,7 @@ class CreateQuestionsTranslationsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('questions_translations', function(Blueprint $table) {
+		Schema::create('question_translations', function(Blueprint $table) {
 			$table->increments('id');
 			$table->text('question');
             $table->string('locale')->index();

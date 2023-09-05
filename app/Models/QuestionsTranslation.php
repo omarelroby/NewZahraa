@@ -11,7 +11,7 @@ namespace App\Models;
 class QuestionsTranslation extends Model
 {
     use HasFactory;
-    protected $table='questions_translations';
+    protected $table='question_translations';
     protected $fillable = ['question','answer'];
     public $timestamps = false;
 
