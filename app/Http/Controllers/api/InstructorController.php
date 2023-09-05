@@ -96,14 +96,15 @@ class InstructorController extends Controller
                 'end_date'=>$request->end_date,
                   'online_course_id'=>$request->online_course_id,
             ]);
-
+            foreach ($request->days as $key=>$day)
+            {
             $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
                 "agenda" => $group->online_courses->title,
                 "topic" => $group['name'],
                 "type" => 2, // 1 => instant, 2 => scheduled, 3 => recurring with no fixed time, 8 => recurring with fixed time
                 "duration" => 60, // in minutes
                 "timezone" => 'Asia/Kuwait', // set your timezone
-                "start_time" => date("c", strtotime($request->days[0])), // set your start time
+                "start_time" => date("c", strtotime($request->days[$key])), // set your start time
                 "template_id" => 'set your template id', // set your template id  Ex: "Dv4YdINdTk+Z5RToadh5ug==" from https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetingtemplates
                 "pre_schedule" => false,  // set true if you want to create a pre-scheduled meeting
                 "settings" => [
@@ -117,8 +118,6 @@ class InstructorController extends Controller
                     'approval_type' => 0, // 0 => Automatically Approve, 1 => Manually Approve, 2 => No Registration Required
                 ],
             ]);
-            foreach ($request->days as $key=>$day)
-            {
                 Appointments::create([
                     'group_id'=>$group->id,
                     'appointment_date'=>$day,
