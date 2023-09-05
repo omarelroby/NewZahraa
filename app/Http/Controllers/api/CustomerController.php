@@ -855,12 +855,18 @@ class CustomerController extends Controller
          if ($instructor) {
              $group = Groups::where('online_course_id', $request->online_course_id)
                  ->where('instructor_id', $request->instructor_id)->get();
-             $data=['instructor'=>new InstructorResource($instructor),'group'=>GroupResource::collection($group)];
+             if ($group)
+             {
+                 $data = ['instructor' => new InstructorResource($instructor), 'group' => GroupResource::collection($group)];
+             }
+             else
+             {
+                 $data=['instructor'=>new InstructorResource($instructor),'group'=>null];
 
+             }
          }
-         else
-         {
-             $data=['instructor'=>new InstructorResource($instructor),'group'=>null];
+         else{
+            return $this->error('Instructor Not Found');
 
          }
          return $this->success($data);
