@@ -263,7 +263,7 @@ class HomeController extends Controller
             $questions = Questions::all();
             dd($questions);
         }
-        return $this->success(\App\Http\Resources\Questions::collection($questions));
+        return $this->success(\App\Http\Resources\QuestionsResource::collection($questions));
     }
 
     public function course_category()
