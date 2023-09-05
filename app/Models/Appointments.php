@@ -13,6 +13,9 @@ class Appointments extends Model
      protected $fillable=[
         'group_id',
         'appointment_date',
+        'join_link',
+        'start_url',
+        'meeting_id',
 
     ];
     public function groups(){
