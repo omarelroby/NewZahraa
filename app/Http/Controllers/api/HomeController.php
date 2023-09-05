@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AppointmentsResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\ContactsResource;
@@ -252,7 +253,7 @@ class HomeController extends Controller
 
     public function questions(Request $request)
     {
-        if ($request->search && $request->search != '')
+         if ($request->search && $request->search != '')
         {
             $questions = Questions::whereTranslationLike('question','like','%'.$request->search.'%')->get();
 
@@ -419,6 +420,11 @@ class HomeController extends Controller
         DB::table('subscriptions')->insert(['email'=>$request->email]);
         return $this->success('Email Added Successfully');
     }
+    public function get_session_dates(Request $request)
+    {
+         $dates=SessionAppointments::whereDate('date', $request->date)->get();
 
+         return $this->success(SessionAppointmentsResource::collection($dates));
+     }
 
 }

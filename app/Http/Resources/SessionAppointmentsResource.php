@@ -17,6 +17,7 @@ class SessionAppointmentsResource extends JsonResource
         return [
             'id' => $this->id,
             'date' => $this->date,
+            'month' => $this->month,
             'time' => explode(' ',$this->date)[1],
 
         ];
