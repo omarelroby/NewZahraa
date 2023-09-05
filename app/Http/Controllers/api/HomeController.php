@@ -21,6 +21,7 @@ use App\Http\Resources\OnlineCourseResourceCollection;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\PaymentMethodsResource;
+use App\Http\Resources\QuestionsResource;
 use App\Http\Resources\SessionAppointmentsResource;
 use App\Http\Resources\SettingResource;
 use App\Http\Resources\VideosResource;
@@ -263,7 +264,7 @@ class HomeController extends Controller
             $questions = Questions::all();
             dd($questions);
         }
-        return $this->success(\App\Http\Resources\QuestionsResource::collection($questions));
+        return $this->success(QuestionsResource::collection($questions));
     }
 
     public function course_category()
