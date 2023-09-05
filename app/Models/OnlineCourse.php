@@ -28,8 +28,9 @@ class OnlineCourse extends Model implements TranslatableContract
     {
         return $this->belongsTo(Category::class,'category_id');
     }
-    public function Instructors(){
-        return $this->belongsToMany(Instructor::class,'online_courses_and_instructors','instructor_id', 'online_course_id');
+    public function Instructors()
+    {
+        return $this->belongsToMany(Instructor::class,'online_courses_and_instructors', 'online_course_id','instructor_id');
     }
     public function favourite_online_courses(){
         return $this->belongsToMany(Customers::class,'favourite_online_courses','online_course_id','customer_id');
