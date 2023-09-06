@@ -98,7 +98,8 @@ class InstructorController extends Controller
             ]);
             foreach ($request->days as $key=>$day)
             {
-            $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
+                dd(env('ZOOM_CLIENT_SECRET'));
+                $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
                 "agenda" => $group->online_courses->title,
                 "topic" => $group['name'],
                 "type" => 2, // 1 => instant, 2 => scheduled, 3 => recurring with no fixed time, 8 => recurring with fixed time
