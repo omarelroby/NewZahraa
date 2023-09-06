@@ -23,6 +23,7 @@ use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseOrderResource;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
+use App\Http\Resources\QuizResource;
 use App\Http\Resources\VideosResource;
 use App\Models\Category;
 use App\Models\Country;
@@ -38,9 +39,11 @@ use App\Models\Groups;
 use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorRequests;
+use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\OnlineCourseOrders;
 use App\Models\Page;
+use App\Models\Quiz;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -870,6 +873,32 @@ class CustomerController extends Controller
 
          }
          return $this->success($data);
+     }
+     public function get_online_course_orders(Request $request)
+     {
+         $customer_id=auth('api')->user()->id;
+        $onlineCourse=OnlineCourseOrders::where('online_course_id',$request->online_course_id)
+            ->where('customer_id',$customer_id)->first();
+        if ($onlineCourse)
+        {
+            $onlineCourse=OnlineCourse::find($request->online_course_id);
+            $onlineCourseCollection=new OnlineCourseResource($onlineCourse);
+            $groups=GroupResource::collection($onlineCourse->groups);
+            $quizes=QuizResource::collection($onlineCourse->quizes);
+            $attachments=Materials::where('online_course_id',$request->online_course_id)->get();
+            $data=[
+                'Online_course'=>$onlineCourseCollection,
+                'Quizes'=>$quizes,
+                'groups'=>$groups,
+                'attachments'=>$attachments
+
+            ];
+            return  $this->success($data);
+        }
+        else
+        {
+            return $this->error('Buy This Online Course First,You are not a buyer it');
+        }
      }
 
 }

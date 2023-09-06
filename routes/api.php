@@ -44,6 +44,7 @@ Route::middleware("localization")->group(function ()
         Route::get('customer-course-orders',[\App\Http\Controllers\api\CustomerController::class,'customer_course_orders']);
         Route::get('customer-online-courses-orders',[\App\Http\Controllers\api\CustomerController::class,'customer_online_courses_orders']);
         Route::post('online-course-orders',[\App\Http\Controllers\api\CustomerController::class,'online_course_orders']);
+        Route::get('get-online-course-orders',[\App\Http\Controllers\api\CustomerController::class,'get_online_course_orders']);
 
     });
 
