@@ -323,6 +323,7 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return $this->error($validator->messages());
         };
+        if ($sessionPrice){
         if ($request->coupon_id != null) {
             $coupon = Coupon::find($request->coupon_id);
             $discount = $coupon->discount;
@@ -416,6 +417,11 @@ class HomeController extends Controller
 
             return $this->success('Your Data Added Successfully');
 
+        }
+        }
+        else
+        {
+            return $this->error('Enter Session Price first');
         }
 
     }
