@@ -100,7 +100,7 @@ class InstructorController extends Controller
             {
                  $meetings = (new \Jubaer\Zoom\Zoom)->createMeeting([
                 "agenda" => $group->online_courses->title,
-                "topic" => $group['name'],
+                "topic" => $group['name'].date("c", strtotime($request->days[$key])),
                 "type" => 2, // 1 => instant, 2 => scheduled, 3 => recurring with no fixed time, 8 => recurring with fixed time
                 "duration" => 60, // in minutes
                 "timezone" => 'Asia/Kuwait', // set your timezone
