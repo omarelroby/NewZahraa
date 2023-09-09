@@ -877,15 +877,19 @@ class CustomerController extends Controller
      public function get_online_course_orders(Request $request)
      {
          $customer_id=auth('api')->user()->id;
-        $onlineCourse=OnlineCourseOrders::where('online_course_id',$request->online_course_id)
+        $onlineCourseOrder=OnlineCourseOrders::where('online_course_id',$request->online_course_id)
             ->where('customer_id',$customer_id)->first();
-        if ($onlineCourse)
+        if ($onlineCourseOrder)
         {
             $onlineCourse=OnlineCourse::find($request->online_course_id);
             $onlineCourseCollection=new OnlineCourseResource($onlineCourse);
-            $groups=GroupResource::collection($onlineCourse->groups);
-            $quizes=QuizResource::collection($onlineCourse->quizes);
-            $attachments=Materials::where('online_course_id',$request->online_course_id)->get();
+            $group=Groups::find($onlineCourseOrder->group_id);
+            $groups=new GroupResource($group);
+            $quizes=Quiz::where('instructor_id',$onlineCourseOrder->instructor_id)->
+                where('online_course_id',$onlineCourseOrder->online_course_id)->get();
+            $quizes=QuizResource::collection($quizes);
+            $attachments=Materials::where('online_course_id',$request->online_course_id)->
+                where('instructor_id',$onlineCourseOrder->instructor_id)->get();
             $data=[
                 'Online_course'=>$onlineCourseCollection,
                 'Quizes'=>$quizes,
