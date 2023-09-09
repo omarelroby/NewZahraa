@@ -20,6 +20,7 @@ use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorResource;
+use App\Http\Resources\MaterialsResource;
 use App\Http\Resources\OnlineCourseOrderResource;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
@@ -890,6 +891,7 @@ class CustomerController extends Controller
             $quizes=QuizResource::collection($quizes);
             $attachments=Materials::where('online_course_id',$request->online_course_id)->
                 where('instructor_id',$onlineCourseOrder->instructor_id)->get();
+            $attachments=MaterialsResource::collection($attachments);
             $data=[
                 'Online_course'=>$onlineCourseCollection,
                 'Quizes'=>$quizes,
