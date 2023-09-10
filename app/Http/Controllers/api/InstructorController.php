@@ -407,6 +407,15 @@ class InstructorController extends Controller
 }
         public function quiz_answers(Request $request)
         {
+            $oValidatorRules = [
+                'answers.*.question_id' => 'required',
+                'answers.*.answer' => 'required',
+
+            ];
+            $validator = Validator::make($request->all(), $oValidatorRules);
+            if ($validator->fails()) {
+                return $this->error($validator->messages());
+            }
 
 //                 dd(auth('api')->user()->id);
             $online_course=Quiz::find($request->quiz_id)->online_course_id;
