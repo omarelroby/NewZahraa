@@ -439,29 +439,6 @@ class HomeController extends Controller
 
          return $this->success(SessionAppointmentsResource::collection($dates));
      }
-     public function get_quiz(Request $request)
-     {
-         $onlineCourse=OnlineCourse::where('slug',$request->online_course_slug)->first();
-         if ($onlineCourse)
-         {
-             $customer_id=auth('api')->user()->id;
-             $order=OnlineCourseOrders::where('online_course_id',$onlineCourse->id)
-                 ->where('customer_id',$customer_id)->first();
-             if ($order)
-             {
-                 $quiz=Quiz::find($request->quiz_id);
-                 return $this->success(new QuizResource($quiz));
-             }
-             else
-             {
-                 return  $this->error('you should buy this course first');
-             }
 
-         }
-         else
-         {
-             return $this->error('Online Course Not Found');
-         }
-     }
 
 }
