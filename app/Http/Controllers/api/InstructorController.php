@@ -449,7 +449,7 @@ class InstructorController extends Controller
                 }
             }
             $data=['question_degree'=>$student_quiz->total_degree."/".$totalQuestionDegree];
-            return $this->success('Your Quiz Corrected Successfully',$data);
+            return $this->successMessage('Your Quiz Corrected Successfully',$data);
 
         }
 }
