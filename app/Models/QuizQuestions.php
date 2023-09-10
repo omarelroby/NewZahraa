@@ -31,4 +31,8 @@ class QuizQuestions extends Model
     {
         return $this->belongsTo(Quiz::class,'quiz_id');
     }
+    public function questions_options()
+    {
+        return $this->hasMany(QuestionsOptions::class,'quiz_question_id');
+    }
 }

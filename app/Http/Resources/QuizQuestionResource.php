@@ -18,8 +18,8 @@ class QuizQuestionResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'type' => $this->type,
-            'correct_answer' => $this->correct_answer,
             'degree' => $this->degree,
+            'questions_options'=>QuestionOptionsResource::collection($this->questions_options)
 
 
 
