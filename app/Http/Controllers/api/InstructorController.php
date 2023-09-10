@@ -410,6 +410,7 @@ class InstructorController extends Controller
 
 //                 dd(auth('api')->user()->id);
             $online_course=Quiz::find($request->quiz_id)->online_course_id;
+            $totalQuestionDegree=QuizQuestions::where('quiz_id',$request->quiz_id)->degree;
             $student_quiz=StudenQuiz::create([
                 'total_degree'=>0,
                 'users_id'=>auth('api')->user()->id,
@@ -433,7 +434,6 @@ class InstructorController extends Controller
                     $student_quiz->update(['total_degree'=>$questions->degree+$student_quiz->total_degree]);
                 }
                 else
-
                 {
                     StudenQuizAnswer::create([
                         'degree'=>0,
@@ -448,7 +448,8 @@ class InstructorController extends Controller
                     return $this->error('this qustion not found in quiz questions');
                 }
             }
-            return $this->success('Your Quiz Corrected Successfully');
+            $data=['question_degree'=>$student_quiz->total_degree."/".$totalQuestionDegree];
+            return $this->success('Your Quiz Corrected Successfully',$data);
 
         }
 }
