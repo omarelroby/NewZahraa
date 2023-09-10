@@ -420,7 +420,8 @@ class InstructorController extends Controller
             {
                 $questions=QuizQuestions::find($question['question_id']);
                 $correct_answer=$questions->correct_answer;
-                 if ($correct_answer==$question[$key]['answer'])
+                dd($question);
+                 if ($correct_answer==$question['answer'])
                 {
                     StudenQuizAnswer::create([
                         'degree'=>$questions->degree,
