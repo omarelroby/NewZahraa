@@ -419,6 +419,8 @@ class InstructorController extends Controller
             foreach ($request->answers as $key=>$question)
             {
                 $questions=QuizQuestions::find($question['question_id']);
+                if ($questions)
+                {
                 $correct_answer=$questions->correct_answer;
 //                dd($question['answer']);
                 if ($correct_answer==$question['answer'])
@@ -441,7 +443,11 @@ class InstructorController extends Controller
                         'question_id'=>$questions->id,
                     ]);
                 }
-
+                }
+                else
+                {
+                    return $this->error('this qustion not found in quiz questions');
+                }
             }
             return $this->success('Your Quiz Corrected Successfully');
 
