@@ -448,7 +448,7 @@ class InstructorController extends Controller
                     return $this->error('this qustion not found in quiz questions');
                 }
             }
-            $data=['question_degree'=>$student_quiz->total_degree."/".$totalQuestionDegree];
+            $data=['question_degree'=>$student_quiz->total_degree."/".intval($totalQuestionDegree)];
             return $this->successMessage('Your Quiz Corrected Successfully',$data);
 
         }
