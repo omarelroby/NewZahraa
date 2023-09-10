@@ -422,7 +422,7 @@ class InstructorController extends Controller
                 if ($questions)
                 {
                 $correct_answer=$questions->correct_answer;
-                dd($question['answer']);
+                dd($question['question_id']);
                 if ($correct_answer==$question['answer'])
                 {
                     StudenQuizAnswer::create([
