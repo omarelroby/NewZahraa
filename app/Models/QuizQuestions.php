@@ -35,4 +35,8 @@ class QuizQuestions extends Model
     {
         return $this->hasMany(QuestionsOptions::class,'quiz_question_id');
     }
+    public function answer()
+    {
+        return $this->hasOne(StudenQuiz::class,'quiz_id')->where('users_id',auth('api')->user()->id);
+    }
 }

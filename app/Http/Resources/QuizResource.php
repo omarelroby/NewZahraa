@@ -21,6 +21,8 @@ class QuizResource extends JsonResource
             'discount' => $this->degree,
             'discount_score' => $this->degree,
             'Questions' => QuizQuestionResource::collection($this->questions),
+            'answered' => auth('api')->user() && (($this->answer ? true : false)),
+            'my_degree' => auth('api')->user()?($this->answer?$this->answer->total_degree:null):null,
 
 
 
