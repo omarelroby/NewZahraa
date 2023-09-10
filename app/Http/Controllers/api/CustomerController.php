@@ -916,9 +916,16 @@ class CustomerController extends Controller
                 ->where('customer_id',$customer_id)->first();
             if ($order)
             {
-                dd('m');
-                $quiz=Quiz::find($request->quiz_id);
-                return $this->success(new QuizResource($quiz));
+                 $quiz=Quiz::find($request->quiz_id);
+                 if ($quiz)
+                 {
+                     return $this->success(new QuizResource($quiz));
+
+                 }
+                 else
+                 {
+                     return $this->error('Quiz Not Found');
+                 }
             }
             else
             {
