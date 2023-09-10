@@ -27,5 +27,8 @@ class QuizQuestions extends Model
     {
         return $this->belongsTo(OnlineCourseResource::class,'online_course_id');
     }
-
+    public function quizes()
+    {
+        return $this->belongsTo(Quiz::class,'quiz_id');
+    }
 }
