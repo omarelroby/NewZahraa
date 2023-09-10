@@ -416,13 +416,11 @@ class InstructorController extends Controller
                 'online_course_id'=>$online_course,
                 'quiz_id'=>$request->quiz_id,
             ]);
-            foreach ($request->answers as $key=>$question)
+            foreach ($request->answers as $question)
             {
                 $questions=QuizQuestions::find($question['question_id']);
-
                 $correct_answer=$questions->correct_answer;
-                dd($request->all());
-                if ($correct_answer==$question['answer'])
+                 if ($correct_answer==$question['answer'])
                 {
                     StudenQuizAnswer::create([
                         'degree'=>$questions->degree,
