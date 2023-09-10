@@ -410,7 +410,7 @@ class InstructorController extends Controller
 
 //                 dd(auth('api')->user()->id);
             $online_course=Quiz::find($request->quiz_id)->online_course_id;
-            $totalQuestionDegree=QuizQuestions::where('quiz_id',$request->quiz_id)->degree;
+            $totalQuestionDegree=QuizQuestions::where('quiz_id',$request->quiz_id)->first()->degree;
             $student_quiz=StudenQuiz::create([
                 'total_degree'=>0,
                 'users_id'=>auth('api')->user()->id,
