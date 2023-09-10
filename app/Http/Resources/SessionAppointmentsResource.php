@@ -18,7 +18,7 @@ class SessionAppointmentsResource extends JsonResource
             'id' => $this->id,
             'date' => $this->date,
             'month' => $this->month,
-            'time' =>  date('h:i:s', strtotime($this->date)) ,
+            'time' =>  date('h:i:s a', strtotime($this->date)) ,
             'available' => $this->booking ? false : (($this->date > date('Y-m-d H:i')) ? true : false),
 
         ];
