@@ -709,7 +709,6 @@ class CustomerController extends Controller
         }
         if ($check&&$check->ebook_id==$ebook->id)
         {
-            dd($this->pay());
             return $this->error(' You have Already Book this E-book');
         }
         else
@@ -720,7 +719,23 @@ class CustomerController extends Controller
                 'price'=>$price,
                 'total'=>$price,
             ]);
-            return  $this->successMessage('You have been booked this E-book');
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+
+                'body' => '{"amount":1,"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,"description":"Test Description",
+            "metadata":{"udf1":"Metadata 1"},"reference":{"transaction":"txn_01","order":"ord_01"},
+            "receipt":{"email":true,"sms":true},"customer":{"first_name":"test","middle_name":
+            "test","last_name":"test","email":"test@test.com","phone":{"country_code":965,"number":51234567}},
+            "source":{"id":"src_card"},"post":{"url":'.url('api/error_payment').'},"redirect":{"url":"'.url('api/redirect').'"}}',
+                'headers' => [
+                    'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json',
+                ],
+            ]);
+
+//            echo (json_decode($response->getBody()))->transaction->url;
+            return  $this->successMessage('You have been booked this E-book',['url'=>(json_decode($response->getBody()))->transaction->url]);
         }
     }
 
@@ -943,7 +958,6 @@ class CustomerController extends Controller
     public function pay()
     {
         $client = new \GuzzleHttp\Client();
-
         $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
 
             'body' => '{"amount":1,"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,"description":"Test Description",
