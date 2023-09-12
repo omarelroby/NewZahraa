@@ -697,7 +697,7 @@ class CustomerController extends Controller
         $customer_id=auth('api')->user()->id;
         $check=EbookOrders::where('customer_id',$customer_id)->first();
         $ebook=Ebook::find($request->ebook_id);
-        $price=$ebook->price;
+        $price=$ebook->price ;
         $oValidatorRules =
         [
             'ebook_id' => 'required|exists:ebooks,id',
@@ -707,7 +707,7 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
-        if ($check->customer_id==$customer_id&&$check->ebook_id==$ebook->id)
+        if ($check&&$check->ebook_id==$ebook->id)
         {
             dd($this->pay());
             return $this->error(' You have Already Book this E-book');
