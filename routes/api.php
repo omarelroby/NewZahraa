@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
 
 Route::middleware("localization")->group(function ()
 {
+    Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
+
     Route::middleware('auth:api')->group( function ()
     {
         Route::post('update-profile',[\App\Http\Controllers\api\CustomerController::class,'update_profile']);
@@ -109,4 +110,8 @@ Route::middleware("localization")->group(function ()
     Route::post('reset-password',[\App\Http\Controllers\api\CustomerController::class,'reset_password']);
     Route::get('dates-instructors',[\App\Http\Controllers\api\CustomerController::class,'instructor_dates']);
     Route::post('get-session-dates',[\App\Http\Controllers\api\HomeController::class,'get_session_dates']);
+    Route::get('pay',[\App\Http\Controllers\api\CustomerController::class,'pay']);
+    Route::get('redirect',[\App\Http\Controllers\api\CustomerController::class,'redirect_payment']);
+    Route::get('error_payment',[\App\Http\Controllers\api\CustomerController::class,'error_payment']);
+
 });
