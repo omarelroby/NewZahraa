@@ -697,7 +697,11 @@ class CustomerController extends Controller
         $customer_id=auth('api')->user()->id;
         $check=EbookOrders::where('customer_id',$customer_id)->first();
         $ebook=Ebook::find($request->ebook_id);
-        $price=$ebook->price ;
+        if($ebook)
+        {
+            $price=$ebook->price;
+        }
+
         $oValidatorRules =
         [
             'ebook_id' => 'required|exists:ebooks,id',
