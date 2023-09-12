@@ -112,6 +112,9 @@ Route::middleware("localization")->group(function ()
     Route::post('get-session-dates',[\App\Http\Controllers\api\HomeController::class,'get_session_dates']);
     Route::get('pay',[\App\Http\Controllers\api\CustomerController::class,'pay']);
     Route::get('redirect',[\App\Http\Controllers\api\CustomerController::class,'redirect_payment']);
+    Route::get('redirect-course',[\App\Http\Controllers\api\CustomerController::class,'redirect_payment_course']);
+    Route::get('redirect-online-course',[\App\Http\Controllers\api\CustomerController::class,'redirect_payment_online_course']);
+    Route::get('redirect-booking',[\App\Http\Controllers\api\HomeController::class,'redirect_booking']);
     Route::get('error_payment',[\App\Http\Controllers\api\CustomerController::class,'error_payment']);
 
 });

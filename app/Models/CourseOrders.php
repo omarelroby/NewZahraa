@@ -22,6 +22,7 @@ class CourseOrders extends Model
         'total',
         'course_id',
         'customer_id',
+        'transaction_id',
 
     ];
     public function course()

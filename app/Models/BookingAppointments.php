@@ -24,6 +24,8 @@ class BookingAppointments extends Model
         'country_id',
         'coupon_id',
         'discount',
+        'transaction_id',
+        'status',
 
     ];
     public function country()

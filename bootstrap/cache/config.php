@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:UNLNZ7NLJQRQIlRnAoldrFSW1NDSEy34XZgOK+IXrHQ=',
+    'key' => 'base64:tyxhL8aFYyCZwGAFvicjUL6dqwOelgXWZ0krHy16fDI=',
     'cipher' => 'AES-256-CBC',
     'maintenance' => 
     array (
@@ -233,7 +233,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\Zahraa-Academy\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\zahraa\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -316,7 +316,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'zahra',
+        'database' => 'zahraa',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -326,7 +326,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'zahra',
+        'database' => 'zahraa',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -346,7 +346,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'zahra',
+        'database' => 'zahraa',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -361,7 +361,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'zahra',
+        'database' => 'zahraa',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -462,13 +462,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Zahraa-Academy\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\zahraa\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Zahraa-Academy\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\zahraa\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -488,7 +488,7 @@
     ),
     'links' => 
     array (
-      'D:\\Zahraa-Academy\\public\\storage' => 'D:\\Zahraa-Academy\\storage\\app/public',
+      'C:\\xampp\\htdocs\\zahraa\\public\\storage' => 'C:\\xampp\\htdocs\\zahraa\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -567,13 +567,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\Zahraa-Academy\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\zahraa\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\Zahraa-Academy\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\zahraa\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -625,7 +625,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\Zahraa-Academy\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\zahraa\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -637,11 +637,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'mailpit',
-        'port' => '1025',
-        'encryption' => NULL,
-        'username' => NULL,
-        'password' => NULL,
+        'host' => 'mail.techsgate.site',
+        'port' => '465',
+        'encryption' => 'ssl',
+        'username' => 'zahraa@techsgate.site',
+        'password' => '82.u?0s2e+gY',
         'timeout' => NULL,
         'local_domain' => NULL,
       ),
@@ -691,7 +691,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\Zahraa-Academy\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\zahraa\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -862,7 +862,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\Zahraa-Academy\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\zahraa\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -980,15 +980,15 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\Zahraa-Academy\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\zahraa\\resources\\views',
     ),
-    'compiled' => 'D:\\Zahraa-Academy\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\zahraa\\storage\\framework\\views',
   ),
   'zoom' => 
   array (
-    'client_id' => NULL,
-    'client_secret' => NULL,
-    'account_id' => NULL,
+    'client_id' => 'ZQQP8uOzSPSyMbEZKkH8KA',
+    'client_secret' => 'x3iPAPcO5mZAADl2DoF4y29Gg7eCFJJE',
+    'account_id' => 'utj8asbwT06TD9NhAxXFHA',
     'base_url' => 'https://api.zoom.us/v2/',
   ),
   'flare' => 
@@ -1064,7 +1064,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'D:\\Zahraa-Academy',
+    'remote_sites_path' => 'C:\\xampp\\htdocs\\zahraa',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

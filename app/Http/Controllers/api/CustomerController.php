@@ -52,6 +52,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Exception;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -695,7 +696,7 @@ class CustomerController extends Controller
     public function buy_ebook(Request $request)
     {
         $customer_id=auth('api')->user()->id;
-        $check=EbookOrders::where('customer_id',$customer_id)->first();
+        $check=EbookOrders::where('customer_id',$customer_id)->where('ebook_id',$request->ebook_id)->first();
         $ebook=Ebook::find($request->ebook_id);
         if($ebook)
         {
@@ -711,34 +712,36 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
-        if ($check&&$check->ebook_id==$ebook->id)
+         if (isset($check)&&$check->ebook_id==$ebook->id)
         {
             return $this->error(' You have Already Book this E-book');
         }
         else
         {
-            EbookOrders::create([
+            $newEbookOrder=EbookOrders::create([
                 'customer_id'=>$customer_id,
                 'ebook_id'=>$request->ebook_id,
                 'price'=>$price,
                 'total'=>$price,
             ]);
+
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
-
-                'body' => '{"amount":1,"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,"description":"Test Description",
-            "metadata":{"udf1":"Metadata 1"},"reference":{"transaction":"txn_01","order":"ord_01"},
-            "receipt":{"email":true,"sms":true},"customer":{"first_name":"test","middle_name":
-            "test","last_name":"test","email":"test@test.com","phone":{"country_code":965,"number":51234567}},
-            "source":{"id":"src_card"},"post":{"url":'.url('api/error_payment').'},"redirect":{"url":"'.url('api/redirect').'"}}',
+                'body' => '{"amount":'.$newEbookOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect').'"}}',
                 'headers' => [
                     'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                     'accept' => 'application/json',
                     'content-type' => 'application/json',
                 ],
             ]);
-
-//            echo (json_decode($response->getBody()))->transaction->url;
+            $newEbookOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+//            dd(json_decode($response->getBody())->id);
             return  $this->successMessage('You have been booked this E-book',['url'=>(json_decode($response->getBody()))->transaction->url]);
         }
     }
@@ -772,13 +775,30 @@ class CustomerController extends Controller
         else
         {
             $price=$course->price??'';
-            CourseOrders::create([
+            $newCourseOrder=CourseOrders::create([
                 'customer_id'=>$customer_id,
                 'course_id'=>$request->course_id,
                 'price'=>$price,
                 'total'=>$price,
             ]);
-            return  $this->successMessage('You have been booked this course');
+
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+                'body' => '{"amount":'.$newCourseOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect-course').'"}}',
+                'headers' => [
+                    'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json',
+                ],
+            ]);
+            $newCourseOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+            return  $this->successMessage('You have been booked this course',['url'=>(json_decode($response->getBody()))->transaction->url]);
         }
     }
     public function online_course_orders(Request $request)
@@ -786,7 +806,11 @@ class CustomerController extends Controller
         $customer_id=auth('api')->user()->id;
         $check=OnlineCourseOrders::where('customer_id',$customer_id)->first();
         $course=OnlineCourse::find($request->online_course_id);
-        $price=$course->price;
+        if($course)
+        {
+            $price=$course->price;
+
+        }
         $instructor_id=Groups::find($request->group_id)->instructor_id;
         $oValidatorRules =
             [
@@ -800,12 +824,15 @@ class CustomerController extends Controller
         }
          if ($check&&$course->type=='single')
         {
-            return $this->error(' You have Already Book this Online Course');
-        }
+            if ($check&&$check->online_course_id==$course->id)
+            {
+                return $this->error(' You have Already Book this Online Course');
+            }
+            }
 
         else
         {
-            OnlineCourseOrders::create([
+            $newOnlineCourseOrder=OnlineCourseOrders::create([
                 'customer_id'=>$customer_id,
                 'group_id'=>$request->group_id,
                 'instructor_id'=>$instructor_id,
@@ -813,7 +840,24 @@ class CustomerController extends Controller
                 'price'=>$price,
                 'total'=>$price,
             ]);
-            return  $this->successMessage('You have been booked this online course');
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+                'body' => '{"amount":'.$newOnlineCourseOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect-online-course').'"}}',
+                'headers' => [
+                    'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json',
+                ],
+            ]);
+            $newOnlineCourseOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+
+            return  $this->successMessage('You have been booked this online course',['url'=>(json_decode($response->getBody()))->transaction->url]);
         }
     }
     public function customer_ebook_orders()
@@ -962,6 +1006,26 @@ class CustomerController extends Controller
     public function pay()
     {
         $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+            'body' => '{"amount":1,"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"test","middle_name":"test","last_name":"test","email":"test@test.com",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect').'"}}',
+            'headers' => [
+                'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                'accept' => 'application/json',
+                'content-type' => 'application/json',
+            ],
+        ]);
+
+        echo $response->getBody();
+        exit();
+        $client = new \GuzzleHttp\Client();
+
         $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
 
             'body' => '{"amount":1,"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,"description":"Test Description",
@@ -991,9 +1055,76 @@ class CustomerController extends Controller
                 'accept' => 'application/json',
             ],
         ]);
-        echo $response->getBody();
+        $order=EbookOrders::where('transaction_id',$request->tap_id)->first();
+        if($order){
+            if((json_decode($response->getBody()))->status=='CAPTURED')
+            {
+                $order->update(['status'=>'success']);
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
+
+            }
+            else
+            {
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
+
+            }
+        }
     }
 
+    public function redirect_payment_course(Request $request)
+    {
+
+
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+            'headers' => [
+                'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                'accept' => 'application/json',
+            ],
+        ]);
+        $order=CourseOrders::where('transaction_id',$request->tap_id)->first();
+        if($order){
+            if((json_decode($response->getBody()))->status=='CAPTURED')
+            {
+                $order->update(['status'=>'success']);
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
+
+            }
+            else
+            {
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
+
+            }
+        }
+    }
+    public function redirect_payment_online_course(Request $request)
+    {
+
+
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+            'headers' => [
+                'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                'accept' => 'application/json',
+            ],
+        ]);
+        $order=OnlineCourseOrders::where('transaction_id',$request->tap_id)->first();
+        if($order){
+            if((json_decode($response->getBody()))->status=='CAPTURED')
+            {
+                $order->update(['status'=>'success']);
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
+
+            }
+            else
+            {
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
+
+            }
+        }
+    }
 
     public function error_payment(Request $request)
     {

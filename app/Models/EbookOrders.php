@@ -22,6 +22,7 @@ class EbookOrders extends Model
         'total',
         'ebook_id',
         'customer_id',
+        'transaction_id',
 
     ];
     public function ebooks()

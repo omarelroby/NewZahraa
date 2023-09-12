@@ -52,6 +52,7 @@ use App\Traits\response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Jubaer\Zoom\Zoom;
 
@@ -362,7 +363,25 @@ class HomeController extends Controller
                     'approval_type' => 0, // 0 => Automatically Approve, 1 => Manually Approve, 2 => No Registration Required
                 ],
             ]);
-             $booking->update([
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+                'body' => '{"amount":'.$booking->total_price.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"'.$booking->name.'","email":"'.$booking->email.'",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect-booking').'"}}',
+                'headers' => [
+                    'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json',
+                ],
+            ]);
+            $booking->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+
+
+            $booking->update([
                 'zoom_link'=>$meetings['data']['join_url'],
                 'start_url'=>$meetings['data']['start_url'],
                 'meeting_id'=>$meetings['data']['id'],
@@ -372,7 +391,7 @@ class HomeController extends Controller
             Mail::to($booking->email)->send(new ZoomLink($join,$name));
 
             $coupon->update(['coupon_id' => $coupon->number_of_use++]);
-            return $this->success('Your Data Added Successfully');
+            return $this->successMessage('Your Data Added Successfully',['url'=>(json_decode($response->getBody()))->transaction->url]);
         }
         else
         {
@@ -409,6 +428,23 @@ class HomeController extends Controller
                 ],
 
             ]);
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
+                'body' => '{"amount":'.$booking->total_price.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+            "description":"Test Description","metadata":{"udf1":"Metadata 1"},
+            "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
+            "customer":{"first_name":"'.$booking->name.'","email":"'.$booking->email.'",
+            "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
+            "post":{"url":"'.url('api/error_payment').'"},
+            "redirect":{"url":"'.url('api/redirect-booking').'"}}',
+                'headers' => [
+                    'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json',
+                ],
+            ]);
+            $booking->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+
             $booking->update([
                 'zoom_link'=>$meetings['data']['join_url'],
                 'start_url'=>$meetings['data']['start_url'],
@@ -418,7 +454,7 @@ class HomeController extends Controller
             $name=$request->name;
             Mail::to($booking->email)->send(new ZoomLink($join,$name));
 
-            return $this->success('Your Data Added Successfully');
+            return $this->successMessage('Your Data Added Successfully',['url'=>(json_decode($response->getBody()))->transaction->url]);
 
         }
         }
@@ -440,5 +476,31 @@ class HomeController extends Controller
          return $this->success(SessionAppointmentsResource::collection($dates));
      }
 
+    public function redirect_booking(Request $request)
+    {
 
+
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+            'headers' => [
+                'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
+                'accept' => 'application/json',
+            ],
+        ]);
+        $order=BookingAppointments::where('transaction_id',$request->tap_id)->first();
+        if($order){
+            if((json_decode($response->getBody()))->status=='CAPTURED')
+            {
+                $order->update(['status'=>'success']);
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
+
+            }
+            else
+            {
+                return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
+
+            }
+        }
+    }
 }
