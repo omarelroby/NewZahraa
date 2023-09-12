@@ -709,6 +709,7 @@ class CustomerController extends Controller
         }
         if ($check->customer_id==$customer_id&&$check->ebook_id==$ebook->id)
         {
+            dd($this->pay());
             return $this->error(' You have Already Book this E-book');
         }
         else
