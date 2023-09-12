@@ -9,7 +9,7 @@ class AddStatusToBookingAppointmentsTable extends Migration {
 	{
         Schema::table('booking_appointments', function($table)
         {
-            $table->text('status')->after('transaction_id')->nullable()->default('pending');
+            $table->text('status')->after('transaction_id')->nullable();
 
 
         });
@@ -17,7 +17,7 @@ class AddStatusToBookingAppointmentsTable extends Migration {
     public function down()
 	{
         Schema::table('booking_appointments', function($table) {
-             $table->text('status')->after('transaction_id')->nullable()->default('pending');
+             $table->text('status')->after('transaction_id')->nullable();
          });
 	}
 
