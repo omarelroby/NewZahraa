@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AppointmentsResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CustomerResource;
@@ -12,6 +13,7 @@ use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
@@ -460,5 +462,17 @@ class InstructorController extends Controller
             $data=['question_degree'=>$student_quiz->total_degree."/".intval($totalQuestionDegree)];
             return $this->successMessage('Your Quiz Corrected Successfully',$data);
 
+        }
+        public function get_group_appointments(Request $request)
+        {
+            $appointment=Appointments::where('appointment_date',$request->date)->first();
+            if ($appointment)
+            {
+               return  $this->success(new  AppointmentsResource($appointment));
+            }
+            else
+            {
+                return $this->error('this appointment not found');
+            }
         }
 }
