@@ -1114,7 +1114,14 @@ class CustomerController extends Controller
         if($order){
             if((json_decode($response->getBody()))->status=='CAPTURED')
             {
-                $order->update(['status'=>'success']);
+                $instrucor=Instructor::find($order->instructor_id);
+                if ($instrucor)
+                {
+                    $instructor_commision=($order->total*$instrucor->commission_instructor)/100;
+
+                }
+                $order->update(['status'=>'success','instructor_commision'=>$instructor_commision]);
+                $instrucor->update(['balance'=>$instrucor->balance+$instructor_commision]);
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
 
             }
