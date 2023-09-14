@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AppointmentsResource extends JsonResource
+class GroupNewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,12 @@ class AppointmentsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'appointment_date' => $this->appointment_date,
-            'group' => new GroupNewResource($this->groups),
+            'name'=>$this->name,
+            'zoom_link'=>$this->zoom_link,
+            'start_date'=>$this->start_date,
+            'end_date'=>$this->end_date,
+             'instructors'=>new InstructorResource($this->instructors),
+            'online_courses'=>new OnlineCourseResource($this->online_courses),
 
 
         ];

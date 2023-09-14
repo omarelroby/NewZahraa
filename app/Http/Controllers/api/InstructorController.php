@@ -13,6 +13,7 @@ use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\GroupNewResource;
 use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorProfileResource;
 use App\Http\Resources\InstructorResource;
@@ -481,8 +482,9 @@ class InstructorController extends Controller
         }
         public function get_group_appointments(Request $request)
         {
-            $appointment=Appointments::whereDate('appointment_date',$request->date)->get();
-            if ($appointment)
+              $appointment=Appointments::whereDate('appointment_date',$request->date)
+            ->whereHas('instructor_group')->get();
+             if ($appointment)
             {
                return  $this->success(AppointmentsResource::collection($appointment));
             }
@@ -490,5 +492,20 @@ class InstructorController extends Controller
             {
                 return $this->error('this appointment not found');
             }
+        }
+        public function get_month_group(Request $request)
+        {
+            $month=Groups::where('instructor_id',auth('instructor-api')->user()->id)
+                ->WhereMonth('start_date',$request->month)->orWhereMonth('end_date',$request->month)->get();
+             if ($month)
+            {
+                    return $this->success(GroupNewResource::collection($month));
+            }
+            else
+            {
+                   return $this->error('Month Not Found');
+            }
+
+
         }
 }

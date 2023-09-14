@@ -53,7 +53,8 @@ Route::middleware("localization")->group(function ()
     Route::middleware('auth:instructor-api')->group( function ()
     {
         Route::get('instructor-online-courses', [\App\Http\Controllers\api\InstructorController::class, 'instructor_onlineCourses']);
-        Route::get('get-group-appointment', [\App\Http\Controllers\api\InstructorController::class, 'get_group_appointments']);
+        Route::post('get-group-appointment', [\App\Http\Controllers\api\InstructorController::class, 'get_group_appointments']);
+        Route::get('get-month-group', [\App\Http\Controllers\api\InstructorController::class, 'get_month_group']);
         Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
         Route::post('instructor-groups', [\App\Http\Controllers\api\InstructorController::class, 'groups']);
         Route::post('materials', [\App\Http\Controllers\api\InstructorController::class, 'materials']);

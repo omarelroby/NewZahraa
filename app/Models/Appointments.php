@@ -21,5 +21,10 @@ class Appointments extends Model
     public function groups(){
         return $this->belongsTo(Groups::class,'group_id');
     }
+    public function instructor_group()
+    {
+        return $this->belongsTo(Groups::class,'group_id')
+            ->where('instructor_id',auth('instructor-api')->user()->id);
+    }
 
 }
