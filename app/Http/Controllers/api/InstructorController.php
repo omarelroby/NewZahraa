@@ -497,7 +497,7 @@ class InstructorController extends Controller
         {
             $month=Groups::where('instructor_id',auth('instructor-api')->user()->id)
                 ->WhereMonth('start_date',$request->month)->orWhereMonth('end_date',$request->month)->get();
-             if ($month)
+             if ($month->count()>0)
             {
                     return $this->success(GroupNewResource::collection($month));
             }
