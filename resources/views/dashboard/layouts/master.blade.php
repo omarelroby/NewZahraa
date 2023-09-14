@@ -91,8 +91,9 @@
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
-                <li class="nav-item"><a class="navbar-brand"
-                                        href="{{asset('html/rtl/vertical-menu-template/index.html')}}">
+                <li class="nav-item">
+                    <a class="navbar-brand"
+                                        href="{{route('dashboard')}}">
                         <img class="brand-logo" alt="robust admin logo" style="width: 100px;margin-left: 50%;margin-right: 50%;"
                              src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}"/>
                     </a>
