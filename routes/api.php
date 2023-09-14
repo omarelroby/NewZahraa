@@ -63,6 +63,7 @@ Route::middleware("localization")->group(function ()
         Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
         Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
         Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
+        Route::get('instructor-profile', [\App\Http\Controllers\api\InstructorController::class, 'instructor_profile'])->middleware('auth:api');
 
 
 

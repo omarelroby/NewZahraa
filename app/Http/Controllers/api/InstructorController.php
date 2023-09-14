@@ -67,6 +67,21 @@ class InstructorController extends Controller
 
 
     }
+    public function instructor_profile()
+    {
+        $user = auth('instructor-api')->user()->email;
+        $instructor=Instructor::where('email',$user)->first();
+        if($instructor)
+        {
+
+        }
+        else
+        {
+            return $this->error('Instructor Not Found');
+        }
+
+
+    }
     public function logout()
     {
         $user = auth('instructor-api')->user();
