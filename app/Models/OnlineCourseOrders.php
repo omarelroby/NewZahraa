@@ -32,6 +32,10 @@ class OnlineCourseOrders extends Model
     {
         return $this->belongsTo(OnlineCourse::class,'online_course_id');
     }
+    public function instructors()
+    {
+        return $this->belongsTo(Instructor::class,'instructor_id');
+    }
 
 
 

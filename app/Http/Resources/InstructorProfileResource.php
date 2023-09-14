@@ -27,8 +27,8 @@ class InstructorProfileResource extends JsonResource
             'country'=>new CountryResource($this->country),
             'commission_instructor'=>$this->commission_instructor,
             'balance'=>$this->balance,
-            'total_commision'=>$this->OnlineCourses->orders->sum('instructor_commision'),
-            'number_of_student'=>$this->OnlineCourses->orders->count(),
+            'total_commision'=>$this->orders->sum('instructor_commision'),
+            'number_of_student'=>$this->orders->count(),
             'number_of_courses'=>$this->OnlineCourses->count(),
 
 

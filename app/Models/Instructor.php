@@ -37,10 +37,17 @@ class Instructor extends Authenticatable
     public function country(){
         return $this->belongsTo(Country::class,'country_id');
     }
-    public function OnlineCourses(){
+    public function OnlineCourses()
+    {
         return $this->belongsToMany(OnlineCourse::class,'online_courses_and_instructors','instructor_id','online_course_id');
     }
-    public function attachments(){
+    public function attachments()
+    {
         return $this->hasMany(InstructorAttachs::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(OnlineCourseOrders::class,'instructor_id');
+
     }
 }
