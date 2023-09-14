@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'students'=>'Students',
     'edit-payment-method'=>'Edit Payment Methods',
     'add-payment-method'=>'Add Payment Methods',
     'payment-method'=>'Payment Methods',

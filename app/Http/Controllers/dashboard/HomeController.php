@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Models\Course;
+use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\FreeVideo;
+use App\Models\Instructor;
 use App\Models\OnlineCourse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -19,7 +21,9 @@ class HomeController extends BaseController
         $courses=Course::all()->count();
         $free_videos=FreeVideo::all()->count();
         $online_course=OnlineCourse::all()->count();
-        return view('dashboard.home',compact('ebooks','courses','free_videos','online_course'));
+        $customers=Customers::all()->count();
+        $instructors=Instructor::all()->count();
+        return view('dashboard.home',compact('instructors','ebooks','courses','free_videos','online_course','customers'));
     }
     public function create(){
         return view('dashboard.create');

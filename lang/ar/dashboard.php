@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'students'=>'الطلاب',
     'add-payment-method'=>'إضافة طرق الدفع',
     'edit-payment-method'=>'تعديل طرق الدفع',
     'payment-method'=>'طرق الدفع',
