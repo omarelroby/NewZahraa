@@ -14,6 +14,7 @@ use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\InstructorProfileResource;
 use App\Http\Resources\InstructorResource;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
@@ -73,7 +74,7 @@ class InstructorController extends Controller
         $instructor=Instructor::where('email',$user)->first();
         if($instructor)
         {
-
+                return $this->success(new InstructorProfileResource($instructor));
         }
         else
         {
