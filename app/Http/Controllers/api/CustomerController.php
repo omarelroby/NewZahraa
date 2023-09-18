@@ -262,8 +262,13 @@ class CustomerController extends Controller
              $customer->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => bcrypt($request->password),
-            ]);
+             ]);
+             if($request->password && $request->password!='')
+             {
+                 $customer->update([
+                      'password' => bcrypt($request->password),
+                 ]);
+             }
             if ($request->has('image')) {
                 $customer->update(['image' => $request->image]);
             }
