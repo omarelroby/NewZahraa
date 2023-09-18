@@ -361,12 +361,12 @@ class InstructorController extends Controller
  public function online_courses_groups($id)
     {
         $instructor = auth('instructor-api')->user();
-        $groups=OnlineCourse::find($id);
-        if ($instructor)
+        $groups=Groups::where('instructor_id',$instructor->id)->get();
+         if ($instructor)
         {
             if ($groups)
             {
-                return $this->success($groups->groups);
+//                return $this->success( );
             }
             else
             {

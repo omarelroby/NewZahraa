@@ -95,6 +95,8 @@ class InstructorsDataTable extends DataTable
                 ->title(__('dashboard.email')),
             Column::make('phone')
                 ->title(__('dashboard.phone')),
+            Column::make('balance')
+                ->title(__('dashboard.balance')),
             Column::make('commission_instructor')
                 ->title(__('dashboard.commission_instructor')),
             Column::make('Attachments')
