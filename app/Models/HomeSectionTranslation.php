@@ -15,7 +15,7 @@ use Astrotomic\Translatable\Translatable;
 class HomeSectionTranslation extends Model
 {
     use HasFactory;
-
+    protected $table='home_section_translations';
     public $timestamps = false;
     protected $fillable = ['title','description','button'];
 }
