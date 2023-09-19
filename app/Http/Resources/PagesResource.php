@@ -18,7 +18,7 @@ class PagesResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title,
-            'description' =>strip_tags($this->translate(app()->getLocale())->description),
+            'description' =>$this->translate(app()->getLocale())->description,
             'image'=>$this->image,
             'video_url'=>$this->video_url,
             'upload_video'=>$this->upload_video,
