@@ -32,5 +32,9 @@ class Quiz extends Model
     {
         return $this->hasMany(QuizQuestions::class,'quiz_id');
     }
+    public function group()
+    {
+        return $this->belongsToMany(Groups::class,'quiz_groups','quiz_id','group_id');
+    }
 
 }

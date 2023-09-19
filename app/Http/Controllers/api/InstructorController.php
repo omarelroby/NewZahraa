@@ -13,6 +13,7 @@ use App\Http\Resources\FavouriteFreeVideosResource;
 use App\Http\Resources\FavouriteOnlineCoursesResource;
 use App\Http\Resources\FavouriteVideosResource;
 use App\Http\Resources\FreeVideosResource;
+use App\Http\Resources\GroupNew2Resource;
 use App\Http\Resources\GroupNewResource;
 use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorProfileResource;
@@ -367,7 +368,7 @@ class InstructorController extends Controller
         {
             if ($groups)
             {
-                return $this->success(GroupResource::collection($groups));
+                return $this->success(GroupNew2Resource::collection($groups));
             }
             else
             {

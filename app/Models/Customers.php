@@ -47,4 +47,8 @@ class Customers extends Authenticatable
     public function favourite_videos(){
         return $this->belongsToMany(Videos::class,'favourite_videos','customer_id','videos_id');
     }
+    public function groups()
+    {
+        return $this->belongsToMany(Groups::class,'online_course_orders','customer_id','group_id');
+    }
 }

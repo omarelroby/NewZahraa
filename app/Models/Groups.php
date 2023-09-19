@@ -33,4 +33,12 @@ class Groups extends Model
         return $this->hasMany(Appointments::class,'group_id');
     }
 
+    public function quiz()
+    {
+        return $this->belongsToMany(Quiz::class,'quiz_groups','group_id','quiz_id');
+    }
+    public function students()
+    {
+        return $this->belongsToMany(Customers::class,'online_course_orders','group_id','customer_id');
+    }
 }
