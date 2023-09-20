@@ -45,7 +45,7 @@ public function onUpdate()
 {
     return [
         'name' => 'required',
-        'email' => 'required|unique:instructors,email',
+        'email' => 'required',
         'phone' => 'required',
         'brief' => 'required',
         'category_id' => 'required',
