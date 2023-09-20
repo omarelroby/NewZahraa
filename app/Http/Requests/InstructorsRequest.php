@@ -47,6 +47,7 @@ public function onUpdate()
         'name' => 'required',
         'email' => 'required',
         'phone' => 'required',
+        'password' => 'nullable',
         'brief' => 'required',
         'category_id' => 'required',
         'country_id' => 'required',
