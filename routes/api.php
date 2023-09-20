@@ -55,6 +55,9 @@ Route::middleware("localization")->group(function ()
         Route::get('instructor-online-courses', [\App\Http\Controllers\api\InstructorController::class, 'instructor_onlineCourses']);
         Route::post('get-group-appointment', [\App\Http\Controllers\api\InstructorController::class, 'get_group_appointments']);
         Route::get('get-month-group', [\App\Http\Controllers\api\InstructorController::class, 'get_month_group']);
+        Route::get('get-course-students', [\App\Http\Controllers\api\InstructorController::class, 'get_course_students']);
+        Route::get('get-course-appointments', [\App\Http\Controllers\api\InstructorController::class, 'get_course_appointments']);
+
         Route::get('instructor-logout',[\App\Http\Controllers\api\InstructorController::class,'logout']);
         Route::post('instructor-groups', [\App\Http\Controllers\api\InstructorController::class, 'groups']);
         Route::post('materials', [\App\Http\Controllers\api\InstructorController::class, 'materials']);
