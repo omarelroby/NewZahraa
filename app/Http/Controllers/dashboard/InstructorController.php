@@ -144,7 +144,7 @@ class InstructorController extends Controller
                 'password'=>bcrypt($request->password),
                 'brief'=>$request->brief,
                 'category_id'=>$request->category_id,
-                'country_id'=>$request->category_id,
+                'country_id'=>$request->country_id,
                 'commission_instructor'=>$request->commission_instructor,
             ];
             if ($request->has('image')){
@@ -161,7 +161,7 @@ class InstructorController extends Controller
                 'phone'=>$request->phone,
                 'brief'=>$request->brief,
                 'category_id'=>$request->category_id,
-                'country_id'=>$request->category_id,
+                'country_id'=>$request->country_id,
                 'commission_instructor'=>$request->commission_instructor,
 
             ];
