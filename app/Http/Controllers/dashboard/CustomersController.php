@@ -110,7 +110,7 @@ class CustomersController extends Controller
     public function update(CustomersRequest $request, $id)
     {
         $customer=Customers::find($id);
-        if($request->password!=null||$request->password!=''){
+        if($request->password!=null&&$request->password!=''){
             $data=[
                 'name'=>$request->name,
                 'email'=>$request->email,

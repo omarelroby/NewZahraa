@@ -136,7 +136,7 @@ class InstructorController extends Controller
     public function update(InstructorsRequest $request, $id)
     {
         $instructor=Instructor::find($id);
-         if($request->password!=null||$request->password!=''){
+         if($request->password!=null&&$request->password!=''){
             $data=[
                 'name'=>$request->name,
                 'email'=>$request->email,
