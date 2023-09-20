@@ -136,8 +136,7 @@ class InstructorController extends Controller
     public function update(InstructorsRequest $request, $id)
     {
         $instructor=Instructor::find($id);
-        dd($request->all());
-        if($request->has('password')){
+         if($request->has('password')){
             $data=[
                 'name'=>$request->name,
                 'email'=>$request->email,
@@ -163,6 +162,8 @@ class InstructorController extends Controller
                 'brief'=>$request->brief,
                 'category_id'=>$request->category_id,
                 'country_id'=>$request->category_id,
+                'commission_instructor'=>$request->commission_instructor,
+
             ];
             if ($request->has('image')){
                 $file=$request->file('image')->getClientOriginalExtension();
