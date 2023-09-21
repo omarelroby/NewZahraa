@@ -17,6 +17,7 @@ use App\Models\Country;
 
 use App\Models\Groups;
 
+use App\Models\Instructor;
 use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourse;
@@ -27,6 +28,7 @@ use App\Models\QuizGroups;
 use App\Models\QuizQuestions;
 use App\Models\StudenQuiz;
 use App\Models\StudenQuizAnswer;
+use App\Models\WithDrawRequest;
 use App\Traits\response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -481,6 +483,35 @@ class InstructorController extends Controller
         }
         return $this->success($arr);
 
+
+    }
+    public function withdraw_request(ٌRequest $request)
+    {
+        $oValidatorRules = [
+            'cash'=>'required',
+            'approved_date'=>'required',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+         $instructor_id=auth('instructor-api')->user()->id;
+        $instructor=Instructor::find($instructor_id);
+        $balance=$instructor->balance;
+        if ($request->cash<$balance)
+        {
+            return $this->error('Sorry You Don\'t have enough balance ');
+        }
+        else
+        {
+            WithDrawRequest::created([
+                'cash'=>$request->cash,
+                'approved_date'=>$request->approved_date,
+
+            ]);
+            return $this->successMessage(__('dashboard.success'));
+        }
 
     }
 }

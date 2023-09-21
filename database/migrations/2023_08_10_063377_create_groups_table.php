@@ -11,8 +11,8 @@ class CreateGroupsTable extends Migration {
 			$table->increments('id');
             $table->text('name')->nullable();
             $table->text('zoom_link')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->integer('instructor_id')->unsigned();
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->integer('online_course_id')->unsigned();
