@@ -130,7 +130,7 @@
                           @foreach(config('translatable.locales') as $locale)
                 <div class="form-group col-5">
                 <label for="inputRelatedProgram"> name({{$locale}})</label>
-                <input type="text" class="form-control  " count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
+                <input type="text" class="form-control" required count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
                         </div>
                         @endforeach
  `);
