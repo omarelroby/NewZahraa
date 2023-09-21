@@ -51,4 +51,8 @@ class Customers extends Authenticatable
     {
         return $this->belongsToMany(Groups::class,'online_course_orders','customer_id','group_id');
     }
+    public function instructor()
+    {
+        return $this->hasMany(OnlineCourseOrders::class,'customer_id')->where('instructor_id',auth('instructor-api')->user()->id);
+    }
 }

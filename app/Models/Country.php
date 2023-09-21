@@ -14,5 +14,9 @@ class Country extends Model implements TranslatableContract
     public $translatedAttributes = ['name'];
     protected $fillable=['image','slug','country_code'];
 
+    public function students()
+    {
+        return $this->hasMany(Customers::class,'country_id')->whereHas('instructor');
+    }
 
 }

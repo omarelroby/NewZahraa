@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GroupNewResource extends JsonResource
+class CountryInstructorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,14 +16,13 @@ class GroupNewResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name'=>$this->name,
-            'start_date'=>$this->start_date,
-            'end_date'=>$this->end_date,
-            'online_courses'=>new OnlineCourseResource($this->online_courses),
-            'number_of_students'=>$this->orders->count()??'',
+            'slug' => $this->slug,
+            'name' => $this->translate(app()->getLocale())->name,
+            'image'=>$this->image,
+            'country_code'=>$this->country_code,
+            'number_of_students'=>$this->students->count()
 
 
         ];
     }
-
 }
