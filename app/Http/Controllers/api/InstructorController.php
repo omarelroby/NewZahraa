@@ -423,20 +423,7 @@ class InstructorController extends Controller
                 return $this->error('this qustion not found in quiz questions');
             }
         }
-<<<<<<< HEAD
-        public function get_group_appointments(Request $request)
-        {
-              $appointment=Appointments::whereDate('appointment_date',$request->date)
-                 ->whereHas('instructor_group')->get();
-             if ($appointment)
-            {
-               return  $this->success(AppointmentsResource::collection($appointment));
-            }
-            else
-            {
-                return $this->error('this appointment not found');
-            }
-=======
+
         $data = ['question_degree' => $student_quiz->total_degree . "/" . intval($totalQuestionDegree)];
         return $this->successMessage('Your Quiz Corrected Successfully', $data);
 
@@ -480,7 +467,6 @@ class InstructorController extends Controller
             return $this->success(GroupNewResource::collection($month));
         } else {
             return $this->error('Month Not Found');
->>>>>>> 6e6f3a0947d8238672b94e32db8f23f6a151ed95
         }
 
 
