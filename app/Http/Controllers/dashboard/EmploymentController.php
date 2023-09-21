@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Employment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
- use Illuminate\Support\Str;
-use Illuminate\Validation\Validator;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+ use RealRashid\SweetAlert\Facades\Alert;
 
 class EmploymentController extends Controller
 {
