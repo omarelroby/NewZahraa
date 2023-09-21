@@ -144,6 +144,6 @@ class PagesController extends Controller
         Page::find($id)->delete();
         Alert::error('Deleted',__('dashboard.deleted'));
 
-        return redirect()->route('pages.index');
+        return redirect()->route('page.index');
     }
 }
