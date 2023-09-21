@@ -19,7 +19,7 @@ class GroupNewResource extends JsonResource
             'name'=>$this->name,
             'start_date'=>$this->start_date,
             'end_date'=>$this->end_date,
-            'online_courses'=>new OnlineCourseResource($this->online_courses),
+            'online_courses'=>new OnlineCourseInstructorResource($this->online_courses),
             'number_of_students'=>$this->orders->count()??'',
 
 

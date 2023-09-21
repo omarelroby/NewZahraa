@@ -6,52 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AppointmentsResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryInstructorResource;
-use App\Http\Resources\CountryResource;
-use App\Http\Resources\CustomerResource;
-use App\Http\Resources\EbooksResource;
-use App\Http\Resources\FavouriteEbooksResource;
-use App\Http\Resources\FavouriteFreeVideosResource;
-use App\Http\Resources\FavouriteOnlineCoursesResource;
-use App\Http\Resources\FavouriteVideosResource;
-use App\Http\Resources\FreeVideosResource;
 use App\Http\Resources\GroupNew2Resource;
 use App\Http\Resources\GroupNewResource;
-use App\Http\Resources\GroupResource;
 use App\Http\Resources\InstructorProfileResource;
-use App\Http\Resources\InstructorResource;
+use App\Http\Resources\OnlineCourseInstructorResource;
 use App\Http\Resources\OnlineCourseResource;
-use App\Http\Resources\PagesResource;
-use App\Http\Resources\VideosResource;
+
 use App\Models\Appointments;
-use App\Models\Category;
 use App\Models\Country;
-use App\Models\Course;
-use App\Models\Customers;
-use App\Models\Ebook;
-use App\Models\FreeVideo;
+
 use App\Models\Groups;
-use App\Models\Instructor;
-use App\Models\InstructorRequests;
+
 use App\Models\MaterialGroups;
 use App\Models\Materials;
 use App\Models\OnlineCourse;
 use App\Models\OnlineCourseOrders;
-use App\Models\Page;
 use App\Models\QuestionsOptions;
 use App\Models\Quiz;
 use App\Models\QuizGroups;
 use App\Models\QuizQuestions;
 use App\Models\StudenQuiz;
 use App\Models\StudenQuizAnswer;
-use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use mysql_xdevapi\Exception;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+
 
 
 class InstructorController extends Controller
@@ -60,14 +39,22 @@ class InstructorController extends Controller
 
     public function instructor_onlineCourses()
     {
-        $user = auth('instructor-api')->user()->email;
-        $instructor = Instructor::where('email', $user)->first();
-        if ($instructor) {
-            return $this->success(OnlineCourseResource::collection($instructor->OnlineCourses));
-        } else {
-            return $this->error('Instructor Not Found');
-        }
+        return $this->success(OnlineCourseInstructorResource::collection(auth('instructor-api')->user()->OnlineCourses));
 
+
+    }
+    public function instructor_onlineCourse($slug)
+    {
+        $online_course=OnlineCourse::whereHas('course_instructor')->where('slug',$slug)->first();
+        if ($online_course) {
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id',$online_course->id)->get();
+            return $this->success(['online_course'=>new OnlineCourseInstructorResource($online_course),'groups'=>$groups]);
+        }
+        else
+        {
+            return $this->error('Course Not Found',[],404);
+
+        }
 
     }
 
@@ -453,8 +440,7 @@ class InstructorController extends Controller
             $appointments = Appointments::whereHas('instructor_group', function ($query) use ($request) {
                 $query->where('online_course_id', $request->online_course_id);
             });
-        else
-        {
+        else {
             $appointments = Appointments::whereHas('instructor_group');
         }
         if ($request->month) {
