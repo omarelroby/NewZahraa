@@ -204,6 +204,7 @@ class InstructorController extends Controller
         $oValidatorRules = [
             'quiz_name' => 'required',
             'degree' => 'required',
+            'pass_score' => 'required',
             'online_course_id' => 'required|exists:online_courses,id',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
@@ -228,6 +229,8 @@ class InstructorController extends Controller
                         'discount_score' => $request->discount_score,
                         'online_course_id' => intval($request->online_course_id),
                         'instructor_id' => $instructor->id,
+                        'pass_score' => $request->pass_score,
+
                     ]);
                     if ($request->has('group_id')) {
                         $oValidatorRules = [
@@ -257,6 +260,7 @@ class InstructorController extends Controller
                         'degree' => $request->degree,
                         'online_course_id' => intval($request->online_course_id),
                         'instructor_id' => $instructor->id,
+                        'pass_score' => $request->pass_score,
                     ]);
                     if ($request->has('group_id')) {
                         $oValidatorRules = [

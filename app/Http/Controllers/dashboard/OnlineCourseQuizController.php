@@ -95,11 +95,16 @@ class OnlineCourseQuizController extends Controller
              'is_discount'=>$is,
              'discount'=>$request->discount,
              'discount_score'=>$request->discount_score,
+             'pass_score'=>$request->pass_score,
          ]);
-         QuizGroups::create([
-             'quiz_id'=>$quiz->id,
-             'group_id'=>$request->group_id,
-         ]);
+        foreach ($request->group_id as $group)
+        {
+            QuizGroups::create([
+                'quiz_id'=>$quiz->id,
+                'group_id'=>$group,
+            ]);
+
+        }
 
         Alert::success('Success', __('dashboard.success'));
         return redirect()->route('onlineCourse.quiz', $request->online_course_id);
@@ -125,11 +130,11 @@ class OnlineCourseQuizController extends Controller
             'is_discount'=>$is,
             'discount'=>$request->discount,
             'discount_score'=>$request->discount_score,
+            'pass_score'=>$request->pass_score,
+
+
         ]);
-        $group=QuizGroups::where('quiz_id',$id)->first();
-        $group->update([
-             'group_id'=>$request->group_id,
-        ]);
+
 
         Alert::success('Success', __('dashboard.update'));
         return redirect()->route('onlineCourse.quiz', $request->online_course_id);

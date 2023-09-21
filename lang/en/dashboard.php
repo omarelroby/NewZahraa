@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'pass-score'=>'Pass Score',
     'edit-quiz'=>'Edit Quiz',
     'is_discount'=>'Is Discount',
     'add-quiz' => 'Add Quiz',

@@ -20,6 +20,7 @@ class Quiz extends Model
         'is_discount',
         'discount',
         'discount_score',
+        'pass_score',
     ];
     public function instructors(){
         return $this->belongsTo(Instructor::class,'instructor_id');
