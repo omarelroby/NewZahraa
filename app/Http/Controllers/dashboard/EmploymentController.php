@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Employment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -42,8 +43,17 @@ class EmploymentController extends Controller
      */
     public function store(Request $request)
     {
-       $data=$request->all();
-       dd($data);
+        $oValidatorRules = [
+            'en.description' => 'required',
+            'ar.description' => 'required',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        $data=$request->all();
+
         if($request->has('image'))
         {
             $file=$request->file('image')->getClientOriginalExtension();
