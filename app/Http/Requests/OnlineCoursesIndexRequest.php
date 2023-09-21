@@ -27,6 +27,8 @@ class OnlineCoursesIndexRequest extends FormRequest
         $rules=[
             'title' => 'nullable',
             'title.*' => 'nullable',
+            'repeater' => 'array',
+            'repeater.*' => 'required',
             'online_course_id' => 'nullable',
             'online_course_indexes_id' => 'nullable',
 

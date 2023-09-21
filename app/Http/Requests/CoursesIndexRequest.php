@@ -27,8 +27,7 @@ class CoursesIndexRequest extends FormRequest
         $rules=[
             'name' => 'array',
             'name.*' => 'required',
-            'repeater' => 'array',
-            'repeater.*' => 'required',
+
 
             'title' => 'nullable',
             'title.*' => 'nullable',
