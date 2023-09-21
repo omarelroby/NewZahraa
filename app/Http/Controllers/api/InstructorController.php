@@ -507,6 +507,7 @@ class InstructorController extends Controller
         {
             WithDrawRequest::created([
                 'cash'=>$request->cash,
+                'instructor_id'=>$instructor_id,
                 'approved_date'=>$request->approved_date,
 
             ]);

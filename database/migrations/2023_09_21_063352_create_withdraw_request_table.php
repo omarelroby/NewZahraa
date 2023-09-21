@@ -12,7 +12,7 @@ class CreateWithdrawRequestTable extends Migration {
             $table->string('cash', 255);
             $table->string('instructor_id', 255);
             $table->string('status', 255)->default('pending');
-            $table->text('approved_date')->nullable();
+            $table->date('approved_date')->nullable();
              $table->timestamps();
 
         });
