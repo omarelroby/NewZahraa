@@ -63,6 +63,7 @@ class IndexesController extends Controller
      */
     public function store(CoursesIndexRequest $request)
     {
+        $request->validate(['repeater'=>'required']);
 
         $index = CourseIndexes::create($request->all());
         foreach ($request->repeater as $key => $input) {
