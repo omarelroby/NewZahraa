@@ -25,7 +25,8 @@ class SettingRequest extends FormRequest
     {
 
         $rules=[
-
+            'title' => 'array',
+            'title.*' => 'nullable',
             'description' => 'array',
             'description.*' => 'nullable',
             'Keywords'=>'nullable',
@@ -41,7 +42,7 @@ class SettingRequest extends FormRequest
 
             ];
         foreach(config('translatable.locales') as $locale) {
-            $rules["title.{$locale}"]='required';
+            $rules["{$locale}.title"]='required';
 
         }
            return $rules;
