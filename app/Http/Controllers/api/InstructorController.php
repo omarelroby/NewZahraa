@@ -505,7 +505,7 @@ class InstructorController extends Controller
         }
         else
         {
-            WithDrawRequest::created([
+            WithDrawRequest::create([
                 'cash'=>$request->cash,
                 'instructor_id'=>$instructor_id,
                 'approved_date'=>$request->approved_date,
