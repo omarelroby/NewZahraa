@@ -808,15 +808,6 @@ class CustomerController extends Controller
     }
     public function online_course_orders(Request $request)
     {
-        $customer_id=auth('api')->user()->id;
-        $check=OnlineCourseOrders::where('customer_id',$customer_id)->first();
-        $course=OnlineCourse::find($request->online_course_id);
-        if($course)
-        {
-            $price=$course->price;
-
-        }
-        $instructor_id=Groups::find($request->group_id)->instructor_id;
         $oValidatorRules =
             [
                 'online_course_id' => 'required|exists:online_courses,id',
@@ -827,6 +818,16 @@ class CustomerController extends Controller
         {
             return $this->error($validator->messages());
         }
+        $customer_id=auth('api')->user()->id;
+        $check=OnlineCourseOrders::where('customer_id',$customer_id)->first();
+        $course=OnlineCourse::find($request->online_course_id);
+        if($course)
+        {
+            $price=$course->price;
+
+        }
+        $instructor_id=Groups::find($request->group_id)->instructor_id;
+
          if ($check&&$course->type=='single')
         {
             if ($check&&$check->online_course_id==$course->id)
