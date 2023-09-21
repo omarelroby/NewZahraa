@@ -443,15 +443,20 @@ class InstructorController extends Controller
     public function get_course_appointments(Request $request)
     {
         $oValidatorRules = [
-            'online_course_id' => 'required|exists:online_courses,id',
+            'online_course_id' => 'nullable|exists:online_courses,id',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        $appointments = Appointments::whereHas('instructor_group', function ($query) use ($request) {
-            $query->where('online_course_id', $request->online_course_id);
-        });
+        if ($request->online_course_id)
+            $appointments = Appointments::whereHas('instructor_group', function ($query) use ($request) {
+                $query->where('online_course_id', $request->online_course_id);
+            });
+        else
+        {
+            $appointments = Appointments::whereHas('instructor_group');
+        }
         if ($request->month) {
             $appointments = $appointments->whereMonth('appointment_date', $request->month);
         }
