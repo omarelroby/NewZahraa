@@ -66,7 +66,7 @@
                                                                 <div class="form-group">
                                                                     <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
                                                                     <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
-                                                                </textarea>
+                                                                    </textarea>
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -128,7 +128,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group form-check checkbox-lg">
                                                                 <label for="projectinput30">{{__('dashboard.status')}}  </label>
-                                                                <input type="checkbox" required id="projectinput30"    value="1"   name="status">
+                                                                <input type="checkbox"   id="projectinput30"    value="1"   name="status">
                                                             </div>
                                                         </div>
 
@@ -171,8 +171,6 @@
     <script>
         CKEDITOR.replace('ar[description]' );
         CKEDITOR.replace('en[description]' );
-    </script>
-    <script>
         CKEDITOR.replace('ar[qualifications]' );
         CKEDITOR.replace('en[qualifications]' );
     </script>

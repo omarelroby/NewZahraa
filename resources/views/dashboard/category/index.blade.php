@@ -8,7 +8,7 @@
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">{{__('dashboard.home')}}</a>
+                                <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">{{__('dashboard.home')}}</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">{{__('dashboard.categories')}}</a>
                                 </li>
