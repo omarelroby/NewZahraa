@@ -27,6 +27,8 @@ class CoursesIndexRequest extends FormRequest
         $rules=[
             'name' => 'array',
             'name.*' => 'required',
+            'repeater' => 'array',
+            'repeater.*' => 'required',
 
             'title' => 'nullable',
             'title.*' => 'nullable',
@@ -38,7 +40,6 @@ class CoursesIndexRequest extends FormRequest
             ];
         foreach(config('translatable.locales') as $locale) {
             $rules["title.{$locale}"]='string';
-            $rules["video.{$locale}"]='required';
 
         }
            return $rules;
