@@ -489,7 +489,6 @@ class InstructorController extends Controller
     {
         $oValidatorRules = [
             'cash'=>'required',
-            'approved_date'=>'required',
 
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
@@ -508,7 +507,6 @@ class InstructorController extends Controller
             WithDrawRequest::create([
                 'cash'=>$request->cash,
                 'instructor_id'=>$instructor_id,
-                'approved_date'=>$request->approved_date,
 
             ]);
             return $this->successMessage(__('dashboard.success'));
