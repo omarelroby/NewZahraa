@@ -25,8 +25,7 @@ class SettingRequest extends FormRequest
     {
 
         $rules=[
-            'title' => 'array',
-            'title.*' => 'required',
+
             'description' => 'array',
             'description.*' => 'nullable',
             'Keywords'=>'nullable',
