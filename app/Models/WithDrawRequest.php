@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class WithDrawRequest extends Model
 {
-    use Translatable;
 
     protected $table='withdraw_request';
     protected $fillable=['cash','instructor_id','status','approved_date'];
