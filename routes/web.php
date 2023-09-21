@@ -69,6 +69,10 @@ Route::middleware('auth:admin')->group(function () {
      Route::get('index/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index'])->name('index.index');
      Route::get('online-course-indexes/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'index'])->name('onlineCourse.index');
      Route::get('online-course-groups/{id}',[\App\Http\Controllers\dashboard\OnlineCourseGroupsController::class,'index'])->name('onlineCourse.groups');
+     Route::get('online-course-quizes/{id}',[\App\Http\Controllers\dashboard\OnlineCourseQuizController::class,'index'])->name('onlineCourse.quiz');
+     Route::resource('online-course-quiz',\App\Http\Controllers\dashboard\OnlineCourseQuizController::class );
+     Route::get('online-course-quiz-create/{id}',[\App\Http\Controllers\dashboard\OnlineCourseQuizController::class,'create'])->name('quiz.create');
+     Route::get('get-group/{id}',[\App\Http\Controllers\dashboard\OnlineCourseQuizController::class,'get_group'])->name('get.group');
      Route::get('videos-indexes/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'index'])->name('video-index.index');
      Route::get('index-create/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'create_index'])->name('indexes.create');
      Route::get('online-course-index-create/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'create_index'])->name('online-indexes.create');

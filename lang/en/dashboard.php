@@ -12,6 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-quiz'=>'Edit Quiz',
+    'is_discount'=>'Is Discount',
+    'add-quiz' => 'Add Quiz',
     'balance'=>'Balance',
     'students'=>'Students',
     'edit-payment-method'=>'Edit Payment Methods',

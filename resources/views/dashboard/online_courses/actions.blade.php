@@ -13,6 +13,8 @@
                     <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>
                 <a class="dropdown-item" href="{{ url("/online-course-groups/{$id}") }}">
                     <i class="fa fa-group mr-1"></i> {{__('dashboard.groups')}}</a>
+                <a class="dropdown-item" href="{{ url("/online-course-quizes/{$id}") }}">
+                    <i class="fa fa-book mr-1"></i> {{__('dashboard.quizes')}}</a>
 >
             </div>
 </div>

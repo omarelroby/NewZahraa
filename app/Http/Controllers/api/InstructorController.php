@@ -485,7 +485,7 @@ class InstructorController extends Controller
         public function get_group_appointments(Request $request)
         {
               $appointment=Appointments::whereDate('appointment_date',$request->date)
-            ->whereHas('instructor_group')->get();
+                 ->whereHas('instructor_group')->get();
              if ($appointment)
             {
                return  $this->success(AppointmentsResource::collection($appointment));

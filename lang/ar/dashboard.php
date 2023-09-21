@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-quiz'=>'تعديل بيانات الاختبار',
     'balance'=>'الرصيد',
     'students'=>'الطلاب',
     'add-payment-method'=>'إضافة طرق الدفع',
@@ -58,8 +59,10 @@ return [
     'ebook-orders'=>'طلبات الكتب الإلكترونية',
     'quiz_name'=>'اسم الاختبار القصير',
     'degree'=>'الدرجة',
+    'is_discount'=>'يوجد خصم',
     'discount'=>'الخصم',
     'discount_score'=>'نقاط الخصم',
+    'quizes'=>'الاختبارات',
     'quizes'=>'الاختبارات',
     'file_name'=>'اسم الملف',
     'file'=>' الملف',
@@ -182,6 +185,7 @@ return [
     'lessons-number' => 'عدد الدروس',
     'questions' => 'الاسئلة',
     'add-questions' => 'إضافة سؤال',
+    'add-quiz' => 'إضافة اختبار',
     'edit-questions' => 'تعديل سؤال',
     'answer' => 'الإجابة',
     'question' => 'السؤال',
