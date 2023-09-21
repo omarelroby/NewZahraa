@@ -36,6 +36,10 @@ class Groups extends Model
     {
         return $this->hasMany(Appointments::class,'group_id');
     }
+    public function next_appointment()
+    {
+        return $this->hasOne(Appointments::class,'group_id')->where('appointment_date','>',date('Y-m-d H:i'));
+    }
 
     public function quiz()
     {

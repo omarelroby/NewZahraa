@@ -67,6 +67,8 @@ Route::middleware("localization")->group(function ()
         Route::delete('delete-materials/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_materials']);
         Route::delete('delete-quiz/{id}', [\App\Http\Controllers\api\InstructorController::class, 'delete_quiz']);
         Route::get('online-course-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'online_courses_groups']);
+        Route::get('instructor-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'instructor_group']);
+
         Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
         Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
         Route::get('instructor-profile', [\App\Http\Controllers\api\InstructorController::class, 'instructor_profile'])->middleware('auth:api');

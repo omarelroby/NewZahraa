@@ -17,9 +17,10 @@ class GroupResource extends JsonResource
         return [
             'id' => $this->id,
             'name'=>$this->name,
-            'zoom_link'=>$this->zoom_link,
-            'start_date'=>$this->start_date,
-            'end_date'=>$this->end_date,
+            'start_date'=>date('d-m-Y', strtotime($this->start_date)),
+            'end_date'=>date('d-m-Y', strtotime($this->end_date)),
+            'time' =>  date('h:i:s a', strtotime($this->start_date)) ,
+            'zoom_link'=>$this->next_appointment->start_url??'',
             'Group_appointments'=>AppointmentsResource::collection($this->appointments),
             'instructors'=>new InstructorResource($this->instructors),
             'online_courses'=>new OnlineCourseResource($this->online_courses),

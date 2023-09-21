@@ -34,7 +34,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-
 class InstructorController extends Controller
 {
     use response;
@@ -45,16 +44,15 @@ class InstructorController extends Controller
 
 
     }
+
     public function instructor_onlineCourse($slug)
     {
-        $online_course=OnlineCourse::whereHas('course_instructor')->where('slug',$slug)->first();
+        $online_course = OnlineCourse::whereHas('course_instructor')->where('slug', $slug)->first();
         if ($online_course) {
-            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id',$online_course->id)->get();
-            return $this->success(['online_course'=>new OnlineCourseInstructorResource($online_course),'groups'=>$groups]);
-        }
-        else
-        {
-            return $this->error('Course Not Found',[],404);
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
+            return $this->success(['online_course' => new OnlineCourseInstructorResource($online_course), 'groups' => $groups]);
+        } else {
+            return $this->error('Course Not Found', [], 404);
 
         }
 
@@ -311,21 +309,33 @@ class InstructorController extends Controller
 
     }
 
-    public function online_courses_groups($id)
+    public function online_courses_groups($id, Request $request)
     {
-        $instructor = auth('instructor-api')->user();
-        $groups = Groups::where('instructor_id', $instructor->id)
-            ->where('online_course_id', $id)->get();
-        if ($instructor) {
-            if ($groups) {
-                return $this->success(GroupNew2Resource::collection($groups));
-            } else {
-                return $this->error('This Online Course Not Found');
-            }
-        } else {
-            return $this->error('Instructor Not Found');
-
+        $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
+            ->where('online_course_id', $id);
+        if ($request->month) {
+            $groups->WhereMonth('start_date', $request->month)->orWhereMonth('end_date', $request->month);
         }
+        $groups = $groups->get();
+        if ($groups) {
+            return $this->success(GroupNew2Resource::collection($groups));
+        } else {
+            return $this->error('This Online Course Not Found');
+        }
+
+
+    }
+
+    public function instructor_group($id)
+    {
+        $group = Groups::find($id);
+
+        if ($group) {
+            return $this->success(new GroupNew2Resource($group));
+        } else {
+            return $this->error('This Online Course Not Found');
+        }
+
 
     }
 
@@ -485,28 +495,26 @@ class InstructorController extends Controller
 
 
     }
+
     public function withdraw_request(Request $request)
     {
         $oValidatorRules = [
-            'cash'=>'required',
+            'cash' => 'required',
 
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-         $instructor_id=auth('instructor-api')->user()->id;
-        $instructor=Instructor::find($instructor_id);
-        $balance=$instructor->balance;
-         if (intval($request->cash)>intval($balance))
-        {
+        $instructor_id = auth('instructor-api')->user()->id;
+        $instructor = Instructor::find($instructor_id);
+        $balance = $instructor->balance;
+        if (intval($request->cash) > intval($balance)) {
             return $this->error('Sorry You Don\'t have enough balance ');
-        }
-        else
-        {
+        } else {
             WithDrawRequest::create([
-                'cash'=>$request->cash,
-                'instructor_id'=>$instructor_id,
+                'cash' => $request->cash,
+                'instructor_id' => $instructor_id,
 
             ]);
             return $this->successMessage(__('dashboard.success'));
