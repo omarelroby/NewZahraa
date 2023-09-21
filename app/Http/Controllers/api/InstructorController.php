@@ -499,8 +499,7 @@ class InstructorController extends Controller
          $instructor_id=auth('instructor-api')->user()->id;
         $instructor=Instructor::find($instructor_id);
         $balance=$instructor->balance;
-        dd(intval($request->cash)<intval($balance));
-        if (intval($request->cash)<intval($balance))
+         if (intval($request->cash)>intval($balance))
         {
             return $this->error('Sorry You Don\'t have enough balance ');
         }
