@@ -23,6 +23,7 @@ class OnlineCourse extends Model implements TranslatableContract
         'date',
         'lessons_number',
         'category_id',
+        'introduction_image'
     ];
     public function category()
     {
@@ -31,6 +32,11 @@ class OnlineCourse extends Model implements TranslatableContract
     public function Instructors()
     {
         return $this->belongsToMany(Instructor::class,'online_courses_and_instructors', 'online_course_id','instructor_id');
+    }
+
+    public function course_instructor()
+    {
+        return $this->belongsToMany(Instructor::class,'online_courses_and_instructors', 'online_course_id','instructor_id')->where('instructor_id',auth('instructor-api')->user()->id);
     }
     public function favourite_online_courses(){
         return $this->belongsToMany(Customers::class,'favourite_online_courses','online_course_id','customer_id');
@@ -42,6 +48,10 @@ class OnlineCourse extends Model implements TranslatableContract
     public function orders()
     {
         return $this->hasMany(OnlineCourseOrders::class,'online_course_id');
+    }
+    public function instructor_orders()
+    {
+        return $this->hasMany(OnlineCourseOrders::class,'online_course_id')->where('instructor_id',auth('instructor-api')->user()->id);
     }
     public function indexes()
     {
