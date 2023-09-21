@@ -485,7 +485,7 @@ class InstructorController extends Controller
 
 
     }
-    public function withdraw_request(ٌRequest $request)
+    public function withdraw_request(Request $request)
     {
         $oValidatorRules = [
             'cash'=>'required',
