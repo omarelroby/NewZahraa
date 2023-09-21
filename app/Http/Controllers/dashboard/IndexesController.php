@@ -63,10 +63,9 @@ class IndexesController extends Controller
      */
     public function store(CoursesIndexRequest $request)
     {
-//        dd($request->course_id);
+
         $index = CourseIndexes::create($request->all());
         foreach ($request->repeater as $key => $input) {
-
 
             if (isset($input['video'])) {
                  $file=$request->file('video')->getClientOriginalExtension();

@@ -37,6 +37,7 @@ class CoursesIndexRequest extends FormRequest
             ];
         foreach(config('translatable.locales') as $locale) {
             $rules["title.{$locale}"]='string';
+            $rules["video.{$locale}"]='required';
 
         }
            return $rules;
