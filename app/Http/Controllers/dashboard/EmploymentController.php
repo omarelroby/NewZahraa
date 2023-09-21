@@ -43,15 +43,13 @@ class EmploymentController extends Controller
      */
     public function store(Request $request)
     {
-        $oValidatorRules = [
+
+        $request->validate([
             'en.description' => 'required',
             'ar.description' => 'required',
 
-        ];
-        $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails()) {
-            return $this->error($validator->messages());
-        }
+        ]);
+
         $data=$request->all();
 
         if($request->has('image'))
