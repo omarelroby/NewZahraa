@@ -142,7 +142,7 @@
 
                     <div class="form-group col-1" style="margin-top: 26px;">
                         <label for="flexCheckDisabled"> IS FREE</label>
-                        <input type="checkbox" id="flexCheckDisabled" required value="1" count="${y}"  name="repeater[${y}][is_free]" >
+                        <input type="checkbox" id="flexCheckDisabled"   value="1" count="${y}"  name="repeater[${y}][is_free]" >
                         </div>
 </div>
 
