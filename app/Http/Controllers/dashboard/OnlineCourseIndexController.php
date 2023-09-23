@@ -65,8 +65,9 @@ class OnlineCourseIndexController extends Controller
      */
     public function store(OnlineCoursesIndexRequest $request)
     {
-        $request->validate(['repeater'=>'required']
-        ,['repeater.required'=>'You Should Add Items First']);
+        $request->validate(
+            ['repeater'=>'required']
+        ,   ['repeater.required'=>'You Should Add Items First']);
 //        dd($request->course_id);
         $index = OnlineCourseIndexes::create($request->all());
 
