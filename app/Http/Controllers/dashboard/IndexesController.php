@@ -69,7 +69,7 @@ class IndexesController extends Controller
         foreach ($request->repeater as $key => $input) {
 
             if (isset($input['video'])) {
-                 $file=$request->file($input['video'])->getClientOriginalExtension();
+                  $file=$input['video']->getClientOriginalExtension();
                 $path = Storage::disk('s3')->put('courseVideosIndex/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->video, 'public');
                 $data['video'] = Storage::disk('s3')->url($path);
             }
