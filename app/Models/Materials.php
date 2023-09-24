@@ -23,7 +23,7 @@ class Materials extends Model
     }
     public function online_courses()
     {
-        return $this->belongsTo(OnlineCourseResource::class,'online_course_id');
+        return $this->belongsTo(OnlineCourse::class,'online_course_id');
     }
 
 }
