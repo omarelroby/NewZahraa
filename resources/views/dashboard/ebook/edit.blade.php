@@ -79,7 +79,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
-                                                            <input type="file" required  class="custom-file-input" id="inputGroupFile01"  name="image">
+                                                            <input type="file"    class="custom-file-input" id="inputGroupFile01"  name="image">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
