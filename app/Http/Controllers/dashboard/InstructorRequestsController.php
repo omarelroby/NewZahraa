@@ -25,6 +25,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -197,7 +198,8 @@ class InstructorRequestsController extends Controller
     {
         $request=InstructorRequests::find($id);
         $slug = Str::slug($request->name,'-');
-        $password = Hash::make(str_random(8));
+        $generate_password=str_random(8);
+        $password = Hash::make($generate_password);
         Instructor::create([
             'name'=>$request->name,
             'email'=>$request->email,
@@ -207,6 +209,13 @@ class InstructorRequestsController extends Controller
 
         ]);
         $request->delete();
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>$generate_password,
+        ];
+        Mail::to($request->email)->send(new \App\Mail\Instructor($data));
+
         Alert::success('Success',__('dashboard.success'));
         return redirect()->back();
     }
