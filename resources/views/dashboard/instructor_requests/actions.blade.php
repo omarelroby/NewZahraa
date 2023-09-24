@@ -3,9 +3,10 @@
             <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
             <div class="dropdown-menu">
-
-                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
-                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
+                <a class="dropdown-item" href="{{ url("/accept-request/{$id}") }}" style="color: darkgreen;">
+                    <i class="fa fa-check mr-1" style="color: darkgreen;"></i> {{__('dashboard.accept')}}</a>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}" style="color: red;">
+                   <i class="fa fa-cart-plus mr-1"style="color: red;"></i> {{__('dashboard.delete')}}</a>
 
             </div>
 </div>

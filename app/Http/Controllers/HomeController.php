@@ -31,4 +31,5 @@ class HomeController extends Controller
         return $dataTable->render('dashboard.subscriptions.index');
 
     }
+
 }

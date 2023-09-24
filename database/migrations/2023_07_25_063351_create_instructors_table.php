@@ -14,11 +14,11 @@ class CreateInstructorsTable extends Migration {
             $table->string('phone', 255);
             $table->string('email', 255);
             $table->text('password');
-            $table->text('brief');
-            $table->text('image');
-            $table->integer('category_id')->unsigned();
+            $table->text('brief')->nullable();
+            $table->text('image')->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->integer('country_id')->unsigned();
+            $table->integer('country_id')->unsigned()->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
              $table->timestamps();
 

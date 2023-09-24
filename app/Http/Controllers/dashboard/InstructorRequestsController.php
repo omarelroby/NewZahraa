@@ -24,7 +24,9 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
 
@@ -191,4 +193,21 @@ class InstructorRequestsController extends Controller
         Alert::error('Deleted',__('dashboard.deleted'));
         return redirect()->route('instructor-requests.index');
     }
-}
+    public function accept_request($id)
+    {
+        $request=InstructorRequests::find($id);
+        $slug = Str::slug($request->name,'-');
+        $password = Hash::make(str_random(8));
+        Instructor::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'slug'=>$slug,
+            'password'=>$password,
+            'phone'=>$request->phone,
+
+        ]);
+        $request->delete();
+        Alert::success('Success',__('dashboard.success'));
+        return redirect()->back();
+    }
+ }
