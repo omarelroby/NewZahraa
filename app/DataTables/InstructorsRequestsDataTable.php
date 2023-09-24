@@ -37,7 +37,7 @@ class InstructorsRequestsDataTable extends DataTable
                 return $instrucotr->category->translate('ar')->name;
             })
             ->editColumn('cv', function($q) {
-                return '<a href="'.  $q->cv .'">'. "View CV" .'</a>';            })
+                return '<a href="'.  asset($q->cv) .'">'. "View CV" .'</a>';            })
 
 
 
