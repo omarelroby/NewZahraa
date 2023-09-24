@@ -107,7 +107,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">{{__('dashboard.price')}} </label>
-                                                            <input type="text" required id="projectinput1" class="form-control"  name="price">
+                                                            <input type="text" required id="projectinput1" value="{{$ebook->price}}" class="form-control"  name="price">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
