@@ -23,6 +23,7 @@ class QuizResource extends JsonResource
             'Questions' => QuizQuestionResource::collection($this->questions),
             'answered' => auth('api')->user() && (($this->answer ? true : false)),
             'my_degree' => auth('api')->user()?($this->answer?$this->answer->total_degree:null):null,
+            'created_at' => $this->created_at,
 
 
 
