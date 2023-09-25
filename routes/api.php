@@ -47,6 +47,8 @@ Route::middleware("localization")->group(function ()
         Route::post('online-course-orders',[\App\Http\Controllers\api\CustomerController::class,'online_course_orders']);
         Route::get('get-online-course-orders',[\App\Http\Controllers\api\CustomerController::class,'get_online_course_orders']);
         Route::get('get-quiz',[App\Http\Controllers\api\CustomerController::class,'get_quiz']);
+        Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers']);
+
 
     });
 
@@ -70,7 +72,6 @@ Route::middleware("localization")->group(function ()
         Route::get('instructor-group/{id}', [\App\Http\Controllers\api\InstructorController::class, 'instructor_group']);
 
         Route::post('quiz-questions', [\App\Http\Controllers\api\InstructorController::class, 'quiz_questions']);
-        Route::post('quiz-answers', [\App\Http\Controllers\api\InstructorController::class, 'quiz_answers'])->middleware('auth:api');
         Route::get('instructor-profile', [\App\Http\Controllers\api\InstructorController::class, 'instructor_profile'])->middleware('auth:api');
 
 
