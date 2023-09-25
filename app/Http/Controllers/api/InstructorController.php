@@ -51,7 +51,7 @@ class InstructorController extends Controller
         $online_course = OnlineCourse::whereHas('course_instructor')->where('slug', $slug)->first();
         if ($online_course) {
             $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
-            $quizes=Quiz::with('online_courses','instructors','questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id);
+            $quizes=Quiz::with('online_courses','instructors','questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
             return $this->success(['online_course' => new OnlineCourseInstructorResource($online_course), 'groups' => GroupNewResource::collection($groups), 'quizes' => QuizInstructorResource::collection($quizes)]);
         } else {
             return $this->error('Course Not Found', [], 404);
