@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AppointmentsResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryInstructorResource;
+use App\Http\Resources\GroupChartResource;
 use App\Http\Resources\GroupNew2Resource;
 use App\Http\Resources\GroupNewResource;
 use App\Http\Resources\InstructorProfileResource;
@@ -454,18 +455,22 @@ class InstructorController extends Controller
         if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        if ($request->online_course_id)
+        if ($request->online_course_id) {
             $appointments = Appointments::whereHas('instructor_group', function ($query) use ($request) {
                 $query->where('online_course_id', $request->online_course_id);
             });
+            $groups=Groups::where('instructor_id',auth('instructor-api')->user()->id)->where('online_course_id', $request->online_course_id)->get();
+        }
         else {
             $appointments = Appointments::whereHas('instructor_group');
+            $groups=Groups::where('instructor_id',auth('instructor-api')->user()->id)->get();
+
         }
         if ($request->month) {
             $appointments = $appointments->whereMonth('appointment_date', $request->month);
         }
         $appointments = $appointments->get();
-        return $this->success(AppointmentsResource::collection($appointments));
+        return $this->success(['appointments'=>AppointmentsResource::collection($appointments),'groups'=>GroupChartResource::collection($groups)]);
     }
 
     public function get_month_group(Request $request)
