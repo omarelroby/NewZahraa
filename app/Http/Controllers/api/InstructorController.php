@@ -329,6 +329,23 @@ class InstructorController extends Controller
 
     }
 
+    public function online_courses_group_chart($id, Request $request)
+    {
+        $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
+            ->where('online_course_id', $id);
+        if ($request->month) {
+            $groups->WhereMonth('start_date', $request->month)->orWhereMonth('end_date', $request->month);
+        }
+        $groups = $groups->get();
+        if ($groups) {
+            return $this->success(GroupChartResource::collection($groups));
+        } else {
+            return $this->error('This Online Course Not Found');
+        }
+
+
+    }
+
     public function instructor_group($id)
     {
         $group = Groups::find($id);
@@ -455,22 +472,18 @@ class InstructorController extends Controller
         if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        if ($request->online_course_id) {
+        if ($request->online_course_id)
             $appointments = Appointments::whereHas('instructor_group', function ($query) use ($request) {
                 $query->where('online_course_id', $request->online_course_id);
             });
-            $groups=Groups::where('instructor_id',auth('instructor-api')->user()->id)->where('online_course_id', $request->online_course_id)->get();
-        }
         else {
             $appointments = Appointments::whereHas('instructor_group');
-            $groups=Groups::where('instructor_id',auth('instructor-api')->user()->id)->get();
-
         }
         if ($request->month) {
             $appointments = $appointments->whereMonth('appointment_date', $request->month);
         }
         $appointments = $appointments->get();
-        return $this->success(['appointments'=>AppointmentsResource::collection($appointments),'groups'=>GroupChartResource::collection($groups)]);
+        return $this->success(AppointmentsResource::collection($appointments));
     }
 
     public function get_month_group(Request $request)
