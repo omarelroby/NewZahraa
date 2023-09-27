@@ -52,7 +52,7 @@ class InstructorController extends Controller
         $online_course = OnlineCourse::whereHas('course_instructor')->where('slug', $slug)->first();
         if ($online_course) {
             $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
-            $quizes=Quiz::with('online_courses','instructors','questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
+            $quizes = Quiz::with('online_courses', 'instructors', 'questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
             return $this->success(['online_course' => new OnlineCourseInstructorResource($online_course), 'groups' => GroupNewResource::collection($groups), 'quizes' => QuizInstructorResource::collection($quizes)]);
         } else {
             return $this->error('Course Not Found', [], 404);
@@ -331,11 +331,12 @@ class InstructorController extends Controller
 
     public function online_courses_group_chart($id, Request $request)
     {
-        $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
-            ->where('online_course_id', $id);
-        if ($request->month) {
-            $groups->WhereMonth('start_date', $request->month)->orWhereMonth('end_date', $request->month);
-        }
+        if ($id)
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
+                ->where('online_course_id', $id);
+        else
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id);
+        
         $groups = $groups->get();
         if ($groups) {
             return $this->success(GroupChartResource::collection($groups));
