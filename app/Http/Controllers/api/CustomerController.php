@@ -85,6 +85,14 @@ class CustomerController extends Controller
 
     public function login(Request $request)
     {
+        $oValidatorRules = [
+            'email' => 'required|email',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
         $customer = Customers::where('email', $request->email)
             ->first();
 
@@ -121,7 +129,57 @@ class CustomerController extends Controller
 
         }
     }
- public function forget_password(Request $request)
+
+    public function social_login(Request $request)
+    {
+        $oValidatorRules = [
+            'email' => 'required|email',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        $customer = Customers::where('email', $request->email)
+            ->first();
+
+        $instructor = Instructor::where('email', $request->email)
+            ->first();
+
+        if ($customer) {
+            $data = [
+                'type' => 'customer',
+                'customer' => new CustomerResource($customer),
+                'token' => $customer->createToken($customer->email)->accessToken,
+            ];
+            return $this->success($data);
+
+        } else {
+            if ($instructor) {
+                $data = [
+                    'type' => 'instructor',
+                    'instructor' => new InstructorResource($instructor),
+                    'token' => $instructor->createToken($instructor->email)->accessToken,
+                ];
+                return $this->success($data);
+
+
+            } else {
+                $customer = new Customers();
+                $customer->email = $request->email;
+                $customer->save();
+                $data = [
+                    'type' => 'customer',
+                    'customer' => new CustomerResource($customer),
+                    'token' => $customer->createToken($customer->email)->accessToken,
+                ];
+                return $this->success($data);
+            }
+
+        }
+    }
+
+    public function forget_password(Request $request)
     {
         $customer = Customers::where('email', $request->email)
             ->first();
@@ -130,24 +188,23 @@ class CustomerController extends Controller
             ->first();
 
         if ($customer) {
-            $code =rand ( 10000 , 99999 );
-            $customer->update(['code'=>$code]);
-            $data=['name'=>$customer->name,'code'=>$customer->code,'email'=>$customer->email];
+            $code = rand(10000, 99999);
+            $customer->update(['code' => $code]);
+            $data = ['name' => $customer->name, 'code' => $customer->code, 'email' => $customer->email];
             Mail::to($customer->email)->send(new \App\Mail\ForgetPasswordMail($data));
-            return  $this->successMessage("Check your Email to reset password");
-        }
-        elseif($instructor) {
-            $code =rand ( 10000 , 99999 );
-            $instructor->update(['code'=>$code]);
-            $data=['name'=>$instructor->name,'code'=>$instructor->code,'email'=>$instructor->email];
+            return $this->successMessage("Check your Email to reset password");
+        } elseif ($instructor) {
+            $code = rand(10000, 99999);
+            $instructor->update(['code' => $code]);
+            $data = ['name' => $instructor->name, 'code' => $instructor->code, 'email' => $instructor->email];
             Mail::to($instructor->email)->send(new \App\Mail\ForgetPasswordMail($data));
-            return  $this->successMessage("Check your Email to reset password");
+            return $this->successMessage("Check your Email to reset password");
 
+        } else {
+            return $this->error('check your email, email not corrected');
         }
-         else {
-        return $this->error('check your email, email not corrected');
     }
-    }
+
     public function reset_password(Request $request)
     {
         $customer = Customers::where('email', $request->email)
@@ -156,36 +213,28 @@ class CustomerController extends Controller
             ->first();
 
         if ($customer) {
-            if ($customer->code==$request->code)
-            {
-                $customer->update(['password'=>bcrypt($request->password),'code'=>null]);
+            if ($customer->code == $request->code) {
+                $customer->update(['password' => bcrypt($request->password), 'code' => null]);
                 return $this->successMessage('Password Changed Successfully');
+            } else {
+                return $this->error('Code Not Corrected');
             }
-            else
-            {
-                return  $this->error('Code Not Corrected');
-            }
-        }
-        elseif($instructor) {
-            if ($instructor->code==$request->code)
-            {
-                $instructor->update(['password'=>bcrypt($request->password),'code'=>null]);
+        } elseif ($instructor) {
+            if ($instructor->code == $request->code) {
+                $instructor->update(['password' => bcrypt($request->password), 'code' => null]);
                 return $this->successMessage('Password Changed Successfully');
-            }
-            else
-            {
-                return  $this->error('Code Not Corrected');
+            } else {
+                return $this->error('Code Not Corrected');
             }
 
+        } else {
+            return $this->error('check your email, email not corrected');
         }
-         else {
-        return $this->error('check your email, email not corrected');
-    }
     }
 
     public function logout()
     {
-         $user = auth('api')->user();
+        $user = auth('api')->user();
         $user->token()->revoke();
         return $this->successMessage('Logout Done');
 
@@ -218,6 +267,7 @@ class CustomerController extends Controller
 
         }
     }
+
     public function favourite_course(Request $request)
     {
         $customer = auth('api')->user();
@@ -254,21 +304,19 @@ class CustomerController extends Controller
             'password' => 'nullable|min:8',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $this->error($validator->messages());
         }
         if ($customer) {
-             $customer->update([
+            $customer->update([
                 'name' => $request->name,
                 'email' => $request->email,
-             ]);
-             if($request->password && $request->password!='')
-             {
-                 $customer->update([
-                      'password' => bcrypt($request->password),
-                 ]);
-             }
+            ]);
+            if ($request->password && $request->password != '') {
+                $customer->update([
+                    'password' => bcrypt($request->password),
+                ]);
+            }
             if ($request->has('image')) {
                 $customer->update(['image' => $request->image]);
             }
@@ -330,6 +378,7 @@ class CustomerController extends Controller
 
         }
     }
+
     public function delete_favourite_courses(Request $request)
     {
         $customer = auth('api')->user();
@@ -498,6 +547,7 @@ class CustomerController extends Controller
         return $this->success(new FavouriteEbooksResource($customer));
 
     }
+
     public function show_favourite_courses()
     {
         $customer = auth('api')->user();
@@ -515,32 +565,27 @@ class CustomerController extends Controller
     public function get_free_videos($slug)
     {
         $free_videos = FreeVideo::where('slug', $slug)->first();
-        if ($free_videos)
-        {
-             $data=[
-                'free_videos'=>new FreeVideosResource($free_videos),
-             ];
+        if ($free_videos) {
+            $data = [
+                'free_videos' => new FreeVideosResource($free_videos),
+            ];
             return $this->success($data);
-        }
-        else
-        {
+        } else {
             return $this->error('NOT FOUND', [], 404);
         }
 
     }
+
     public function get_free_videos_related($slug)
     {
         $free_videos = FreeVideo::where('slug', $slug)->first();
-        if ($free_videos)
-        {
-            $related=FreeVideo::where('slug', '!=',$slug)->where('category_id',$free_videos->category_id)->get();
-            $data=[
-                 'related'=> FreeVideosResource::collection($related)
+        if ($free_videos) {
+            $related = FreeVideo::where('slug', '!=', $slug)->where('category_id', $free_videos->category_id)->get();
+            $data = [
+                'related' => FreeVideosResource::collection($related)
             ];
             return $this->success($data);
-        }
-        else
-        {
+        } else {
             return $this->error('NOT FOUND', [], 404);
         }
 
@@ -557,9 +602,9 @@ class CustomerController extends Controller
     {
         $course = OnlineCourse::where('slug', $slug)->first();
         if ($course) {
-             $data=[
-                'course'=>new OnlineCourseResource($course),
-             ];
+            $data = [
+                'course' => new OnlineCourseResource($course),
+            ];
             return $this->success($data);
 
         } else {
@@ -567,13 +612,14 @@ class CustomerController extends Controller
         }
 
     }
+
     public function get_online_courses_related($slug)
     {
         $course = OnlineCourse::where('slug', $slug)->first();
         if ($course) {
-            $related=OnlineCourse::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
-            $data=[
-                 'related'=> OnlineCourseResource::collection($related)
+            $related = OnlineCourse::where('slug', '!=', $slug)->where('category_id', $course->category_id)->get();
+            $data = [
+                'related' => OnlineCourseResource::collection($related)
             ];
             return $this->success($data);
 
@@ -585,29 +631,28 @@ class CustomerController extends Controller
 
     public function get_ebooks($slug)
     {
-         $ebook = Ebook::where('slug', $slug)->first();
-        if ($ebook)
-        {
-             $data=[
-                'ebook'=>new EbooksResource($ebook),
-             ];
-            return  $this->success($data);
+        $ebook = Ebook::where('slug', $slug)->first();
+        if ($ebook) {
+            $data = [
+                'ebook' => new EbooksResource($ebook),
+            ];
+            return $this->success($data);
 
         } else {
             return $this->error('NOT FOUND', [], 404);
         }
 
     }
+
     public function get_ebooks_related($slug)
     {
         $ebook = Ebook::where('slug', $slug)->first();
-        if ($ebook)
-        {
-            $related=Ebook::where('slug', '!=',$slug)->where('category_id',$ebook->category_id)->get();
-            $data=[
-                'related'=> EbooksResource::collection($related)
+        if ($ebook) {
+            $related = Ebook::where('slug', '!=', $slug)->where('category_id', $ebook->category_id)->get();
+            $data = [
+                'related' => EbooksResource::collection($related)
             ];
-            return  $this->success($data);
+            return $this->success($data);
 
         } else {
             return $this->error('NOT FOUND', [], 404);
@@ -649,8 +694,7 @@ class CustomerController extends Controller
     public function get_pages($slug)
     {
         $page = Page::where('slug', $slug)->first();
-        if ($page)
-        {
+        if ($page) {
             return $this->success(new PagesResource($page));
 
         } else {
@@ -673,9 +717,9 @@ class CustomerController extends Controller
     public function get_course($slug)
     {
         $course = Course::where('slug', $slug)->first();
-         $data=[
-            'course'=>new CoursesResource($course),
-               ];
+        $data = [
+            'course' => new CoursesResource($course),
+        ];
         if ($course) {
             return $this->success($data);
 
@@ -683,13 +727,14 @@ class CustomerController extends Controller
             return $this->error('NOT FOUND', [], 404);
         }
     }
+
     public function get_course_related($slug)
     {
         $course = Course::where('slug', $slug)->first();
-        $related=Course::where('slug', '!=',$slug)->where('category_id',$course->category_id)->get();
-         $data=[
-             'related'=> CoursesResource::collection($related)
-              ];
+        $related = Course::where('slug', '!=', $slug)->where('category_id', $course->category_id)->get();
+        $data = [
+            'related' => CoursesResource::collection($related)
+        ];
         if ($course) {
             return $this->success($data);
 
@@ -700,112 +745,102 @@ class CustomerController extends Controller
 
     public function buy_ebook(Request $request)
     {
-        $customer_id=auth('api')->user()->id;
-        $check=EbookOrders::where('customer_id',$customer_id)->where('ebook_id',$request->ebook_id)->first();
-        $ebook=Ebook::find($request->ebook_id);
-        if($ebook)
-        {
-            $price=$ebook->price;
+        $customer_id = auth('api')->user()->id;
+        $check = EbookOrders::where('customer_id', $customer_id)->where('ebook_id', $request->ebook_id)->first();
+        $ebook = Ebook::find($request->ebook_id);
+        if ($ebook) {
+            $price = $ebook->price;
         }
 
         $oValidatorRules =
-        [
-            'ebook_id' => 'required|exists:ebooks,id',
-        ];
+            [
+                'ebook_id' => 'required|exists:ebooks,id',
+            ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-         if (isset($check)&&$check->ebook_id==$ebook->id)
-        {
+        if (isset($check) && $check->ebook_id == $ebook->id) {
             return $this->error(' You have Already Book this E-book');
-        }
-        else
-        {
-            $newEbookOrder=EbookOrders::create([
-                'customer_id'=>$customer_id,
-                'ebook_id'=>$request->ebook_id,
-                'price'=>$price,
-                'total'=>$price,
+        } else {
+            $newEbookOrder = EbookOrders::create([
+                'customer_id' => $customer_id,
+                'ebook_id' => $request->ebook_id,
+                'price' => $price,
+                'total' => $price,
             ]);
 
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
-                'body' => '{"amount":'.$newEbookOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+                'body' => '{"amount":' . $newEbookOrder->total . ',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
             "description":"Test Description","metadata":{"udf1":"Metadata 1"},
             "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
-            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "customer":{"first_name":"' . auth('api')->user()->name . '","email":"' . auth('api')->user()->email . '",
             "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
-            "post":{"url":"'.url('api/error_payment').'"},
-            "redirect":{"url":"'.url('api/redirect').'"}}',
+            "post":{"url":"' . url('api/error_payment') . '"},
+            "redirect":{"url":"' . url('api/redirect') . '"}}',
                 'headers' => [
                     'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                     'accept' => 'application/json',
                     'content-type' => 'application/json',
                 ],
             ]);
-            $newEbookOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+            $newEbookOrder->update(['transaction_id' => json_decode($response->getBody())->id,]);
 //            dd(json_decode($response->getBody())->id);
-            return  $this->successMessage('You have been booked this E-book',['url'=>(json_decode($response->getBody()))->transaction->url]);
+            return $this->successMessage('You have been booked this E-book', ['url' => (json_decode($response->getBody()))->transaction->url]);
         }
     }
 
     public function buy_course(Request $request)
     {
-        $customer_id=auth('api')->user()->id;
+        $customer_id = auth('api')->user()->id;
 //        dd($customer_id);
         $oValidatorRules =
             [
                 'course_id' => 'required|exists:courses,id',
             ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        $check=CourseOrders::where('customer_id',$customer_id)->first();
-        $course=Course::find($request->course_id);
-        if (!$course){
-            return  $this->error('this course Not Found');
+        $check = CourseOrders::where('customer_id', $customer_id)->first();
+        $course = Course::find($request->course_id);
+        if (!$course) {
+            return $this->error('this course Not Found');
         }
-        if ($check)
-        {
-            if ($check->customer_id==$customer_id&&$check->course_id==$course->id)
-            {
+        if ($check) {
+            if ($check->customer_id == $customer_id && $check->course_id == $course->id) {
                 return $this->error(' You have Already Book this Course');
             }
-        }
-
-        else
-        {
-            $price=$course->price??'';
-            $newCourseOrder=CourseOrders::create([
-                'customer_id'=>$customer_id,
-                'course_id'=>$request->course_id,
-                'price'=>$price,
-                'total'=>$price,
+        } else {
+            $price = $course->price ?? '';
+            $newCourseOrder = CourseOrders::create([
+                'customer_id' => $customer_id,
+                'course_id' => $request->course_id,
+                'price' => $price,
+                'total' => $price,
             ]);
 
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
-                'body' => '{"amount":'.$newCourseOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+                'body' => '{"amount":' . $newCourseOrder->total . ',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
             "description":"Test Description","metadata":{"udf1":"Metadata 1"},
             "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
-            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "customer":{"first_name":"' . auth('api')->user()->name . '","email":"' . auth('api')->user()->email . '",
             "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
-            "post":{"url":"'.url('api/error_payment').'"},
-            "redirect":{"url":"'.url('api/redirect-course').'"}}',
+            "post":{"url":"' . url('api/error_payment') . '"},
+            "redirect":{"url":"' . url('api/redirect-course') . '"}}',
                 'headers' => [
                     'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                     'accept' => 'application/json',
                     'content-type' => 'application/json',
                 ],
             ]);
-            $newCourseOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
-            return  $this->successMessage('You have been booked this course',['url'=>(json_decode($response->getBody()))->transaction->url]);
+            $newCourseOrder->update(['transaction_id' => json_decode($response->getBody())->id,]);
+            return $this->successMessage('You have been booked this course', ['url' => (json_decode($response->getBody()))->transaction->url]);
         }
     }
+
     public function online_course_orders(Request $request)
     {
         $oValidatorRules =
@@ -814,197 +849,172 @@ class CustomerController extends Controller
                 'group_id' => 'required|exists:groups,id',
             ];
         $validator = Validator::make($request->all(), $oValidatorRules);
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return $this->error($validator->messages());
         }
-        $customer_id=auth('api')->user()->id;
-        $check=OnlineCourseOrders::where('customer_id',$customer_id)->first();
-        $course=OnlineCourse::find($request->online_course_id);
-        if($course)
-        {
-            $price=$course->price;
+        $customer_id = auth('api')->user()->id;
+        $check = OnlineCourseOrders::where('customer_id', $customer_id)->first();
+        $course = OnlineCourse::find($request->online_course_id);
+        if ($course) {
+            $price = $course->price;
 
         }
-        $instructor_id=Groups::find($request->group_id)->instructor_id;
+        $instructor_id = Groups::find($request->group_id)->instructor_id;
 
-         if ($check&&$course->type=='single')
-        {
-            if ($check&&$check->online_course_id==$course->id)
-            {
+        if ($check && $course->type == 'single') {
+            if ($check && $check->online_course_id == $course->id) {
                 return $this->error(' You have Already Book this Online Course');
             }
-            }
-
-        else
-        {
-            $newOnlineCourseOrder=OnlineCourseOrders::create([
-                'customer_id'=>$customer_id,
-                'group_id'=>$request->group_id,
-                'instructor_id'=>$instructor_id,
-                'online_course_id'=>$request->online_course_id,
-                'price'=>$price,
-                'total'=>$price,
+        } else {
+            $newOnlineCourseOrder = OnlineCourseOrders::create([
+                'customer_id' => $customer_id,
+                'group_id' => $request->group_id,
+                'instructor_id' => $instructor_id,
+                'online_course_id' => $request->online_course_id,
+                'price' => $price,
+                'total' => $price,
             ]);
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
-                'body' => '{"amount":'.$newOnlineCourseOrder->total.',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
+                'body' => '{"amount":' . $newOnlineCourseOrder->total . ',"currency":"KWD","customer_initiated":true,"threeDSecure":true,"save_card":false,
             "description":"Test Description","metadata":{"udf1":"Metadata 1"},
             "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
-            "customer":{"first_name":"'.auth('api')->user()->name.'","email":"'.auth('api')->user()->email.'",
+            "customer":{"first_name":"' . auth('api')->user()->name . '","email":"' . auth('api')->user()->email . '",
             "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
-            "post":{"url":"'.url('api/error_payment').'"},
-            "redirect":{"url":"'.url('api/redirect-online-course').'"}}',
+            "post":{"url":"' . url('api/error_payment') . '"},
+            "redirect":{"url":"' . url('api/redirect-online-course') . '"}}',
                 'headers' => [
                     'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                     'accept' => 'application/json',
                     'content-type' => 'application/json',
                 ],
             ]);
-            $newOnlineCourseOrder->update(['transaction_id'=>json_decode($response->getBody())->id,]);
+            $newOnlineCourseOrder->update(['transaction_id' => json_decode($response->getBody())->id,]);
 
-            return  $this->successMessage('You have been booked this online course',['url'=>(json_decode($response->getBody()))->transaction->url]);
+            return $this->successMessage('You have been booked this online course', ['url' => (json_decode($response->getBody()))->transaction->url]);
         }
     }
+
     public function customer_ebook_orders()
     {
-        $customer=auth('api')->user();
-        $ebooks=EbookOrders::where('customer_id',$customer->id)->get();
-        if ($customer)
-        {
+        $customer = auth('api')->user();
+        $ebooks = EbookOrders::where('customer_id', $customer->id)->get();
+        if ($customer) {
             return $this->success(EbookOrderResource::collection($ebooks));
-        }
-        else
-        {
+        } else {
             return $this->error('Not Found this Customer');
         }
 
 
     }
+
     public function customer_online_courses_orders()
     {
-        $customer=auth('api')->user();
-        $courses=OnlineCourseOrders::where('customer_id',$customer->id)->get();
-        if ($customer)
-        {
+        $customer = auth('api')->user();
+        $courses = OnlineCourseOrders::where('customer_id', $customer->id)->get();
+        if ($customer) {
             return $this->success(OnlineCourseOrderResource::collection($courses));
-        }
-        else
-        {
+        } else {
             return $this->error('Not Found this Customer');
         }
 
 
     }
+
     public function customer_course_orders()
     {
-        $customer=auth('api')->user();
-        $courses=CourseOrders::where('customer_id',$customer->id)->get();
-        if ($customer)
-        {
+        $customer = auth('api')->user();
+        $courses = CourseOrders::where('customer_id', $customer->id)->get();
+        if ($customer) {
             return $this->success(CourseOrderResource::collection($courses));
-        }
-        else
-        {
+        } else {
             return $this->error('Not Found this Customer');
         }
     }
+
     public function courses_videos($course_id)
     {
-        $indexes=CourseIndexes::where('course_id',$course_id)->get();
+        $indexes = CourseIndexes::where('course_id', $course_id)->get();
         return $this->success(CoursesIndexesOnlyVideosResource::collection($indexes));
-     }
-     public function instructor_dates(Request $request)
-     {
-         $oValidatorRules = [
-             'online_course_id' => 'required',
-             'instructor_id' => 'required',
-         ];
-         $validator = Validator::make($request->all(), $oValidatorRules);
-         if ($validator->fails()) {
-             return $this->error($validator->messages());
-         }
+    }
 
-         $instructor=Instructor::find($request->instructor_id);
-         if ($instructor) {
-             $group = Groups::where('online_course_id', $request->online_course_id)
-                 ->where('instructor_id', $request->instructor_id)->get();
-             if ($group)
-             {
-                 $data = ['instructor' => new InstructorResource($instructor), 'group' => GroupResource::collection($group)];
-             }
-             else
-             {
-                 $data=['instructor'=>new InstructorResource($instructor),'group'=>null];
+    public function instructor_dates(Request $request)
+    {
+        $oValidatorRules = [
+            'online_course_id' => 'required',
+            'instructor_id' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
 
-             }
-         }
-         else{
+        $instructor = Instructor::find($request->instructor_id);
+        if ($instructor) {
+            $group = Groups::where('online_course_id', $request->online_course_id)
+                ->where('instructor_id', $request->instructor_id)->get();
+            if ($group) {
+                $data = ['instructor' => new InstructorResource($instructor), 'group' => GroupResource::collection($group)];
+            } else {
+                $data = ['instructor' => new InstructorResource($instructor), 'group' => null];
+
+            }
+        } else {
             return $this->error('Instructor Not Found');
 
-         }
-         return $this->success($data);
-     }
-     public function get_online_course_orders(Request $request)
-     {
-         $customer_id=auth('api')->user()->id;
-        $onlineCourseOrder=OnlineCourseOrders::where('online_course_id',$request->online_course_id)
-            ->where('customer_id',$customer_id)->first();
-        if ($onlineCourseOrder)
-        {
-            $onlineCourse=OnlineCourse::find($request->online_course_id);
-            $onlineCourseCollection=new OnlineCourseResource($onlineCourse);
-            $group=Groups::find($onlineCourseOrder->group_id);
-            $groups=new GroupResource($group);
-            $quizes=Quiz::where('instructor_id',$onlineCourseOrder->instructor_id)->
-                where('online_course_id',$onlineCourseOrder->online_course_id)->get();
-            $quizes=QuizResource::collection($quizes);
-            $attachments=Materials::where('online_course_id',$request->online_course_id)->
-                where('instructor_id',$onlineCourseOrder->instructor_id)->get();
-            $attachments=MaterialsResource::collection($attachments);
-            $data=[
-                'Online_course'=>$onlineCourseCollection,
-                'Quizes'=>$quizes,
-                'groups'=>$groups,
-                'attachments'=>$attachments
+        }
+        return $this->success($data);
+    }
+
+    public function get_online_course_orders(Request $request)
+    {
+        $customer_id = auth('api')->user()->id;
+        $onlineCourseOrder = OnlineCourseOrders::where('online_course_id', $request->online_course_id)
+            ->where('customer_id', $customer_id)->first();
+        if ($onlineCourseOrder) {
+            $onlineCourse = OnlineCourse::find($request->online_course_id);
+            $onlineCourseCollection = new OnlineCourseResource($onlineCourse);
+            $group = Groups::find($onlineCourseOrder->group_id);
+            $groups = new GroupResource($group);
+            $quizes = Quiz::where('instructor_id', $onlineCourseOrder->instructor_id)->
+            where('online_course_id', $onlineCourseOrder->online_course_id)->get();
+            $quizes = QuizResource::collection($quizes);
+            $attachments = Materials::where('online_course_id', $request->online_course_id)->
+            where('instructor_id', $onlineCourseOrder->instructor_id)->get();
+            $attachments = MaterialsResource::collection($attachments);
+            $data = [
+                'Online_course' => $onlineCourseCollection,
+                'Quizes' => $quizes,
+                'groups' => $groups,
+                'attachments' => $attachments
 
             ];
-            return  $this->success($data);
-        }
-        else
-        {
+            return $this->success($data);
+        } else {
             return $this->error('Buy This Online Course First,You are not a buyer it');
         }
-     }
+    }
+
     public function get_quiz(Request $request)
     {
-        $onlineCourse=OnlineCourse::where('slug',$request->online_course_slug)->first();
-        if ($onlineCourse)
-        {
-            $customer_id=auth('api')->user()->id;
-            $order=OnlineCourseOrders::where('online_course_id',$onlineCourse->id)
-                ->where('customer_id',$customer_id)->first();
-            if ($order)
-            {
-                 $quiz=Quiz::find($request->quiz_id);
-                 if ($quiz)
-                 {
-                     return $this->success(new QuizResource($quiz));
+        $onlineCourse = OnlineCourse::where('slug', $request->online_course_slug)->first();
+        if ($onlineCourse) {
+            $customer_id = auth('api')->user()->id;
+            $order = OnlineCourseOrders::where('online_course_id', $onlineCourse->id)
+                ->where('customer_id', $customer_id)->first();
+            if ($order) {
+                $quiz = Quiz::find($request->quiz_id);
+                if ($quiz) {
+                    return $this->success(new QuizResource($quiz));
 
-                 }
-                 else
-                 {
-                     return $this->error('Quiz Not Found');
-                 }
-            }
-            else
-            {
-                return  $this->error('you should buy this course first');
+                } else {
+                    return $this->error('Quiz Not Found');
+                }
+            } else {
+                return $this->error('you should buy this course first');
             }
 
-        }
-        else
-        {
+        } else {
             return $this->error('Online Course Not Found');
         }
     }
@@ -1019,8 +1029,8 @@ class CustomerController extends Controller
             "reference":{"transaction":"txn_01","order":"ord_01"},"receipt":{"email":true,"sms":true},
             "customer":{"first_name":"test","middle_name":"test","last_name":"test","email":"test@test.com",
             "phone":{"country_code":965,"number":51234567}},"source":{"id":"src_all"},
-            "post":{"url":"'.url('api/error_payment').'"},
-            "redirect":{"url":"'.url('api/redirect').'"}}',
+            "post":{"url":"' . url('api/error_payment') . '"},
+            "redirect":{"url":"' . url('api/redirect') . '"}}',
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',
@@ -1038,7 +1048,7 @@ class CustomerController extends Controller
             "metadata":{"udf1":"Metadata 1"},"reference":{"transaction":"txn_01","order":"ord_01"},
             "receipt":{"email":true,"sms":true},"customer":{"first_name":"test","middle_name":
             "test","last_name":"test","email":"test@test.com","phone":{"country_code":965,"number":51234567}},
-            "source":{"id":"src_card"},"post":{"url":'.url('api/error_payment').'},"redirect":{"url":"'.url('api/redirect').'"}}',
+            "source":{"id":"src_card"},"post":{"url":' . url('api/error_payment') . '},"redirect":{"url":"' . url('api/redirect') . '"}}',
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',
@@ -1055,22 +1065,19 @@ class CustomerController extends Controller
 
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/' . $request->tap_id, [
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',
             ],
         ]);
-        $order=EbookOrders::where('transaction_id',$request->tap_id)->first();
-        if($order){
-            if((json_decode($response->getBody()))->status=='CAPTURED')
-            {
-                $order->update(['status'=>'success']);
+        $order = EbookOrders::where('transaction_id', $request->tap_id)->first();
+        if ($order) {
+            if ((json_decode($response->getBody()))->status == 'CAPTURED') {
+                $order->update(['status' => 'success']);
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
 
-            }
-            else
-            {
+            } else {
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
 
             }
@@ -1083,56 +1090,50 @@ class CustomerController extends Controller
 
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/' . $request->tap_id, [
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',
             ],
         ]);
-        $order=CourseOrders::where('transaction_id',$request->tap_id)->first();
-        if($order){
-            if((json_decode($response->getBody()))->status=='CAPTURED')
-            {
-                $order->update(['status'=>'success']);
+        $order = CourseOrders::where('transaction_id', $request->tap_id)->first();
+        if ($order) {
+            if ((json_decode($response->getBody()))->status == 'CAPTURED') {
+                $order->update(['status' => 'success']);
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
 
-            }
-            else
-            {
+            } else {
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
 
             }
         }
     }
+
     public function redirect_payment_online_course(Request $request)
     {
 
 
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/' . $request->tap_id, [
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',
             ],
         ]);
-        $order=OnlineCourseOrders::where('transaction_id',$request->tap_id)->first();
-        if($order){
-            if((json_decode($response->getBody()))->status=='CAPTURED')
-            {
-                $instrucor=Instructor::find($order->instructor_id);
-                if ($instrucor)
-                {
-                    $instructor_commision=($order->total*$instrucor->commission_instructor)/100;
+        $order = OnlineCourseOrders::where('transaction_id', $request->tap_id)->first();
+        if ($order) {
+            if ((json_decode($response->getBody()))->status == 'CAPTURED') {
+                $instrucor = Instructor::find($order->instructor_id);
+                if ($instrucor) {
+                    $instructor_commision = ($order->total * $instrucor->commission_instructor) / 100;
 
                 }
-                $order->update(['status'=>'success','instructor_commision'=>$instructor_commision]);
-                $instrucor->update(['balance'=>$instrucor->balance+$instructor_commision]);
+                $order->update(['status' => 'success', 'instructor_commision' => $instructor_commision]);
+                $instrucor->update(['balance' => $instrucor->balance + $instructor_commision]);
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/success');
 
-            }
-            else
-            {
+            } else {
                 return Redirect::to('https://zahra.techsgate-stage.com/payment/fail');
 
             }
@@ -1145,7 +1146,7 @@ class CustomerController extends Controller
 
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.$request->tap_id, [
+        $response = $client->request('GET', 'https://api.tap.company/v2/charges/' . $request->tap_id, [
             'headers' => [
                 'Authorization' => 'Bearer sk_test_07j8TsngUhlEKdBRNVDGc14b',
                 'accept' => 'application/json',

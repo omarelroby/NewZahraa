@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware("localization")->group(function ()
 {
     Route::post('login',[\App\Http\Controllers\api\CustomerController::class,'login']);
+    Route::post('social_login',[\App\Http\Controllers\api\CustomerController::class,'social_login']);
 
     Route::middleware('auth:api')->group( function ()
     {
