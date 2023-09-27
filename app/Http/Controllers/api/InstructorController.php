@@ -329,7 +329,7 @@ class InstructorController extends Controller
 
     }
 
-    public function online_courses_group_chart($id=null, Request $request)
+    public function online_courses_group_chart( Request $request,$id=null)
     {
         if (!empty($id))
             $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
