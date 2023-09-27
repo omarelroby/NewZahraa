@@ -134,6 +134,7 @@ class CustomerController extends Controller
     {
         $oValidatorRules = [
             'email' => 'required|email',
+            'token' => 'required',
 
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
