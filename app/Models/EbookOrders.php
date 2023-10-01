@@ -34,7 +34,4 @@ class EbookOrders extends Model
         return $this->belongsTo(PaymentMethod::class,'payment_method');
     }
 
-
-
-
 }
