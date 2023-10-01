@@ -41,7 +41,7 @@ class OnlineCourseOrdersDataTable extends DataTable
             })
 
             ->editColumn('payment_method', function($q) {
-                return $q->payment->name??'';
+                return $q->payment->translate('ar')->name??'';
             })
             ->addColumn('action', 'dashboard.online_course_orders.actions')
             ->rawColumns(['action']);
