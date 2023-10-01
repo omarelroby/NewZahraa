@@ -12,6 +12,7 @@ use App\Models\EbookOrders;
 use App\Models\Instructor;
 use App\Models\OnlineCourseOrders;
 use App\Models\Page;
+use App\Models\PaymentMethod;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -39,7 +40,9 @@ class OnlineCourseOrdersDataTable extends DataTable
                 return $q->course->title;
             })
 
-
+            ->editColumn('payment_method', function($q) {
+                return $q->payment_method->name??'';
+            })
             ->addColumn('action', 'dashboard.online_course_orders.actions')
             ->rawColumns(['action']);
     }
