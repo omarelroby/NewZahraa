@@ -36,7 +36,7 @@ class OnlineCourseOrders extends Model
     {
         return $this->belongsTo(Instructor::class,'instructor_id');
     }
-    public function payment_method()
+    public function payment()
     {
         return $this->belongsTo(PaymentMethod::class,'payment_method');
     }
