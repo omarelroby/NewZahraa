@@ -37,7 +37,7 @@ class EbooksOrdersDataTable extends DataTable
                 return $q->ebooks->title;
             })
             ->editColumn('payment_method', function($q) {
-                return $q->payment_method->translate('en')->name;
+                return $q->payment_method->translate('en')->name??'';
             })
 
 
