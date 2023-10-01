@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'dashboard'=>'لوحة التحكم',
     'accept'=>'موافقة الطلب',
     'pass-score'=>'درجة النجاح',
     'edit-quiz'=>'تعديل بيانات الاختبار',

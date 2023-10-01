@@ -120,7 +120,6 @@
     </script>
     <script>
 
-
         var y = 0;
         $(document).on('click', '#addRelatedProgram', function() {
             $('#relatedPrograms').append(`

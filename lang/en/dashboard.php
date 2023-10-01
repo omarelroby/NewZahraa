@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'dashboard'=>'DASHBOARD',
     'accept'=>'Accept The Request',
     'pass-score'=>'Pass Score',
     'edit-quiz'=>'Edit Quiz',
@@ -33,7 +34,7 @@ return [
     'qualifications'=>'Qualifications',
     'add-employment-applications'=>'Add Employment Applications',
     'edit-employment-applications'=>'Edit-Employment Applications',
-    'employment-applications'=>'Employment Applications',
+    'employment-applications'=>'Employe-Applicants',
     'introduction_image'=>'Introduction Image',
     'pages_number'=>'Book Pages Number ',
     'commission_instructor'=>'Commission Instructor',
