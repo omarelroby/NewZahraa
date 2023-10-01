@@ -29,6 +29,10 @@ class CourseOrders extends Model
     {
         return $this->belongsTo(Course::class,'course_id');
     }
+    public function payment_method()
+    {
+        return $this->belongsTo(PaymentMethod::class,'payment_method');
+    }
 
 
 

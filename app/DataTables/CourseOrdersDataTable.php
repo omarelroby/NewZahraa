@@ -37,6 +37,9 @@ class CourseOrdersDataTable extends DataTable
             ->editColumn('course', function($q) {
                 return $q->course->title;
             })
+            ->editColumn('payment_method', function($q) {
+                return $q->payment_method->name??'';
+            })
 
 
             ->addColumn('action', 'dashboard.course_orders.actions')
