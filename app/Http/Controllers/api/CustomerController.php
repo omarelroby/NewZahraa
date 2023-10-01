@@ -816,6 +816,7 @@ class CustomerController extends Controller
             [
                 'online_course_id' => 'required|exists:online_courses,id',
                 'group_id' => 'required|exists:groups,id',
+                'payment_method_id' => 'required|exists:payment_methods,id',
             ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails())
@@ -849,6 +850,7 @@ class CustomerController extends Controller
                 'online_course_id'=>$request->online_course_id,
                 'price'=>$price,
                 'total'=>$price,
+                'payment_method'=>$request->payment_method_id,
             ]);
             $client = new \GuzzleHttp\Client();
             $response = $client->request('POST', 'https://api.tap.company/v2/charges', [
