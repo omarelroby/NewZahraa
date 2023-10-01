@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AppointmentsResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CountryInstructorResource;
+use App\Http\Resources\GroupChartResource;
 use App\Http\Resources\GroupNew2Resource;
 use App\Http\Resources\GroupNewResource;
 use App\Http\Resources\InstructorProfileResource;
@@ -51,7 +52,7 @@ class InstructorController extends Controller
         $online_course = OnlineCourse::whereHas('course_instructor')->where('slug', $slug)->first();
         if ($online_course) {
             $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
-            $quizes=Quiz::with('online_courses','instructors','questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
+            $quizes = Quiz::with('online_courses', 'instructors', 'questions')->where('instructor_id', auth('instructor-api')->user()->id)->where('online_course_id', $online_course->id)->get();
             return $this->success(['online_course' => new OnlineCourseInstructorResource($online_course), 'groups' => GroupNewResource::collection($groups), 'quizes' => QuizInstructorResource::collection($quizes)]);
         } else {
             return $this->error('Course Not Found', [], 404);
@@ -321,6 +322,24 @@ class InstructorController extends Controller
         $groups = $groups->get();
         if ($groups) {
             return $this->success(GroupNew2Resource::collection($groups));
+        } else {
+            return $this->error('This Online Course Not Found');
+        }
+
+
+    }
+
+    public function online_courses_group_chart( Request $request,$id=null)
+    {
+        if (!empty($id))
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id)
+                ->where('online_course_id', $id);
+        else
+            $groups = Groups::where('instructor_id', auth('instructor-api')->user()->id);
+
+        $groups = $groups->get();
+        if ($groups) {
+            return $this->success(GroupChartResource::collection($groups));
         } else {
             return $this->error('This Online Course Not Found');
         }

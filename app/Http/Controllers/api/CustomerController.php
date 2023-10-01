@@ -760,6 +760,7 @@ class CustomerController extends Controller
         $oValidatorRules =
             [
                 'course_id' => 'required|exists:courses,id',
+                'payment_method_id' => 'required|exists:payment_methods,id',
             ];
         $validator = Validator::make($request->all(), $oValidatorRules);
         if ($validator->fails())
@@ -787,6 +788,7 @@ class CustomerController extends Controller
                 'course_id'=>$request->course_id,
                 'price'=>$price,
                 'total'=>$price,
+                'payment_method'=>$request->payment_method_id,
             ]);
 
             $client = new \GuzzleHttp\Client();
