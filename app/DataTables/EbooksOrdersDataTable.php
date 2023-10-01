@@ -36,6 +36,9 @@ class EbooksOrdersDataTable extends DataTable
             ->editColumn('ebook', function($q) {
                 return $q->ebooks->title;
             })
+            ->editColumn('payment_method', function($q) {
+                return $q->payment_method->name;
+            })
 
 
             ->addColumn('action', 'dashboard.ebooks_orders.actions')
