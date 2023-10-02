@@ -64,16 +64,39 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.home-section')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="projectinput1">title ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
                                                 @endforeach
 
                                                 </div>
                                                 <div class="row">
+                                                    @foreach(config('translatable.locales') as $locale)
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
+                                                            <input required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[button]">
+
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label   for="inputGroupFile20">{{__('dashboard.url')}} </label>
+                                                            <input type="text"    class="form-control input-custom" id="inputGroupFile20"  name="url">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
+                                                            <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
+                                                        </div>
+                                                    </div>
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -83,37 +106,12 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-                                                        @foreach(config('translatable.locales') as $locale)
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
-                                                                <input required id="projectinput1" class="form-control"   name="{{$locale}}[button]">
-
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.url')}} </label>
-                                                        <input type="text"    class="form-control" id="inputGroupFile20"  name="url">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
-                                                        <input type="file"  required class="form-control" id="inputGroupFile20"  name="image">
-                                                    </div>
-                                                </div>
-
-
                                                 </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
