@@ -67,7 +67,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.question')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[question]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[question]">
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -88,10 +88,10 @@
 
                                                 </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('question.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

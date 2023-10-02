@@ -74,13 +74,6 @@
 
                                                             </div>
                                                 <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label   for="inputGroupFile20">{{__('dashboard.preview-videos')}} </label>
-                                                                <input type="file"   class="form-control input-custom" id="inputGroupFile20"  name="preview_video">
-                                                            </div>
-                                                        </div>
-
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">{{__('dashboard.categories')}} </label>
@@ -98,6 +91,13 @@
                                                                 <input type="text" value="{{$courses->price}}"  required class="form-control input-custom" id="inputGroupFile20"  name="price">
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label   for="inputGroupFile20">{{__('dashboard.preview-videos')}} </label>
+                                                                <input type="file"   class="form-control input-custom" id="inputGroupFile20"  name="preview_video">
+                                                            </div>
+                                                        </div>
+
 
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">

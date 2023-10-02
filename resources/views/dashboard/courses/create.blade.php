@@ -74,6 +74,23 @@
 
                                                 </div>
                                                 <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                            <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
+                                                                <option value="">{{__('dashboard.select-category')}}</option>
+                                                                @foreach($categories as $category)
+                                                                <option value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label   for="inputGroupFile20">{{__('dashboard.price')}} </label>
+                                                            <input type="text"  required class="form-control input-custom" id="inputGroupFile20"  name="price">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.preview-videos')}} </label>
@@ -92,23 +109,6 @@
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.introduction_image')}} </label>
                                                             <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="introduction_image">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                            <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
-                                                                <option value="">{{__('dashboard.select-category')}}</option>
-                                                                @foreach($categories as $category)
-                                                                    <option value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.price')}} </label>
-                                                            <input type="text"  required class="form-control input-custom" id="inputGroupFile20"  name="price">
                                                         </div>
                                                     </div>
                                                     @foreach(config('translatable.locales') as $locale)

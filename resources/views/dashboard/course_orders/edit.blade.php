@@ -68,20 +68,20 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                                <input type="text" required id="projectinput1" value="{{$index->translate($locale)->title}}" class="form-control"   name="{{$locale}}[title]">
+                                                                <input type="text" required id="projectinput1" value="{{$index->translate($locale)->title}}" class="form-control input-custom"   name="{{$locale}}[title]">
                                                             </div>
                                                         </div>
                                                     @endforeach
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput6">{{__('dashboard.minute-to')}}  </label>
-                                                            <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput6" class="form-control"   name="time_to">
+                                                            <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput6" class="form-control input-custom"   name="time_to">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput5">{{__('dashboard.minute-from')}}  </label>
-                                                            <input type="number" value="{{$index->time_from}}" step=".01" required id="projectinput5" class="form-control"   name="time_from">
+                                                            <input type="number" value="{{$index->time_from}}" step=".01" required id="projectinput5" class="form-control input-custom"   name="time_from">
                                                         </div>
                                                     </div>
 
@@ -89,10 +89,10 @@
 
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('indexes-videos',$index->indexes_video_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> Save
                                                 </button>
                                             </div>

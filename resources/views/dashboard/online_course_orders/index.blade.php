@@ -28,7 +28,7 @@
                     <div class="row">
 
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card p-2">
                                 {!! $dataTable->table() !!}
                             </div>
                         </div>

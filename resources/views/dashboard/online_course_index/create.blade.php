@@ -68,13 +68,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
                                                 @endforeach
                                                 </div>
                                                     <div class="form-group row">
-                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">{{__('dashboard.add-items')}} </button>
+                                                        <button class="btn btn-info btn-flat btn-main" type="button" id="addRelatedProgram">{{__('dashboard.add-items')}} </button>
                                                     </div>
 
                                                     <div  id="relatedPrograms"></div>
@@ -125,14 +125,16 @@
         $(document).on('click', '#addRelatedProgram', function() {
             $('#relatedPrograms').append(`
                  <div class="well row" id="programTag${y}">
+                <div class="col-12">
                     <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
-                         <h5><b>item </b> </h5></br>
-                          @foreach(config('translatable.locales') as $locale)
-                <div class="form-group col-5">
-                <label for="inputRelatedProgram"> name({{$locale}})</label>
-                <input type="text" class="form-control" required count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
-                        </div>
-                        @endforeach
+                    <h5 ><b>item </b> </h5></br>
+                </div>
+                @foreach(config('translatable.locales') as $locale)
+                    <div class="form-group col-6">
+                    <label for="inputRelatedProgram"> name({{$locale}})</label>
+                        <input type="text" class="form-control input-custom" required count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
+                    </div>
+                @endforeach
  `);
 
             y++;

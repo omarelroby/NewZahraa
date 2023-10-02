@@ -71,42 +71,40 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
+                                                @foreach(config('translatable.locales') as $locale)
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
+                                                        <input required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[button]">
 
-                                                </div>
-                                                <div class="row">
-                                                    @foreach(config('translatable.locales') as $locale)
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
-                                                            <input required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[button]">
-
-                                                        </div>
                                                     </div>
-                                                    @endforeach
+                                                </div>
+                                                @endforeach
 
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">{{__('dashboard.url')}} </label>
+                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile20"  name="url">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
+                                                        <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
+                                                    </div>
+                                                </div>
+                                                @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.url')}} </label>
-                                                            <input type="text"    class="form-control input-custom" id="inputGroupFile20"  name="url">
-
+                                                            <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
+                                                            <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
+                                                            </textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
-                                                            <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
-                                                        </div>
-                                                    </div>
-                                                    @foreach(config('translatable.locales') as $locale)
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
-                                                                <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
-                                                                </textarea>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
+                                                @endforeach
                                                 </div>
+                                                
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
