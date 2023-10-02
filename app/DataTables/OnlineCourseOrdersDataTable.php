@@ -43,6 +43,9 @@ class OnlineCourseOrdersDataTable extends DataTable
             ->editColumn('payment_method', function($q) {
                 return $q->payment->name??'';
             })
+            ->editColumn('customer_id', function($q) {
+                return $q->customer->name??'';
+            })
             ->addColumn('action', 'dashboard.online_course_orders.actions')
             ->rawColumns(['action']);
     }
@@ -94,6 +97,9 @@ class OnlineCourseOrdersDataTable extends DataTable
                 ->title(__('dashboard.total')),
             Column::make('online_course')
                 ->title(__('dashboard.online-course')),
+            Column::make('customer_id')
+                ->title(__('dashboard.customers')),
+
              Column::computed('action')
                  ->title(__('dashboard.action'))
                 ->exportable(false)

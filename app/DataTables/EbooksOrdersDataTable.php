@@ -39,6 +39,9 @@ class EbooksOrdersDataTable extends DataTable
             ->editColumn('payment_method', function($q) {
                 return $q->payment->name??'';
             })
+            ->editColumn('customer_id', function($q) {
+                return $q->customer->name??'';
+            })
 
 
             ->addColumn('action', 'dashboard.ebooks_orders.actions')
@@ -92,6 +95,8 @@ class EbooksOrdersDataTable extends DataTable
                 ->title(__('dashboard.total')),
             Column::make('ebook')
                 ->title(__('dashboard.ebooks')),
+            Column::make('customer_id')
+                ->title(__('dashboard.customers')),
              Column::computed('action')
                  ->title(__('dashboard.action'))
                 ->exportable(false)

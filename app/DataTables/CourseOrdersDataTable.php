@@ -40,6 +40,9 @@ class CourseOrdersDataTable extends DataTable
             ->editColumn('payment_method', function($q) {
                 return $q->payment->name??'';
             })
+            ->editColumn('customer_id', function($q) {
+                return $q->customer->name??'';
+            })
 
 
             ->addColumn('action', 'dashboard.course_orders.actions')
@@ -93,7 +96,10 @@ class CourseOrdersDataTable extends DataTable
                 ->title(__('dashboard.total')),
             Column::make('course')
                 ->title(__('dashboard.courses')),
-             Column::computed('action')
+            Column::make('customer_id')
+                ->title(__('dashboard.customers')),
+
+            Column::computed('action')
                  ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
