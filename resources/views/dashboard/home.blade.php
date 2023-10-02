@@ -6,7 +6,7 @@
                 <div class="">
                     <div class="">
 
-                        <div class="row flex-wrap" style="gap: 15px;">
+                        <div class="row flex-wrap" style="gap: 15px;justify-content: space-evenly;">
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
