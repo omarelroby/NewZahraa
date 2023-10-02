@@ -71,12 +71,6 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
-                                                            <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>
                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                 <option value="">{{__('dashboard.select-category')}}</option>
@@ -86,10 +80,11 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
-                                                            <input type="file" required  class="custom-file-input" id="inputGroupFile01"  name="image">
+                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
+                                                            <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -100,11 +95,18 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
+                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
+                                                            <input type="file" required  class="custom-file-input" id="inputGroupFile01"  name="image">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
                                                             <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
                                                             <input type="number"   id="projectinput12" class="form-control input-custom"  name="pages_number">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.type')}} </label>
                                                             <select  required   id="type" class="form-control input-custom"  name="type">
@@ -114,7 +116,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">{{__('dashboard.price')}} </label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom"  name="price">

@@ -70,14 +70,19 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
-                                                            <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
+                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                            <select type="text" required id="projectinput1" class="form-control"   name="category_id">
+                                                                <option value="">{{__('dashboard.select-category')}}</option>
+                                                                @foreach($categories as $category)
+                                                                    <option @if($category->id==$ebook->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
-                                                            <input type="file"    class="custom-file-input" id="inputGroupFile01"  name="image">
+                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
+                                                            <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -88,11 +93,19 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
+                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
+                                                            <input type="file"    class="custom-file-input" id="inputGroupFile01"  name="image">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
                                                             <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
                                                             <input type="number" value="{{$ebook->pages_number ??''}}"  id="projectinput12" class="form-control"  name="pages_number">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    
+                                                    
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.type')}} </label>
                                                             <select  required   id="type" class="form-control"  name="type">
@@ -102,23 +115,13 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">{{__('dashboard.price')}} </label>
                                                             <input type="text" required id="projectinput1" value="{{$ebook->price}}" class="form-control"  name="price">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                            <select type="text" required id="projectinput1" class="form-control"   name="category_id">
-                                                                <option value="">{{__('dashboard.select-category')}}</option>
-                                                                @foreach($categories as $category)
-                                                                    <option @if($category->id==$ebook->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="col-md-12" style="display: none"  id="amazon_url">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">amazon url </label>
