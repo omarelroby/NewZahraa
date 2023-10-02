@@ -29,7 +29,7 @@ class EbookOrders extends Model
     {
         return $this->belongsTo(Ebook::class,'ebook_id');
     }
-    public function payment_method()
+    public function payment()
     {
         return $this->belongsTo(PaymentMethod::class,'payment_method');
     }
