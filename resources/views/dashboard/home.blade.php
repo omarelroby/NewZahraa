@@ -2,9 +2,9 @@
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
+            <div class="">
+                <div class="">
+                    <div class="">
 
                         <div class="row gap-2 flex-wrap">
                             <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">

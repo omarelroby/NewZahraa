@@ -14,6 +14,10 @@
   font-size: 24px;
 }
 
+.text-white {
+  color: #fff;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -30,7 +34,34 @@
   border-radius: 10px;
 }
 
-.btn-main:hover {
+.btn-main:hover,
+.btn-main:focus {
   background-color: #c30700 !important;
   border-color: #c30700 !important;
+}
+
+.input-custom {
+  border-radius: 10px !important;
+}
+
+.input-custom:focus {
+  border-color: #dc0d05 !important;
+}
+
+.form-control-position i {
+  font-size: 18px;
+}
+
+.icheckbox_square-blue {
+  border-radius: 2px;
+}
+
+.custom-navbrand {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.menu-expanded .header-navbar .navbar-header .navbar-brand .brand-logo {
+  width: 100px;
 }
