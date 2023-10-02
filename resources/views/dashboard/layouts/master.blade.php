@@ -91,11 +91,12 @@
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a
                         class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                             class="ft-menu font-large-1"></i></a></li>
-                <li class="nav-item">
+                <li class="nav-item custom-navbrand">
                     <a class="navbar-brand"
                                         href="{{route('dashboard')}}">
-                        <img class="brand-logo" alt="robust admin logo" style="width: 100px;margin-left: 50%;margin-right: 50%;"
+                     <img class="brand-logo" alt="robust admin logo" 
                              src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}"/>
+                            
                     </a>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                                                   data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>

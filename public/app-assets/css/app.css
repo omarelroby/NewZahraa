@@ -1,3 +1,36 @@
 @import url('bootstrap-extended.css');
 @import url('colors.css');
 @import url('components.css');
+
+.text-red {
+  color: #dc0d05;
+}
+
+.text-slate {
+  color: #0a0f1a;
+}
+
+.text-xl {
+  font-size: 24px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.rounded {
+  border-radius: 15px !important;
+}
+
+.btn-main {
+  background-color: #dc0d05 !important;
+  border: 1px solid #dc0d05 !important;
+  color: white;
+  transition: .5s;
+  border-radius: 10px;
+}
+
+.btn-main:hover {
+  background-color: #c30700 !important;
+  border-color: #c30700 !important;
+}

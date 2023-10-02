@@ -37,11 +37,13 @@
         </div>
         <div class="content-body"><section class="flexbox-container">
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                    <div class="col-md-4 col-10 box-shadow-2 p-0">
-                        <div class="card border-grey border-lighten-3 m-0">
-                            <div class="card-header border-0">
+                    <div class="col-md-3 col-10 box-shadow-2 p-0 rounded">
+                        <div class="card border-grey border-lighten-3 m-0 rounded">
+                            <div class="card-header border-0 rounded">
                                 <div class="card-title text-center">
-                                    <div class="p-1"><img style="width: 250px;" src="{{asset('app-assets/images/logo/Logo Zahraa with background.png')}}" alt="branding logo"></div>
+                                    {{-- <div class="p-1"><img style="width: 250px;" src="{{asset('app-assets/images/logo/Logo Zahraa with background.png')}}" alt="branding logo"></div> --}}
+                                    <div class="text-red text-xl font-bold">Zahraa</div>
+                                    <div class="text-slate text-xl font-bold">Academy</div>
                                 </div>
                                 <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>{{__('dashboard.login')}}</span></h6>
                             </div>
@@ -49,14 +51,14 @@
                                 <div class="card-body">
                                     <form class="form-horizontal form-simple" method="post" action="{{route('login.post')}}" novalidate>
                                        @csrf
-                                        <fieldset class="form-group position-relative has-icon-left mb-0">
-                                            <input name="email" type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username" required>
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <input name="email" type="text" class="form-control form-control-lg input-lg input-custom" id="user-name" placeholder="Your Username" required>
                                             <div class="form-control-position">
                                                 <i class="ft-user"></i>
                                             </div>
                                         </fieldset>
-                                        <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="password" class="form-control form-control-lg input-lg" id="user-password" name="password" placeholder="Enter Password" required>
+                                        <fieldset class="form-group position-relative has-icon-left mb-1">
+                                            <input type="password" class="form-control form-control-lg input-lg input-custom" id="user-password" name="password" placeholder="Enter Password" required>
                                             <div class="form-control-position">
                                                 <i class="fa fa-key"></i>
                                             </div>
@@ -70,7 +72,7 @@
                                             </div>
 {{--                                            <div class="col-md-6 col-12 text-center text-md-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>--}}
                                         </div>
-                                        <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> Login</button>
+                                        <button type="submit" class="btn btn-info btn-lg btn-block btn-main"><i class="ft-unlock"></i> Login</button>
                                     </form>
                                 </div>
                             </div>
