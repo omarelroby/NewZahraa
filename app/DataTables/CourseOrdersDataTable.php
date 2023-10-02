@@ -38,7 +38,7 @@ class CourseOrdersDataTable extends DataTable
                 return $q->course->title;
             })
             ->editColumn('payment_method', function($q) {
-                return $q->payment_method->name??'';
+                return $q->payment->name??'';
             })
 
 
