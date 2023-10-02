@@ -56,20 +56,20 @@
 
                                                             <div class="row">
                                                                 @foreach(config('translatable.locales') as $locale)
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-3">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1"> {{__('dashboard.title')}} ({{$locale}})</label>
-                                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$pages->translate($locale)->title}}"   name="{{$locale}}[title]">
+                                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$pages->translate($locale)->title}}"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
 
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01"> {{__('dashboard.video_url')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$pages->video_url ??''}}" name="video_url">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$pages->video_url ??''}}" name="video_url">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -100,10 +100,10 @@
                                                             </div>
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('page.index')}}" style="color: white"> <i class="ft-x"></i> {{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i>  {{__('dashboard.save')}}
                                                 </button>
                                             </div>

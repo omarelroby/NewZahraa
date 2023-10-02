@@ -74,3 +74,10 @@
   overflow-x: auto !important;
   zoom: 0.95;
 }
+
+.custom-file-label {
+  right: 18px !important;
+  left: 18px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}

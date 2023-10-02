@@ -71,7 +71,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                            <select type="text" required id="projectinput1" class="form-control"   name="category_id">
+                                                            <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                 <option value="">{{__('dashboard.select-category')}}</option>
                                                                 @foreach($categories as $category)
                                                                     <option @if($category->id==$ebook->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
@@ -88,7 +88,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.writer')}} </label>
-                                                            <input type="text" value="{{$ebook->writer ??''}}"   id="projectinput1" class="form-control"  name="writer">
+                                                            <input type="text" value="{{$ebook->writer ??''}}"   id="projectinput1" class="form-control input-custom"  name="writer">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -100,7 +100,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
-                                                            <input type="number" value="{{$ebook->pages_number ??''}}"  id="projectinput12" class="form-control"  name="pages_number">
+                                                            <input type="number" value="{{$ebook->pages_number ??''}}"  id="projectinput12" class="form-control input-custom"  name="pages_number">
                                                         </div>
                                                     </div>
                                                     
@@ -108,7 +108,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.type')}} </label>
-                                                            <select  required   id="type" class="form-control"  name="type">
+                                                            <select  required   id="type" class="form-control input-custom"  name="type">
                                                                 <option value="">{{__('dashboard.select-type')}}</option>
                                                                 <option @if($ebook->type=='internal')selected @endif value="internal">internal</option>
                                                                 <option @if($ebook->type=='amazon')selected @endif value="amazon">amazon</option>
@@ -118,7 +118,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">{{__('dashboard.price')}} </label>
-                                                            <input type="text" required id="projectinput1" value="{{$ebook->price}}" class="form-control"  name="price">
+                                                            <input type="text" required id="projectinput1" value="{{$ebook->price}}" class="form-control input-custom"  name="price">
                                                         </div>
                                                     </div>
                                                     
