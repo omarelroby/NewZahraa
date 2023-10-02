@@ -52,34 +52,34 @@
                                             @csrf
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.country')}}</h4>
-                                                <div class="row">
+                                                <div class="row align-items-end">
                                                     @foreach(config('translatable.locales') as $locale)
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.country')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[name]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                 @endforeach
 
-                                                <div class="col-md-12">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="inputGroupFile01" class="custom-file-label">{{__('dashboard.image')}} </label>
                                                         <input type="file" required class="custom-file-input" id="inputGroupFile01"   name="image">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="inputGroupFile04"  >{{__('dashboard.country_code')}} </label>
-                                                        <input type="text" required  class="form-control" id="inputGroupFile04"   name="country_code">
+                                                        <input type="text" required  class="form-control input-custom" id="inputGroupFile04"   name="country_code">
                                                     </div>
                                                 </div>
                                                 </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('country.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

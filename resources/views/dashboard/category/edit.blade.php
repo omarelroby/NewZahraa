@@ -55,17 +55,17 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.category')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
-                                                     <div class="col-md-6">
+                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.category')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$category->translate($locale)->name}}"  name="{{$locale}}[name]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$category->translate($locale)->name}}"  name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                  @endforeach
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="projectinput2">{{__('dashboard.type')}} ({{$locale}})</label>
-                                                                <select   required id="projectinput2" class="form-control"   name="type">
+                                                                <select   required id="projectinput2" class="form-control input-custom"   name="type">
                                                                     <option value="">{{__('dashboard.select-type')}}</option>
                                                                     <option @if($category->type=='Ebook') selected @endif value="Ebook">Ebook</option>
                                                                     <option @if($category->type=='Free-video') selected @endif value="Free-video">Free-video</option>
@@ -76,11 +76,11 @@
                                                         </div>
                                                 </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('categories.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
 
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

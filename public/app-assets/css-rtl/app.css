@@ -26,6 +26,10 @@
   border-radius: 15px !important;
 }
 
+.rounded-10 {
+  border-radius: 10px !important;
+}
+
 .btn-main {
   background-color: #dc0d05 !important;
   border: 1px solid #dc0d05 !important;
@@ -64,4 +68,9 @@
 
 .menu-expanded .header-navbar .navbar-header .navbar-brand .brand-logo {
   width: 100px;
+}
+
+.dataTables_wrapper {
+  overflow-x: auto !important;
+  zoom: 0.95;
 }
