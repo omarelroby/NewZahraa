@@ -61,7 +61,7 @@
 }
 
 .custom-navbrand {
-  width: 100%;
+  width: fit-content;
   overflow: hidden;
   text-align: center;
 }
