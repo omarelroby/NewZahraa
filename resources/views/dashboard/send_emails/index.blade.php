@@ -25,7 +25,7 @@
                             @csrf
                             <div class="row">
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label   for="inputGroupFile20">{{__('dashboard.customers')}} </label>
                                     <select  required class="form-control js-example-basic-single" multiple id="inputGroupFile20"  name="customers[]">
@@ -36,16 +36,16 @@
                                     </select>
                                 </div>
                             </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label   for="inputGroupFile22">{{__('dashboard.subject')}} </label>
-                                        <input type="text"  required class="form-control  "  id="inputGroupFile22"   name="subject">
+                                        <input type="text"  required class="form-control input-custom"  id="inputGroupFile22"   name="subject">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label   for="inputGroupFile23">{{__('dashboard.message')}} </label>
-                                        <textarea  required class="form-control "   id="inputGroupFile23"  name="message">
+                                        <textarea  required class="form-control"id="inputGroupFile23"  name="message">
                                         </textarea>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                 <button type="button" class="btn btn-warning mr-1">
                                     <a href="{{route('dashboard')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                 </button>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-main">
                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                 </button>
                             </div>

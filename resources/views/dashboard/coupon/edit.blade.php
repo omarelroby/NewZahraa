@@ -67,26 +67,26 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.code')}}  </label>
-                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$coupon->code}}"   name="code">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$coupon->code}}"   name="code">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.number_of_use')}} </label>
-                                                            <input type="number"  required class="form-control" value="{{$coupon->number_of_use}}" id="inputGroupFile20"  name="number_of_use">
+                                                            <input type="number"  required class="form-control input-custom" value="{{$coupon->number_of_use}}" id="inputGroupFile20"  name="number_of_use">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.discount')}} </label>
-                                                            <input type="text"  required class="form-control" value="{{$coupon->discount}}"  id="inputGroupFile20"  name="discount">
+                                                            <input type="text"  required class="form-control input-custom" value="{{$coupon->discount}}"  id="inputGroupFile20"  name="discount">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
-                                                            <input type="text"  required class="form-control" value="{{$coupon->type}}" id="inputGroupFile20"  name="type">
+                                                            <input type="text"  required class="form-control input-custom" value="{{$coupon->type}}" id="inputGroupFile20"  name="type">
                                                         </div>
                                                     </div>
 
@@ -96,10 +96,10 @@
 
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('coupon.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

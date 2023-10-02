@@ -53,14 +53,60 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.add-employment-applications')}}</h4>
                                                 <div class="row">
-                                                    @foreach(config('translatable.locales') as $locale)
-                                                        <div class="col-md-6">
+                                                        @foreach(config('translatable.locales') as $locale)
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                                    <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                                <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                                <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
+                                                                <input type="file"  required  class="custom-file-input" id="inputGroupFile01"  name="image">
                                                             </div>
                                                         </div>
-                                                    @endforeach
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.experience')}}  </label>
+                                                                <input type="text" required id="projectinput30" class="form-control input-custom"   name="experience">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.Gender')}}  </label>
+                                                                <select type="text" required id="projectinput30" class="form-control input-custom"   name="Gender">
+                                                                    <option value="">{{__('dashboard.Gender')}}</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value=Female">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.job_type')}}  </label>
+                                                                <input type="text" required id="projectinput30" class="form-control input-custom"   name="job_type">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.salary')}}  </label>
+                                                                <input type="text" required id="projectinput30" class="form-control input-custom"   name="salary">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.expiration_date')}}  </label>
+                                                                <input type="date" required id="projectinput30" class="form-control input-custom"   name="expiration_date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput30">{{__('dashboard.posted_date')}}  </label>
+                                                                <input type="date" required id="projectinput30" class="form-control input-custom"   name="posted_date">
+                                                            </div>
+                                                        </div>
                                                         @foreach(config('translatable.locales') as $locale)
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
@@ -79,66 +125,18 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
-                                                        <input type="file"  required  class="custom-file-input" id="inputGroupFile01"  name="image">
-                                                    </div>
-                                                </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.experience')}}  </label>
-                                                                <input type="text" required id="projectinput30" class="form-control"   name="experience">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.Gender')}}  </label>
-                                                                <select type="text" required id="projectinput30" class="form-control"   name="Gender">
-                                                                    <option value="">{{__('dashboard.Gender')}}</option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value=Female">Female</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.job_type')}}  </label>
-                                                                <input type="text" required id="projectinput30" class="form-control"   name="job_type">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.salary')}}  </label>
-                                                                <input type="text" required id="projectinput30" class="form-control"   name="salary">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.expiration_date')}}  </label>
-                                                                <input type="date" required id="projectinput30" class="form-control"   name="expiration_date">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput30">{{__('dashboard.posted_date')}}  </label>
-                                                                <input type="date" required id="projectinput30" class="form-control"   name="posted_date">
-                                                            </div>
-                                                        </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group form-check checkbox-lg">
                                                                 <label for="projectinput30">{{__('dashboard.status')}}  </label>
                                                                 <input type="checkbox"   id="projectinput30"    value="1"   name="status">
                                                             </div>
                                                         </div>
-
-
-                                                </div>
+                                                    </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('employment.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
@@ -148,16 +146,7 @@
                                 </div>
                             </div>
                         </div>
-
                      </div>
-
-
-
-
-
-
-
-
                  </section>
                 <!-- // Basic form layout section end -->
             </div>

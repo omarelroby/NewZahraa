@@ -66,42 +66,30 @@
                                                       <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.month')}} </label>
-                                                            <input type="month" required id="projectinput1" class="form-control"   name="month">
+                                                            <input type="month" required id="projectinput1" class="form-control input-custom"   name="month">
                                                         </div>
                                                     </div>
                                                  </div>
                                                     <div class="form-group row">
-                                                        <button class="btn btn-info btn-flat" type="button" id="addRelatedProgram">{{__('dashboard.add-day')}} </button>
+                                                        <button class="btn btn-info btn-flat btn-main" type="button" id="addRelatedProgram">{{__('dashboard.add-day')}} </button>
                                                     </div>
-
                                                     <div  id="relatedPrograms"></div>
-
-
-                                            <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('appointments.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
-                                                </button>
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
-                                                </button>
-                                            </div>
+                                                    <div class="form-actions">
+                                                        <button type="button" class="btn btn-warning mr-1 rounded-10">
+                                                            <a href="{{route('appointments.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary btn-main">
+                                                            <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
+                                                        </button>
+                                                    </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                     </div>
-
-
-
-
-
-
-
-
-                 </section>
+                    </div>
+                </section>
                 <!-- // Basic form layout section end -->
             </div>
         </div>
@@ -122,9 +110,10 @@
         $(document).on('click', '#addRelatedProgram', function() {
             $('#relatedPrograms').append(`
                  <div class="well row" id="programTag${y}">
-                    <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
-
-                    <div class="form-group col-md-4">
+                    <div class="col-12">
+                        <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="inputRelatedProgram"> Day</label>
                         <select type="file" class="form-control " count="${y}" id="inputRelatedProgram" name="repeater[${y}][day]" >
                         <option value="">Select the Day</option>
@@ -135,20 +124,12 @@
                         <option value="Wednesday">Wednesday</option>
                         <option value="Thursday">Thursday</option>
                         </select>
-
-                        </div>
-
-
-                    <div class="form-group col-4"  ">
+                    </div>
+                    <div class="form-group col-md-6"  ">
                         <label for="flexCheckDisabled"> Time</label>
                         <input type="time" class="form-control " id="flexCheckDisabled" value="1" count="${y}"  name="repeater[${y}][time]" >
                         </div>
-</div>
-
-
-
-
-
+                    </div>
             `);
 
             y++;

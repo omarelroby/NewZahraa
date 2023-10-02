@@ -64,16 +64,11 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.edit-appointments')}}</h4>
 
                                                 <div class="row">
-
-
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">Date </label>
-                                                                <input type="datetime-local"  value="{{$appointment->date}}" required id="projectinput1" class="form-control"   name="date">
+                                                                <input type="datetime-local"  value="{{$appointment->date}}" required id="projectinput1" class="form-control input-custom"   name="date">
                                                             </div>
-
-
-
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
                                                     <a href="{{route('appointments.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
