@@ -6,8 +6,8 @@
                 <div class="">
                     <div class="">
 
-                        <div class="row gap-2 flex-wrap">
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                        <div class="row flex-wrap" style="gap: 15px;">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-book-open font-large-1 blue-grey float-left mt-1"></i>
@@ -22,7 +22,7 @@
                                     <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-folder-alt font-large-1 blue-grey float-left mt-1"></i>
@@ -37,7 +37,7 @@
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-screen-desktop font-large-1 blue-grey float-left mt-1"></i>
@@ -52,7 +52,7 @@
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-user font-large-1 blue-grey float-left mt-1"></i>
@@ -67,7 +67,7 @@
                                     <div class="progress-bar ball-grid-beat" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-social-youtube font-large-1 blue-grey float-left mt-1"></i>
@@ -82,7 +82,7 @@
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 card p-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card p-3">
                                 <div class="pb-1">
                                     <div class="clearfix mb-1">
                                         <i class="icon-user font-large-1 blue-grey float-left mt-1"></i>
