@@ -54,14 +54,14 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.categories')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.category')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="projectinput2">{{__('dashboard.type')}} ({{$locale}})</label>
                                                                 <select   required id="projectinput2" class="form-control"   name="type">
