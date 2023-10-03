@@ -67,18 +67,18 @@
 
 
                                                     @foreach(config('translatable.locales') as $locale)
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label for="projectinput1">{{__('dashboard.name')}} ({{$locale}})</label>
-                                                                <input required id="projectinput1" class="form-control" value="{{$payment->translate($locale)->name}}"   name="{{$locale}}[name]">
+                                                                <input required id="projectinput1" class="form-control input-custom" value="{{$payment->translate($locale)->name}}"   name="{{$locale}}[name]">
                                                             </div>
                                                         </div>
                                                     @endforeach
 
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
-                                                            <input type="file"    class="form-control" id="inputGroupFile20"  name="image">
+                                                            <input type="file"    class="form-control input-custom" id="inputGroupFile20"  name="image">
 
                                                         </div>
 
@@ -86,10 +86,10 @@
                                                 </div>
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('payment-method.index')}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> Save
                                                 </button>
                                             </div>

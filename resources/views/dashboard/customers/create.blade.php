@@ -53,36 +53,36 @@
                                                 <h4 class="form-section">
                                                     <i class="ft-align-right"></i>{{__('dashboard.customers')}}</h4>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.name')}}</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="name">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="name">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput3">{{__('dashboard.email')}}</label>
+                                                            <input type="text" required id="projectinput3" class="form-control input-custom"   name="email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput4">{{__('dashboard.password')}}</label>
+                                                            <input type="password" required id="projectinput4" class="form-control input-custom"   name="password">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput2">{{__('dashboard.phone')}}</label>
-                                                            <input type="text" required id="projectinput2" class="form-control"   name="phone">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput3">{{__('dashboard.email')}}</label>
-                                                            <input type="text" required id="projectinput3" class="form-control"   name="email">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput4">{{__('dashboard.password')}}</label>
-                                                            <input type="password" required id="projectinput4" class="form-control"   name="password">
+                                                            <input type="text" required id="projectinput2" class="form-control input-custom"   name="phone">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput4">{{__('dashboard.country')}}</label>
-                                                            <select  required id="projectinput4" class="form-control"   name="country_id">
+                                                            <select  required id="projectinput4" class="form-control input-custom"   name="country_id">
                                                                 <option value="">{{__('dashboard.select-country')}}</option>
                                                                 @foreach($countries as $country)
                                                                 <option value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
@@ -101,10 +101,10 @@
                                                 </div>
                                                 </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('customers.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

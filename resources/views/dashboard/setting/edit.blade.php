@@ -59,7 +59,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$setting->translate($locale)->title}}"   name="{{$locale}}[title]">
+                                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$setting->translate($locale)->title}}"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
@@ -69,61 +69,61 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.keywords')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->Keywords ??''}}" name="Keywords">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->Keywords ??''}}" name="Keywords">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.phone')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->phone ??''}}" name="phone">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->phone ??''}}" name="phone">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.whatsapp')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->whatsapp ??''}}" name="whatsapp">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->whatsapp ??''}}" name="whatsapp">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.email')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->email ??''}}" name="email">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->email ??''}}" name="email">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.address')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->address ??''}}" name="address">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->address ??''}}" name="address">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.google_map')}}  </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->google_map ??''}}" name="google_map">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->google_map ??''}}" name="google_map">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.facebook_url')}}  </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->facebook_url ??''}}" name="facebook_url">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->facebook_url ??''}}" name="facebook_url">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.twitter_url')}}  </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->twitter_url ??''}}" name="twitter_url">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->twitter_url ??''}}" name="twitter_url">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.youtube_url')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->youtube_url ??''}}" name="youtube_url">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->youtube_url ??''}}" name="youtube_url">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.tiktok_url')}} </label>
-                                                                        <input type="text"    class="form-control" id="inputGroupFile01" value="{{$setting->tiktok_url ??''}}" name="tiktok_url">
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->tiktok_url ??''}}" name="tiktok_url">
                                                                     </div>
                                                                 </div>
 
@@ -143,10 +143,10 @@
                                                             </div>
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('setting.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

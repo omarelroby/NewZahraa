@@ -58,19 +58,31 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                                            <input type="text" value="{{$freeVideos->translate($locale)->title}}" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                                            <input type="text" value="{{$freeVideos->translate($locale)->title}}" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
 
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label   for="inputGroupFile01">{{__('dashboard.youtube-url')}} </label>
-                                                                        <input type="text" value="{{$freeVideos->youtube_url}}"  required class="form-control" id="inputGroupFile01"  name="youtube_url">
+                                                                        <input type="text" value="{{$freeVideos->youtube_url}}"  required class="form-control input-custom" id="inputGroupFile01"  name="youtube_url">
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                                        <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
+                                                                            <option value="">{{__('dashboard.select-category')}}</option>
+                                                                            @foreach($categories as $category)
+                                                                                <option @if($category->id==$freeVideos->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
@@ -81,25 +93,14 @@
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                                        <select type="text" required id="projectinput1" class="form-control"   name="category_id">
-                                                                            <option value="">{{__('dashboard.select-category')}}</option>
-                                                                            @foreach($categories as $category)
-                                                                                <option @if($category->id==$freeVideos->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
+                                                                
                                                             </div>
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 border-10">
                                                     <a href="{{route('freeVideos.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

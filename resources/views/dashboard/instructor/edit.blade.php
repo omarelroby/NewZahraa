@@ -56,46 +56,46 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.instructors')}}</h4>
 
                                                             <div class="row">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.name')}} </label>
-                                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$instructor->name}}"   name="name">
+                                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$instructor->name}}"   name="name">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="projectinput2">{{__('dashboard.phone')}} </label>
-                                                                            <input type="text" required id="projectinput2"  value="{{$instructor->phone}}" class="form-control"   name="phone">
+                                                                            <input type="text" required id="projectinput2"  value="{{$instructor->phone}}" class="form-control input-custom"   name="phone">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="projectinput2">{{__('dashboard.brief')}} </label>
-                                                                            <input type="text" required id="projectinput2" value="{{$instructor->brief}}" class="form-control"   name="brief">
+                                                                            <input type="text" required id="projectinput2" value="{{$instructor->brief}}" class="form-control input-custom"   name="brief">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.email')}} </label>
-                                                                            <input type="text" required id="projectinput1" class="form-control" value="{{$instructor->email}}"   name="email">
+                                                                            <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$instructor->email}}"   name="email">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.password')}} </label>
-                                                                            <input type="password" autocomplete="off"  id="projectinput1" class="form-control"   name="password">
+                                                                            <input type="password" autocomplete="off"  id="projectinput1" class="form-control input-custom"   name="password">
                                                                         </div>
                                                                     </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label for="projectinput11">{{__('dashboard.commission_instructor')}} </label>
-                                                                        <input type="number" required id="projectinput11" class="form-control" value="{{$instructor->commission_instructor}}"   name="commission_instructor">
+                                                                        <input type="number" required id="projectinput11" class="form-control input-custom" value="{{$instructor->commission_instructor}}"   name="commission_instructor">
                                                                     </div>
                                                                 </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                                            <select type="text" required id="projectinput1" class="form-control"   name="category_id">
+                                                                            <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                                 <option value="">{{__('dashboard.select-category')}}</option>
                                                                                 @foreach($categories as $category)
                                                                                     <option @if($category->id==$instructor->category_id)selected @endif value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
@@ -106,7 +106,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">{{__('dashboard.countries')}} </label>
-                                                                            <select type="text" required id="projectinput1" class="form-control"   name="country_id">
+                                                                            <select type="text" required id="projectinput1" class="form-control input-custom"   name="country_id">
                                                                                 <option value="">{{__('dashboard.select-country')}}</option>
                                                                                 @foreach($countries as $country)
                                                                                     <option @if($country->id==$instructor->country_id)selected @endif value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
@@ -127,10 +127,10 @@
 
 
                                                     <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('instructors.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

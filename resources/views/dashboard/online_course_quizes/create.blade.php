@@ -67,19 +67,19 @@
                                                      <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.quiz_name')}}  </label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="quiz_name">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="quiz_name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.degree')}}  </label>
-                                                            <input type="number" required id="projectinput1" class="form-control"   name="degree">
+                                                            <input type="number" required id="projectinput1" class="form-control input-custom"   name="degree">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.instructors')}}  </label>
-                                                            <select   required id="projectinput1" class="form-control"   name="instructor_id">
+                                                            <select   required id="projectinput1" class="form-control input-custom"   name="instructor_id">
                                                                 <option>{{__('dashboard.select-instructors')}}</option>
                                                                 @foreach($instructors as $instructor)
                                                                 <option value="{{$instructor->id}}">{{$instructor->name}}</option>
@@ -87,19 +87,19 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-6"  >
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('dashboard.pass-score')}}  </label>
+                                                            <input type="text"  required id="projectinput1" class="form-control input-custom"     name="pass_score">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="inputName" class="control-label">{{__('dashboard.groups')}}</label>
                                                             <select id="group" multiple required name="group_id[]" class="form-control">
                                                             </select>
                                                         </div>
 
-                                                </div>
-                                                    <div class="col-md-12"  >
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.pass-score')}}  </label>
-                                                            <input type="text"  required id="projectinput1" class="form-control"     name="pass_score">
-                                                        </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
@@ -110,13 +110,13 @@
                                                     <div class="col-md-5"  style="display: none;" id="discount">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.discount')}}  </label>
-                                                            <input type="number"    id="projectinput1" class="form-control"     name="discount">
+                                                            <input type="number"    id="projectinput1" class="form-control input-custom"     name="discount">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="display: none;" id="discount_score">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.discount_score')}}  </label>
-                                                            <input type="number"     id="projectinput1" class="form-control"     name="discount_score">
+                                                            <input type="number"     id="projectinput1" class="form-control input-custom"     name="discount_score">
                                                         </div>
                                                     </div>
 
@@ -124,10 +124,10 @@
 
                                                 <br>
                                             <div class="form-actions col-md-12">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('onlineCourse.quiz',$id)}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

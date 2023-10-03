@@ -64,71 +64,48 @@
                                                 <h4 class="form-section"><i class="ft-align-right"></i> {{__('dashboard.online-courses')}}</h4>
                                                 <div class="row">
                                                     @foreach(config('translatable.locales') as $locale)
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
                                                 @endforeach
-
-                                                </div>
-                                                <div class="row">
-                                                    @foreach(config('translatable.locales') as $locale)
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
-                                                                <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
-                                                                </textarea>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.price')}} </label>
-                                                        <input type="text"   class="form-control" id="inputGroupFile20"  name="price">
-
+                                                        <input type="text"   class="form-control input-custom" id="inputGroupFile20"  name="price">
+    
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">{{__('dashboard.hours')}} </label>
+                                                        <input type="text"   class="form-control input-custom" id="inputGroupFile20"  name="hours">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.hours')}} </label>
-                                                        <input type="text"   class="form-control" id="inputGroupFile20"  name="hours">
-                                                    </div>
-                                                </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
-                                                                <select type="text"   class="form-control" id="inputGroupFile20"  name="type">
-                                                                    <option value="">{{__('dashboard.select-type')}}</option>
-                                                                    <option value="single">{{__('dashboard.single')}}</option>
-                                                                    <option value="group">{{__('dashboard.group')}}</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    <div class="col-md-6">
-                                                    <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
-                                                        <input type="file"  required class="form-control" id="inputGroupFile20"  name="image">
+                                                        <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
                                                     </div>
                                                 </div>
                                                  <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.date')}} </label>
-                                                        <input type="date"   class="form-control" id="inputGroupFile20"  name="date">
+                                                        <input type="date"   class="form-control input-custom" id="inputGroupFile20"  name="date">
                                                     </div>
                                                 </div>
                                                         <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.lessons-number')}} </label>
-                                                        <input type="text"  required  class="form-control" id="inputGroupFile20"  name="lessons_number">
+                                                        <input type="text"  required  class="form-control input-custom" id="inputGroupFile20"  name="lessons_number">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.instructors')}} </label>
-                                                        <select  required class="form-control js-example-basic-single" multiple id="inputGroupFile20"  name="instructor_id[]">
+                                                        <select  required class="form-control input-custom js-example-basic-single" multiple id="inputGroupFile20"  name="instructor_id[]">
                                                             <option value="">{{__('dashboard.select-instructors')}}</option>
                                                             @foreach($instructors as $instructor)
                                                             <option value="{{$instructor->id}}">{{$instructor->name}}</option>
@@ -136,25 +113,42 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.categories')}} </label>
-                                                                <select type="text" required id="projectinput1" class="form-control"   name="category_id">
-                                                                    <option value="">{{__('dashboard.select-category')}}</option>
-                                                                    @foreach($categories as $category)
-                                                                        <option value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
+                                                        <select type="text"   class="form-control input-custom" id="inputGroupFile20"  name="type">
+                                                            <option value="">{{__('dashboard.select-type')}}</option>
+                                                            <option value="single">{{__('dashboard.single')}}</option>
+                                                            <option value="group">{{__('dashboard.group')}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                        <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
+                                                            <option value="">{{__('dashboard.select-category')}}</option>
+                                                            @foreach($categories as $category)
+                                                                <option value="{{$category->id}}">{{$category->translate('ar')->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @foreach(config('translatable.locales') as $locale)
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
+                                                            <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('online-courses.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
