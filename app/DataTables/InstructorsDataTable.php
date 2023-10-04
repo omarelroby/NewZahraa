@@ -41,11 +41,14 @@ class InstructorsDataTable extends DataTable
                 return '<h6><a href="/dashboard/instructors-attachs/'.  $q->id .'">'. __('dashboard.attachments') .'</a></h6>';
             })
             ->editColumn('status', function ($raw) {
-                $checked = $raw->status == '1' ? "checked" : "";
-                return
-                       '<div  class="form-check form-switch"  title="toggle">
-                          <input   type="checkbox" ' . $checked . ' name="status"   value="1" class="form-check-input" id="switch"  />
-                        </div>';
+                 if ($raw->status==1)
+                {
+                    return '<h4 style="color: darkgreen;font-weight: bold;">YES</h4>';
+                }
+                else
+                {
+                    return '<h4 style="color: red;font-weight: bold;">NO</h4>';
+                }
             })
 
 
