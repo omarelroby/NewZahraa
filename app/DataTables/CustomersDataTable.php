@@ -38,6 +38,13 @@ class CustomersDataTable extends DataTable
             ->editColumn('phone', function($q) {
                 return $q->phone;
             })
+            ->editColumn('country', function($q) {
+                return $q->country->name;
+            })
+            ->editColumn('created_at', function($q) {
+                return $q->created_at->toDateString();
+            })
+
             ->addColumn('action', 'dashboard.customers.actions')
             ->rawColumns(['action']);
     }
@@ -92,6 +99,10 @@ class CustomersDataTable extends DataTable
                 ->title(__('dashboard.email')),
             Column::make('phone')
                 ->title(__('dashboard.phone')),
+            Column::make('country')
+                ->title(__('dashboard.country')),
+            Column::make('created_at')
+                ->title(__('dashboard.registration_date')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)

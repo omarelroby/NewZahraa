@@ -61,14 +61,30 @@
                                                         </div>
                                                     </div>
                                                     @endforeach
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label    for="projectinput1">{{__('dashboard.type')}} </label>
+                                                                <select  required   id="type" class="form-control input-custom"  name="type">
+                                                                    <option value="">{{__('dashboard.select-type')}}</option>
+                                                                    <option value="internal">internal</option>
+                                                                    <option value="amazon">amazon</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
 
-                                                    
-                                                    <div class="col-md-3">
+
+                                                    <div class="col-md-3" id="sample_file">
                                                         <div class="form-group">
                                                             <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.sample-file')}} </label>
                                                             <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="sample_file">
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-3" id="complete_file">
+                                                            <div class="form-group">
+                                                                <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
+                                                                <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.categories')}} </label>
@@ -81,12 +97,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.complete-file')}} </label>
-                                                            <input type="file"   class="custom-file-input" id="inputGroupFile01"  name="complete_file">
-                                                        </div>
-                                                    </div>
+
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label    for="projectinput1">{{__('dashboard.writer')}} </label>
@@ -99,30 +110,21 @@
                                                             <input type="file" required  class="custom-file-input" id="inputGroupFile01"  name="image">
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label    for="projectinput12">{{__('dashboard.pages_number')}} </label>
                                                             <input type="number"   id="projectinput12" class="form-control input-custom"  name="pages_number">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label    for="projectinput1">{{__('dashboard.type')}} </label>
-                                                            <select  required   id="type" class="form-control input-custom"  name="type">
-                                                                <option value="">{{__('dashboard.select-type')}}</option>
-                                                                <option value="internal">internal</option>
-                                                                <option value="amazon">amazon</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">{{__('dashboard.price')}} </label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom"  name="price">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12" style="display: none"  id="amazon_url">
+                                                    <div class="col-md-6" style="display: none"  id="amazon_url">
                                                         <div class="form-group">
                                                             <label   for="projectinput1">amazon url </label>
                                                             <input type="text"  class="form-control input-custom"  name="amazon_url">
@@ -187,9 +189,13 @@
                 if($( "#type option:selected" ).text()=='amazon')
                 {
                     $('#amazon_url').show();
+                    $('#complete_file').hide();
+                    $('#sample_file').hide();
                 }
                 else{
                     $('#amazon_url').hide();
+                    $('#complete_file').show();
+                    $('#sample_file').show();
                 }
             });
 

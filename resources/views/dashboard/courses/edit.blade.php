@@ -98,7 +98,6 @@
                                                             </div>
                                                         </div>
 
-
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -109,10 +108,13 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
+                                                    <div class="col-12" style="margin-right: auto;">
+                                                        <a class="btn btn-primary" style="width: 300px;color: #f0f0f0" href="{{route('indexes.create',$courses->id)}}"  >{{__('dashboard.add-indexes')}}</a>
+                                                    </div>
+                                                    <hr>
 
 
-
-                                                    <div class="form-actions">
+                                                    <div class="col-md-12 form-actions">
                                                 <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('courses.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>

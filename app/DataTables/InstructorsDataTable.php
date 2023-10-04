@@ -38,11 +38,22 @@ class InstructorsDataTable extends DataTable
                 return $q->phone;
             })
             ->editColumn('Attachments', function($q) {
-                return '<h6><a href="/dashboard/instructors-attachs/'.  $q->id .'">'. __('dashboard.attachments') .'</a></h6>';            })
+                return '<h6><a href="/dashboard/instructors-attachs/'.  $q->id .'">'. __('dashboard.attachments') .'</a></h6>';
+            })
+            ->editColumn('status', function ($raw) {
+                 if ($raw->status==1)
+                {
+                    return '<h4 style="color: darkgreen;font-weight: bold;">YES</h4>';
+                }
+                else
+                {
+                    return '<h4 style="color: red;font-weight: bold;">NO</h4>';
+                }
+            })
 
 
             ->addColumn('action', 'dashboard.instructor.actions')
-            ->rawColumns(['action','Attachments']);
+            ->rawColumns(['action','Attachments','status']);
     }
 
     /**
@@ -101,6 +112,8 @@ class InstructorsDataTable extends DataTable
                 ->title(__('dashboard.commission_instructor')),
             Column::make('Attachments')
                 ->title(__('dashboard.attachments')),
+            Column::make('status')
+                ->title(__('dashboard.active')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)

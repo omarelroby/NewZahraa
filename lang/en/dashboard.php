@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'active'=>'Active',
+    'registration_date'=>'Registration Date',
     'dashboard'=>'DASHBOARD',
     'accept'=>'Accept The Request',
     'pass-score'=>'Pass Score',

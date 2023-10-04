@@ -122,6 +122,13 @@
                                                                         </div>
                                                                     </div>
 
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label   for="inputGroupFile01">{{__('dashboard.active')}} </label>
+                                                                        <input type="checkbox" @if($instructor->status==1) checked @endif value="1"    class="form-check" id="inputGroupFile01"  name="status">
+                                                                    </div>
+                                                                </div>
+
                                                                 </div>
 
 
