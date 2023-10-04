@@ -3,7 +3,7 @@
 @import url('components.css');
 @import url("https://db.onlinewebfonts.com/c/a85976799f11330f194b1dc04c954666?family=Bahij+TheSansArabic+Plain");
 
-[dir="rtl"] body {
+[data-textdirection="rtl"] body {
   font-family: "Bahij TheSansArabic Plain", sans-serif !important;
 }
 
