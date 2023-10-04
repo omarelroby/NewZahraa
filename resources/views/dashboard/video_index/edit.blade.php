@@ -68,7 +68,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput1">title ({{$locale}})</label>
-                                                                            <input type="text"  value="{{$index->translate($locale)->title}}" required id="projectinput1" class="form-control"   name="{{$locale}}[title]">
+                                                                            <input type="text"  value="{{$index->translate($locale)->title}}" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
@@ -76,22 +76,22 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput2">{{__('dashboard.minute-from')}}</label>
-                                                                            <input type="text" step=".01" value="{{$index->time_from}}" required id="projectinput2" class="form-control"   name="time_from">
+                                                                            <input type="text" step=".01" value="{{$index->time_from}}" required id="projectinput2" class="form-control input-custom"   name="time_from">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="projectinput3">{{__('dashboard.minute-to')}}</label>
-                                                                            <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput3" class="form-control"   name="time_to">
+                                                                            <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput3" class="form-control input-custom"   name="time_to">
                                                                         </div>
                                                                     </div>
                                                              </div>
 
                                                 <div class="form-actions">
-                                                    <button type="button" class="btn btn-warning mr-1">
+                                                    <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                         <a href="{{route('video-index.index',$index->videos_id)}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                     </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>

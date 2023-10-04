@@ -61,9 +61,6 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-
-                                                </div>
-                                                <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile01">{{__('dashboard.video_url')}} </label>
@@ -92,9 +89,9 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-
-
                                                 </div>
+
+
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('page.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
