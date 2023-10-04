@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\SubscriptionsDataTable;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,6 +31,11 @@ class HomeController extends Controller
     {
         return $dataTable->render('dashboard.subscriptions.index');
 
+    }
+    public function delete_subscription($id)
+    {
+        Subscription::find($id)->delete();
+        return back();
     }
 
 }

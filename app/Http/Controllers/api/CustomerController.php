@@ -89,7 +89,7 @@ class CustomerController extends Controller
             ->first();
 
         $instructor = Instructor::where('email', $request->email)
-            ->first();
+           ->first();
 
         if ($customer) {
             if (Hash::check($request->password, $customer->password)) {
@@ -104,16 +104,25 @@ class CustomerController extends Controller
             }
         } else {
             if ($instructor) {
-                if (Hash::check($request->password, $instructor->password)) {
-                    $data = [
-                        'type' => 'instructor',
-                        'instructor' => new InstructorResource($instructor),
-                        'token' => $instructor->createToken($instructor->name)->accessToken,
-                    ];
-                    return $this->success($data);
-                } else {
-                    return $this->error('password not correct');
+                if ($instructor->status==0)
+                {
+                    return $this->error('Sorry Your Account is Blocked Currently');
+
                 }
+                else
+                {
+                    if (Hash::check($request->password, $instructor->password)) {
+                        $data = [
+                            'type' => 'instructor',
+                            'instructor' => new InstructorResource($instructor),
+                            'token' => $instructor->createToken($instructor->name)->accessToken,
+                        ];
+                        return $this->success($data);
+                    } else {
+                        return $this->error('password not correct');
+                    }
+                }
+
 
             } else {
                 return $this->error('check your email, email not corrected');

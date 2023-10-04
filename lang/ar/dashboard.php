@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'active'=>'مفعل',
+    'registration_date'=>'تاريخ التسجيل',
     'dashboard'=>'لوحة التحكم',
     'accept'=>'موافقة الطلب',
     'pass-score'=>'درجة النجاح',
