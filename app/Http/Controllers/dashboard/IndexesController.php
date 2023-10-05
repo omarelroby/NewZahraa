@@ -35,7 +35,7 @@ use App\DataTables\CategoriesDataTable;
 use function PHPUnit\Framework\countOf;
 
 
-class لIndexesController extends Controller
+class IndexesController extends Controller
 {
 
 
