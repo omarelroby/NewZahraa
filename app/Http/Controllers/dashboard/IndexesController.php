@@ -71,7 +71,7 @@ class لIndexesController extends Controller
             if (isset($input['video'])) {
                   $file=$input['video']->getClientOriginalExtension();
                 $path = Storage::disk('s3')->put('courseVideosIndex/'.time() . '_' . random_int(1, 100000) . '.' . $file, $input['video'], 'public');
-                $index['video'] = Storage::disk('s3')->url($path);
+                $input['video'] = Storage::disk('s3')->url($path);
             }
             $input['course_indexes_id'] = $index->id;
             $input['is_free'] = $input['is_free'] ?? 0;
