@@ -35,7 +35,7 @@ use App\DataTables\CategoriesDataTable;
 use function PHPUnit\Framework\countOf;
 
 
-class IndexesController extends Controller
+class لIndexesController extends Controller
 {
 
 
@@ -71,7 +71,7 @@ class IndexesController extends Controller
             if (isset($input['video'])) {
                   $file=$input['video']->getClientOriginalExtension();
                 $path = Storage::disk('s3')->put('courseVideosIndex/'.time() . '_' . random_int(1, 100000) . '.' . $file, $input['video'], 'public');
-                $data['video'] = Storage::disk('s3')->url($path);
+                $index['video'] = Storage::disk('s3')->url($path);
             }
             $input['course_indexes_id'] = $index->id;
             $input['is_free'] = $input['is_free'] ?? 0;
