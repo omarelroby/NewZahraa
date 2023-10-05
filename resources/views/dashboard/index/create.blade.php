@@ -68,7 +68,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.name')}} ({{$locale}})</label>
-                                                            <input type="text" required id="projectinput1" class="form-control"   name="{{$locale}}[name]">
+                                                            <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -81,10 +81,10 @@
 
 
                                             <div class="form-actions">
-                                                <button type="button" class="btn btn-warning mr-1">
+                                                <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                     <a href="{{route('index.index',$id)}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-main">
                                                     <i class="fa fa-check-square-o"></i> {{__('dashboard.save')}}
                                                 </button>
                                             </div>
@@ -124,19 +124,19 @@
         var y = 0;
         $(document).on('click', '#addRelatedProgram', function() {
             $('#relatedPrograms').append(`
-                 <div class="well row" id="programTag${y}">
-                    <a style="text-decoration: none" count="${y}" href="#" class="closeTag" data-dismiss="alert" aria-label="close">&times;</a>
+                 <div class="well row" id="programTag${y}" style="align-items: center;">
+                    <a style="text-decoration: none;font-size: 40px;" count="${y}" href="#" class="closeTag text-red" data-dismiss="alert" aria-label="close">&times;</a>
 
                     <div class="form-group col-md-3">
                         <label for="inputRelatedProgram"> <span class="required">{{__('dashboard.video')}}</span></label>
-                        <input type="file" class="form-control  " required count="${y}" id="inputRelatedProgram" name="repeater[${y}][video]" >
+                        <input type="file" class="form-control  input-custom" required count="${y}" id="inputRelatedProgram" name="repeater[${y}][video]" >
 
                         </div>
                          @foreach(config('translatable.locales') as $locale)
 
                 <div class="form-group col-3">
                 <label for="inputRelatedProgram"> {{__('dashboard.name')}}({{$locale}})</label>
-                <input type="text" class="form-control  " required count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
+                <input type="text" class="form-control  input-custom" required count="${y}" id="inputRelatedProgram" name="repeater[${y}][{{$locale}}][title]" >
                         </div>
                         @endforeach
 

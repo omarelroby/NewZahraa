@@ -1,6 +1,11 @@
 @import url('bootstrap-extended.css');
 @import url('colors.css');
 @import url('components.css');
+@import url("https://db.onlinewebfonts.com/c/a85976799f11330f194b1dc04c954666?family=Bahij+TheSansArabic+Plain");
+
+[data-textdirection="rtl"] body {
+  font-family: "Bahij TheSansArabic Plain", sans-serif !important;
+}
 
 .text-red {
   color: #dc0d05;
