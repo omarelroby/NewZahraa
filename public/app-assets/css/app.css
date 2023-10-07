@@ -88,7 +88,7 @@
   background: rgb(220 38 38) !important;
 }
 
-.menu-title {
+.menu-collapsed .menu-title {
   color: #fff;
   border-right: none !important;
   background: rgb(220 38 38) !important;
