@@ -48,13 +48,13 @@ class ApplyJobDataTable extends DataTable
     {
         return $this->builder()
                     ->setTableId('course-index-videos-table')
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    ->orderBy(0)
                     ->parameters([
                         'responsive' => true,
                         'autoWidth' => false
-                      ])
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                     ->orderBy(0)
+                    ])
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
