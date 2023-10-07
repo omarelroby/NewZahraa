@@ -276,7 +276,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-person-video3"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors')}}</span>
                 </a>
                 <ul class="menu-content">
