@@ -78,19 +78,15 @@ class ApplyJobDataTable extends DataTable
             Column::make('name')
                 ->title(__('dashboard.name')),
             Column::make('email')
-                ->width(50)
                 ->title(__('dashboard.email')),
             Column::make('phone')
-                ->width(50)
                 ->title(__('dashboard.phone')),
             Column::make('cv')
-                ->width(50)
                 ->title(__('dashboard.cv')),
              Column::computed('action')
                  ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
-                ->width(50)
                 ->addClass('text-center'),
         ];
     }
