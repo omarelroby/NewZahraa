@@ -124,10 +124,10 @@
   width: 100px;
 }
 
-.dataTables_wrapper {
+/* .dataTables_wrapper {
   overflow-x: auto !important;
   zoom: 0.87;
-}
+} */
 
 .dataTables_wrapper tbody td img {
   width: 100px;
