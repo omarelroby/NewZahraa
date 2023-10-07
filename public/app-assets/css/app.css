@@ -127,7 +127,6 @@
 .dataTables_wrapper {
   overflow-x: auto !important;
   zoom: 0.87;
-  width: 98% !important;
 }
 
 .dataTables_wrapper tbody td img {
