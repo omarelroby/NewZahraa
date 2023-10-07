@@ -208,7 +208,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-bookmark"></i><span class="menu-title"
                                                                                   data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -324,7 +324,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-home"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-break"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.home-section')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -341,7 +341,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-camera-video"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-courses')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -375,7 +375,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-paper"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors-requests')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -386,7 +386,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-chat-left-text"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -397,7 +397,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-arrow-down"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -408,7 +408,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-arrow-down-left-square"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -420,7 +420,7 @@
             </li>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-repeat"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -431,7 +431,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-tasks"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-earmark-person"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.employment-applications')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -447,7 +447,7 @@
             </li>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-send"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-arrow-up"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.send-emails')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -458,7 +458,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-send"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-wallet2"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.coupon')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -469,7 +469,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar-range"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.appointments')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -480,7 +480,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-briefcase"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -491,7 +491,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -502,7 +502,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-inboxes"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.subscriptions')}}</span>
                 </a>
                 <ul class="menu-content">

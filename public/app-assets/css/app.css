@@ -81,7 +81,8 @@
 
 .main-menu.menu-dark .navigation>li.hover>a,
 .main-menu.menu-dark .navigation>li:hover>a,
-.main-menu.menu-dark .navigation>li.active>a {
+.main-menu.menu-dark .navigation>li.active>a,
+.main-menu.menu-dark .navigation>li.open>a {
   color: #fff;
   border-right: none !important;
   background: rgb(220 38 38) !important;
