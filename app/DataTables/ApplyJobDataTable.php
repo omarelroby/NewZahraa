@@ -48,6 +48,9 @@ class ApplyJobDataTable extends DataTable
     {
         return $this->builder()
                     ->setTableId('course-index-videos-table')
+                    ->parameters([
+                        'responsive' => true,
+                      ])
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                      ->orderBy(0)
