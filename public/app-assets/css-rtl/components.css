@@ -6000,11 +6000,16 @@ table.dataTable {
 .content-wrapper table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
     top: 10px;
     right: 10px;
-
-    border-radius: 0;
-    background-color: #967adc;
+    background-color: #00d19d;
+    color: #fff;
     -webkit-box-shadow: 0 0 2px #444;
     box-shadow: 0 0 2px #444;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
+    font-size: 8px;
+    text-align: center;
 }
 
 .content-wrapper table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
