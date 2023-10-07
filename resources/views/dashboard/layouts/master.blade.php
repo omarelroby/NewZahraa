@@ -52,7 +52,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/fonts/meteocons/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
     <link href="https://cdn.jsdelivr.xyz/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     @if(app()->getLocale()=='en')
@@ -175,7 +175,7 @@
 
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-columns-gap"></i><span class="menu-title"
                                                                                     data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
                 </a>
                 <ul class="menu-content">

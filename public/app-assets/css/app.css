@@ -7,6 +7,11 @@
   font-family: "Bahij TheSansArabic Plain", sans-serif !important;
 }
 
+.main-menu.menu-dark .navigation,
+.navbar-semi-dark .navbar-header {
+  background-color: #020617;
+}
+
 .text-red {
   color: #dc0d05;
 }
