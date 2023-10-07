@@ -44,9 +44,26 @@
 }
 
 .btn-main:hover,
-.btn-main:focus {
+.btn-main:focus,
+.btn-info:hover,
+.btn-info:focus,
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: #c30700 !important;
   border-color: #c30700 !important;
+  color: #fff;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #dc0d05 !important;
+  border-color: #dc0d05 !important;
+}
+
+.btn-info {
+  background-color: #fff !important;
+  border-color: #dc0d05 !important;
+  color: #dc0d05 !important;
 }
 
 .input-custom {
@@ -107,7 +124,7 @@
 
 .dataTables_wrapper {
   overflow-x: auto !important;
-  zoom: 0.9;
+  zoom: 0.87;
 }
 
 .custom-file-label {
