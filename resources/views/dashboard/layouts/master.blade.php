@@ -51,8 +51,7 @@
     @endif
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/fonts/meteocons/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.5.0/responsive.bootstrap4.min.css" integrity="sha512-VCdmYZJ6/Qk2eIoLWElOaGtkJ+RhyCUy+6DSNFKO6JocNr+67CWYiIKZsjf3NE2+lzhbMIaqVk+xAPukAvAB/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="//cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.xyz/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- END Page Level CSS-->
@@ -557,8 +556,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.5.0/responsive.bootstrap4.min.js" integrity="sha512-9poqUSNU88cPpt4faTVt+rgG+jqFKsE2zzPZOTsxEnlHsi84Yv5+xEsk0uhFDvrb1qnCbyYo0IQ+dZGhIjyRBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.20.1/full-all/ckeditor.js"></script>
 
 @yield('script')
