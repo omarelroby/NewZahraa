@@ -50,6 +50,7 @@ class ApplyJobDataTable extends DataTable
                     ->setTableId('course-index-videos-table')
                     ->parameters([
                         'responsive' => true,
+                        'autoWidth' => false
                       ])
                     ->columns($this->getColumns())
                     ->minifiedAjax()

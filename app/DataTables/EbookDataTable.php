@@ -71,6 +71,7 @@ class EbookDataTable extends DataTable
                     ->selectStyleSingle()
                     ->parameters([
                         'responsive' => true,
+                        'autoWidth' => false
                       ])
                     ->buttons([
                         Button::make('excel'),
