@@ -88,6 +88,13 @@
   background: rgb(220 38 38) !important;
 }
 
+.menu-title {
+  color: #fff;
+  border-right: none !important;
+  background: rgb(220 38 38) !important;
+  border-radius: 0 10px 10px 0px;
+}
+
 .custom-navbrand {
   width: fit-content;
   overflow: hidden;
