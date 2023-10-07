@@ -70,9 +70,12 @@
   background-color: #020617;
 }
 
+.menu-collapsed .main-menu.menu-dark .navigation>li>a {
+  text-align: center;
+}
+
 .main-menu.menu-dark .navigation>li>a {
   border-radius: 10px;
-  text-align: center;
   margin: 5px 3px;
 }
 
