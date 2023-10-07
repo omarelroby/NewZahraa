@@ -69,6 +69,9 @@ class EbookDataTable extends DataTable
                     ->minifiedAjax()
                      ->orderBy(0)
                     ->selectStyleSingle()
+                    ->parameters([
+                        'responsive' => true,
+                      ])
                     ->buttons([
                         Button::make('excel'),
                         Button::make('csv'),
