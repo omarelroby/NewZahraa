@@ -208,7 +208,7 @@
             </li>
             <li class=" nav-item">
 
-                 <a href="{{url('/dashboard')}}"><i class="bi bi-journal-bookmark"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
+                 <a href="{{url('/dashboard')}}"><i class="fa fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class="@if(request()->routeIs('ebook.index')) active @endif">
