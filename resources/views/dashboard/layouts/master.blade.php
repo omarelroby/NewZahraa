@@ -157,7 +157,7 @@
 
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}">
-                    <i   class="@if(request()->routeIs('categories.index')) fa fa-home active @else fa fa-home @endif" ></i>
+                    <i   class="@if(request()->routeIs('categories.index')) bi bi-house active @else bi bi-house @endif" ></i>
                           <span class="menu-title"
                                 data-i18n="nav.dash.main">{{__('dashboard.dashboard')}}</span>
 
@@ -171,7 +171,7 @@
 
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i>
+                <a href="{{url('/dashboard')}}"><i class="bi bi-columns-gap"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
 
                 <ul class="menu-content" >
@@ -188,7 +188,7 @@
 
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}">
-                    <i class="fa fa-flag-checkered"></i>
+                <i class="bi bi-globe-europe-africa"></i>
                     <span class="menu-title"
                           data-i18n="nav.dash.main">{{__('dashboard.countries')}}</span>
                 </a>
@@ -205,7 +205,7 @@
             </li>
             <li class=" nav-item">
 
-                 <a href="{{url('/dashboard')}}"><i class="fa fa-book"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
+                 <a href="{{url('/dashboard')}}"><i class="bi bi-journal-bookmark-fill"></i><span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class="@if(request()->routeIs('ebook.index')) active @endif">
@@ -219,7 +219,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa fa-file"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-earmark-medical"></i><span class="menu-title"
                                                                                 data-i18n="nav.dash.main">{{__('dashboard.pages')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -288,7 +288,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-person-badge"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main"> {{__('dashboard.customers')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -304,7 +304,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-earmark-code"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.courses')}}</span>
                 </a>
                 <ul class="menu-content">
