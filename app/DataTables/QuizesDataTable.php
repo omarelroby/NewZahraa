@@ -67,7 +67,11 @@ class QuizesDataTable extends DataTable
                     ->setTableId('quizes-group-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                     ->orderBy(0)
+                    ->orderBy(0)
+                    ->parameters([
+                        'responsive' => true,
+                        'autoWidth' => false
+                    ])
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),

@@ -44,9 +44,28 @@
 }
 
 .btn-main:hover,
-.btn-main:focus {
+.btn-main:focus,
+.btn-info:hover,
+.btn-info:focus,
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: #c30700 !important;
   border-color: #c30700 !important;
+  color: #fff;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #dc0d05 !important;
+  border-color: #dc0d05 !important;
+  border-radius: 10px !important;
+}
+
+.btn-info {
+  background-color: #fff !important;
+  border-color: #dc0d05 !important;
+  color: #dc0d05 !important;
+  border-radius: 10px !important;
 }
 
 .input-custom {
@@ -65,6 +84,36 @@
   border-radius: 2px;
 }
 
+.main-menu.menu-dark .navigation,
+.navbar-semi-dark .navbar-header {
+  background-color: #020617;
+}
+
+.menu-collapsed .main-menu.menu-dark .navigation>li>a {
+  text-align: center;
+}
+
+.main-menu.menu-dark .navigation>li>a {
+  border-radius: 10px;
+  margin: 5px 3px;
+}
+
+.main-menu.menu-dark .navigation>li.hover>a,
+.main-menu.menu-dark .navigation>li:hover>a,
+.main-menu.menu-dark .navigation>li.active>a,
+.main-menu.menu-dark .navigation>li.open>a {
+  color: #fff;
+  border-right: none !important;
+  background: rgb(220 38 38) !important;
+}
+
+.menu-collapsed .menu-title {
+  color: #fff;
+  border-right: none !important;
+  background: rgb(220 38 38) !important;
+  border-radius: 0 10px 10px 0px;
+}
+
 .custom-navbrand {
   width: fit-content;
   overflow: hidden;
@@ -75,9 +124,15 @@
   width: 100px;
 }
 
-.dataTables_wrapper {
+/* .dataTables_wrapper {
   overflow-x: auto !important;
-  zoom: 0.9;
+  zoom: 0.87;
+} */
+
+.dataTables_wrapper tbody td img {
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #fafafa;
 }
 
 .custom-file-label {

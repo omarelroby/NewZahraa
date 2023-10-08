@@ -50,9 +50,10 @@
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/plugins/calendars/clndr.css')}}">
     @endif
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/fonts/meteocons/style.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.xyz/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     @if(app()->getLocale()=='en')
@@ -71,11 +72,7 @@
 
     @endif
     <style>
-        .dataTables_wrapper
-        {
-            overflow-x: scroll;
-
-        }
+        
     </style>
 
     <!-- END Custom CSS-->
@@ -174,8 +171,13 @@
 
 
             <li class=" nav-item">
+<<<<<<< HEAD
                 <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
+=======
+                <a href="{{url('/dashboard')}}"><i class="bi bi-columns-gap"></i><span class="menu-title"
+                                                                                    data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
+>>>>>>> bf6ea0421da588ddd77a8b31ef2e628501eccb3a
                 </a>
                 <ul class="menu-content" >
                     <li class="@if(request()->routeIs('categories.index')) active @endif">
@@ -207,8 +209,12 @@
                 </ul>
             </li>
             <li class=" nav-item">
+<<<<<<< HEAD
                 <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i>
                     <span class="menu-title"
+=======
+                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-bookmark"></i><span class="menu-title"
+>>>>>>> bf6ea0421da588ddd77a8b31ef2e628501eccb3a
                                                                                   data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -276,7 +282,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-person-video3"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -324,7 +330,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-home"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-break"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.home-section')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -341,7 +347,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-camera-video"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-courses')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -375,7 +381,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-paper"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors-requests')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -386,7 +392,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-user-circle-o"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-chat-left-text"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -397,7 +403,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-arrow-down"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -408,7 +414,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-arrow-down-left-square"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -420,7 +426,7 @@
             </li>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-repeat"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -431,7 +437,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-tasks"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-file-earmark-person"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.employment-applications')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -447,7 +453,7 @@
             </li>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-send"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-arrow-up"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.send-emails')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -458,7 +464,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-send"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-wallet2"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.coupon')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -469,7 +475,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar-range"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.appointments')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -480,7 +486,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-briefcase"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -491,7 +497,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -502,7 +508,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa  fa-bookmark"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="bi bi-inboxes"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.subscriptions')}}</span>
                 </a>
                 <ul class="menu-content">
@@ -558,7 +564,9 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap.min.mjs"></script>
 <script src="https://cdn.ckeditor.com/4.20.1/full-all/ckeditor.js"></script>
 
 @yield('script')

@@ -23,7 +23,7 @@
                 <section id="configuration">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card p-2">
+                            <div class="card p-3 rounded-10">
                                 {!! $dataTable->table() !!}
                             </div>
                         </div>

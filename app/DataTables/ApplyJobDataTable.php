@@ -50,7 +50,11 @@ class ApplyJobDataTable extends DataTable
                     ->setTableId('course-index-videos-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                     ->orderBy(0)
+                    ->orderBy(0)
+                    ->parameters([
+                        'responsive' => true,
+                        'autoWidth' => false
+                    ])
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -84,7 +88,6 @@ class ApplyJobDataTable extends DataTable
                  ->title(__('dashboard.action'))
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
                 ->addClass('text-center'),
         ];
     }
