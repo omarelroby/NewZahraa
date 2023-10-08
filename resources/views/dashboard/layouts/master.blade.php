@@ -174,9 +174,6 @@
                 <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
 
-                <a href="{{url('/dashboard')}}"><i class="bi bi-columns-gap"></i><span class="menu-title"
-                                                                                    data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
-                </a>
                 <ul class="menu-content" >
                     <li class="@if(request()->routeIs('categories.index')) active @endif">
                         <a class="menu-item" href="{{route('categories.index')}}"
