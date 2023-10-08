@@ -72,7 +72,7 @@
 
     @endif
     <style>
-        
+
     </style>
 
     <!-- END Custom CSS-->
@@ -171,13 +171,11 @@
 
 
             <li class=" nav-item">
-<<<<<<< HEAD
                 <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
-=======
+
                 <a href="{{url('/dashboard')}}"><i class="bi bi-columns-gap"></i><span class="menu-title"
                                                                                     data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
->>>>>>> bf6ea0421da588ddd77a8b31ef2e628501eccb3a
                 </a>
                 <ul class="menu-content" >
                     <li class="@if(request()->routeIs('categories.index')) active @endif">
@@ -195,7 +193,7 @@
                 <a href="{{url('/dashboard')}}">
                     <i class="fa fa-flag-checkered"></i>
                     <span class="menu-title"
-                                                                                          data-i18n="nav.dash.main">{{__('dashboard.countries')}}</span>
+                          data-i18n="nav.dash.main">{{__('dashboard.countries')}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class="@if(request()->routeIs('country.index')) active @endif">
