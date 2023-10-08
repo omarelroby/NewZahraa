@@ -4,11 +4,11 @@
         <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
     <div class="dropdown-menu">
 
+        <a class="dropdown-item" href="{{ url("/online-course-quiz/{$id}/edit") }}">
+            <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
         <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
             <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
         {{--                <div class="dropdown-divider"></div>--}}
-        <a class="dropdown-item" href="{{ url("/online-course-quiz/{$id}/edit") }}">
-            <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
 
 
     </div>

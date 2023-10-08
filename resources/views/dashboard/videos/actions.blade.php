@@ -4,13 +4,13 @@
                 <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
             <div class="dropdown-menu">
 
+                <a class="dropdown-item" href="{{ url("/videos/{$id}/edit") }}">
+                <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
+            <a class="dropdown-item" href="{{ url("/videos-indexes/{$id}") }}">
+                <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
                    <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
 {{--                <div class="dropdown-divider"></div>--}}
-                    <a class="dropdown-item" href="{{ url("/videos/{$id}/edit") }}">
-                    <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
-                <a class="dropdown-item" href="{{ url("/videos-indexes/{$id}") }}">
-                    <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>
             </div>
 </div>
 
