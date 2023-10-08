@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'cash'=>'Cash',
+    'withdraw-request'=>'Withdraw Request',
     'active'=>'Active',
     'registration_date'=>'Registration Date',
     'dashboard'=>'DASHBOARD',

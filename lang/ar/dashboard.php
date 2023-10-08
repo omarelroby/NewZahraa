@@ -12,6 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'cash'=>'المبلغ',
+    'withdraw-request'=>'طلب السحب',
     'active'=>'مفعل',
     'registration_date'=>'تاريخ التسجيل',
     'dashboard'=>'لوحة التحكم',

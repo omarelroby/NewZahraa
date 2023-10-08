@@ -524,6 +524,19 @@
                 </ul>
             </li>
 
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="fa  fa-dollar"></i><span class="menu-title"
+                                                                                   data-i18n="nav.dash.main">{{__('dashboard.withdraw-request')}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('withdraw.index')) active @endif">
+                        <a class="menu-item" href="{{route('withdraw.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.withdraw-request')}}</a>
+                    </li>
+
+                </ul>
+            </li>
+
 
         </ul>
         </li>

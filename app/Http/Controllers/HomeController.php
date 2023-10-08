@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\SubscriptionsDataTable;
+use App\DataTables\WithdrawDataTable;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,11 @@ class HomeController extends Controller
     {
         Subscription::find($id)->delete();
         return back();
+    }
+    public function withdraw(WithdrawDataTable $dataTable)
+    {
+        return $dataTable->render('dashboard.withdraw.index');
+
     }
 
 }
