@@ -94,9 +94,9 @@
                 <li class="nav-item custom-navbrand">
                     <a class="navbar-brand"
                                         href="{{route('dashboard')}}">
-                     <img class="brand-logo" alt="robust admin logo" 
+                     <img class="brand-logo" alt="robust admin logo"
                              src="{{asset('app-assets/images/logo/Logo Zahraa.png')}}"/>
-                            
+
                     </a>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                                                   data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
@@ -160,10 +160,9 @@
 
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}">
-                    <i class="fa fa-home"></i>
+                    <i   class="@if(request()->routeIs('categories.index')) fa fa-home active @else fa fa-home @endif" ></i>
                           <span class="menu-title"
                                 data-i18n="nav.dash.main">{{__('dashboard.dashboard')}}</span>
-
 
                 </a>
 
@@ -175,15 +174,15 @@
 
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i><span class="menu-title"
-                                                                                    data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
+                <a href="{{url('/dashboard')}}"><i class="ft-align-right"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">{{__('dashboard.categories')}}</span>
                 </a>
-                <ul class="menu-content">
-                    <li>
+                <ul class="menu-content" >
+                    <li class="@if(request()->routeIs('categories.index')) active @endif">
                         <a class="menu-item" href="{{route('categories.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.categories')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('categories.create')) active @endif" >
                         <a class="menu-item" href="{{route('categories.create')}}"
                            data-i18n="nav.dash.project">{{__('dashboard.add-category')}}</a>
                     </li>
@@ -197,26 +196,27 @@
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.countries')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('country.index')) active @endif">
                         <a class="menu-item" href="{{route('country.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.countries')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('country.create')) active @endif">
                         <a class="menu-item" href="{{route('country.create')}}"
                            data-i18n="nav.dash.project">{{__('dashboard.add-country')}}</a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i><span class="menu-title"
+                <a href="{{url('/dashboard')}}"><i class="fa f fa-book"></i>
+                    <span class="menu-title"
                                                                                   data-i18n="nav.dash.main">{{__('dashboard.ebooks')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('ebook.index')) active @endif">
                         <a class="menu-item" href="{{route('ebook.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.ebooks')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('ebook.create')) active @endif">
                         <a class="menu-item" href="{{route('ebook.create')}}"
                            data-i18n="nav.dash.project">{{__('dashboard.add-ebooks')}}</a>
                     </li>
@@ -227,11 +227,11 @@
                                                                                 data-i18n="nav.dash.main">{{__('dashboard.pages')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('page.index')) active @endif">
                         <a class="menu-item" href="{{route('page.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.pages')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('page.create')) active @endif">
                         <a class="menu-item" href="{{route('page.create')}}"
                            data-i18n="nav.dash.project">{{__('dashboard.add-pages')}}</a>
                     </li>
@@ -242,11 +242,11 @@
                                                                                         data-i18n="nav.dash.main">{{__('dashboard.free-videos')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('freeVideos.index')) active @endif">
                         <a class="menu-item" href="{{route('freeVideos.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.free-videos')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('freeVideos.create')) active @endif">
                         <a class="menu-item" href="{{route('freeVideos.create')}}"
                            data-i18n="nav.dash.project">{{__('dashboard.add-free-videos')}}</a>
                     </li>
@@ -268,7 +268,7 @@
                                                                                   data-i18n="nav.dash.main">{{__('dashboard.general-setting')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('setting.edit')) active @endif">
                         <a class="menu-item" href="{{route('setting.edit',1)}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.edit-setting')}}</a>
                     </li>
@@ -280,11 +280,11 @@
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('instructors.index')) active @endif">
                         <a class="menu-item" href="{{route('instructors.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.instructors')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('instructors.create')) active @endif">
                         <a class="menu-item" href="{{route('instructors.create')}}"
                            data-i18n="nav.dash.ecommerce"> {{__('dashboard.add-instructors')}}</a>
                     </li>
@@ -296,11 +296,11 @@
                                                                                           data-i18n="nav.dash.main"> {{__('dashboard.customers')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('customers.index')) active @endif">
                         <a class="menu-item" href="{{route('customers.index')}}"
                            data-i18n="nav.dash.ecommerce">   {{__('dashboard.customers')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('customers.create')) active @endif">
                         <a class="menu-item" href="{{route('customers.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-customers')}}</a>
                     </li>
@@ -312,11 +312,11 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.courses')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('courses.index')) active @endif">
                         <a class="menu-item" href="{{route('courses.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.courses')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('courses.create')) active @endif">
                         <a class="menu-item" href="{{route('courses.create')}}"
                            data-i18n="nav.dash.ecommerce"> {{__('dashboard.add-courses')}}</a>
                     </li>
@@ -328,11 +328,11 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.home-section')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('home-section.index')) active @endif">
                         <a class="menu-item" href="{{route('home-section.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.home-section')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('home-section.create')) active @endif">
                         <a class="menu-item" href="{{route('home-section.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-section')}}</a>
                     </li>
@@ -345,11 +345,11 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-courses')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('online-courses.index')) active @endif">
                         <a class="menu-item" href="{{route('online-courses.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.online-courses')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('online-courses.create')) active @endif">
                         <a class="menu-item" href="{{route('online-courses.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-online-courses')}}</a>
                     </li>
@@ -362,11 +362,11 @@
                                                                                             data-i18n="nav.dash.main">{{__('dashboard.questions')}}  </span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('question.index')) active @endif">
                         <a class="menu-item" href="{{route('question.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.questions')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('question.create')) active @endif">
                         <a class="menu-item" href="{{route('question.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-questions')}}</a>
                     </li>
@@ -379,7 +379,7 @@
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors-requests')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('instructor-requests.index')) active @endif">
                         <a class="menu-item" href="{{route('instructor-requests.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.instructors-requests')}}</a>
                     </li>
@@ -390,7 +390,7 @@
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('contacts.index')) active @endif">
                         <a class="menu-item" href="{{route('contacts.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.contacts')}}</a>
                     </li>
@@ -401,7 +401,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('ebook-orders.index')) active @endif">
                         <a class="menu-item" href="{{route('ebook-orders.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.ebook-orders')}}</a>
                     </li>
@@ -412,7 +412,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('course-orders.index')) active @endif">
                         <a class="menu-item" href="{{route('course-orders.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.course-orders')}}</a>
                     </li>
@@ -424,7 +424,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('online-course-orders.index')) active @endif">
                         <a class="menu-item" href="{{route('online-course-orders.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.online-course-orders')}}</a>
                     </li>
@@ -435,11 +435,11 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.employment-applications')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('employment.index')) active @endif">
                         <a class="menu-item" href="{{route('employment.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.employment-applications')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('employment.create')) active @endif">
                         <a class="menu-item" href="{{route('employment.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-employment-applications')}}</a>
                     </li>
@@ -451,7 +451,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.send-emails')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('send-emails.index')) active @endif">
                         <a class="menu-item" href="{{route('send-emails.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.send-emails')}}</a>
                     </li>
@@ -462,7 +462,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.coupon')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('coupon.index')) active @endif">
                         <a class="menu-item" href="{{route('coupon.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.coupon')}}</a>
                     </li>
@@ -473,7 +473,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.appointments')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('appointments.index')) active @endif">
                         <a class="menu-item" href="{{route('appointments.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.appointments')}}</a>
                     </li>
@@ -484,7 +484,7 @@
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('applyJob')) active @endif">
                         <a class="menu-item" href="{{route('applyJob')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.apply-job')}}</a>
                     </li>
@@ -495,7 +495,7 @@
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('booking-appointments.index')) active @endif">
                         <a class="menu-item" href="{{route('booking-appointments.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.booking-appointments')}}</a>
                     </li>
@@ -506,7 +506,7 @@
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.subscriptions')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('subscriptions')) active @endif">
                         <a class="menu-item" href="{{route('subscriptions')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.subscriptions')}}</a>
                     </li>
@@ -517,11 +517,11 @@
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.payment-method')}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="@if(request()->routeIs('payment-method.index')) active @endif">
                         <a class="menu-item" href="{{route('payment-method.index')}}"
                            data-i18n="nav.dash.ecommerce">{{__('dashboard.payment-method')}}</a>
                     </li>
-                    <li>
+                    <li class="@if(request()->routeIs('payment-method.create')) active @endif">
                         <a class="menu-item" href="{{route('payment-method.create')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-payment-method')}}</a>
                     </li>
