@@ -39,7 +39,7 @@ class CustomersDataTable extends DataTable
                 return $q->phone;
             })
             ->editColumn('country', function($q) {
-                return $q->country->name;
+                return $q->country->name??'';
             })
             ->editColumn('created_at', function($q) {
                 return $q->created_at->toDateString();
