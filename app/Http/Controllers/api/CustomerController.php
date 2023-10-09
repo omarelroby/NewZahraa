@@ -130,7 +130,57 @@ class CustomerController extends Controller
 
         }
     }
- public function forget_password(Request $request)
+    public function social_login(Request $request)
+    {
+        $oValidatorRules = [
+            'email' => 'required|email',
+            'token' => 'required',
+
+        ];
+        $validator = Validator::make($request->all(), $oValidatorRules);
+        if ($validator->fails()) {
+            return $this->error($validator->messages());
+        }
+        $customer = Customers::where('email', $request->email)
+            ->first();
+
+        $instructor = Instructor::where('email', $request->email)
+            ->first();
+
+        if ($customer) {
+            $data = [
+                'type' => 'customer',
+                'customer' => new CustomerResource($customer),
+                'token' => $customer->createToken($customer->email)->accessToken,
+            ];
+            return $this->success($data);
+
+        } else {
+            if ($instructor) {
+                $data = [
+                    'type' => 'instructor',
+                    'instructor' => new InstructorResource($instructor),
+                    'token' => $instructor->createToken($instructor->email)->accessToken,
+                ];
+                return $this->success($data);
+
+
+            } else {
+                $customer = new Customers();
+                $customer->email = $request->email;
+                $customer->save();
+                $data = [
+                    'type' => 'customer',
+                    'customer' => new CustomerResource($customer),
+                    'token' => $customer->createToken($customer->email)->accessToken,
+                ];
+                return $this->success($data);
+            }
+
+        }
+    }
+
+    public function forget_password(Request $request)
     {
         $customer = Customers::where('email', $request->email)
             ->first();
