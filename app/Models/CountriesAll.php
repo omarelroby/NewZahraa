@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CountriesAll extends Model
 {
-    protected $table='country';
+    protected $table='COUNTRY';
     protected $fillable= ['ENGLISH_NAME','ARABIC_NAME','ALPHA2_CODE','ALPHA3_CODE'];
 
 
