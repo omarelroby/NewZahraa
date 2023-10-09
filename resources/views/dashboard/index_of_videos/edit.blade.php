@@ -48,7 +48,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form class="form" method="post" action="{{url("update-indexes-videos/{$index->id}")}}" enctype='multipart/form-data'>
+                                        <form class="form" method="post" action="{{route("update.index.videos",$index->id)}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
                                             @if ($errors->any())
