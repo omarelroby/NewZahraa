@@ -12,7 +12,7 @@ class Country extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name'];
-    protected $fillable=['image','slug','country_code'];
+    protected $fillable=['image','slug','country_code','alpha_code'];
 
     public function students()
     {

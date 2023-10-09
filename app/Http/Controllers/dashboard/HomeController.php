@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Models\CountriesAll;
+use App\Models\Country;
 use App\Models\Course;
 use App\Models\Customers;
 use App\Models\Ebook;
@@ -30,6 +32,22 @@ class HomeController extends BaseController
     }
     public function show(){
         return view('dashboard.index');
+    }
+    public function import_country()
+    {
+        $countries=CountriesAll::all();
+        foreach ($countries as $country)
+        {
+            Country::create([
+                'en' => ['name' => $country->ENGLISH_NAME],
+                'ar' => ['name' => $country->ARABIC_NAME],
+                'alpha_code'=>$country->ALPHA2_CODE,
+
+            ]);
+        }
+        return 'success imported countries';
+
+
     }
 
 
