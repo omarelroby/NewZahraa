@@ -34,7 +34,7 @@ class IndexOfIndexVideosDataTable extends DataTable
                 return $q->translate('en')->title ;
             })
 
-            ->addColumn('action', 'dashboard.index_videos.actions')
+            ->addColumn('action', 'dashboard.index_of_videos.actions')
             ->rawColumns(['action','video']);
     }
 

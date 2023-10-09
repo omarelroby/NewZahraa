@@ -4,10 +4,11 @@
     <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
     <div class="dropdown-menu">
+        <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
+            <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
 
-
-                <a class="dropdown-item" href="{{ url("/indexes-videos/{$id}") }}">
-                    <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>
+{{--                <a class="dropdown-item" href="{{ url("/indexes-videos/{$id}") }}">--}}
+{{--                    <i class="fa fa-bookmark mr-1"></i> {{__('dashboard.indexes')}}</a>--}}
             </div>
 </div>
 

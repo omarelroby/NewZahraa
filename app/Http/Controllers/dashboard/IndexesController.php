@@ -23,6 +23,7 @@ use App\Models\CourseIndexes;
 use App\Models\CourseIndexesVideos;
 use App\Models\Customers;
 use App\Models\Ebook;
+use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
 use App\Models\Page;
@@ -117,6 +118,13 @@ class IndexesController extends Controller
         $course=CourseIndexes::find($id);
         $course->delete();
         Alert::error('Deleted', __('dashboard.deleted'));
-        return redirect()->route('index.index', $course->course_id);
+        return redirect()->back();
+    }
+    public function end_index_delete($id)
+    {
+        $course=IndexesVideo::find($id);
+        $course->delete();
+        Alert::error('Deleted', __('dashboard.deleted'));
+        return redirect()->back();
     }
 }

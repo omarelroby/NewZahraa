@@ -84,6 +84,7 @@ Route::middleware('auth:admin')->group(function () {
      Route::put('video-index-update/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'update'])->name('update-video-index');
      Route::delete('video-index-delete/{id}',[\App\Http\Controllers\dashboard\VideoIndexesController::class,'destroy'])->name('delete-video-index');
      Route::delete('index-delete/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'destroy'])->name('delete-index');
+     Route::delete('end-index-delete/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'end_index_delete'])->name('delete-index');
      Route::delete('/index-video-delete/{id}',[\App\Http\Controllers\dashboard\IndexOfIndexVideosController::class,'destroy'])->name('delete-videos-index');
      Route::delete('online-course-index-delete/{id}',[\App\Http\Controllers\dashboard\OnlineCourseIndexController::class,'destroy'])->name('online-course-delete-index');
      Route::get('indexes/{id}',[\App\Http\Controllers\dashboard\IndexesController::class,'index']);

@@ -63,9 +63,9 @@ class IndexOfIndexVideosController extends Controller
 
     public function store(IndexOfVideosRequest $request)
     {
-        CourseIndexesVideos::create($request->all());
+        IndexesVideo::create($request->all());
         Alert::success('Success', __('dashboard.success'));
-        return redirect()->back();
+        return redirect()->route('indexes-videos', $request->indexes_video_id);
 
 
     }
@@ -85,6 +85,6 @@ class IndexOfIndexVideosController extends Controller
         $index=CourseIndexesVideos::find($id);
         $index->delete();
         Alert::error('Deleted', __('dashboard.deleted'));
-        return redirect()->route('indexes-videos', $index->course_indexes_id);
+        return redirect()->back();
     }
 }

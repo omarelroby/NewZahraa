@@ -87,7 +87,7 @@ class IndexVideosController extends Controller
     public function destroy($id)
     {
         $course=CourseIndexes::find($id);
-        $course->delete();
+         $course->delete();
         Alert::error('Deleted', __('dashboard.deleted'));
         return redirect()->route('index.index', $course->course_id);
     }
