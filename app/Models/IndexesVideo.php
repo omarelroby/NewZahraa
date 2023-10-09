@@ -12,7 +12,7 @@ class IndexesVideo extends Model implements TranslatableContract
     use Translatable;
     protected $table='indexes_video';
     public $translatedAttributes = ['title'];
-    protected $fillable=['id','indexes_video_id','time_from','time_to'];
+    protected $fillable=['indexes_video_id','time_from','time_to'];
 
 public function indexes()
 {

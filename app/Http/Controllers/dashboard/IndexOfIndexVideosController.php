@@ -56,36 +56,35 @@ class IndexOfIndexVideosController extends Controller
     }
     public function edit($id)
     {
-        $index=IndexesVideo::find($id);
-
+        $index=CourseIndexesVideos::find($id);
         return view('dashboard.index_of_videos.edit',compact('index'));
     }
 
 
     public function store(IndexOfVideosRequest $request)
     {
-        IndexesVideo::create($request->all());
+        CourseIndexesVideos::create($request->all());
         Alert::success('Success', __('dashboard.success'));
-        return redirect()->route('indexes-videos', $request->indexes_video_id);
+        return redirect()->back();
 
 
     }
 
     public function update(IndexOfVideosRequest $request,$id)
     {
-       $index=IndexesVideo::find($id);
+       $index=CourseIndexesVideos::find($id);
        $index->update($request->all());
         Alert::success('Updated', __('dashboard.update'));
-        return redirect()->route('indexes-videos', $request->indexes_video_id);
+        return redirect()->back();
 
     }
 
 
     public function destroy($id)
     {
-        $index=IndexesVideo::find($id);
+        $index=CourseIndexesVideos::find($id);
         $index->delete();
         Alert::error('Deleted', __('dashboard.deleted'));
-        return redirect()->route('indexes-videos', $index->indexes_video_id);
+        return redirect()->route('indexes-videos', $index->course_indexes_id);
     }
 }

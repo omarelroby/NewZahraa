@@ -63,7 +63,7 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.indexes')}}</h4>
                                                 <div class="row">
-                                                    <input type="text" name="indexes_video_id" hidden value="{{$index->indexes_video_id}}">
+                                                    <input type="text" name="indexes_video_id" hidden value="{{$index->id}}">
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -72,25 +72,14 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput6">{{__('dashboard.minute-to')}}  </label>
-                                                            <input type="number" value="{{$index->time_to}}" step=".01" required id="projectinput6" class="form-control"   name="time_to">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput5">{{__('dashboard.minute-from')}}  </label>
-                                                            <input type="number" value="{{$index->time_from}}" step=".01" required id="projectinput5" class="form-control"   name="time_from">
-                                                        </div>
-                                                    </div>
+
 
                                                 </div>
 
 
                                                     <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1">
-                                                    <a href="{{route('indexes-videos',$index->indexes_video_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
+                                                    <a href="{{route('indexes-videos',$index->course_indexes_id)}}" style="color: white"> <i class="ft-x"></i>Cancel</a>
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-check-square-o"></i> Save

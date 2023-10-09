@@ -29,8 +29,8 @@ class IndexOfVideosRequest extends FormRequest
             'title' => 'array',
             'title.*' => 'required',
             'indexes_video_id' => 'required',
-            'time_to' => 'required',
-            'time_from' => 'required',
+            'time_to' => 'nullable',
+            'time_from' => 'nullable',
 
 
             ];
