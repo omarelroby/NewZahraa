@@ -30,7 +30,7 @@ class CustomersDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('name', function($q) {
-                return $q->name;
+                return $q->name??'';
             })
             ->editColumn('email', function($q) {
                 return $q->email;
