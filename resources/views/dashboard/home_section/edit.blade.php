@@ -77,9 +77,9 @@
                                                                     <div class="form-group">
                                                                         <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
                                                                         <input required value="{{$home->translate($locale)->button}}" id="projectinput1" class="form-control input-custom"   name="{{$locale}}[button]">
-            
-            
+
                                                                     </div>
+                                                                </div>
                                                                     @endforeach
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
