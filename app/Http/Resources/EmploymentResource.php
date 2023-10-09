@@ -18,7 +18,7 @@ class EmploymentResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title' => $this->translate(app()->getLocale())->title??'',
-            'description' => strip_tags($this->translate(app()->getLocale())->description)??'',
+            'description' =>$this->translate(app()->getLocale())->description?strip_tags($this->translate(app()->getLocale())->description):'',
             'qualifications' => strip_tags($this->translate(app()->getLocale())->qualifications),
             'experience' => $this->experience,
             'image' => $this->image,
