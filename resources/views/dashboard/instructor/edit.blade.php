@@ -109,7 +109,7 @@
                                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="country_id">
                                                                                 <option value="">{{__('dashboard.select-country')}}</option>
                                                                                 @foreach($countries as $country)
-                                                                                    <option @if($country->id==$instructor->country_id)selected @endif value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
+                                                                                    <option @if($country->id==$instructor->country_id)selected @endif value="{{$country->id}}">{{$country->translate(app()->getLocale())->name}}</option>
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>

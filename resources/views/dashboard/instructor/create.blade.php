@@ -100,13 +100,13 @@
                                                              </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('dashboard.countries')}} </label>
                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="country_id">
                                                                 <option value="">{{__('dashboard.select-country')}}</option>
                                                                @foreach($countries as $country)
-                                                                 <option value="{{$country->id}}">{{$country->translate('ar')->name}}</option>
+                                                                 <option value="{{$country->id}}">{{$country->translate(app()->getLocale())->name}}</option>
                                                                 @endforeach
                                                              </select>
                                                         </div>

@@ -50,15 +50,7 @@
                                         @endif
                                         <form class="form" method="post" action="{{route('courses.store')}}" enctype='multipart/form-data'>
                                             @csrf
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
+
 
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-align-right"></i> Courses</h4>
