@@ -31,10 +31,10 @@ class InstructorsRequestsDataTable extends DataTable
             ->eloquent($query)
 
             ->editColumn('country', function($q) {
-                return $q->country->translate('ar')->name;
+                return $q->country->name;
             })
             ->editColumn('category', function($q) {
-                return $q->category->translate('ar')->name;
+                return $q->category->name;
             })
             ->editColumn('cv', function($q) {
                 return '<a href="'.  asset($q->cv) .'">'. "View CV" .'</a>';            })
