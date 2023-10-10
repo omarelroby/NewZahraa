@@ -39,7 +39,7 @@ return [
     'employment-applications'=>'طلبات التوظيف',
     'introduction_image'=>'صورة المقدمة ',
     'pages_number'=>'عدد صفحات الكتاب ',
-    'commission_instructor'=>'مدرب اللجان ',
+    'commission_instructor'=>'مدرب اللجان % ',
     'session_price'=>'سعر السشن ',
     'total_price'=>'إجمالي السعر',
     'zoom_link'=>'لينك الزووم ',

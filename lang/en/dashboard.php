@@ -41,7 +41,7 @@ return [
     'employment-applications'=>'Employe-Applicants',
     'introduction_image'=>'Introduction Image',
     'pages_number'=>'Book Pages Number ',
-    'commission_instructor'=>'Commission Instructor',
+    'commission_instructor'=>'Commission Instructor by %',
     'session_price'=>'Session Price ',
     'total_price'=>'Total Price ',
     'zoom_link'=>'Zoom Link ',
