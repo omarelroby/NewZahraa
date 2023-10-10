@@ -15,7 +15,6 @@ use Yajra\DataTables\Services\DataTable;
 
 class CountriesDataTable extends DataTable
 {
-    use CountryFlag;
 
     /**
      * Build DataTable class.
@@ -33,12 +32,12 @@ class CountriesDataTable extends DataTable
             ->editColumn('name(en)', function($q) {
                 return $q->translate('en')->name;
             })
-            ->addColumn('image', function ($q) {
-               return CountryFlag::get($q->alpha_code);
-            })
+//            ->addColumn('image', function ($q) {
+//               return CountryFlag::get($q->alpha_code);
+//            })
 
             ->addColumn('action', 'dashboard.country.actions')
-            ->rawColumns(['action','image']);
+            ->rawColumns(['action' ]);
     }
 
     /**
