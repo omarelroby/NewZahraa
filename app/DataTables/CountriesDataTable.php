@@ -12,7 +12,6 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-
 class CountriesDataTable extends DataTable
 {
 
@@ -32,12 +31,13 @@ class CountriesDataTable extends DataTable
             ->editColumn('name(en)', function($q) {
                 return $q->translate('en')->name;
             })
-//            ->addColumn('image', function ($q) {
-//               return CountryFlag::get($q->alpha_code);
-//            })
+            ->addColumn('image', function ($q) {
+                return '<img src="'.asset('flags/'.$q->alpha_code.'.png').'" border="0" width="150" class="img-rounded" align="center"/>';
+
+            })
 
             ->addColumn('action', 'dashboard.country.actions')
-            ->rawColumns(['action' ]);
+            ->rawColumns(['action','image' ]);
     }
 
     /**

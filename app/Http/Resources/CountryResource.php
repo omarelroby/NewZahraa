@@ -18,7 +18,7 @@ class CountryResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'name' => $this->translate(app()->getLocale())->name,
-            'image'=>$this->image,
+            'image'=>asset('flags/'.$this->alpha_code.'.png'),
             'country_code'=>$this->country_code
 
 
