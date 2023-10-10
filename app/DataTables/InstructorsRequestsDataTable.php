@@ -33,8 +33,8 @@ class InstructorsRequestsDataTable extends DataTable
             ->editColumn('country', function($q) {
                 return $q->country->translate('ar')->name;
             })
-            ->editColumn('category', function(InstructorRequests $instrucotr) {
-                return $instrucotr->category->translate('ar')->name;
+            ->editColumn('category', function($q) {
+                return $q->category->translate('ar')->name;
             })
             ->editColumn('cv', function($q) {
                 return '<a href="'.  asset($q->cv) .'">'. "View CV" .'</a>';            })

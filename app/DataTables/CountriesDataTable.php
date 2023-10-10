@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\Category;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Yajra\DataTables\EloquentDataTable;
+ use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -15,6 +15,8 @@ use Yajra\DataTables\Services\DataTable;
 
 class CountriesDataTable extends DataTable
 {
+    use CountryFlag;
+
     /**
      * Build DataTable class.
      *
@@ -32,8 +34,7 @@ class CountriesDataTable extends DataTable
                 return $q->translate('en')->name;
             })
             ->addColumn('image', function ($q) {
-                $url= asset($q->image);
-                return '<img src="'.$url.'" border="0" width="150" class="img-rounded" align="center"/>';
+               return CountryFlag::get($q->alpha_code);
             })
 
             ->addColumn('action', 'dashboard.country.actions')
