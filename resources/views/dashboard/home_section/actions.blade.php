@@ -6,8 +6,8 @@
 
                 <a class="dropdown-item" href="{{ url("/home-section/{$id}/edit") }}">
                 <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
-                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
-                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
+{{--                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">--}}
+{{--                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>--}}
 {{--                <div class="dropdown-divider"></div>--}}
             </div>
 </div>
