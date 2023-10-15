@@ -328,10 +328,7 @@
                         <a class="menu-item" href="{{route('home-section.index')}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.home-section')}}</a>
                     </li>
-                    <li class="@if(request()->routeIs('home-section.create')) active @endif">
-                        <a class="menu-item" href="{{route('home-section.create')}}"
-                           data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-section')}}</a>
-                    </li>
+
 
 
                 </ul>
