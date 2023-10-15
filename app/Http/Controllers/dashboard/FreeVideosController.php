@@ -63,7 +63,7 @@ class FreeVideosController extends Controller
         $data['slug'] = Str::slug($data['en']['title'],'-');
         if($request->has('image'))
         {
-            $path='freevideos';
+            $path='public/freevideos';
             $ext=$request->file('image')->getClientOriginalExtension();
             $file=$request->file('image')->move($path,$ext);
             $data['image']=$file;
@@ -113,7 +113,7 @@ class FreeVideosController extends Controller
         $data=$request->all();
         if($request->has('image'))
         {
-            $path='freevideos';
+            $path='public/freevideos';
             $ext=$request->file('image')->getClientOriginalExtension();
             $file=$request->file('image')->move($path,$ext);
             $data['image']=$file;
