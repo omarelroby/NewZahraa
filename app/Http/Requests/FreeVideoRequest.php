@@ -30,6 +30,7 @@ class FreeVideoRequest extends FormRequest
             'description' => 'array',
             'description.*' => 'required',
             'youtube_url'=>'required',
+            'image'=>'nullable',
 
             ];
         foreach(config('translatable.locales') as $locale) {

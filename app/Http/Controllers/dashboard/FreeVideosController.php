@@ -61,6 +61,13 @@ class FreeVideosController extends Controller
     {
         $data=$request->all();
         $data['slug'] = Str::slug($data['en']['title'],'-');
+        if($request->has('image'))
+        {
+            $path='freevideos';
+            $ext=$request->file('image')->getClientOriginalExtension();
+            $file=$request->file('image')->move($path,$ext);
+            $data['image']=$file;
+        }
         FreeVideo::create($data) ;
         Alert::success('Success',__('dashboard.success'));
         return redirect()->route('freeVideos.index');
@@ -104,6 +111,13 @@ class FreeVideosController extends Controller
     {
         $freeVideos=FreeVideo::find($id);
         $data=$request->all();
+        if($request->has('image'))
+        {
+            $path='freevideos';
+            $ext=$request->file('image')->getClientOriginalExtension();
+            $file=$request->file('image')->move($path,$ext);
+            $data['image']=$file;
+        }
         $freeVideos->update($data);
         $freeVideos->save();
         Alert::success('UPDATED',__('dashboard.update'));

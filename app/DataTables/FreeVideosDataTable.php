@@ -37,10 +37,14 @@ class FreeVideosDataTable extends DataTable
             ->editColumn('Youtube Url', function($q) {
                 return $q->youtube_url;
             })
+            ->addColumn('image', function ($q) {
+                return '<img src="'.asset($q->image).'" border="0" width="150" class="img-rounded" align="center"/>';
+
+            })
 
 
             ->addColumn('action', 'dashboard.free_videos.actions')
-            ->rawColumns(['action']);
+            ->rawColumns(['action','image']);
     }
 
     /**
@@ -97,6 +101,8 @@ class FreeVideosDataTable extends DataTable
                 ->title(__('dashboard.title(en)')),
             Column::make('Youtube Url')
                 ->title(__('dashboard.youtube-url')),
+            Column::make('image')
+                ->title(__('dashboard.image')),
             Column::computed('action')
                 ->title(__('dashboard.action'))
                 ->exportable(false)

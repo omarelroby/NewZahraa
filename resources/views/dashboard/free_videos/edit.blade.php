@@ -71,7 +71,14 @@
                                                                         <input type="text" value="{{$freeVideos->youtube_url}}"  required class="form-control input-custom" id="inputGroupFile01"  name="youtube_url">
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label   for="inputGroupFile01">{{__('dashboard.image')}} </label>
+                                                                        <input type="file"    class="form-control input-custom" id="inputGroupFile01"  name="image">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label for="projectinput1">{{__('dashboard.categories')}} </label>
                                                                         <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
@@ -93,7 +100,7 @@
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-                                                                
+
                                                             </div>
 
                                                     <div class="form-actions">
