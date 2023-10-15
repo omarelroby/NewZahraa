@@ -20,6 +20,7 @@ use App\Models\Page;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\DataTables\CategoriesDataTable;
@@ -61,13 +62,12 @@ class FreeVideosController extends Controller
     {
         $data=$request->all();
         $data['slug'] = Str::slug($data['en']['title'],'-');
-        if($request->has('image'))
-        {
-            $path='public/freevideos';
-            $ext=$request->file('image')->getClientOriginalExtension();
-            $file=$request->file('image')->move($path,$ext);
-            $data['image']=$file;
+        if ($request->has('image')){
+            $file=$request->file('image')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_file, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
+
         FreeVideo::create($data) ;
         Alert::success('Success',__('dashboard.success'));
         return redirect()->route('freeVideos.index');
@@ -111,12 +111,10 @@ class FreeVideosController extends Controller
     {
         $freeVideos=FreeVideo::find($id);
         $data=$request->all();
-        if($request->has('image'))
-        {
-            $path='public/freevideos';
-            $ext=$request->file('image')->getClientOriginalExtension();
-            $file=$request->file('image')->move($path,$ext);
-            $data['image']=$file;
+        if ($request->has('image')){
+            $file=$request->file('image')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_file, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
         }
         $freeVideos->update($data);
         $freeVideos->save();
