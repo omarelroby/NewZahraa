@@ -109,6 +109,11 @@ class HomeSectionController extends Controller
     {
         $homeSection=HomeSection::find($id);
         $data=$request->all();
+        if($request->has('image')){
+            $file=$request->file('image')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('homeSection/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
+            $data['image'] = Storage::disk('s3')->url($path);
+        }
         $homeSection->update($data);
 
         Alert::success('UPDATED',__('dashboard.update'));
