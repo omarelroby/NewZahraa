@@ -9,7 +9,7 @@ class AddStatusToInstructorsTable extends Migration {
 	{
         Schema::table('instructors', function($table)
         {
-            $table->text('status')->after('image')->default(1);
+            $table->int('status')->after('image')->default(1);
 
 
         });
@@ -17,7 +17,7 @@ class AddStatusToInstructorsTable extends Migration {
     public function down()
 	{
         Schema::table('instructors', function($table) {
-             $table->text('status')->after('image')->default(1);
+             $table->int('status')->after('image')->default(1);
          });
 	}
 
