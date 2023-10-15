@@ -64,7 +64,7 @@ class FreeVideosController extends Controller
         $data['slug'] = Str::slug($data['en']['title'],'-');
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_file, 'public');
+            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
         }
 
@@ -113,7 +113,7 @@ class FreeVideosController extends Controller
         $data=$request->all();
         if ($request->has('image')){
             $file=$request->file('image')->getClientOriginalExtension();
-            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->complete_file, 'public');
+            $path = Storage::disk('s3')->put('freeVideos/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
         }
         $freeVideos->update($data);
