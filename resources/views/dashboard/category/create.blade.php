@@ -56,14 +56,14 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.category')}} ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.category')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                 @endforeach
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label for="projectinput2">{{__('dashboard.type')}} ({{$locale}})</label>
+                                                                <label for="projectinput2"><span style="color: red;">*</span>{{__('dashboard.type')}} ({{$locale}})</label>
                                                                 <select   required id="projectinput2" class="form-control input-custom"   name="type">
                                                                     <option value="">{{__('dashboard.select-type')}}</option>
                                                                     <option value="Ebook">Ebook</option>

@@ -65,7 +65,7 @@
                                                 <div class="row">
                                                       <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.month')}} </label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.month')}} </label>
                                                             <input type="month" required id="projectinput1" class="form-control input-custom"   name="month">
                                                         </div>
                                                     </div>

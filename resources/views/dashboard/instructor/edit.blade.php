@@ -58,25 +58,25 @@
                                                             <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.name')}} </label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.name')}} </label>
                                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$instructor->name}}"   name="name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput2">{{__('dashboard.phone')}} </label>
+                                                                            <label for="projectinput2"><span style="color: red;">*</span>{{__('dashboard.phone')}} </label>
                                                                             <input type="text" required id="projectinput2"  value="{{$instructor->phone}}" class="form-control input-custom"   name="phone">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput2">{{__('dashboard.brief')}} </label>
+                                                                            <label for="projectinput2"><span style="color: red;">*</span>{{__('dashboard.brief')}} </label>
                                                                             <input type="text" required id="projectinput2" value="{{$instructor->brief}}" class="form-control input-custom"   name="brief">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.email')}} </label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.email')}} </label>
                                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$instructor->email}}"   name="email">
                                                                         </div>
                                                                     </div>
@@ -88,13 +88,13 @@
                                                                     </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput11">{{__('dashboard.commission_instructor')}} </label>
+                                                                        <label for="projectinput11"><span style="color: red;">*</span>{{__('dashboard.commission_instructor')}} </label>
                                                                         <input type="number" required id="projectinput11" class="form-control input-custom" value="{{$instructor->commission_instructor}}"   name="commission_instructor">
                                                                     </div>
                                                                 </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.categories')}} </label>
                                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                                 <option value="">{{__('dashboard.select-category')}}</option>
                                                                                 @foreach($categories as $category)
@@ -105,7 +105,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.countries')}} </label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.countries')}} </label>
                                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="country_id">
                                                                                 <option value="">{{__('dashboard.select-country')}}</option>
                                                                                 @foreach($countries as $country)

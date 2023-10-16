@@ -66,7 +66,7 @@
                                                 <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">Date </label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>Date </label>
                                                                 <input type="datetime-local"  value="{{$appointment->date}}" required id="projectinput1" class="form-control input-custom"   name="date">
                                                             </div>
                                                     <div class="form-actions">

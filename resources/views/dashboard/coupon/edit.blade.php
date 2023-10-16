@@ -66,7 +66,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.code')}}  </label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.code')}}  </label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$coupon->code}}"   name="code">
                                                         </div>
                                                     </div>
@@ -79,13 +79,13 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.discount')}} </label>
+                                                            <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.discount')}} </label>
                                                             <input type="text"  required class="form-control input-custom" value="{{$coupon->discount}}"  id="inputGroupFile20"  name="discount">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.select-type')}} </label>
+                                                            <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.select-type')}} </label>
                                                             <select    required class="form-control input-custom"   id="inputGroupFile20"  name="type">
                                                                 <option @if($coupon->type=='percentage') selected @endif  value="percentage">percentage </option>
                                                                 <option  @if($coupon->type=='amount') selected @endif  value="amount">amount </option>

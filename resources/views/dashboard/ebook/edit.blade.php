@@ -57,7 +57,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.title')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$ebook->translate($locale)->title}}"  name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
@@ -65,7 +65,7 @@
 
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label    for="projectinput1">{{__('dashboard.type')}} </label>
+                                                                <label    for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.type')}} </label>
                                                                 <select  required   id="type" class="form-control input-custom"  name="type">
                                                                     <option value="">{{__('dashboard.select-type')}}</option>
                                                                     <option @if($ebook->type=='internal')selected @endif value="internal">internal</option>
@@ -87,7 +87,7 @@
                                                         </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.categories')}} </label>
                                                             <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                 <option value="">{{__('dashboard.select-category')}}</option>
                                                                 @foreach($categories as $category)
@@ -119,7 +119,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label   for="projectinput1">{{__('dashboard.price')}} </label>
+                                                            <label   for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.price')}} </label>
                                                             <input type="text" required id="projectinput1" value="{{$ebook->price}}" class="form-control input-custom"  name="price">
                                                         </div>
                                                     </div>
@@ -134,7 +134,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.summary')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.summary')}} ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[summary]">
                                                                     {!! $ebook->translate($locale)->summary !!}
                                                                 </textarea>

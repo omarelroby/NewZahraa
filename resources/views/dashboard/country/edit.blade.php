@@ -57,20 +57,20 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                      <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">Country ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>Country ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$country->translate($locale)->name}}"  name="{{$locale}}[name]">
                                                         </div>
                                                     </div>
                                                  @endforeach
                                                         <div class="col-md-3">
                                                             <div class="form-group">
-                                                                <label for="inputGroupFile04"  >{{__('dashboard.country_code')}} </label>
+                                                                <label for="inputGroupFile04"  ><span style="color: red;">*</span>{{__('dashboard.country_code')}} </label>
                                                                 <input type="text" required   id="inputGroupFile04" class="form-control input-custom" value="{{$country->country_code}}"  name="country_code">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <div class="form-group">
-                                                                <label for="inputGroupFile01" class="custom-file-label">{{__('dashboard.image')}} </label>
+                                                                <label for="inputGroupFile01" class="custom-file-label"><span style="color: red;">*</span>{{__('dashboard.image')}} </label>
                                                                 <input type="file"   class="custom-file-input" id="inputGroupFile01"   name="image">
                                                             </div>
                                                         </div>

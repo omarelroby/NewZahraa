@@ -66,7 +66,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.question')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.question')}} ({{$locale}})</label>
                                                                 <input type="text" value="{{$question->question}}" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[question]">
                                                             </div>
                                                         </div>
@@ -77,7 +77,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.answer')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.answer')}} ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[answer]">
                                                                 {{$question->translate($locale)->answer}}
                                                                 </textarea>

@@ -58,7 +58,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.title')}} ({{$locale}})</label>
                                                                             <input type="text" required id="projectinput1" class="form-control input-custom" value="{{$setting->translate($locale)->title}}"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
@@ -131,7 +131,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.description')}} ({{$locale}})</label>
                                                                             <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                                 {!! $setting->translate($locale)->description !!}
                                                                             </textarea>

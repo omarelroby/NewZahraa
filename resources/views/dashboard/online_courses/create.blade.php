@@ -39,15 +39,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+
                                         <form class="form" method="post" action="{{route('online-courses.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())
@@ -66,7 +58,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.title')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                         </div>
                                                     </div>
@@ -75,7 +67,7 @@
                                                     <div class="form-group">
                                                         <label   for="inputGroupFile20">{{__('dashboard.price')}} </label>
                                                         <input type="text"   class="form-control input-custom" id="inputGroupFile20"  name="price">
-    
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -86,7 +78,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
+                                                        <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.image')}} </label>
                                                         <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
                                                     </div>
                                                 </div>
@@ -98,13 +90,13 @@
                                                 </div>
                                                         <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.lessons-number')}} </label>
+                                                        <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.lessons-number')}} </label>
                                                         <input type="text"  required  class="form-control input-custom" id="inputGroupFile20"  name="lessons_number">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.instructors')}} </label>
+                                                        <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.instructors')}} </label>
                                                         <select  required class="form-control input-custom js-example-basic-single" multiple id="inputGroupFile20"  name="instructor_id[]">
                                                             <option value="">{{__('dashboard.select-instructors')}}</option>
                                                             @foreach($instructors as $instructor)
@@ -115,8 +107,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label   for="inputGroupFile20">{{__('dashboard.type')}} </label>
-                                                        <select type="text"   class="form-control input-custom" id="inputGroupFile20"  name="type">
+                                                        <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.type')}} </label>
+                                                        <select type="text"  required class="form-control input-custom" id="inputGroupFile20"  name="type">
                                                             <option value="">{{__('dashboard.select-type')}}</option>
                                                             <option value="single">{{__('dashboard.single')}}</option>
                                                             <option value="group">{{__('dashboard.group')}}</option>
@@ -125,7 +117,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                        <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.categories')}} </label>
                                                         <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                             <option value="">{{__('dashboard.select-category')}}</option>
                                                             @foreach($categories as $category)
@@ -137,7 +129,7 @@
                                                 @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.description')}} ({{$locale}})</label>
                                                             <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                             </textarea>
                                                         </div>

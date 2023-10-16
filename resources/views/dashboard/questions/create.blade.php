@@ -39,15 +39,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+
                                         <form class="form" method="post" action="{{route('question.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())
@@ -66,7 +58,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('dashboard.question')}} ({{$locale}})</label>
+                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.question')}} ({{$locale}})</label>
                                                             <input type="text" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[question]">
                                                         </div>
                                                     </div>
@@ -77,7 +69,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.answer')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.answer')}} ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[answer]">
                                                                 </textarea>
                                                             </div>

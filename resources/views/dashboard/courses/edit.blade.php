@@ -39,15 +39,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+
                                         <form class="form" method="post" action="{{url("courses/{$courses->id}")}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
@@ -66,7 +58,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">title ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>title ({{$locale}})</label>
                                                                             <input type="text"  value="{{$courses->translate($locale)->title}}" required id="projectinput1" class="form-control input-custom    "   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
@@ -76,7 +68,7 @@
                                                 <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.categories')}} </label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.categories')}} </label>
                                                                 <select type="text" required id="projectinput1" class="form-control input-custom"   name="category_id">
                                                                     <option value="">{{__('dashboard.select-category')}}</option>
                                                                     @foreach($categories as $category)
@@ -87,7 +79,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label   for="inputGroupFile20">{{__('dashboard.price')}} </label>
+                                                                <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.price')}} </label>
                                                                 <input type="text" value="{{$courses->price}}"  required class="form-control input-custom" id="inputGroupFile20"  name="price">
                                                             </div>
                                                         </div>
@@ -101,7 +93,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">Description ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>Description ({{$locale}})</label>
                                                                 <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                               {{$courses->translate($locale)->description}}
                                                                 </textarea>

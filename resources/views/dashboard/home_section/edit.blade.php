@@ -39,15 +39,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+
                                         <form class="form" method="post" action="{{url("home-section/{$home->id}")}}" enctype='multipart/form-data'>
                                             @csrf
                                             {{ method_field('put') }}
@@ -66,7 +58,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-3">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.title')}} ({{$locale}})</label>
                                                                             <input type="text"  value="{{$home->translate($locale)->title}}" required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
@@ -75,7 +67,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                 <div class="col-md-3">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput1">{{__('dashboard.button')}} ({{$locale}})</label>
+                                                                        <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.button')}} ({{$locale}})</label>
                                                                         <input required value="{{$home->translate($locale)->button}}" id="projectinput1" class="form-control input-custom"   name="{{$locale}}[button]">
 
                                                                     </div>
@@ -100,7 +92,7 @@
                                                                         @foreach(config('translatable.locales') as $locale)
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label for="projectinput1">{{__('dashboard.description')}}  ({{$locale}})</label>
+                                                                                    <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.description')}}  ({{$locale}})</label>
                                                                                     <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                                                     {{$home->translate($locale)->description}}
                                                                                     </textarea>

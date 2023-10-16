@@ -59,27 +59,27 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.title')}} ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.title')}} ({{$locale}})</label>
                                                                             <input type="text" required value="{{$employment->translate($locale)->title}}" id="projectinput1" class="form-control input-custom"   name="{{$locale}}[title]">
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-                                                                
+
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label class="custom-file-label" for="inputGroupFile01">{{__('dashboard.image')}} </label>
+                                                                        <label class="custom-file-label" for="inputGroupFile01"><span style="color: red;">*</span>{{__('dashboard.image')}} </label>
                                                                         <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="image">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.experience')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.experience')}}  </label>
                                                                         <input type="text" value="{{$employment->salary}}" required id="projectinput30" class="form-control input-custom"   name="experience">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.Gender')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.Gender')}}  </label>
                                                                         <select type="text" required id="projectinput30" class="form-control input-custom"   name="Gender">
                                                                             <option value="">{{__('dashboard.Gender')}}</option>
                                                                             <option @if($employment->Gender=='Male') selected @endif value="Male">Male</option>
@@ -89,34 +89,34 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.job_type')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.job_type')}}  </label>
                                                                         <input type="text" value="{{$employment->job_type}}"  required id="projectinput30" class="form-control input-custom"   name="job_type">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.salary')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.salary')}}  </label>
                                                                         <input type="text" value="{{$employment->salary}}" required id="projectinput30" class="form-control input-custom"   name="salary">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.expiration_date')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.expiration_date')}}  </label>
                                                                         <input type="date" value="{{$employment->expiration_date}}" required id="projectinput30" class="form-control input-custom"   name="expiration_date">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="projectinput30">{{__('dashboard.posted_date')}}  </label>
+                                                                        <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.posted_date')}}  </label>
                                                                         <input type="date" value="{{$employment->posted_date}}" required id="projectinput30" class="form-control input-custom"   name="posted_date">
                                                                     </div>
                                                                 </div>
-                                                                
+
 
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput1">{{__('dashboard.description')}} ({{$locale}})</label>
+                                                                            <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.description')}} ({{$locale}})</label>
                                                                             <textarea required id="projectinput1" class="form-control"   name="{{$locale}}[description]">
                                                                 {!! $employment->translate($locale)->description !!}
                                                                 </textarea>
@@ -126,7 +126,7 @@
                                                                 @foreach(config('translatable.locales') as $locale)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="projectinput12">{{__('dashboard.qualifications')}} ({{$locale}})</label>
+                                                                            <label for="projectinput12"><span style="color: red;">*</span>{{__('dashboard.qualifications')}} ({{$locale}})</label>
                                                                             <textarea required id="projectinput12" class="form-control"   name="{{$locale}}[qualifications]">
                                                                 {!! $employment->translate($locale)->qualifications !!}
                                                                             </textarea>

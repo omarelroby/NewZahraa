@@ -69,7 +69,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.name')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.name')}} ({{$locale}})</label>
                                                                 <input required id="projectinput1" class="form-control input-custom" value="{{$payment->translate($locale)->name}}"   name="{{$locale}}[name]">
                                                             </div>
                                                         </div>

@@ -39,15 +39,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+
                                         <form class="form" method="post" action="{{route('payment-method.store')}}" enctype='multipart/form-data'>
                                             @csrf
                                             @if ($errors->any())
@@ -67,7 +59,7 @@
                                                     @foreach(config('translatable.locales') as $locale)
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label for="projectinput1">{{__('dashboard.name')}} ({{$locale}})</label>
+                                                                <label for="projectinput1"><span style="color: red;">*</span>{{__('dashboard.name')}} ({{$locale}})</label>
                                                                 <input required id="projectinput1" class="form-control input-custom"   name="{{$locale}}[name]">
                                                              </div>
                                                         </div>
@@ -75,7 +67,7 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label   for="inputGroupFile20">{{__('dashboard.image')}} </label>
+                                                            <label   for="inputGroupFile20"><span style="color: red;">*</span>{{__('dashboard.image')}} </label>
                                                             <input type="file"  required class="form-control input-custom" id="inputGroupFile20"  name="image">
 
                                                         </div>
