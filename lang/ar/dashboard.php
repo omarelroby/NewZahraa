@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'link'=>'الرابط',
+    'edit-popup'=>'تعديل اخطار منبثق',
+    'add-popup'=>'إضافة اخطار منبثق',
+    'popup'=>'إخطار منبثق',
     'cash'=>'المبلغ',
     'withdraw-request'=>'طلب السحب',
     'active'=>'مفعل',

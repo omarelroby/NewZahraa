@@ -112,6 +112,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::delete('delete-subscriptions/{id}', [\App\Http\Controllers\HomeController::class,'delete_subscription'])->name('delete.subscription');
     Route::get('accept-request/{id}', [\App\Http\Controllers\dashboard\InstructorRequestsController::class,'accept_request'])->name('accept_request');
     Route::resource('payment-method', \App\Http\Controllers\dashboard\PaymentMethodsController::class);
+    Route::resource('popups', \App\Http\Controllers\dashboard\PopupController::class);
+    Route::get('popup/{id}', [\App\Http\Controllers\dashboard\PopupController::class,'index'])->name('popup.index');
+    Route::get('popup-create/{id}', [\App\Http\Controllers\dashboard\PopupController::class,'create'])->name('popup.create');
+    Route::post('popup-store', [\App\Http\Controllers\dashboard\PopupController::class,'store'])->name('popup.store');
     Route::get('import-countries', [\App\Http\Controllers\dashboard\HomeController::class,'import_country']);
 
 });

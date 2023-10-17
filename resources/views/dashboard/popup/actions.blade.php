@@ -4,12 +4,10 @@
                 <i class="icon-settings mr-1"></i>{{__('dashboard.action')}}</button>
             <div class="dropdown-menu">
 
-                <a class="dropdown-item" href="{{ url("/home-section/{$id}/edit") }}">
+                <a class="dropdown-item" href="{{ url("/popups/{$id}/edit") }}">
                 <i class="fa fa-cog mr-1"></i> {{__('dashboard.edit')}}</a>
-                <a class="dropdown-item" href="{{ route("popup.index",$id) }}">
-                <i class="fa fa-cog mr-1"></i> {{__('dashboard.popup')}}</a>
-{{--                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">--}}
-{{--                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>--}}
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deleteModal{{ $id }}">
+                   <i class="fa fa-cart-plus mr-1"></i> {{__('dashboard.delete')}}</a>
 {{--                <div class="dropdown-divider"></div>--}}
             </div>
 </div>
@@ -26,9 +24,9 @@
                     <h4 class="modal-title">{{__('dashboard.delete')}}</h4>
                 </div>
                 <div class="modal-body">
-                    <p> {{__('dashboard.delete-message')}} </p>
+                    <p>{{__('dashboard.delete-message')}} </p>
                 </div>
-                <form action="{{ url("/home-section/{$id}") }}" method="POST">
+                <form action="{{ url("/popups/{$id}") }}" method="POST">
                     @method('delete') @csrf
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">{{__('dashboard.close')}}</button>

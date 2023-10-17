@@ -12,6 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'link'=>'Link',
+    'edit-popup'=>'ُEdit Popup',
+    'add-popup'=>'Add Popup',
+     'popup'=>'Popup',
     'cash'=>'Cash',
     'withdraw-request'=>'Withdraw Request',
     'active'=>'Active',
