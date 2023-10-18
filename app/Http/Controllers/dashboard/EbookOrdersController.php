@@ -27,9 +27,11 @@ use App\Models\CourseIndexes;
 use App\Models\CourseIndexesVideos;
 use App\Models\Customers;
 use App\Models\Ebook;
+use App\Models\EbookOrders;
 use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
+use App\Models\InstructorRequests;
 use App\Models\Page;
 use App\Models\VideosIndexes;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -46,6 +48,15 @@ class EbookOrdersController extends Controller
 
     public function index(EbooksOrdersDataTable $dataTable)
     {
+        $requests=EbookOrders::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=EbookOrders::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.ebooks_orders.index');
     }
 

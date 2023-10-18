@@ -26,6 +26,7 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\CourseIndexes;
 use App\Models\CourseIndexesVideos;
+use App\Models\CourseOrders;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\IndexesVideo;
@@ -47,6 +48,15 @@ class CourseOrdersController extends Controller
 
     public function index(CourseOrdersDataTable $dataTable)
     {
+        $requests=CourseOrders::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=CourseOrders::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.course_orders.index');
     }
 

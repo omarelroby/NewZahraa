@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'cover'=>'Cover',
     'link'=>'Link',
     'edit-popup'=>'ُEdit Popup',
     'add-popup'=>'Add Popup',
@@ -49,7 +50,7 @@ return [
     'session_price'=>'Session Price ',
     'total_price'=>'Total Price ',
     'zoom_link'=>'Zoom Link ',
-    'booking-appointments'=>'Booking Appointments ',
+    'booking-appointments'=>'Book Appointments ',
     'edit-appointments'=>'Edit Appointments',
     'add-day'=>'Add Day',
     'month'=>'Month',

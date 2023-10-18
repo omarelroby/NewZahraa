@@ -58,6 +58,12 @@ class EmploymentController extends Controller
             $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
         }
+        if($request->has('cover'))
+        {
+            $file=$request->file('cover')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->cover, 'public');
+            $data['cover'] = Storage::disk('s3')->url($path);
+        }
         $data['slug'] = Str::slug($data['en']['title'],'-');
         Employment::create($data);
         Alert::success('Success',__('dashboard.success'));
@@ -104,6 +110,12 @@ class EmploymentController extends Controller
             $file=$request->file('image')->getClientOriginalExtension();
             $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->image, 'public');
             $data['image'] = Storage::disk('s3')->url($path);
+        }
+        if($request->has('cover'))
+        {
+            $file=$request->file('cover')->getClientOriginalExtension();
+            $path = Storage::disk('s3')->put('courses/'.time() . '_' . random_int(1, 100000) . '.' . $file, $request->cover, 'public');
+            $data['cover'] = Storage::disk('s3')->url($path);
         }
 
          $employment->update($data);

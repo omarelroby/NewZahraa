@@ -17,7 +17,7 @@ class AddTransactionIdToCoursesOrderTable extends Migration {
     public function down()
 	{
         Schema::table('courses_orders', function($table) {
-             $table->text('transaction_id')->after('total')->nullable();
+             $table->dropColumn('transaction_id');
          });
 	}
 

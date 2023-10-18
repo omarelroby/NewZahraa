@@ -43,6 +43,16 @@ class InstructorRequestsController extends Controller
      */
     public function index(InstructorsRequestsDataTable $dataTable)
     {
+        $requests=InstructorRequests::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=InstructorRequests::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
+
          return $dataTable->render('dashboard.instructor_requests.index');
     }
 

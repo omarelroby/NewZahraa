@@ -14,6 +14,7 @@ class AddForeignUsersIdFromStudentQuizTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('users_id');
-	}
+        Schema::table('student_quiz', function($table) {
+            $table->dropColumn('users_id');
+        });	}
 }

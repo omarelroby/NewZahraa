@@ -23,6 +23,7 @@ class CourseOrders extends Model
         'course_id',
         'customer_id',
         'transaction_id',
+        'read',
 
     ];
     public function course()

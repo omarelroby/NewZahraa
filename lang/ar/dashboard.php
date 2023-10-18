@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'cover'=>'الغلاف',
     'link'=>'الرابط',
     'edit-popup'=>'تعديل اخطار منبثق',
     'add-popup'=>'إضافة اخطار منبثق',

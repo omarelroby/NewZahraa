@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DataTables\SubscriptionsDataTable;
 use App\DataTables\WithdrawDataTable;
+use App\Models\BookingAppointments;
 use App\Models\Subscription;
+use App\Models\WithDrawRequest;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,6 +42,15 @@ class HomeController extends Controller
     }
     public function withdraw(WithdrawDataTable $dataTable)
     {
+        $requests=WithDrawRequest::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=WithDrawRequest::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.withdraw.index');
 
     }

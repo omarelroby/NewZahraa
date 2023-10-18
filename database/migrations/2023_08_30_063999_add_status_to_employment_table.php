@@ -16,7 +16,7 @@ class AddStatusToEmploymentTable extends Migration {
     public function down()
 	{
         Schema::table('employments', function($table) {
-             $table->boolean('boolean')->default(0);
+             $table->dropColumn('status');
         });
 	}
 

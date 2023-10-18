@@ -19,6 +19,7 @@ class InstructorRequests extends Model
         'cv',
         'category_id',
         'country_id',
+        'read',
     ];
     public function category(){
         return $this->belongsTo(Category::class,'category_id');

@@ -11,7 +11,7 @@ class WithDrawRequest extends Model
 {
 
     protected $table='withdraw_request';
-    protected $fillable=['cash','instructor_id','status','approved_date'];
+    protected $fillable=['cash','instructor_id','status','approved_date','read'];
     public function instructor()
     {
         return $this->belongsTo(Instructor::class,'instructor_id');

@@ -18,7 +18,9 @@ use App\Http\Requests\PagesRequest;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Course;
+use App\Models\CourseOrders;
 use App\Models\Ebook;
+use App\Models\EbookOrders;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
 use App\Models\Page;
@@ -42,6 +44,7 @@ class CoursesController extends Controller
      */
     public function index(CoursesDataTable $dataTable)
     {
+
         return $dataTable->render('dashboard.courses.index');
     }
 

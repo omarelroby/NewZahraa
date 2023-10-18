@@ -71,6 +71,12 @@
                                                                         <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="image">
                                                                     </div>
                                                                 </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="custom-file-label" for="inputGroupFile01"><span style="color: red;">*</span>{{__('dashboard.cover')}} </label>
+                                                                            <input type="file"     class="custom-file-input" id="inputGroupFile01"  name="cover">
+                                                                        </div>
+                                                                    </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.experience')}}  </label>
@@ -82,6 +88,7 @@
                                                                         <label for="projectinput30"><span style="color: red;">*</span>{{__('dashboard.Gender')}}  </label>
                                                                         <select type="text" required id="projectinput30" class="form-control input-custom"   name="Gender">
                                                                             <option value="">{{__('dashboard.Gender')}}</option>
+                                                                            <option @if($employment->Gender=='Any') selected @endif value="Any">Any</option>
                                                                             <option @if($employment->Gender=='Male') selected @endif value="Male">Male</option>
                                                                             <option @if($employment->Gender=='Female') selected @endif value=Female">Female</option>
                                                                         </select>

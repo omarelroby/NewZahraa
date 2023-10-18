@@ -17,7 +17,7 @@ class AddTransactionIdToBookingAppointmentsTable extends Migration {
     public function down()
 	{
         Schema::table('booking_appointments', function($table) {
-             $table->text('transaction_id')->after('total_price')->nullable();
+             $table->dropColumn('transaction_id');
          });
 	}
 

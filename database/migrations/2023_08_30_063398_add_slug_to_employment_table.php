@@ -16,7 +16,7 @@ class AddSlugToEmploymentTable extends Migration {
     public function down()
 	{
         Schema::table('employments', function($table) {
-             $table->text(['slug']);
+             $table->dropColumn('slug');
         });
 	}
 

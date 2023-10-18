@@ -16,8 +16,8 @@ class AddInstructorCommisionToOnlineCoursesOrderTable extends Migration {
 	}
     public function down()
 	{
-        Schema::table('instructor_commision', function($table) {
-             $table->text('transaction_id')->after('transaction_id')->nullable();
+        Schema::table('online_course_orders', function($table) {
+             $table->dropColumn('instructor_commision');
          });
 	}
 

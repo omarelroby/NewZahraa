@@ -16,7 +16,7 @@ class AddCodeToCustomerTable extends Migration {
     public function down()
 	{
         Schema::table('customers', function($table) {
-             $table->text('code')->after('image')->nullable();
+             $table->dropColumn('code');
         });
 	}
 

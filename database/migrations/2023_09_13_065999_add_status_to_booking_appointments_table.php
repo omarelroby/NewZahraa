@@ -17,7 +17,7 @@ class AddStatusToBookingAppointmentsTable extends Migration {
     public function down()
 	{
         Schema::table('booking_appointments', function($table) {
-             $table->text('status')->after('transaction_id')->nullable();
+             $table->dropColumn('status');
          });
 	}
 

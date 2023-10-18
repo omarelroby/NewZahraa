@@ -15,10 +15,12 @@ class AddImageToFreeVideosTable extends Migration {
 	}
     public function down()
 	{
-        Schema::table('free_videos', function($table) {
+        Schema::table('free_videos', function(Blueprint $table) {
              $table->dropColumn(['image']);
         });
 	}
+
+
 
 
 

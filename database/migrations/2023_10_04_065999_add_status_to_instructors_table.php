@@ -16,8 +16,8 @@ class AddStatusToInstructorsTable extends Migration {
 	}
     public function down()
 	{
-        Schema::table('instructors', function($table) {
-             $table->integer('status')->after('image')->default(1);
+        Schema::table('instructors', function(Blueprint $table) {
+             $table->dropColumn('status');
          });
 	}
 

@@ -27,11 +27,13 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\CourseIndexes;
 use App\Models\CourseIndexesVideos;
+use App\Models\CourseOrders;
 use App\Models\Customers;
 use App\Models\Ebook;
 use App\Models\IndexesVideo;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
+use App\Models\OnlineCourseOrders;
 use App\Models\Page;
 use App\Models\VideosIndexes;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -48,6 +50,15 @@ class OnlineCourseOrdersController extends Controller
 
     public function index(OnlineCourseOrdersDataTable $dataTable)
     {
+        $requests=OnlineCourseOrders::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=OnlineCourseOrders::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.online_course_orders.index');
     }
 

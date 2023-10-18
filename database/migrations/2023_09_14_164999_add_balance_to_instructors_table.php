@@ -17,7 +17,7 @@ class AddbalanceToInstructorsTable extends Migration {
     public function down()
 	{
         Schema::table('instructors', function($table) {
-             $table->text('balance')->after('code')->nullable();
+             $table->dropColumn('balance');
          });
 	}
 

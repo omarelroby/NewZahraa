@@ -26,6 +26,7 @@ use App\Models\Course;
 use App\Models\Ebook;
 use App\Models\Instructor;
 use App\Models\InstructorAttachs;
+use App\Models\OnlineCourseOrders;
 use App\Models\Page;
 use App\Models\SessionAppointments;
 use Carbon\Carbon;
@@ -52,6 +53,15 @@ class BookingAppointmentsController extends Controller
      */
     public function index(BookingAppointmentsDataTable $dataTable)
     {
+        $requests=BookingAppointments::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=BookingAppointments::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.booking_appointments.index');
     }
 

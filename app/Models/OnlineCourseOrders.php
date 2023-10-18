@@ -26,6 +26,7 @@ class OnlineCourseOrders extends Model
         'group_id',
         'transaction_id',
         'instructor_commision',
+        'read',
 
     ];
     public function course()

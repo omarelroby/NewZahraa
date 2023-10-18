@@ -17,7 +17,7 @@ class AddTransactionIdToEbookOrderTable extends Migration {
     public function down()
 	{
         Schema::table('ebook_orders', function($table) {
-             $table->text('transaction_id')->after('total')->nullable();
+             $table->dropColumn('transaction_id');
          });
 	}
 
