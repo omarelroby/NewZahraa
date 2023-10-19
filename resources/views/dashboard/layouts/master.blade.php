@@ -391,6 +391,24 @@
                 </ul>
             </li>
             <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-paper"></i>
+                    <span class="menu-title"
+                          data-i18n="nav.dash.main">{{__('dashboard.instructors-requests-email-template')}}
+                     </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('template.index')) active @endif">
+                        <a class="menu-item" href="{{route('template.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.instructors-requests-email-template')}}
+                        </a>
+                    <li class="@if(request()->routeIs('template.create')) active @endif">
+                        <a class="menu-item" href="{{route('template.create')}}"
+                           data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-instructors-requests-email-template')}}</a>
+                    </li>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-chat-left-text"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span>
                 </a>

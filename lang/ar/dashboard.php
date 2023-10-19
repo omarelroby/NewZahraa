@@ -12,8 +12,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-instructors-requests-email-template'=>'تعديل نموذج إيميل',
+    'add-instructors-requests-email-template'=>'إضافة نموذج إيميل',
+    'instructors-requests-email-template'=>'نموذج الإيميل',
     'cover'=>'الغلاف',
     'link'=>'الرابط',
+    'body'=>'نص الرسالة',
     'edit-popup'=>'تعديل اخطار منبثق',
     'add-popup'=>'إضافة اخطار منبثق',
     'popup'=>'إخطار منبثق',

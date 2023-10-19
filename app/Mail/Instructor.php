@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -45,7 +46,7 @@ class Instructor extends Mailable
     {
         return new Content(
             view: 'mails.instructor',
-            with: ['instructor'=>$this->data],
+            with: ['instructor'=>$this->data,'template'=>Template::first()],
         );
     }
 

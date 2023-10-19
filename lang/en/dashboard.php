@@ -12,7 +12,11 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'edit-instructors-requests-email-template'=>'Edit Email Template',
+    'add-instructors-requests-email-template'=>'Add Email Template',
+    'instructors-requests-email-template'=>'Email Template',
     'cover'=>'Cover',
+    'body'=>'Body Message',
     'link'=>'Link',
     'edit-popup'=>'ُEdit Popup',
     'add-popup'=>'Add Popup',
