@@ -91,7 +91,7 @@ class AppointmentsController extends Controller
         {
             foreach ($request->repeater as $key=>$input)
             {
-                if($input['day']==date("l", strtotime($first_day)))
+                if($input['day']==date("d", strtotime($first_day)))
                 {
                     SessionAppointments::create([
                         'month'=>$request->month,

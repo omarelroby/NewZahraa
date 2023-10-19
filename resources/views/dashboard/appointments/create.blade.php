@@ -117,12 +117,10 @@
                         <label for="inputRelatedProgram"> Day</label>
                         <select type="file" class="form-control " count="${y}" id="inputRelatedProgram" name="repeater[${y}][day]" >
                         <option value="">Select the Day</option>
-                        <option value="Saturday">Saturday</option>
-                        <option value="Sunday">Sunday</option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
+                            @for($i=1;$i<=31;$i++)
+                        <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+
                         </select>
                     </div>
                     <div class="form-group col-md-6"  ">
