@@ -508,6 +508,14 @@ class HomeController extends Controller
     public function get_popup()
     {
         $popup=Popup::where('status','active')->latest()->first();
-        return $this->success(new PopupResource($popup));
+        if ($popup)
+        {
+            return $this->success(new PopupResource($popup));
+
+        }
+        else
+        {
+            return  $this->error('Sorry,Not Found Popup Currently');
+        }
     }
 }
