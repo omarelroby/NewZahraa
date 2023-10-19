@@ -21,6 +21,7 @@ use App\Http\Resources\OnlineCourseResourceCollection;
 use App\Http\Resources\OnlineCourseResource;
 use App\Http\Resources\PagesResource;
 use App\Http\Resources\PaymentMethodsResource;
+use App\Http\Resources\PopupResource;
 use App\Http\Resources\QuestionsResource;
 use App\Http\Resources\QuizResource;
 use App\Http\Resources\SessionAppointmentsResource;
@@ -43,6 +44,7 @@ use App\Models\OnlineCourse;
 use App\Models\OnlineCourseOrders;
 use App\Models\Page;
 use App\Models\PaymentMethod;
+use App\Models\Popup;
 use App\Models\Questions;
 use App\Models\Quiz;
 use App\Models\SessionAppointments;
@@ -502,5 +504,10 @@ class HomeController extends Controller
 
             }
         }
+    }
+    public function get_popup()
+    {
+        $popup=Popup::where('status','active')->latest()->first();
+        return $this->success(new PopupResource($popup));
     }
 }

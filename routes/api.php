@@ -130,5 +130,6 @@ Route::middleware("localization")->group(function ()
     Route::get('redirect-online-course',[\App\Http\Controllers\api\CustomerController::class,'redirect_payment_online_course']);
     Route::get('redirect-booking',[\App\Http\Controllers\api\HomeController::class,'redirect_booking']);
     Route::get('error_payment',[\App\Http\Controllers\api\CustomerController::class,'error_payment']);
+    Route::get('get-popup',[\App\Http\Controllers\api\HomeController::class,'get_popup']);
 
 });
