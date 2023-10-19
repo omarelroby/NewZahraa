@@ -49,7 +49,7 @@ class ApplyJobController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'cv' => 'nullable|file',
+            'cv' => 'sometimes|mimes:png,jpg,jpeg,csv,txt,pdf',
             'job_id' => 'required',
         ];
         $validator = Validator::make($request->all(), $oValidatorRules);
