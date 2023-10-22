@@ -533,22 +533,31 @@
                     </li>
                 </ul>
             </li>
+            <?php $jobs=\App\Models\ApplyJob::where('read',0)->get()->count(); ?>
+
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-briefcase"></i><span class="menu-title"
-                                                                                 data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}</span>
+                                                                                 data-i18n="nav.dash.main">{{__('dashboard.apply-job')}}
+                        @if($jobs>0)
+                            <span class="badge rounded-pill badge-notification bg-danger">{{$jobs}}</span>
+                        @endif
+                    </span>
                 </a>
                 <ul class="menu-content">
                     <li class="@if(request()->routeIs('applyJob')) active @endif">
                         <a class="menu-item" href="{{route('applyJob')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.apply-job')}}</a>
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.apply-job')}}
+                            @if($jobs>0)
+                                <span class="badge rounded-pill badge-notification bg-danger">{{$jobs}}</span>
+                            @endif</a>
                     </li>
                 </ul>
             </li>
             <?php $booking=\App\Models\BookingAppointments::where('read',0)->get()->count(); ?>
 
             <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i><span class="menu-title"
-                                                                                     data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i>
+                    <span class="menu-title"     data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}
                         @if($booking>0)
                             <span class="badge rounded-pill badge-notification bg-danger">{{$booking}}</span>
                         @endif

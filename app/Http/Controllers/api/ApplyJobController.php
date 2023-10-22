@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\DataTables\ApplyJobDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\ApplyJob;
+use App\Models\EbookOrders;
 use App\Models\Employment;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -24,6 +25,15 @@ class ApplyJobController extends Controller
      */
     public function index(ApplyJobDataTable $dataTable)
     {
+        $requests=ApplyJob::where('read',0)->pluck('id')->toArray();
+        if(count($requests)>0)
+        {
+            foreach ($requests as $request)
+            {
+                $r=ApplyJob::find($request);
+                $r->update(['read'=>1]);
+            }
+        }
         return $dataTable->render('dashboard.apply_job.index');
     }
 
