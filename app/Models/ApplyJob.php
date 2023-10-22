@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplyJob extends Model
 {
       protected $table='apply_job';
-     protected $fillable=['name','phone','email','cv','job_id'];
+     protected $fillable=['name','phone','email','cv','job_id','read'];
 
 
 }
