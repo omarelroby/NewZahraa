@@ -30,10 +30,13 @@ class Instructor extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
+
     public function envelope()
     {
+        $Subject= Template::first()->subject;
+        $string=str_replace("%name", $instructor['name'],$Subject );
         return new Envelope(
-            subject: 'Instructor Account Information',
+            subject:$string ,
         );
     }
 
@@ -45,7 +48,7 @@ class Instructor extends Mailable
     public function content()
     {
         return new Content(
-            
+
             view: 'mails.instructor',
             with: ['instructor'=>$this->data,'template'=>Template::first()],
         );
