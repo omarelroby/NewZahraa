@@ -214,7 +214,7 @@ class InstructorRequestsController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'slug'=>$slug,
-            'password'=>$password,
+            'password'=>bcrypt($password),
             'phone'=>$request->phone,
 
         ]);

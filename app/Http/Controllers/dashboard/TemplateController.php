@@ -50,11 +50,6 @@ use App\DataTables\CategoriesDataTable;
 class TemplateController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(TemplateDataTable $dataTable)
     {
         return $dataTable->render('dashboard.template.index');
@@ -84,13 +79,7 @@ class TemplateController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $data=$request->all();
@@ -108,12 +97,7 @@ class TemplateController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $template=Template::find($id);

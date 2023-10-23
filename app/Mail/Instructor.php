@@ -45,6 +45,7 @@ class Instructor extends Mailable
     public function content()
     {
         return new Content(
+            
             view: 'mails.instructor',
             with: ['instructor'=>$this->data,'template'=>Template::first()],
         );
