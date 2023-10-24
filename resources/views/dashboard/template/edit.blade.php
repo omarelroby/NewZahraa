@@ -52,7 +52,9 @@
                                             @csrf
                                             {{ method_field('put') }}
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-align-right"></i>{{__('dashboard.instructors-requests-email-template')}}</h4>
+                                                <h4 class="form-section"><i class="ft-align-right"></i>
+                                                    {{__('dashboard.instructors-requests-email-template')}}
+                                                </h4>
                                                 <div class="row align-items-end">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -68,7 +70,16 @@
                                                             </textarea>
                                                         </div>
                                                     </div>
+                                                    <div class="col-12">
+
+                                                    <h4 style="color: red;font-weight: bold;">
+                                                       !!NOTE
+                                                        <p ><span style="color: #0c199c;"> %name%</span> Replaced by Name of Instructor,also <span style="color: #0c199c;"> %email</span> <span style="color: #0c199c;"> %pass</span></p>
+
+                                                    </h4>
+                                                    </div>
                                                 </div>
+
                                                 <div class="form-actions">
                                                     <button type="button" class="btn btn-warning mr-1 rounded-10">
                                                         <a href="{{route('template.index')}}" style="color: white"> <i class="ft-x"></i>{{__('dashboard.cancel')}}</a>
@@ -93,8 +104,7 @@
 
 
                  </section>
-                <!-- // Basic form layout section end -->
-            </div>
+             </div>
         </div>
     </div>
 @endsection

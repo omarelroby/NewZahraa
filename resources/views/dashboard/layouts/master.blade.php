@@ -259,6 +259,7 @@
             {{--                    </li>--}}
             {{--                </ul>--}}
             {{--            </li>--}}
+
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="fa f fa-cogs"></i><span class="menu-title"
                                                                                   data-i18n="nav.dash.main">{{__('dashboard.general-setting')}}</span>
@@ -268,9 +269,17 @@
                         <a class="menu-item" href="{{route('setting.edit',1)}}"
                            data-i18n="nav.dash.ecommerce">  {{__('dashboard.edit-setting')}}</a>
                     </li>
+                    @php $template=\App\Models\Template::first();       @endphp
+                    <li class="@if(request()->routeIs('template.edit')) active @endif">
+                        <a class="menu-item" href="{{url("/template/{$template->id}/edit")}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.instructors-requests-email-template')}}
+                        </a>
+                    </li>
 
                 </ul>
             </li>
+
+
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-person-video3"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.instructors')}}</span>
@@ -390,24 +399,22 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-paper"></i>
-                    <span class="menu-title"
-                          data-i18n="nav.dash.main">{{__('dashboard.instructors-requests-email-template')}}
-                     </span>
-                </a>
-                <ul class="menu-content">
-                    <li class="@if(request()->routeIs('template.index')) active @endif">
-                        <a class="menu-item" href="{{route('template.index')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.instructors-requests-email-template')}}
-                        </a>
-                    <li class="@if(request()->routeIs('template.create')) active @endif">
-                        <a class="menu-item" href="{{route('template.create')}}"
-                           data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-instructors-requests-email-template')}}</a>
-                    </li>
-                    </li>
-                </ul>
-            </li>
+{{--            <li class=" nav-item">--}}
+{{--                <a href="{{url('/dashboard')}}"><i class="bi bi-envelope-paper"></i>--}}
+{{--                    <span class="menu-title"--}}
+{{--                          data-i18n="nav.dash.main">{{__('dashboard.instructors-requests-email-template')}}--}}
+{{--                     </span>--}}
+{{--                </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li class="@if(request()->routeIs('template.index')) active @endif">--}}
+{{--                    --}}
+{{--                    <li class="@if(request()->routeIs('template.create')) active @endif">--}}
+{{--                        <a class="menu-item" href="{{route('template.create')}}"--}}
+{{--                           data-i18n="nav.dash.ecommerce">  {{__('dashboard.add-instructors-requests-email-template')}}</a>--}}
+{{--                    </li>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-chat-left-text"></i><span class="menu-title"
                                                                                           data-i18n="nav.dash.main">{{__('dashboard.contacts')}}</span>

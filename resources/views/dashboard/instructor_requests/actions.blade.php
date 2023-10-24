@@ -11,8 +11,6 @@
             </div>
 </div>
 
-
-
     <div id="deleteModal{{ $id }}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 

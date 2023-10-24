@@ -49,15 +49,10 @@ use App\DataTables\CategoriesDataTable;
 
 class TemplateController extends Controller
 {
-
     public function index(TemplateDataTable $dataTable)
     {
         return $dataTable->render('dashboard.template.index');
     }
-
-
-
-
     public function edit($id)
     {
         $template=Template::find($id);
@@ -76,7 +71,6 @@ class TemplateController extends Controller
              return  view('dashboard.template.create');
 
          }
-
     }
 
 

@@ -34,17 +34,13 @@ class Instructor extends Mailable
     public function envelope()
     {
         $Subject= Template::first()->subject;
-        $string=str_replace("%name", $instructor['name'],$Subject );
+        $string=str_replace("%name", $this->data['name'],$Subject );
         return new Envelope(
             subject:$string ,
         );
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
+
     public function content()
     {
         return new Content(
