@@ -11,6 +11,7 @@ use App\Mail\CustomersMailMail;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Customers;
+use App\Models\Instructor;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Languages;
 use Illuminate\Http\Request;
@@ -33,14 +34,28 @@ class SendEmailsController extends Controller
     public function index()
     {
          $customers=Customers::all();
-         return view('dashboard.send_emails.index',compact('customers'));
+         $instructors=Instructor::all();
+         return view('dashboard.send_emails.index',compact('customers','instructors'));
     }
     public function sending_emails(Request $request)
     {
-        foreach ($request->customers as $key=>$customer)
+        if ($request->customers=='all_customers')
         {
-             $emails[]=Customers::find($customer)->email;
+            $emails[]=\App\Models\Customers::pluck('email')->toArray();
+
         }
+        elseif ($request->customers='all_instructors')
+        {
+            $emails[]=\App\Models\Instructor::pluck('email')->toArray();
+        }
+        else
+        {
+            foreach ($request->customers as $key=>$customer)
+            {
+                $emails[]=Customers::find($customer)->email;
+            }
+        }
+
         $data=[
             'subject'=>$request->subject,
             'message'=>$request->message,

@@ -34,9 +34,9 @@ class AppointmentsDataTable extends DataTable
     }
 
 
-    public function query(SessionAppointments $model): QueryBuilder
+    public function query(): QueryBuilder
     {
-         return $model->newQuery();
+         return SessionAppointments::where('date', '>=', date('Y-m-d'));
     }
 
     public function html(): HtmlBuilder

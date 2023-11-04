@@ -39,6 +39,7 @@ class SettingRequest extends FormRequest
             'twitter_url'=>'nullable',
             'youtube_url'=>'nullable',
             'tiktok_url'=>'nullable',
+            'session_price'=>'nullable',
 
             ];
         foreach(config('translatable.locales') as $locale) {

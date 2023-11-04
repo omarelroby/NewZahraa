@@ -162,11 +162,97 @@
                                 data-i18n="nav.dash.main">{{__('dashboard.dashboard')}}</span>
 
                 </a>
+            <?php $ebooksOrders=\App\Models\EbookOrders::where('read',0)->get()->count(); ?>
 
 
+            <?php $coursesOrders=\App\Models\CourseOrders::where('read',0)->get()->count(); ?>
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="bi bi-arrow-down-left-square"></i><span class="menu-title"
+                                                                                                  data-i18n="nav.dash.main">{{__('dashboard.course-orders')}}</span>
+                    @if($coursesOrders>0)
+                        <span class="badge rounded-pill badge-notification bg-danger">{{$coursesOrders}}</span>
+
+                    @endif
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('course-orders.index')) active @endif">
+                        <a class="menu-item" href="{{route('course-orders.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.course-orders')}}
+                            @if($coursesOrders>0)
+                                <span class="badge rounded-pill badge-notification bg-danger">{{$coursesOrders}}</span>
+                            @endif
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-arrow-down"></i><span class="menu-title"
+                                                                                              data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span>
+                    @if($ebooksOrders>0)
+                        <span class="badge rounded-pill badge-notification bg-danger">{{$ebooksOrders}}
+                            </span>
+                    @endif
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('ebook-orders.index')) active @endif">
+                        <a class="menu-item" href="{{route('ebook-orders.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.ebook-orders')}}
+                            @if($ebooksOrders>0)
+                                <span class="badge rounded-pill badge-notification bg-danger">{{$ebooksOrders}}
+                            </span>
+                            @endif
+                        </a>
 
+                    </li>
+                </ul>
+            </li>
+
+            <?php $onlinecoursesOrders=\App\Models\OnlineCourseOrders::where('read',0)->get()->count(); ?>
+
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="bi bi-repeat"></i><span class="menu-title"
+                                                                                  data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}
+                    </span>
+                    @if($onlinecoursesOrders>0)
+                        <span class="badge rounded-pill badge-notification bg-danger">{{$onlinecoursesOrders}}</span>
+                    @endif
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('online-course-orders.index')) active @endif">
+                        <a class="menu-item" href="{{route('online-course-orders.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.online-course-orders')}}
+                            @if($onlinecoursesOrders>0)
+                                <span class="badge rounded-pill badge-notification bg-danger">{{$onlinecoursesOrders}}</span>
+                            @endif
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+
+            <?php $booking=\App\Models\BookingAppointments::where('read',0)->get()->count(); ?>
+
+            <li class=" nav-item">
+                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i>
+                    <span class="menu-title"     data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}
+                        @if($booking>0)
+                            <span class="badge rounded-pill badge-notification bg-danger">{{$booking}}</span>
+                        @endif
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="@if(request()->routeIs('booking-appointments.index')) active @endif">
+                        <a class="menu-item" href="{{route('booking-appointments.index')}}"
+                           data-i18n="nav.dash.ecommerce">{{__('dashboard.booking-appointments')}}
+                            @if($booking>0)
+                                <span class="badge rounded-pill badge-notification bg-danger">{{$booking}}</span>
+                            @endif
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
 
@@ -426,71 +512,8 @@
                     </li>
                 </ul>
             </li>
-            <?php $ebooksOrders=\App\Models\EbookOrders::where('read',0)->get()->count(); ?>
 
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-journal-arrow-down"></i><span class="menu-title"
-                                                                                 data-i18n="nav.dash.main">{{__('dashboard.ebook-orders')}}</span>
-                    @if($ebooksOrders>0)
-                        <span class="badge rounded-pill badge-notification bg-danger">{{$ebooksOrders}}
-                            </span>
-                    @endif
-                </a>
-                <ul class="menu-content">
-                    <li class="@if(request()->routeIs('ebook-orders.index')) active @endif">
-                        <a class="menu-item" href="{{route('ebook-orders.index')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.ebook-orders')}}
-                            @if($ebooksOrders>0)
-                                <span class="badge rounded-pill badge-notification bg-danger">{{$ebooksOrders}}
-                            </span>
-                            @endif
-                        </a>
 
-                    </li>
-                </ul>
-            </li>
-            <?php $coursesOrders=\App\Models\CourseOrders::where('read',0)->get()->count(); ?>
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-arrow-down-left-square"></i><span class="menu-title"
-                                                                                 data-i18n="nav.dash.main">{{__('dashboard.course-orders')}}</span>
-                    @if($coursesOrders>0)
-                        <span class="badge rounded-pill badge-notification bg-danger">{{$coursesOrders}}</span>
-
-                    @endif
-                </a>
-                <ul class="menu-content">
-                    <li class="@if(request()->routeIs('course-orders.index')) active @endif">
-                        <a class="menu-item" href="{{route('course-orders.index')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.course-orders')}}
-                            @if($coursesOrders>0)
-                                <span class="badge rounded-pill badge-notification bg-danger">{{$coursesOrders}}</span>
-                            @endif
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <?php $onlinecoursesOrders=\App\Models\OnlineCourseOrders::where('read',0)->get()->count(); ?>
-
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-repeat"></i><span class="menu-title"
-                                                                                 data-i18n="nav.dash.main">{{__('dashboard.online-course-orders')}}
-                    </span>
-                    @if($onlinecoursesOrders>0)
-                        <span class="badge rounded-pill badge-notification bg-danger">{{$onlinecoursesOrders}}</span>
-                     @endif
-                </a>
-                <ul class="menu-content">
-                    <li class="@if(request()->routeIs('online-course-orders.index')) active @endif">
-                        <a class="menu-item" href="{{route('online-course-orders.index')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.online-course-orders')}}
-                            @if($onlinecoursesOrders>0)
-                                <span class="badge rounded-pill badge-notification bg-danger">{{$onlinecoursesOrders}}</span>
-                            @endif
-                        </a>
-
-                    </li>
-                </ul>
-            </li>
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-file-earmark-person"></i><span class="menu-title"
                                                                                  data-i18n="nav.dash.main">{{__('dashboard.employment-applications')}}</span>
@@ -560,27 +583,7 @@
                     </li>
                 </ul>
             </li>
-            <?php $booking=\App\Models\BookingAppointments::where('read',0)->get()->count(); ?>
 
-            <li class=" nav-item">
-                <a href="{{url('/dashboard')}}"><i class="bi bi-calendar2-plus"></i>
-                    <span class="menu-title"     data-i18n="nav.dash.main">{{__('dashboard.booking-appointments')}}
-                        @if($booking>0)
-                            <span class="badge rounded-pill badge-notification bg-danger">{{$booking}}</span>
-                        @endif
-                    </span>
-                </a>
-                <ul class="menu-content">
-                    <li class="@if(request()->routeIs('booking-appointments.index')) active @endif">
-                        <a class="menu-item" href="{{route('booking-appointments.index')}}"
-                           data-i18n="nav.dash.ecommerce">{{__('dashboard.booking-appointments')}}
-                            @if($booking>0)
-                                <span class="badge rounded-pill badge-notification bg-danger">{{$booking}}</span>
-                            @endif
-                        </a>
-                    </li>
-                </ul>
-            </li>
             <li class=" nav-item">
                 <a href="{{url('/dashboard')}}"><i class="bi bi-inboxes"></i><span class="menu-title"
                                                                                      data-i18n="nav.dash.main">{{__('dashboard.subscriptions')}}</span>

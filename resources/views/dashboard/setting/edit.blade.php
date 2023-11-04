@@ -126,6 +126,12 @@
                                                                         <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->tiktok_url ??''}}" name="tiktok_url">
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label   for="inputGroupFile01">{{__('dashboard.session_price')}} </label>
+                                                                        <input type="text"    class="form-control input-custom" id="inputGroupFile01" value="{{$setting->session_price ??''}}" name="session_price">
+                                                                    </div>
+                                                                </div>
 
 
                                                                 @foreach(config('translatable.locales') as $locale)

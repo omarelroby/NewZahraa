@@ -35,9 +35,12 @@ class BookingAppointmentsDataTable extends DataTable
             ->editColumn('country_id', function($q) {
                 return $q->country->name;
             })
+            ->editColumn('zoom_link', function($q) {
+                return '<h6><a href="'.$q->zoom_link.'" target="_blank">'.$q->zoom_link.'</a></h6>';
+            })
 
             ->addColumn('action', 'dashboard.booking_appointments.actions')
-            ->rawColumns(['action','video']);
+            ->rawColumns(['action','video','zoom_link']);
     }
 
 

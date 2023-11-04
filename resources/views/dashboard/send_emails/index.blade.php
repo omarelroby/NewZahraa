@@ -29,9 +29,13 @@
                                 <div class="form-group">
                                     <label   for="inputGroupFile20">{{__('dashboard.customers')}} </label>
                                     <select  required class="form-control js-example-basic-single" multiple id="inputGroupFile20"  name="customers[]">
-                                        <option value="">{{__('dashboard.customers')}}</option>
-                                        @foreach($customers as $customer)
+                                        <option value="all_customers">{{__('dashboard.customers')}}</option>
+                                    @foreach($customers as $customer)
                                             <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                        @endforeach
+                                        <option value="all_instructors">{{__('dashboard.instructors')}}</option>
+                                        @foreach($instructors as $i)
+                                            <option value="{{$i->id}}">{{$i->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
