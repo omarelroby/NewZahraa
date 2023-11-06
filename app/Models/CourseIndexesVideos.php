@@ -24,7 +24,7 @@ public function IndexesVideos()
 }
  public function user_video()
 {
-    return $this->hasOne(UserVideos::class )->where('user_id',auth('api')->user()->id);
+    return $this->hasOne(UserVideos::class ,'video_id')->where('user_id',auth('api')->user()->id);
 }
 
 
