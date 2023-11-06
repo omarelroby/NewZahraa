@@ -22,6 +22,10 @@ public function IndexesVideos()
 {
     return $this->hasMany(IndexesVideo::class,'indexes_video_id');
 }
+ public function user_video()
+{
+    return $this->hasOne(UserVideos::class )->where('user_id',auth('api')->user()->id);
+}
 
 
 }

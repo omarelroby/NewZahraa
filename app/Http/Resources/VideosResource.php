@@ -19,6 +19,7 @@ class VideosResource extends JsonResource
             'is_free' => $this->is_free,
             'video' => $this->video,
             'Indexes_videos'=>$this->IndexesVideos,
+            'watched'=>$this->user_video?1:0,
 
         ];
     }
