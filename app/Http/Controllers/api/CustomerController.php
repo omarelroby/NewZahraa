@@ -698,7 +698,7 @@ class CustomerController extends Controller
                 'video' => new VideosResource($video),
                 'index_file' => asset('storage/' . $path),
             ];
-            $user_id=Auth::user()->id;
+            $user_id=auth('api')->user()->id;
             $check=UserVideos::where('video_id',$id)->where('user_id',$user_id)->first();
             if (!$check)
             {
