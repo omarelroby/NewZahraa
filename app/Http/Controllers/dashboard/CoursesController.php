@@ -37,11 +37,7 @@ use App\DataTables\CategoriesDataTable;
 class CoursesController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(CoursesDataTable $dataTable)
     {
 

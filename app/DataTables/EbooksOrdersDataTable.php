@@ -49,9 +49,9 @@ class EbooksOrdersDataTable extends DataTable
     }
 
 
-    public function query(EbookOrders $model): QueryBuilder
+    public function query(): QueryBuilder
     {
-         return $model->newQuery();
+         return EbookOrders::where('status','success');
     }
 
 

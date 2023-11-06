@@ -28,7 +28,9 @@ class AppointmentsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 
-
+            ->editColumn('date', function($q) {
+                return  date('g:ia', strtotime($q->date));
+            })
             ->addColumn('action', 'dashboard.appointments.actions')
             ->rawColumns(['action','video']);
     }

@@ -30,7 +30,7 @@ class BookingAppointmentsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->editColumn('appointment_id', function($q) {
-                return $q->appointments->date;
+                return  date('Y-m-d', strtotime( $q->appointments->date)).'-' .date('g:ia', strtotime($q->appointments->date));
             })
             ->editColumn('country_id', function($q) {
                 return $q->country->name;

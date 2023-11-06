@@ -43,11 +43,7 @@ use App\DataTables\CategoriesDataTable;
 class AppointmentsController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(AppointmentsDataTable $dataTable)
     {
         return $dataTable->render('dashboard.appointments.index');
@@ -60,12 +56,7 @@ class AppointmentsController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
          $appointment=SessionAppointments::find($id);
@@ -76,13 +67,6 @@ class AppointmentsController extends Controller
          return  view('dashboard.appointments.create');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $first_day = date('Y-m-01',strtotime($request->month));
@@ -112,12 +96,7 @@ class AppointmentsController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         SessionAppointments::find($id)->delete();

@@ -51,9 +51,9 @@ class OnlineCourseOrdersDataTable extends DataTable
     }
 
 
-    public function query(OnlineCourseOrders $model): QueryBuilder
+    public function query( ): QueryBuilder
     {
-         return $model->newQuery();
+         return OnlineCourseOrders::where('status','success');
     }
 
 

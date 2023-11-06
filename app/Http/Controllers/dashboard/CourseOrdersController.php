@@ -69,7 +69,6 @@ class CourseOrdersController extends Controller
     public function edit($id)
     {
         $index=IndexesVideo::find($id);
-
         return view('dashboard.index_of_videos.edit',compact('index'));
     }
 
@@ -79,8 +78,6 @@ class CourseOrdersController extends Controller
         IndexesVideo::create($request->all());
         Alert::success('Success', __('dashboard.success'));
         return redirect()->route('indexes-videos', $request->indexes_video_id);
-
-
     }
 
     public function update(IndexOfVideosRequest $request,$id)
@@ -100,4 +97,6 @@ class CourseOrdersController extends Controller
         Alert::error('Deleted', __('dashboard.deleted'));
         return redirect()->route('indexes-videos', $index->indexes_video_id);
     }
+
+
 }

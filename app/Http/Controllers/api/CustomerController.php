@@ -45,6 +45,7 @@ use App\Models\OnlineCourse;
 use App\Models\OnlineCourseOrders;
 use App\Models\Page;
 use App\Models\Quiz;
+use App\Models\UserVideos;
 use App\Models\Videos;
 use App\Traits\response;
 use Illuminate\Http\Request;
@@ -697,6 +698,16 @@ class CustomerController extends Controller
                 'video' => new VideosResource($video),
                 'index_file' => asset('storage/' . $path),
             ];
+            $user_id=Auth::user()->id;
+            $check=UserVideos::where('video_id',$id)->where('user_id',$user_id)->first();
+            if (!$check)
+            {
+                UserVideos::create([
+                    'user_id'=>$user_id,
+                    'video_id'=>$id
+                ]);
+            }
+
             return $this->success($data);
 
         } else {
